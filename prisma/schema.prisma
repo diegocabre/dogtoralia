@@ -1,0 +1,152 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  VET
+  CLIENT
+}
+
+enum Status {
+  PENDING
+  CONFIRMED
+  CANCELLED
+}
+
+enum PaymentMethod {
+  CASH
+  CREDIT_CARD
+  DEBIT_CARD
+}
+
+enum Size {
+  XSMALL
+  SMALL
+  MEDIUM
+  LARGE
+}
+
+enum Age {
+  PUPPY
+  ADULT
+  SENIOR
+}
+
+model Species {
+  id         String   @id @default(uuid())
+  name       String
+  pets       Pet[]
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id])
+}
+
+model Category {
+  id       String    @id @default(uuid())
+  name     String
+  products Product[]
+  species  Species[]
+}
+
+model Product {
+  id          String         @id @default(uuid())
+  age         Age
+  size        Size
+  name        String
+  description String
+  price       Float
+  images      ProductImage[]
+  category    Category       @relation(fields: [categoryId], references: [id])
+  categoryId  String
+  status      Status
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+  orderItems  OrderItem[]
+}
+
+model ProductImage {
+  id        String  @id @default(uuid())
+  url       String
+  altText   String?
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+}
+
+model User {
+  id              String        @id @default(uuid())
+  profileImage    UserImage?    @relation // 🔹 No define `fields` ni `references`
+  name            String
+  email           String        @unique
+  password        String
+  role            Role
+  pets            Pet[]
+  orders          Order[]
+  vetAppointments Appointment[] @relation("VetAppointments")
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+}
+
+model UserImage {
+  id     String @id @default(uuid())
+  url    String @default("https://www.gravatar.com/avatar/default")
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @unique // 🔹 Esto hace que la relación sea 1:1
+}
+
+model Pet {
+  id           String        @id @default(uuid())
+  name         String
+  image        PetImage[]
+  age          Age
+  size         Size
+  breed        String
+  owner        User          @relation(fields: [ownerId], references: [id])
+  ownerId      String
+  species      Species       @relation(fields: [speciesId], references: [id])
+  speciesId    String
+  appointments Appointment[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model PetImage {
+  id    String @id @default(uuid())
+  url   String @default("https://placekitten.com/200/300")
+  pet   Pet    @relation(fields: [petId], references: [id])
+  petId String
+}
+
+model Appointment {
+  id    String   @id @default(uuid())
+  date  DateTime
+  pet   Pet      @relation(fields: [petId], references: [id])
+  petId String
+  vet   User     @relation("VetAppointments", fields: [vetId], references: [id])
+  vetId String
+}
+
+model Order {
+  id            String        @id @default(uuid())
+  user          User          @relation(fields: [userId], references: [id])
+  userId        String
+  total         Float
+  status        Status
+  paymentMethod PaymentMethod
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  orderItems    OrderItem[]
+}
+
+model OrderItem {
+  id        String  @id @default(uuid())
+  order     Order   @relation(fields: [orderId], references: [id])
+  orderId   String
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+  quantity  Int     @default(1)
+}
