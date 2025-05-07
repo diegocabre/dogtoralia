@@ -25,11 +25,11 @@ export default function Footer() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                     {/* Información de Contacto */}
                     <div className="space-y-6">
-                        <h3 className="text-lg sm:text-xl font-semibold text-secondary font-bold" style={{ WebkitTextStroke: '0.5px #fff' }}>Contacto</h3>
+                        <h3 className="text-lg sm:text-xl font-semibold text-secondary font-bold" style={{ WebkitTextStroke: '1px #000' }}>Contacto</h3>
 
                         {/* Sede Puente Alto */}
                         <div className="space-y-3">
-                            <h4 className="font-medium text-secondary font-bold" style={{ WebkitTextStroke: '0.5px #fff' }}>Sede {locations.puenteAlto.name}</h4>
+                            <h4 className="font-medium text-secondary font-bold" style={{ WebkitTextStroke: '1px #000' }}>Sede {locations.puenteAlto.name}</h4>
                             <p className="flex items-center gap-2 text-sm sm:text-base">
                                 <FaPhone className="text-secondary" />
                                 <Link
@@ -56,7 +56,7 @@ export default function Footer() {
 
                         {/* Sede Santiago Centro */}
                         <div className="space-y-3">
-                            <h4 className="font-medium text-secondary font-bold" style={{ WebkitTextStroke: '0.5px #fff' }}>Sede {locations.santiagoCentro.name}</h4>
+                            <h4 className="font-medium text-secondary font-bold" style={{ WebkitTextStroke: '1px #000' }}>Sede {locations.santiagoCentro.name}</h4>
                             <p className="flex items-center gap-2 text-sm sm:text-base">
                                 <FaPhone className="text-secondary" />
                                 <Link
@@ -93,7 +93,7 @@ export default function Footer() {
 
                     {/* Enlaces Rápidos */}
                     <div className="space-y-4">
-                        <h3 className="text-lg sm:text-xl font-semibold text-secondary" style={{ WebkitTextStroke: '0.5px #fff' }}>Navegación</h3>
+                        <h3 className="text-lg sm:text-xl font-semibold text-secondary font-bold" style={{ WebkitTextStroke: '1px #000' }}>Navegación</h3>
                         <ul className="grid grid-cols-2 gap-3">
                             <li>
                                 <Link href="/home" className="flex items-center gap-2 text-sm sm:text-base hover:text-secondary transition-colors">
@@ -130,7 +130,7 @@ export default function Footer() {
 
                     {/* Redes Sociales y Newsletter */}
                     <div className="space-y-4">
-                        <h3 className="text-lg sm:text-xl font-semibold text-secondary font-bold" style={{ WebkitTextStroke: '0.5px #fff' }}>Síguenos</h3>
+                        <h3 className="text-lg sm:text-xl font-semibold text-secondary font-bold" style={{ WebkitTextStroke: '1px #000' }}>Síguenos</h3>
                         <div className="flex space-x-4 mb-4">
                             <Link href="https://www.facebook.com/dogtoraliavet/" className="text-xl sm:text-2xl hover:text-secondary transition-colors" aria-label="Facebook">
                                 <FaFacebook />

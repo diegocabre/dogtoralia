@@ -75,7 +75,7 @@ export default function NavBar() {
                                         ? "font-bold underline underline-offset-8 decoration-4 decoration-secondary text-secondary"
                                         : isScrolled ? "text-tertiary shadow-lg" : "text-white"
                                     }`}
-                                style={pathname.startsWith(item.href) ? { WebkitTextStroke: '0.5px #fff' } : {}}
+                                style={pathname.startsWith(item.href) ? { WebkitTextStroke: '1px #000' } : {}}
                             >
                                 {item.icon}
                                 <span>{item.label}</span>
