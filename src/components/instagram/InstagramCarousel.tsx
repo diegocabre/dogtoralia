@@ -2,10 +2,9 @@
 
 import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import 'swiper/css/navigation';
 import Image from 'next/image';
 
 interface InstagramPost {
@@ -103,7 +102,7 @@ export function InstagramCarousel() {
                     Síguenos en Instagram
                 </h2>
                 <Swiper
-                    modules={[Autoplay, Pagination, Navigation]}
+                    modules={[Autoplay, Pagination]}
                     spaceBetween={16}
                     slidesPerView={1}
                     breakpoints={{
@@ -127,10 +126,6 @@ export function InstagramCarousel() {
                     pagination={{
                         clickable: true,
                         dynamicBullets: true,
-                    }}
-                    navigation={{
-                        prevEl: '.swiper-button-prev',
-                        nextEl: '.swiper-button-next',
                     }}
                     className="mySwiper"
                 >
@@ -162,8 +157,6 @@ export function InstagramCarousel() {
                         </SwiperSlide>
                     ))}
                 </Swiper>
-                <div className="swiper-button-prev !text-primary !w-8 !h-8 sm:!w-12 sm:!h-12"></div>
-                <div className="swiper-button-next !text-primary !w-8 !h-8 sm:!w-12 sm:!h-12"></div>
             </div>
         </div>
     );
