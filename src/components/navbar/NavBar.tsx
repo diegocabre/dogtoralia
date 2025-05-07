@@ -72,10 +72,10 @@ export default function NavBar() {
                                 href={item.href}
                                 className={`flex items-center gap-1 lg:gap-2 text-sm lg:text-base hover:text-secondary transition-colors
                                     ${pathname.startsWith(item.href)
-                                        ? "font-bold underline underline-offset-8 decoration-4 decoration-secondary text-secondary"
+                                        ? "underline underline-offset-8 decoration-4 decoration-tertiary text-tertiary"
                                         : isScrolled ? "text-tertiary shadow-lg" : "text-white"
                                     }`}
-                                style={pathname.startsWith(item.href) ? { WebkitTextStroke: '0.3px #000', textDecorationColor: 'var(--color-secondary)' } : {}}
+                                style={{}}
                             >
                                 {item.icon}
                                 <span>{item.label}</span>
