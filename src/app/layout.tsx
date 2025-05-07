@@ -1,26 +1,28 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import ClientProviders from "./ClientProviders";
+import Providers from "./providers";
+import Navbar from "@/components/navbar/NavBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "DogtoraliaVet",
-  description: "Tu veterinaria en línea para tu mascota",
+  title: "Dogtoralia",
+  description: "Tu tienda de mascotas",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="es">
       <body className={inter.className}>
-        <ClientProviders>
+        <Providers>
+          <Navbar />
           {children}
-        </ClientProviders>
+        </Providers>
       </body>
     </html>
   );

@@ -5,6 +5,7 @@ import { ProductCategory, Product } from '@/types/product';
 import ProductGrid from '@/components/ProductGrid';
 import { useSession, signIn } from "next-auth/react";
 import { useCartStore } from '@/store/cartStore';
+import { cleanAndCapitalize } from '@/lib/utils';
 
 export default function StorePage() {
     const [selectedCategory, setSelectedCategory] = useState<ProductCategory | 'all'>('all');
@@ -13,6 +14,7 @@ export default function StorePage() {
     const [loading, setLoading] = useState(true);
     const { data: session } = useSession();
     const { addToCart } = useCartStore();
+    const [toast, setToast] = useState<string | null>(null);
 
     useEffect(() => {
         fetch('/api/products')
@@ -33,8 +35,9 @@ export default function StorePage() {
             signIn();
             return;
         }
-        addToCart(product);
-        alert(`Producto agregado: ${product.name}`);
+        addToCart({ ...product, quantity: 1 });
+        setToast(`Producto agregado: ${cleanAndCapitalize(product.name)}`);
+        setTimeout(() => setToast(null), 2000);
     };
 
     return (
@@ -44,6 +47,13 @@ export default function StorePage() {
                     <h1 className="text-4xl font-bold text-tertiary mb-4 mt-12">Nuestra Tienda</h1>
                     <p className="text-lg text-gray-600">Productos veterinarios de calidad para tu mascota</p>
                 </div>
+
+                {/* Toast */}
+                {toast && (
+                    <div className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 bg-green-600 text-white px-6 py-3 rounded shadow-lg font-semibold animate-fade-in">
+                        {toast}
+                    </div>
+                )}
 
                 {/* Search and Filter Section */}
                 <div className="mb-8">
@@ -60,35 +70,33 @@ export default function StorePage() {
                         </div>
 
                         {/* Category Filter */}
-                        <div className="flex gap-2">
-                            <button
-                                onClick={() => setSelectedCategory('all')}
-                                className={`px-4 py-2 rounded-lg transition-colors ${selectedCategory === 'all'
-                                    ? 'bg-primary text-white'
-                                    : 'bg-white text-gray-700 hover:bg-gray-50'
-                                    }`}
-                            >
-                                Todos
-                            </button>
-                            <button
-                                onClick={() => setSelectedCategory('Medicamento')}
-                                className={`px-4 py-2 rounded-lg transition-colors ${selectedCategory === 'Medicamento'
-                                    ? 'bg-primary text-white'
-                                    : 'bg-white text-gray-700 hover:bg-gray-50'
-                                    }`}
-                            >
-                                Medicamentos
-                            </button>
-                            <button
-                                onClick={() => setSelectedCategory('Shampoos')}
-                                className={`px-4 py-2 rounded-lg transition-colors ${selectedCategory === 'Shampoos'
-                                    ? 'bg-primary text-white'
-                                    : 'bg-white text-gray-700 hover:bg-gray-50'
-                                    }`}
-                            >
-                                Shampoos
-                            </button>
-                        </div>
+                        <button
+                            onClick={() => setSelectedCategory('all')}
+                            className={`px-4 py-2 rounded-lg transition-colors ${selectedCategory === 'all'
+                                ? 'bg-primary text-white'
+                                : 'bg-white text-gray-700 hover:bg-gray-50'
+                                }`}
+                        >
+                            Todos
+                        </button>
+                        <button
+                            onClick={() => setSelectedCategory('Medicamento')}
+                            className={`px-4 py-2 rounded-lg transition-colors ${selectedCategory === 'Medicamento'
+                                ? 'bg-primary text-white'
+                                : 'bg-white text-gray-700 hover:bg-gray-50'
+                                }`}
+                        >
+                            Medicamentos
+                        </button>
+                        <button
+                            onClick={() => setSelectedCategory('Shampoos')}
+                            className={`px-4 py-2 rounded-lg transition-colors ${selectedCategory === 'Shampoos'
+                                ? 'bg-primary text-white'
+                                : 'bg-white text-gray-700 hover:bg-gray-50'
+                                }`}
+                        >
+                            Shampoos
+                        </button>
                     </div>
                 </div>
 

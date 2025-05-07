@@ -4,10 +4,18 @@ import { Logo } from "../logo/Logo";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { FaBars, FaTimes, FaShoppingCart, FaStore, FaHome, FaCalendar, FaPhone } from "react-icons/fa";
+import { useAuth } from "@/contexts/AuthContext";
+import { CartItem, useCartStore } from "@/store/cartStore";
+import { signOut } from "next-auth/react";
+import { usePathname } from "next/navigation";
 
-export function NavBar() {
+export default function NavBar() {
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    const { user } = useAuth();
+    const { items: cartItems } = useCartStore();
+    const totalItems = cartItems.reduce((sum: number, item: CartItem) => sum + item.quantity, 0);
+    const pathname = usePathname();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -27,11 +35,27 @@ export function NavBar() {
         { href: "/store", label: "Tienda", icon: <FaStore /> },
         { href: "/service", label: "Servicios", icon: <FaCalendar /> },
         { href: "/contact", label: "Contacto", icon: <FaPhone /> },
-        { href: "/cart", label: "Carrito", icon: <FaShoppingCart /> },
     ];
 
+    if (user) {
+        navItems.push({
+            href: "/cart",
+            label: "Carrito",
+            icon: (
+                <span className="relative">
+                    <FaShoppingCart />
+                    {totalItems > 0 && (
+                        <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1">
+                            {totalItems}
+                        </span>
+                    )}
+                </span>
+            ),
+        });
+    }
+
     return (
-        <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-primary/95 shadow-lg' : 'bg-primary'
+        <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-primary/95 shadow-lg text-tertiary' : 'bg-primary text-white'
             }`}>
             <div className="container mx-auto px-4">
                 <div className="flex justify-between items-center h-16">
@@ -46,12 +70,27 @@ export function NavBar() {
                             <Link
                                 key={item.href}
                                 href={item.href}
-                                className="flex items-center gap-1 lg:gap-2 text-sm lg:text-base text-white hover:text-secondary transition-colors"
+                                className={`flex items-center gap-1 lg:gap-2 text-sm lg:text-base hover:text-secondary transition-colors
+                                    ${pathname.startsWith(item.href)
+                                        ? "font-bold underline underline-offset-8 decoration-4 decoration-secondary text-secondary"
+                                        : isScrolled ? "text-tertiary" : "text-white"
+                                    }`}
                             >
                                 {item.icon}
                                 <span>{item.label}</span>
                             </Link>
                         ))}
+                        {user && (
+                            <span className="ml-4 font-semibold text-white">{user.name}</span>
+                        )}
+                        {user && (
+                            <button
+                                onClick={() => signOut({ callbackUrl: "/auth/login" })}
+                                className="ml-4 px-4 py-2 bg-secondary text-white rounded hover:bg-secondary-dark transition-colors"
+                            >
+                                Cerrar sesión
+                            </button>
+                        )}
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -85,13 +124,28 @@ export function NavBar() {
                             <Link
                                 key={item.href}
                                 href={item.href}
-                                className="flex items-center gap-3 text-white hover:text-secondary transition-colors text-xl"
+                                className={`flex items-center gap-3 hover:text-secondary transition-colors text-xl
+                                    ${pathname.startsWith(item.href)
+                                        ? "font-bold underline underline-offset-8 decoration-4 decoration-secondary text-secondary"
+                                        : isScrolled ? "text-tertiary" : "text-white"
+                                    }`}
                                 onClick={() => setIsOpen(false)}
                             >
                                 {item.icon}
                                 <span>{item.label}</span>
                             </Link>
                         ))}
+                        {user && (
+                            <span className="mt-8 font-semibold text-white text-xl">{user.name}</span>
+                        )}
+                        {user && (
+                            <button
+                                onClick={() => { setIsOpen(false); signOut({ callbackUrl: "/auth/login" }); }}
+                                className="mt-4 px-6 py-2 bg-secondary text-white rounded hover:bg-secondary-dark transition-colors text-xl"
+                            >
+                                Cerrar sesión
+                            </button>
+                        )}
                     </div>
                 </div>
             </div>

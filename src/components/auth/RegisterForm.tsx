@@ -26,13 +26,8 @@ export function RegisterForm() {
 
     const handleGoogleRegister = async () => {
         try {
-            const result = await signInWithGoogle();
-            if (result.success) {
-                // Redirigir al usuario después del registro exitoso
-                router.push('/');
-            } else {
-                setError('Error al registrarse con Google');
-            }
+            await signInWithGoogle();
+            router.push('/');
         } catch (error) {
             setError('Error al registrarse con Google');
             console.error('Google register error:', error);

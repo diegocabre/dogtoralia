@@ -1,3 +1,6 @@
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
 export function formatPrice(price: number): string {
   return new Intl.NumberFormat("es-CL", {
     minimumFractionDigits: 0,
@@ -16,4 +19,8 @@ export function cleanAndCapitalize(name: string): string {
     .toLowerCase()
     .replace(/\b\w/g, (l) => l.toUpperCase()) // Capitaliza cada palabra
     .trim();
+}
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
 }
