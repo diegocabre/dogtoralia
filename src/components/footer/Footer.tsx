@@ -18,7 +18,7 @@ const locations = {
 
 const whatsappMessage = encodeURIComponent('Hola! Me gustaría recibir información sobre los servicios de Dogtoralia.');
 
-export function Footer() {
+export default function Footer() {
     return (
         <footer className="bg-primary text-white">
             <div className="container mx-auto px-4 py-8 sm:py-12">
