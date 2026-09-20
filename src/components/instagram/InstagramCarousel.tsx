@@ -15,50 +15,27 @@ interface InstagramPost {
     media_type?: string;
 }
 
-interface InstagramResponse {
-    data: InstagramPost[];
-    error?: {
-        message: string;
-        type: string;
-        code: number;
-    };
-}
-
 export function InstagramCarousel() {
     const [posts, setPosts] = useState<InstagramPost[]>([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
+    // Ya no mostramos el error crudo de la API a los visitantes: si el
+    // feed de Instagram falla (token vencido, red, etc.), simplemente no
+    // se muestra la sección en vez de romper la página con un mensaje
+    // técnico. El detalle del error queda en la consola del servidor.
+    const [hasFeed, setHasFeed] = useState(false);
 
     useEffect(() => {
         const fetchInstagramPosts = async () => {
-            const token = process.env.NEXT_PUBLIC_INSTAGRAM_ACCESS_TOKEN;
-
-            if (!token) {
-                setError('Error: Token de Instagram no configurado');
-                setLoading(false);
-                return;
-            }
-
             try {
-                const response = await fetch(
-                    `https://graph.instagram.com/me/media?fields=id,media_url,permalink,caption,media_type&access_token=${token}`
-                );
-
-                const data: InstagramResponse = await response.json();
-
-                if (!response.ok) {
-                    throw new Error(data.error?.message || 'Error al obtener datos de Instagram');
-                }
+                const response = await fetch('/api/instagram');
+                const data = await response.json();
 
                 if (data.data && data.data.length > 0) {
-                    const imagesPosts = data.data.filter(post =>
-                        post.media_type === 'IMAGE' || post.media_type === 'CAROUSEL_ALBUM'
-                    );
-                    setPosts(imagesPosts);
+                    setPosts(data.data);
+                    setHasFeed(true);
                 }
             } catch (error) {
                 console.error('Error al cargar posts:', error);
-                setError(error instanceof Error ? error.message : 'Error al cargar posts de Instagram');
             } finally {
                 setLoading(false);
             }
@@ -75,24 +52,10 @@ export function InstagramCarousel() {
         );
     }
 
-    if (error) {
-        return (
-            <div className="py-8 sm:py-12 bg-gray-50">
-                <div className="container mx-auto px-4">
-                    <p className="text-center text-red-600 text-sm sm:text-base">{error}</p>
-                </div>
-            </div>
-        );
-    }
-
-    if (posts.length === 0) {
-        return (
-            <div className="py-8 sm:py-12 bg-gray-50">
-                <div className="container mx-auto px-4">
-                    <p className="text-center text-sm sm:text-base">No hay posts disponibles</p>
-                </div>
-            </div>
-        );
+    // Sin feed disponible (token vencido, sin posts, error de red): no
+    // mostramos nada en vez de un mensaje de error o "no hay posts".
+    if (!hasFeed || posts.length === 0) {
+        return null;
     }
 
     return (
@@ -160,4 +123,4 @@ export function InstagramCarousel() {
             </div>
         </div>
     );
-} 
+}

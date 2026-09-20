@@ -1,4 +1,7 @@
+"use client";
+
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 const services = [
     {
@@ -36,19 +39,32 @@ export default function ServicePage() {
     return (
         <div className="min-h-screen bg-gray-50 py-12">
             <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-12">
+                <motion.div
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="text-center mb-12"
+                >
                     <h1 className="text-4xl font-bold text-tertiary mb-4 mt-12">Nuestros Servicios</h1>
                     <p className="text-lg text-gray-600">Cuidamos a tu mascota en cada etapa de su vida</p>
-                </div>
+                </motion.div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {services.map((service) => (
-                        <div key={service.title} className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden border border-gray-100 min-h-[420px]">
-                            <div className="relative w-full aspect-[3/2] bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                    {services.map((service, index) => (
+                        <motion.div
+                            key={service.title}
+                            initial={{ opacity: 0, y: 24 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, amount: 0.2 }}
+                            transition={{ duration: 0.5, delay: (index % 3) * 0.1 }}
+                            whileHover={{ y: -8 }}
+                            className="bg-white rounded-2xl shadow-md hover:shadow-2xl hover:shadow-primary/20 transition-shadow duration-300 flex flex-col overflow-hidden border border-gray-100 min-h-[420px]"
+                        >
+                            <div className="relative w-full aspect-[3/2] bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center overflow-hidden group">
                                 <Image
                                     src={service.image || fallbackImage}
                                     alt={service.title}
                                     fill
-                                    className="object-cover rounded-t-2xl"
+                                    className="object-cover rounded-t-2xl transition-transform duration-500 hover:scale-110"
                                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                     priority={false}
                                 />
@@ -57,7 +73,7 @@ export default function ServicePage() {
                                 <h2 className="text-xl font-bold text-primary mb-2 text-center">{service.title}</h2>
                                 <p className="text-gray-700 text-center whitespace-pre-line leading-relaxed">{service.description}</p>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             </div>

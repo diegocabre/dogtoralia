@@ -13,25 +13,35 @@
   src: url("/fonts/Mosk-Regular.ttf") format("truetype");
 }
 
-body {
-  background: var(--background);
-  font-family: "Poppins", sans-serif;
-  color: var(--color-tertiary);
-}
+/*
+  Estos estilos por defecto (body, h1-h6, p) van dentro de @layer base
+  para que las utilidades de Tailwind (como text-white) puedan
+  sobreescribirlos normalmente. En Tailwind v4, una regla CSS "suelta"
+  (fuera de cualquier @layer) siempre gana por sobre las utilidades de
+  Tailwind sin importar el orden o la especificidad — por eso antes
+  "text-white" en un <h1> no funcionaba.
+*/
+@layer base {
+  body {
+    background: var(--background);
+    font-family: "Poppins", sans-serif;
+    color: var(--color-tertiary);
+  }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  color: var(--color-tertiary);
-}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: var(--color-tertiary);
+  }
 
-p {
-  color: var(--color-tertiary);
+  p {
+    color: var(--color-tertiary);
+  }
 }
 
 /* Utilidades de color */

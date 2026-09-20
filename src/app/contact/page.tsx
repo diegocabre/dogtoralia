@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ContactForm } from '@/components/contact/ContactForm';
 import { FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
 import Link from 'next/link';
@@ -37,92 +38,114 @@ export default function ContactPage() {
     return (
         <div className="min-h-screen bg-gray-50 py-12">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-12 mt-12">
+                <motion.div
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="text-center mb-12 mt-12"
+                >
                     <h1 className="text-4xl font-bold text-tertiary mb-4">Contáctanos</h1>
                     <p className="text-lg text-gray-600">Estamos aquí para ayudarte con cualquier consulta</p>
-                </div>
+                </motion.div>
 
                 {/* Location Selector */}
                 <div className="flex justify-center gap-4 mb-8">
                     {Object.entries(locations).map(([key, loc]) => (
-                        <button
+                        <motion.button
                             key={key}
                             onClick={() => handleLocationChange(key)}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
                             className={`px-6 py-3 rounded-lg transition-colors ${selectedLocation === key
-                                ? 'bg-primary text-white'
+                                ? 'bg-primary text-white shadow-md shadow-primary/30'
                                 : 'bg-white text-gray-700 hover:bg-gray-50'
                                 }`}
                         >
                             {loc.name}
-                        </button>
+                        </motion.button>
                     ))}
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {/* Contact Information */}
-                    <div className="bg-white rounded-lg shadow-lg p-8">
-                        <h2 className="text-2xl font-semibold text-tertiary mb-6">Información de Contacto</h2>
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={selectedLocation}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -20 }}
+                            transition={{ duration: 0.3 }}
+                            className="bg-white rounded-lg shadow-lg p-8"
+                        >
+                            <h2 className="text-2xl font-semibold text-tertiary mb-6">Información de Contacto</h2>
 
-                        <div className="space-y-6">
-                            <div className="flex items-start">
-                                <FaMapMarkerAlt className="text-primary text-xl mt-1" />
-                                <div className="ml-4">
-                                    <h3 className="font-medium text-gray-900">Dirección</h3>
-                                    <p className="text-gray-600">{currentLocation.address}</p>
-                                    <div className="mt-2 space-x-4">
+                            <div className="space-y-6">
+                                <div className="flex items-start">
+                                    <FaMapMarkerAlt className="text-primary text-xl mt-1" />
+                                    <div className="ml-4">
+                                        <h3 className="font-medium text-gray-900">Dirección</h3>
+                                        <p className="text-gray-600">{currentLocation.address}</p>
+                                        <div className="mt-2 space-x-4">
+                                            <Link
+                                                href={currentLocation.googleMapsUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="text-primary hover:text-primary-dark text-sm"
+                                            >
+                                                Google Maps
+                                            </Link>
+                                            <Link
+                                                href={currentLocation.wazeUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="text-primary hover:text-primary-dark text-sm"
+                                            >
+                                                Waze
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="flex items-start">
+                                    <FaPhone className="text-primary text-xl mt-1" />
+                                    <div className="ml-4">
+                                        <h3 className="font-medium text-gray-900">Teléfono</h3>
                                         <Link
-                                            href={currentLocation.googleMapsUrl}
+                                            href={`https://wa.me/${currentLocation.phone.replace('+', '')}`}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="text-primary hover:text-primary-dark text-sm"
+                                            className="text-gray-600 hover:text-primary"
                                         >
-                                            Google Maps
+                                            {currentLocation.phone}
                                         </Link>
+                                    </div>
+                                </div>
+
+                                <div className="flex items-start">
+                                    <FaEnvelope className="text-primary text-xl mt-1" />
+                                    <div className="ml-4">
+                                        <h3 className="font-medium text-gray-900">Email</h3>
                                         <Link
-                                            href={currentLocation.wazeUrl}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-primary hover:text-primary-dark text-sm"
+                                            href={`mailto:${currentLocation.email}`}
+                                            className="text-gray-600 hover:text-primary"
                                         >
-                                            Waze
+                                            {currentLocation.email}
                                         </Link>
                                     </div>
                                 </div>
                             </div>
-
-                            <div className="flex items-start">
-                                <FaPhone className="text-primary text-xl mt-1" />
-                                <div className="ml-4">
-                                    <h3 className="font-medium text-gray-900">Teléfono</h3>
-                                    <Link
-                                        href={`https://wa.me/${currentLocation.phone.replace('+', '')}`}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-gray-600 hover:text-primary"
-                                    >
-                                        {currentLocation.phone}
-                                    </Link>
-                                </div>
-                            </div>
-
-                            <div className="flex items-start">
-                                <FaEnvelope className="text-primary text-xl mt-1" />
-                                <div className="ml-4">
-                                    <h3 className="font-medium text-gray-900">Email</h3>
-                                    <Link
-                                        href={`mailto:${currentLocation.email}`}
-                                        className="text-gray-600 hover:text-primary"
-                                    >
-                                        {currentLocation.email}
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        </motion.div>
+                    </AnimatePresence>
 
                     {/* Map */}
-                    <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <motion.div
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.4, delay: 0.1 }}
+                        className="bg-white rounded-lg shadow-lg overflow-hidden"
+                    >
                         <iframe
+                            key={selectedLocation}
                             src={currentLocation.mapUrl}
                             width="100%"
                             height="100%"
@@ -131,7 +154,7 @@ export default function ContactPage() {
                             loading="lazy"
                             referrerPolicy="no-referrer-when-downgrade"
                         ></iframe>
-                    </div>
+                    </motion.div>
                 </div>
 
                 {/* Contact Form */}

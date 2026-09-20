@@ -2,6 +2,7 @@
 
 import { FaClock, FaMapMarkerAlt, FaWaze, FaDirections } from 'react-icons/fa';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 interface LocationData {
     name: string;
@@ -48,19 +49,33 @@ export function Locations() {
     return (
         <section className="py-8 sm:py-12 bg-white">
             <div className="container mx-auto px-4">
-                <h2 className="text-2xl sm:text-3xl font-semibold text-center mb-8 sm:mb-12 text-tertiary">
+                <motion.h2
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 0.5 }}
+                    className="text-2xl sm:text-3xl font-semibold text-center mb-8 sm:mb-12 text-tertiary"
+                >
                     Nuestras Sedes
-                </h2>
+                </motion.h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8">
                     {locations.map((location, index) => (
-                        <div key={index} className="bg-gray-50 rounded-lg p-4 sm:p-6 shadow-lg transform transition-transform duration-300 hover:scale-102">
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, y: 24 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, amount: 0.2 }}
+                            transition={{ duration: 0.5, delay: index * 0.15 }}
+                            whileHover={{ y: -6 }}
+                            className="bg-gray-50 rounded-lg p-4 sm:p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
+                        >
                             <div className="flex flex-col items-center">
-                                <div className="w-full aspect-video sm:aspect-[16/10] md:aspect-[16/9] relative rounded-lg overflow-hidden mb-4">
+                                <div className="w-full aspect-video sm:aspect-[16/10] md:aspect-[16/9] relative rounded-lg overflow-hidden mb-4 group">
                                     <Image
                                         src={location.image}
                                         alt={location.name}
                                         fill
-                                        className="object-cover object-[center_30%] hover:scale-105 transition-transform duration-300"
+                                        className="object-cover object-[center_30%] transition-transform duration-500 group-hover:scale-110"
                                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                         priority
                                     />
@@ -71,28 +86,38 @@ export function Locations() {
                                     <p className="text-sm sm:text-base">{location.address}</p>
                                 </div>
                                 <div className="flex gap-4">
-                                    <button
+                                    <motion.button
+                                        whileHover={{ scale: 1.05 }}
+                                        whileTap={{ scale: 0.95 }}
                                         onClick={() => openInGoogleMaps(location)}
                                         className="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-primary-dark transition-colors"
                                     >
                                         <FaDirections />
                                         <span>Google Maps</span>
-                                    </button>
-                                    <button
+                                    </motion.button>
+                                    <motion.button
+                                        whileHover={{ scale: 1.05 }}
+                                        whileTap={{ scale: 0.95 }}
                                         onClick={() => openInWaze(location)}
                                         className="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-600 transition-colors"
                                     >
                                         <FaWaze />
                                         <span>Waze</span>
-                                    </button>
+                                    </motion.button>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
 
                 {/* Horarios */}
-                <div className="mt-8 sm:mt-12 bg-primary text-white rounded-lg p-6 sm:p-8">
+                <motion.div
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="mt-8 sm:mt-12 bg-primary text-white rounded-lg p-6 sm:p-8"
+                >
                     <div className="flex flex-col items-center">
                         <FaClock className="text-3xl sm:text-4xl mb-3 sm:mb-4" />
                         <h3 className="text-xl sm:text-2xl font-semibold mb-3 sm:mb-4">Horarios de Atención</h3>
@@ -105,8 +130,8 @@ export function Locations() {
                             </p>
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </div>
         </section>
     );
-} 
+}

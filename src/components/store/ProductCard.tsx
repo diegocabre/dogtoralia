@@ -2,9 +2,10 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import { Product } from '@/types/product';
 import { formatPrice, cleanAndCapitalize } from '@/lib/utils';
-import { FaPrescriptionBottleAlt } from 'react-icons/fa';
+import { FaPrescriptionBottleAlt, FaShoppingCart } from 'react-icons/fa';
 
 interface ProductCardProps {
     product: Product;
@@ -13,22 +14,29 @@ interface ProductCardProps {
 
 export function ProductCard({ product, onAddToCart }: ProductCardProps) {
     return (
-        <div className="block group h-full">
-            <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 h-full flex flex-col overflow-hidden border border-gray-100 group-hover:border-primary">
+        <motion.div
+            className="block group h-full"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.4 }}
+            whileHover={{ y: -6 }}
+        >
+            <div className="bg-white rounded-2xl shadow-md hover:shadow-2xl hover:shadow-primary/20 transition-shadow duration-300 h-full flex flex-col overflow-hidden border border-gray-100 group-hover:border-primary/60">
                 <Link href={`/product/${product.id}`} className="flex-grow">
-                    <div className="relative h-44 w-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                    <div className="relative h-44 w-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center overflow-hidden">
                         <Image
                             src={product.imageUrl}
                             alt={cleanAndCapitalize(product.name)}
                             fill
-                            className="object-contain p-4"
+                            className="object-contain p-4 transition-transform duration-500 group-hover:scale-110"
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             priority={false}
                             onError={(e) => { (e.target as HTMLImageElement).src = '/images/no-image.png'; }}
                         />
                     </div>
 
-                    <div className="flex flex-col gap-1">
+                    <div className="flex flex-col gap-1 px-2 pt-3">
                         <h3 className="text-base font-semibold text-gray-900 text-center truncate w-full mb-1" title={cleanAndCapitalize(product.name)}>
                             {cleanAndCapitalize(product.name)}
                         </h3>
@@ -42,13 +50,15 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
                         <span className="text-lg font-bold text-primary mb-1">${formatPrice(product.price)}</span>
                     </div>
                 </Link>
-                <button
+                <motion.button
                     onClick={() => onAddToCart(product)}
-                    className="w-full bg-primary text-white py-2 px-4 rounded-b-2xl hover:bg-primary/90 transition-colors"
+                    whileTap={{ scale: 0.95 }}
+                    className="w-full flex items-center justify-center gap-2 bg-primary text-white py-2 px-4 rounded-b-2xl hover:bg-primary/90 transition-colors"
                 >
+                    <FaShoppingCart className="text-sm" />
                     Agregar al carrito
-                </button>
+                </motion.button>
             </div>
-        </div>
+        </motion.div>
     );
-} 
+}
