@@ -10,6 +10,18 @@ const nextConfig = {
       { protocol: "https", hostname: "images.unsplash.com" },
     ],
   },
+  async redirects() {
+    return [
+      {
+        // La página de inicio es /home. Es un redirect real (HTTP 308 con
+        // cabecera Location) para que Google lo siga y consolide todo en
+        // /home; el redirect() de una página puede no enviar esa cabecera.
+        source: "/",
+        destination: "/home",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

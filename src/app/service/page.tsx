@@ -15,52 +15,26 @@ import {
     FaCheckCircle,
 } from 'react-icons/fa';
 import { locationList, whatsappUrl, MAIN_WHATSAPP_PHONE } from '@/data/locations';
+import { services as serviceData, type ServiceData } from '@/data/services';
 
-interface Service {
-    title: string;
+// El texto de cada servicio vive en data/services.ts (también lo lee el SEO);
+// aquí solo se le asigna el ícono.
+const serviceIcons: Record<string, IconType> = {
+    consultas: FaStethoscope,
+    vacunas: FaSyringe,
+    examenes: FaMicroscope,
+    procedimientos: FaBriefcaseMedical,
+    peluqueria: FaCut,
+};
+
+interface Service extends ServiceData {
     icon: IconType;
-    image: string;
-    description: string;
-    /** Puntos destacados que se muestran en lista (opcional) */
-    items?: { title: string; text: string }[];
 }
 
-const services: Service[] = [
-    {
-        title: 'Consultas',
-        icon: FaStethoscope,
-        image: 'https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=1200&q=80',
-        description: 'Atención veterinaria personalizada para el diagnóstico y tratamiento de tu mascota. ¡Tu tranquilidad y la salud de tu compañero son nuestra prioridad!',
-    },
-    {
-        title: 'Vacunas',
-        icon: FaSyringe,
-        image: 'https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=1200&q=80',
-        description: 'Aplicación de vacunas esenciales para prevenir enfermedades y proteger a tu mascota durante todas las etapas de su vida.',
-    },
-    {
-        title: 'Exámenes',
-        icon: FaMicroscope,
-        image: '/images/services/examenes.jpg',
-        description: 'Exámenes clínicos y de laboratorio para un diagnóstico preciso y un seguimiento completo de la salud de tu mascota.',
-    },
-    {
-        title: 'Procedimientos',
-        icon: FaBriefcaseMedical,
-        image: '/images/services/procedimientos.jpg',
-        description: 'Procedimientos veterinarios menores y mayores realizados con profesionalismo y cuidado, asegurando el bienestar de tu mascota.',
-    },
-    {
-        title: 'Peluquería Canina y Felina',
-        icon: FaCut,
-        image: '/images/services/peluqueria.jpg',
-        description: 'Servicios de estética y cuidado para perros y gatos, realizados por expertos en bienestar animal.',
-        items: [
-            { title: 'Corte y baño', text: 'Higiene y estilo para tu mascota, con productos de calidad y atención personalizada.' },
-            { title: 'Baño medicado', text: 'Baños especiales para tratar problemas dermatológicos, recomendados por nuestros veterinarios.' },
-        ],
-    },
-];
+const services: Service[] = serviceData.map((service) => ({
+    ...service,
+    icon: serviceIcons[service.slug] ?? FaPaw,
+}));
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 

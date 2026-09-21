@@ -1,5 +1,7 @@
 export interface Location {
   name: string;
+  /** Comuna, para los datos estructurados de SEO */
+  locality: string;
   address: string;
   fullAddress: string;
   phone: string;
@@ -12,6 +14,7 @@ export interface Location {
 export const locations = {
   puenteAlto: {
     name: "Puente Alto",
+    locality: "Puente Alto",
     address: "Av. Concha y Toro 3859",
     fullAddress: "Av. Concha y Toro 3859, Puente Alto, Región Metropolitana, Chile",
     phone: "+56957830195",
@@ -20,6 +23,7 @@ export const locations = {
   },
   santiagoCentro: {
     name: "Santiago Centro",
+    locality: "Santiago",
     address: "Av. Presidente Balmaceda 2776",
     fullAddress: "Av. Presidente Balmaceda 2776, Santiago, Región Metropolitana, Chile",
     phone: "+56927492520",

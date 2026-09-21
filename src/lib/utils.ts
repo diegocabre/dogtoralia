@@ -10,6 +10,6 @@ export function cleanAndCapitalize(name: string): string {
     .replace(/[_-]+/g, " ") // Reemplaza guiones bajos y medios por espacio
     .replace(/[^a-zA-Z0-9. ]/g, "") // Elimina otros caracteres especiales excepto el punto
     .toLowerCase()
-    .replace(/w/g, (l) => l.toUpperCase()) // Capitaliza cada palabra
+    .replace(/\b\w/g, (l) => l.toUpperCase()) // Capitaliza cada palabra
     .trim();
 }

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { FaPhone, FaMapMarkerAlt, FaClock, FaFacebook, FaInstagram, FaStore, FaHome, FaCalendar, FaEnvelope, FaWhatsapp } from "react-icons/fa";
 import { locationList, whatsappUrl } from "@/data/locations";
+import { businessHours } from "@/data/site";
 
 const whatsappMessage = "Hola! Me gustaría recibir información sobre los servicios de Dogtoralia.";
 
@@ -43,11 +44,17 @@ export default function Footer() {
 
                         {/* Horarios */}
                         <div className="space-y-2">
-                            <p className="flex items-center gap-2 text-sm sm:text-base">
-                                <FaClock className="text-secondary" />
-                                <span>Lunes a Viernes: 10:00 - 19:00</span>
-                            </p>
-                            <p className="ml-6 text-sm sm:text-base">Sábados: 10:00 - 17:00</p>
+                            {businessHours.map((block, index) => (
+                                <p
+                                    key={block.label}
+                                    className={index === 0
+                                        ? "flex items-center gap-2 text-sm sm:text-base"
+                                        : "ml-6 text-sm sm:text-base"}
+                                >
+                                    {index === 0 && <FaClock className="text-secondary" />}
+                                    <span>{block.label}: {block.opens} - {block.closes}</span>
+                                </p>
+                            ))}
                         </div>
                     </div>
 

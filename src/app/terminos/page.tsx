@@ -1,6 +1,11 @@
-export const metadata = {
-  title: "Términos y Condiciones | Dogtoralia",
-};
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({
+  title: "Términos y Condiciones",
+  description:
+    "Términos y condiciones de uso del sitio web y de la vitrina de productos de Dogtoralia Vet.",
+  path: "/terminos",
+});
 
 export default function TerminosPage() {
   return (

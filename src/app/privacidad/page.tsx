@@ -1,6 +1,11 @@
-export const metadata = {
-  title: "Política de Privacidad | Dogtoralia",
-};
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({
+  title: "Política de Privacidad",
+  description:
+    "Cómo Dogtoralia Vet recopila, usa y protege los datos personales que nos entregas al contactarnos.",
+  path: "/privacidad",
+});
 
 export default function PrivacidadPage() {
   return (
