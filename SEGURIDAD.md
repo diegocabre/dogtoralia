@@ -27,13 +27,15 @@ Fecha de esta revisión: ver historial de git de este archivo.
 
 1. **Rota estas credenciales** como precaución, ya que estuvieron en un
    archivo `.env` en texto plano en tu disco:
-   - Contraseñas de aplicación de Gmail (Puente Alto y Centro) — en
-     Google Account → Seguridad → Contraseñas de aplicaciones.
-   - `GOOGLE_CLIENT_SECRET` (OAuth) — en Google Cloud Console.
-   - `NEXTAUTH_SECRET` — genera uno nuevo con
-     `openssl rand -base64 32` y actualízalo en `.env` y en el hosting.
-   - Verifica también el token de Instagram (expiran solos, pero
-     revisa que no esté filtrado en ningún commit viejo).
+   - Contraseñas de aplicación de Gmail (Puente Alto y Centro) — ya no se
+     usan (el correo sale por Resend): revócalas en Google Account →
+     Seguridad → Contraseñas de aplicaciones.
+   - `GOOGLE_CLIENT_SECRET` y `NEXTAUTH_SECRET` — el login con Google fue
+     eliminado del sitio; borra esas variables del `.env` y del hosting, y
+     elimina o rota el cliente OAuth en Google Cloud Console.
+   - El token de Instagram (`INSTAGRAM_ACCESS_TOKEN`) está **vencido**;
+     genera uno nuevo. Las variables `INSTAGRAM_USER_ID`,
+     `INSTAGRAM_CLIENT_ID` e `INSTAGRAM_CLIENT_SECRET` no las usa el código.
 
 2. **Revisa el historial de git** para confirmar que `.env` nunca se
    subió a un commit:
@@ -43,20 +45,12 @@ Fecha de esta revisión: ver historial de git de este archivo.
    Si aparece algo, esas credenciales quedaron expuestas igual (aunque
    borres el archivo después) y hay que rotarlas sin excepción.
 
-3. **Reglas de seguridad de Firestore**: esto se configura en la
-   consola de Firebase, no en este repositorio, y es tan importante
-   como el código. Verifica que las reglas no permitan lectura/escritura
-   pública sin autenticación (`allow read, write: if true;` es la señal
-   de alarma clásica).
+3. **Firebase**: el sitio ya no lo usa. Si el proyecto de Firebase sigue
+   activo en la consola, revisa que sus reglas de Firestore/Storage no
+   permitan acceso público (`allow read, write: if true;` es la señal de
+   alarma clásica) o elimina el proyecto.
 
-4. **Formulario de registro** (`RegisterForm.tsx`): actualmente no crea
-   usuarios de verdad (el `handleSubmit` solo hace `console.log`). Antes
-   de lanzarlo a producción, decide si el registro se hace con
-   Firebase Auth o si solo se usará el login con Google — un formulario
-   de registro que "parece funcionar" pero no hace nada es un problema
-   de confianza con el cliente, no solo de seguridad.
-
-5. **Content-Security-Policy**: quedó en modo "razonable pero flexible"
+4. **Content-Security-Policy**: quedó en modo "razonable pero flexible"
    (permite `unsafe-inline`/`unsafe-eval` porque Next.js los necesita
    por defecto). Si más adelante quieres endurecerla con nonces, es un
    paso extra que podemos hacer juntos.

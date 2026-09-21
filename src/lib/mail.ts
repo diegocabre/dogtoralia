@@ -28,16 +28,15 @@ export async function sendEmail({
   subject,
   text,
   html,
+  replyTo,
 }: {
   to: string;
   subject: string;
   text: string;
   html: string;
-  /** Se mantiene por compatibilidad con quien llama esta función; ya no
-   * se usa para elegir la cuenta de Gmail (eso era el comportamiento
-   * anterior), pero no se elimina el parámetro para no romper llamadas
-   * existentes. */
-  location?: string;
+  /** Correo de quien escribió: al pulsar "Responder" se le contesta a él
+   * y no al remitente automático. */
+  replyTo?: string;
 }) {
   if (!resend) {
     console.error(
@@ -58,6 +57,7 @@ export async function sendEmail({
       subject,
       text,
       html,
+      replyTo,
     });
 
     if (error) {

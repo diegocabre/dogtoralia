@@ -11,18 +11,12 @@ import {
     HiOutlineCalendarDays,
     HiOutlineChatBubbleLeftRight,
 } from "react-icons/hi2";
-import { useAuth } from "@/contexts/AuthContext";
-import { signOut } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function NavBar() {
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
-    const { user } = useAuth();
-    // Carrito desactivado temporalmente (ver bloque más abajo).
-    // const { items: cartItems } = useCartStore();
-    // const totalItems = cartItems.reduce((sum: number, item: CartItem) => sum + item.quantity, 0);
     const pathname = usePathname();
 
     useEffect(() => {
@@ -45,36 +39,9 @@ export default function NavBar() {
         { href: "/contact", label: "Contacto", icon: <HiOutlineChatBubbleLeftRight /> },
     ];
 
-    // El carrito/checkout está desactivado temporalmente: la tienda hoy
-    // es solo una vitrina de productos (se consulta por WhatsApp). Cuando
-    // se active la compra en línea, basta con descomentar este bloque.
-    // if (user) {
-    //     navItems.push({
-    //         href: "/cart",
-    //         label: "Carrito",
-    //         icon: (
-    //             <span className="relative">
-    //                 <FaShoppingCart />
-    //                 <AnimatePresence>
-    //                     {totalItems > 0 && (
-    //                         <motion.span
-    //                             key={totalItems}
-    //                             initial={{ scale: 0 }}
-    //                             animate={{ scale: 1 }}
-    //                             exit={{ scale: 0 }}
-    //                             className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1"
-    //                         >
-    //                             {totalItems}
-    //                         </motion.span>
-    //                     )}
-    //                 </AnimatePresence>
-    //             </span>
-    //         ),
-    //     });
-    // }
 
     return (
-        <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-primary/95 shadow-lg backdrop-blur-sm text-tertiary' : 'bg-primary text-white'
+        <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 shadow-lg backdrop-blur-md text-tertiary' : 'bg-primary text-white'
             }`}>
             <div className="container mx-auto px-4">
                 <div className="flex justify-between items-center h-16">
@@ -106,26 +73,13 @@ export default function NavBar() {
                                 </Link>
                             );
                         })}
-                        {user && (
-                            <span className="ml-4 font-semibold text-white">{user.name}</span>
-                        )}
-                        {user && (
-                            <motion.button
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                onClick={() => signOut({ callbackUrl: "/auth/login" })}
-                                className="ml-4 px-4 py-2 bg-secondary text-white rounded hover:bg-secondary-dark transition-colors"
-                            >
-                                Cerrar sesión
-                            </motion.button>
-                        )}
                     </div>
 
                     {/* Mobile Menu Button */}
                     <div className="md:hidden">
                         <button
                             onClick={toggleMenu}
-                            className="text-white hover:text-secondary focus:outline-none p-2"
+                            className={`hover:text-secondary focus:outline-none p-2 ${isScrolled ? "text-tertiary" : "text-white"}`}
                             aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
                         >
                             {isOpen ? <HiXMark size={26} /> : <HiBars3 size={26} />}
@@ -174,17 +128,6 @@ export default function NavBar() {
                                     </Link>
                                 </motion.div>
                             ))}
-                            {user && (
-                                <span className="mt-8 font-semibold text-white text-xl">{user.name}</span>
-                            )}
-                            {user && (
-                                <button
-                                    onClick={() => { setIsOpen(false); signOut({ callbackUrl: "/auth/login" }); }}
-                                    className="mt-4 px-6 py-2 bg-secondary text-white rounded hover:bg-secondary-dark transition-colors text-xl"
-                                >
-                                    Cerrar sesión
-                                </button>
-                            )}
                         </div>
                     </motion.div>
                 )}

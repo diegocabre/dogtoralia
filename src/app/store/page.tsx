@@ -16,14 +16,20 @@ export default function StorePage() {
     const [searchQuery, setSearchQuery] = useState('');
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
+    const [loadError, setLoadError] = useState(false);
 
     useEffect(() => {
         fetch('/api/products')
-            .then(res => res.json())
-            .then(data => {
-                setProducts(data);
-                setLoading(false);
-            });
+            .then(res => {
+                if (!res.ok) throw new Error('No se pudieron cargar los productos');
+                return res.json();
+            })
+            .then((data: Product[]) => setProducts(data))
+            .catch(error => {
+                console.error('Error al cargar productos:', error);
+                setLoadError(true);
+            })
+            .finally(() => setLoading(false));
     }, []);
 
     const filteredProducts = products.filter(product =>
@@ -95,7 +101,13 @@ export default function StorePage() {
                 </motion.div>
 
                 {/* Products Grid */}
-                <ProductGrid products={filteredProducts} loading={loading} />
+                {loadError ? (
+                    <div className="text-center text-gray-500">
+                        No pudimos cargar los productos. Recarga la página o escríbenos por WhatsApp.
+                    </div>
+                ) : (
+                    <ProductGrid products={filteredProducts} loading={loading} />
+                )}
             </div>
         </div>
     );

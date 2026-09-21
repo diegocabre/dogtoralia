@@ -3,49 +3,9 @@
 import { FaClock, FaMapMarkerAlt, FaWaze, FaDirections } from 'react-icons/fa';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-
-interface LocationData {
-    name: string;
-    address: string;
-    image: string;
-    coordinates: {
-        lat: number;
-        lng: number;
-    };
-}
-
-const locations: LocationData[] = [
-    {
-        name: "Sede Puente Alto",
-        address: "Av. Concha y Toro 3859",
-        image: "/images/puente.jpeg",
-        coordinates: {
-            lat: -33.5785,
-            lng: -70.5785
-        }
-    },
-    {
-        name: "Sede Santiago Centro",
-        address: "Av. Presidente Balmaceda 2776",
-        image: "/images/centro.jpeg",
-        coordinates: {
-            lat: -33.4369,
-            lng: -70.6483
-        }
-    }
-];
+import { locationList, googleMapsSearchUrl, wazeUrl } from '@/data/locations';
 
 export function Locations() {
-    const openInGoogleMaps = (location: LocationData) => {
-        const url = `https://www.google.com/maps/search/?api=1&query=${location.coordinates.lat},${location.coordinates.lng}`;
-        window.open(url, '_blank');
-    };
-
-    const openInWaze = (location: LocationData) => {
-        const url = `https://www.waze.com/ul?ll=${location.coordinates.lat},${location.coordinates.lng}&navigate=yes`;
-        window.open(url, '_blank');
-    };
-
     return (
         <section className="py-8 sm:py-12 bg-white">
             <div className="container mx-auto px-4">
@@ -59,9 +19,9 @@ export function Locations() {
                     Nuestras Sedes
                 </motion.h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8">
-                    {locations.map((location, index) => (
+                    {locationList.map((location, index) => (
                         <motion.div
-                            key={index}
+                            key={location.name}
                             initial={{ opacity: 0, y: 24 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, amount: 0.2 }}
@@ -73,37 +33,40 @@ export function Locations() {
                                 <div className="w-full aspect-video sm:aspect-[16/10] md:aspect-[16/9] relative rounded-lg overflow-hidden mb-4 group">
                                     <Image
                                         src={location.image}
-                                        alt={location.name}
+                                        alt={`Sede ${location.name}`}
                                         fill
                                         className="object-cover object-[center_30%] transition-transform duration-500 group-hover:scale-110"
                                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                        priority
                                     />
                                 </div>
-                                <h3 className="text-xl sm:text-2xl font-semibold text-primary mb-2">{location.name}</h3>
+                                <h3 className="text-xl sm:text-2xl font-semibold text-primary mb-2">Sede {location.name}</h3>
                                 <div className="flex items-center gap-2 text-gray-600 mb-4">
                                     <FaMapMarkerAlt className="text-primary" />
                                     <p className="text-sm sm:text-base">{location.address}</p>
                                 </div>
                                 <div className="flex gap-4">
-                                    <motion.button
+                                    <motion.a
+                                        href={googleMapsSearchUrl(location.fullAddress)}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
-                                        onClick={() => openInGoogleMaps(location)}
                                         className="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-primary-dark transition-colors"
                                     >
                                         <FaDirections />
                                         <span>Google Maps</span>
-                                    </motion.button>
-                                    <motion.button
+                                    </motion.a>
+                                    <motion.a
+                                        href={wazeUrl(location.fullAddress)}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
-                                        onClick={() => openInWaze(location)}
                                         className="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-600 transition-colors"
                                     >
                                         <FaWaze />
                                         <span>Waze</span>
-                                    </motion.button>
+                                    </motion.a>
                                 </div>
                             </div>
                         </motion.div>
