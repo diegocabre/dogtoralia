@@ -3,7 +3,14 @@
 import { Logo } from "../logo/Logo";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { FaBars, FaTimes, FaStore, FaHome, FaCalendar, FaPhone } from "react-icons/fa";
+import {
+    HiBars3,
+    HiXMark,
+    HiOutlineHome,
+    HiOutlineShoppingBag,
+    HiOutlineCalendarDays,
+    HiOutlineChatBubbleLeftRight,
+} from "react-icons/hi2";
 import { useAuth } from "@/contexts/AuthContext";
 import { signOut } from "next-auth/react";
 import { usePathname } from "next/navigation";
@@ -32,10 +39,10 @@ export default function NavBar() {
     };
 
     const navItems = [
-        { href: "/home", label: "Inicio", icon: <FaHome /> },
-        { href: "/store", label: "Tienda", icon: <FaStore /> },
-        { href: "/service", label: "Servicios", icon: <FaCalendar /> },
-        { href: "/contact", label: "Contacto", icon: <FaPhone /> },
+        { href: "/home", label: "Inicio", icon: <HiOutlineHome /> },
+        { href: "/store", label: "Tienda", icon: <HiOutlineShoppingBag /> },
+        { href: "/service", label: "Servicios", icon: <HiOutlineCalendarDays /> },
+        { href: "/contact", label: "Contacto", icon: <HiOutlineChatBubbleLeftRight /> },
     ];
 
     // El carrito/checkout está desactivado temporalmente: la tienda hoy
@@ -121,7 +128,7 @@ export default function NavBar() {
                             className="text-white hover:text-secondary focus:outline-none p-2"
                             aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
                         >
-                            {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+                            {isOpen ? <HiXMark size={26} /> : <HiBars3 size={26} />}
                         </button>
                     </div>
                 </div>
@@ -142,7 +149,7 @@ export default function NavBar() {
                             className="absolute top-4 right-4 text-white hover:text-secondary focus:outline-none p-2"
                             aria-label="Cerrar menú"
                         >
-                            <FaTimes size={24} />
+                            <HiXMark size={26} />
                         </button>
 
                         <div className="flex flex-col h-full justify-center items-center space-y-8 p-4">

@@ -10,6 +10,14 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Dogtoralia",
   description: "Tu tienda de mascotas",
+  verification: {
+    // Verificación de Google Search Console (método "Etiqueta HTML").
+    // El valor es el mismo código que trae el archivo
+    // "googlec9e1456a3d8383ce.html" que ofrece el método de archivo —
+    // esta forma es más simple porque no depende de subir un archivo
+    // suelto a la raíz del sitio (algo que Next.js no sirve tal cual).
+    google: "c9e1456a3d8383ce",
+  },
 };
 
 export default function RootLayout({

@@ -5,19 +5,17 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaUser, FaEnvelope, FaPhone, FaComment } from 'react-icons/fa';
 import { contactSchema } from '@/lib/security/validation';
 
-interface ContactFormProps {
-    selectedLocation: string;
-}
+const LOCATION_OPTIONS = ['Puente Alto', 'Santiago Centro'] as const;
 
 const MESSAGE_MAX_LENGTH = 2000;
 
-export function ContactForm({ selectedLocation }: ContactFormProps) {
+export function ContactForm() {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         phone: '',
         message: '',
-        location: selectedLocation
+        location: ''
     });
 
     const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
@@ -55,10 +53,7 @@ export function ContactForm({ selectedLocation }: ContactFormProps) {
         // (src/lib/security/validation.ts), para dar feedback inmediato.
         // La validación que realmente protege es la del servidor — esta
         // es solo para mejor experiencia de usuario.
-        const parsed = contactSchema.safeParse({
-            ...formData,
-            location: selectedLocation,
-        });
+        const parsed = contactSchema.safeParse(formData);
 
         if (!parsed.success) {
             const errors: Record<string, string> = {};
@@ -102,7 +97,7 @@ export function ContactForm({ selectedLocation }: ContactFormProps) {
                 email: '',
                 phone: '',
                 message: '',
-                location: selectedLocation
+                location: ''
             });
             setConsentAccepted(false);
         } catch (error) {
@@ -239,16 +234,28 @@ export function ContactForm({ selectedLocation }: ContactFormProps) {
                                 </div>
 
                                 {/* Sucursal */}
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                                        Sucursal seleccionada
+                                <div className="sm:col-span-2">
+                                    <label htmlFor="location" className="block text-sm font-medium text-gray-700 mb-2">
+                                        Sucursal
                                     </label>
-                                    <input
-                                        type="text"
-                                        value={selectedLocation}
-                                        readOnly
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-50"
-                                    />
+                                    <select
+                                        id="location"
+                                        name="location"
+                                        value={formData.location}
+                                        onChange={handleChange}
+                                        className={`w-full px-4 py-3 border rounded-lg bg-white focus:ring-2 focus:ring-primary focus:border-transparent transition-colors ${fieldErrors.location ? 'border-red-400' : 'border-gray-300'
+                                            }`}
+                                    >
+                                        <option value="">Selecciona una sucursal</option>
+                                        {LOCATION_OPTIONS.map((option) => (
+                                            <option key={option} value={option}>
+                                                {option}
+                                            </option>
+                                        ))}
+                                    </select>
+                                    {fieldErrors.location && (
+                                        <p className="mt-1 text-xs text-red-600">{fieldErrors.location}</p>
+                                    )}
                                 </div>
                             </div>
 
