@@ -21,6 +21,8 @@ export function ContactForm({ selectedLocation }: ContactFormProps) {
     });
 
     const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+    const [consentAccepted, setConsentAccepted] = useState(false);
+    const [consentError, setConsentError] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState<{
         type: 'success' | 'error' | null;
@@ -68,6 +70,12 @@ export function ContactForm({ selectedLocation }: ContactFormProps) {
             return;
         }
 
+        if (!consentAccepted) {
+            setConsentError(true);
+            return;
+        }
+        setConsentError(false);
+
         setIsSubmitting(true);
 
         try {
@@ -96,6 +104,7 @@ export function ContactForm({ selectedLocation }: ContactFormProps) {
                 message: '',
                 location: selectedLocation
             });
+            setConsentAccepted(false);
         } catch (error) {
             console.error('Error al enviar el formulario:', error);
             setSubmitStatus({
@@ -241,6 +250,40 @@ export function ContactForm({ selectedLocation }: ContactFormProps) {
                                         className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-50"
                                     />
                                 </div>
+                            </div>
+
+                            {/* Consentimiento de datos personales */}
+                            <div>
+                                <div className="flex items-start gap-3">
+                                    <input
+                                        type="checkbox"
+                                        id="consent"
+                                        checked={consentAccepted}
+                                        onChange={(e) => {
+                                            setConsentAccepted(e.target.checked);
+                                            if (e.target.checked) setConsentError(false);
+                                        }}
+                                        className={`mt-1 h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary ${consentError ? 'ring-2 ring-red-400' : ''
+                                            }`}
+                                    />
+                                    <label htmlFor="consent" className="text-sm text-gray-600">
+                                        He leído y acepto la{' '}
+                                        <a
+                                            href="/privacidad"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-primary hover:underline"
+                                        >
+                                            Política de Privacidad
+                                        </a>{' '}
+                                        y autorizo el uso de mis datos para responder esta consulta.
+                                    </label>
+                                </div>
+                                {consentError && (
+                                    <p className="mt-1 text-xs text-red-600">
+                                        Debes aceptar la Política de Privacidad para enviar el mensaje.
+                                    </p>
+                                )}
                             </div>
 
                             {/* Estado del envío */}

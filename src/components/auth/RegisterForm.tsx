@@ -182,10 +182,17 @@ export function RegisterForm() {
                         <label className="text-gray-600">
                             Acepto los{' '}
                             <Link
-                                href="/terms"
+                                href="/terminos"
                                 className="text-primary hover:text-primary-dark transition-colors"
                             >
                                 términos y condiciones
+                            </Link>{' '}
+                            y la{' '}
+                            <Link
+                                href="/privacidad"
+                                className="text-primary hover:text-primary-dark transition-colors"
+                            >
+                                Política de Privacidad
                             </Link>
                         </label>
                     </div>
@@ -214,4 +221,4 @@ export function RegisterForm() {
             </form>
         </div>
     );
-} 
+}

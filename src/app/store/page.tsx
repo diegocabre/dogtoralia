@@ -1,12 +1,9 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ProductCategory, Product } from '@/types/product';
 import ProductGrid from '@/components/ProductGrid';
-import { useSession, signIn } from "next-auth/react";
-import { useCartStore } from '@/store/cartStore';
-import { cleanAndCapitalize } from '@/lib/utils';
 
 const categories: { value: ProductCategory | 'all'; label: string }[] = [
     { value: 'all', label: 'Todos' },
@@ -19,9 +16,6 @@ export default function StorePage() {
     const [searchQuery, setSearchQuery] = useState('');
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
-    const { data: session } = useSession();
-    const { addToCart } = useCartStore();
-    const [toast, setToast] = useState<string | null>(null);
 
     useEffect(() => {
         fetch('/api/products')
@@ -37,16 +31,6 @@ export default function StorePage() {
         product.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
-    const handleAddToCart = (product: Product) => {
-        if (!session) {
-            signIn();
-            return;
-        }
-        addToCart({ ...product, quantity: 1 });
-        setToast(`Producto agregado: ${cleanAndCapitalize(product.name)}`);
-        setTimeout(() => setToast(null), 2000);
-    };
-
     return (
         <div className="min-h-screen bg-gray-50 py-12">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -54,25 +38,22 @@ export default function StorePage() {
                     initial={{ opacity: 0, y: 16 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="text-center mb-12"
+                    className="text-center mb-6"
                 >
                     <h1 className="text-4xl font-bold text-tertiary mb-4 mt-12">Nuestra Tienda</h1>
                     <p className="text-lg text-gray-600">Productos veterinarios de calidad para tu mascota</p>
                 </motion.div>
 
-                {/* Toast */}
-                <AnimatePresence>
-                    {toast && (
-                        <motion.div
-                            initial={{ opacity: 0, y: -20, x: "-50%" }}
-                            animate={{ opacity: 1, y: 0, x: "-50%" }}
-                            exit={{ opacity: 0, y: -20, x: "-50%" }}
-                            className="fixed top-6 left-1/2 z-50 bg-green-600 text-white px-6 py-3 rounded shadow-lg font-semibold"
-                        >
-                            {toast}
-                        </motion.div>
-                    )}
-                </AnimatePresence>
+                {/* Aviso: compra en línea aún no disponible */}
+                <motion.div
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.05 }}
+                    className="mb-8 mx-auto max-w-2xl bg-secondary/10 border border-secondary/30 text-tertiary text-center text-sm sm:text-base rounded-lg px-4 py-3"
+                >
+                    Por ahora esta es una vitrina de nuestros productos. Para comprar,
+                    escríbenos directo por WhatsApp desde cada producto.
+                </motion.div>
 
                 {/* Search and Filter Section */}
                 <motion.div
@@ -114,7 +95,7 @@ export default function StorePage() {
                 </motion.div>
 
                 {/* Products Grid */}
-                <ProductGrid products={filteredProducts} loading={loading} onAddToCart={handleAddToCart} />
+                <ProductGrid products={filteredProducts} loading={loading} />
             </div>
         </div>
     );

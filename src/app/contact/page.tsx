@@ -6,26 +6,35 @@ import { ContactForm } from '@/components/contact/ContactForm';
 import { FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
 import Link from 'next/link';
 
+// mapQuery usa el formato "q=<dirección>&output=embed": no requiere API
+// key y es mucho más confiable que los enlaces "pb=..." (esos se generan
+// desde el botón "Compartir" de Google Maps para un lugar puntual, y si
+// se escriben a mano casi siempre terminan rotos, que era justo lo que
+// pasaba antes aquí).
 const locations = {
     puenteAlto: {
         name: 'Puente Alto',
         address: 'Av. Concha y Toro 3859',
+        fullAddress: 'Av. Concha y Toro 3859, Puente Alto, Región Metropolitana, Chile',
         phone: '+56957830195',
         email: 'dogtoralia.cl@gmail.com',
-        mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.0982772772772!2d-70.58159492427287!3d-33.58944497333844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5a7b5f5f5f5%3A0x7e8a12b3f4f7f0a0!2sAv.%20Concha%20y%20Toro%203859%2C%20Puente%20Alto%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses!2scl!4v1647886421234!5m2!1ses!2scl',
         wazeUrl: 'https://www.waze.com/ul?ll=-33.58944497333844,-70.58159492427287&navigate=yes',
-        googleMapsUrl: 'https://goo.gl/maps/1234567890'
     },
     santiagoCentro: {
         name: 'Santiago Centro',
         address: 'Av. Presidente Balmaceda 2776',
+        fullAddress: 'Av. Presidente Balmaceda 2776, Santiago, Región Metropolitana, Chile',
         phone: '+56927492520',
         email: 'dogtoraliavet@gmail.com',
-        mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.0982772772772!2d-70.67159492427287!3d-33.43944497333844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5a7b5f5f5f5%3A0x7e8a12b3f4f7f0a0!2sAv.%20Presidente%20Balmaceda%202776%2C%20Santiago%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses!2scl!4v1647886421234!5m2!1ses!2scl',
         wazeUrl: 'https://www.waze.com/ul?ll=-33.43944497333844,-70.67159492427287&navigate=yes',
-        googleMapsUrl: 'https://goo.gl/maps/0987654321'
     }
 };
+
+const mapEmbedUrl = (address: string) =>
+    `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
+
+const googleMapsSearchUrl = (address: string) =>
+    `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
 
 export default function ContactPage() {
     const [selectedLocation, setSelectedLocation] = useState('puenteAlto');
@@ -87,7 +96,7 @@ export default function ContactPage() {
                                         <p className="text-gray-600">{currentLocation.address}</p>
                                         <div className="mt-2 space-x-4">
                                             <Link
-                                                href={currentLocation.googleMapsUrl}
+                                                href={googleMapsSearchUrl(currentLocation.fullAddress)}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="text-primary hover:text-primary-dark text-sm"
@@ -137,23 +146,34 @@ export default function ContactPage() {
                         </motion.div>
                     </AnimatePresence>
 
-                    {/* Map */}
+                    {/* Mapas: ambas sucursales siempre visibles, sin
+                        depender de la pestaña seleccionada */}
                     <motion.div
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.4, delay: 0.1 }}
-                        className="bg-white rounded-lg shadow-lg overflow-hidden"
+                        className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col divide-y divide-gray-100"
                     >
-                        <iframe
-                            key={selectedLocation}
-                            src={currentLocation.mapUrl}
-                            width="100%"
-                            height="100%"
-                            style={{ minHeight: '400px', border: 0 }}
-                            allowFullScreen
-                            loading="lazy"
-                            referrerPolicy="no-referrer-when-downgrade"
-                        ></iframe>
+                        {Object.entries(locations).map(([key, loc]) => (
+                            <div key={key} className="flex-1 flex flex-col min-h-[240px]">
+                                <div className={`px-4 py-2 text-sm font-medium ${selectedLocation === key
+                                    ? 'bg-primary/10 text-primary'
+                                    : 'bg-gray-50 text-gray-600'
+                                    }`}>
+                                    {loc.name}
+                                </div>
+                                <iframe
+                                    src={mapEmbedUrl(loc.fullAddress)}
+                                    width="100%"
+                                    height="100%"
+                                    style={{ minHeight: '220px', border: 0, flex: 1 }}
+                                    allowFullScreen
+                                    loading="lazy"
+                                    referrerPolicy="no-referrer-when-downgrade"
+                                    title={`Mapa de ${loc.name}`}
+                                ></iframe>
+                            </div>
+                        ))}
                     </motion.div>
                 </div>
 

@@ -5,14 +5,22 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Product } from '@/types/product';
 import { formatPrice, cleanAndCapitalize } from '@/lib/utils';
-import { FaPrescriptionBottleAlt, FaShoppingCart } from 'react-icons/fa';
+import { FaPrescriptionBottleAlt, FaWhatsapp } from 'react-icons/fa';
 
 interface ProductCardProps {
     product: Product;
-    onAddToCart: (product: Product) => void;
 }
 
-export function ProductCard({ product, onAddToCart }: ProductCardProps) {
+// Número de contacto general para consultas de productos mientras la
+// compra en línea no está disponible.
+const WHATSAPP_NUMBER = '56957830195';
+
+export function ProductCard({ product }: ProductCardProps) {
+    const message = encodeURIComponent(
+        `Hola! Me interesa este producto: ${cleanAndCapitalize(product.name)}`
+    );
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+
     return (
         <motion.div
             className="block group h-full"
@@ -50,14 +58,16 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
                         <span className="text-lg font-bold text-primary mb-1">${formatPrice(product.price)}</span>
                     </div>
                 </Link>
-                <motion.button
-                    onClick={() => onAddToCart(product)}
+                <motion.a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileTap={{ scale: 0.95 }}
-                    className="w-full flex items-center justify-center gap-2 bg-primary text-white py-2 px-4 rounded-b-2xl hover:bg-primary/90 transition-colors"
+                    className="w-full flex items-center justify-center gap-2 bg-green-600 text-white py-2 px-4 rounded-b-2xl hover:bg-green-700 transition-colors"
                 >
-                    <FaShoppingCart className="text-sm" />
-                    Agregar al carrito
-                </motion.button>
+                    <FaWhatsapp className="text-base" />
+                    Consultar por WhatsApp
+                </motion.a>
             </div>
         </motion.div>
     );

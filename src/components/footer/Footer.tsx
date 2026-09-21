@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FaPhone, FaMapMarkerAlt, FaClock, FaFacebook, FaInstagram, FaShoppingCart, FaStore, FaHome, FaCalendar, FaEnvelope, FaWhatsapp } from "react-icons/fa";
+import { FaPhone, FaMapMarkerAlt, FaClock, FaFacebook, FaInstagram, FaStore, FaHome, FaCalendar, FaEnvelope, FaWhatsapp } from "react-icons/fa";
 
 const locations = {
     puenteAlto: {
@@ -119,12 +119,7 @@ export default function Footer() {
                                     <span>Contacto</span>
                                 </Link>
                             </li>
-                            <li>
-                                <Link href="/cart" className="flex items-center gap-2 text-sm sm:text-base hover:text-secondary transition-colors">
-                                    <FaShoppingCart />
-                                    <span>Carrito</span>
-                                </Link>
-                            </li>
+                            {/* Carrito oculto mientras la compra en línea no está activa */}
                         </ul>
                     </div>
 
@@ -156,8 +151,16 @@ export default function Footer() {
                 </div>
 
                 {/* Copyright */}
-                <div className="border-t border-secondary/20 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center">
+                <div className="border-t border-secondary/20 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center space-y-2">
                     <p className="text-xs sm:text-sm">&copy; {new Date().getFullYear()} Dogtoralia Vet. Todos los derechos reservados.</p>
+                    <p className="text-xs sm:text-sm flex justify-center gap-4">
+                        <Link href="/privacidad" className="hover:text-secondary transition-colors underline underline-offset-2">
+                            Política de Privacidad
+                        </Link>
+                        <Link href="/terminos" className="hover:text-secondary transition-colors underline underline-offset-2">
+                            Términos y Condiciones
+                        </Link>
+                    </p>
                 </div>
             </div>
         </footer>
