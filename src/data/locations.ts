@@ -7,6 +7,12 @@ export interface Location {
   phone: string;
   email: string;
   image: string;
+  /**
+   * ID de la ficha de Google (empieza con "ChIJ..."). Con él los botones de
+   * reseñas abren directo la ficha o el formulario de reseña; sin él se usa
+   * la búsqueda de Google Maps por dirección.
+   */
+  googlePlaceId?: string;
 }
 
 // Única fuente de datos de las sedes: la usan la página de contacto, el
@@ -43,7 +49,19 @@ export const googleMapsEmbedUrl = (address: string) =>
 export const googleMapsSearchUrl = (address: string) =>
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
 
-export const wazeUrl = (address: string) =>
+// Reseñas de Google: con place ID abre la ficha (o el formulario para dejar
+// una reseña); sin él cae a la búsqueda por dirección, que muestra la ficha.
+export const googleReviewsUrl = (location: Location) =>
+  location.googlePlaceId
+    ? `https://search.google.com/local/reviews?placeid=${location.googlePlaceId}`
+    : googleMapsSearchUrl(location.fullAddress);
+
+export const googleWriteReviewUrl = (location: Location) =>
+  location.googlePlaceId
+    ? `https://search.google.com/local/writereview?placeid=${location.googlePlaceId}`
+    : googleMapsSearchUrl(location.fullAddress);
+
+export const wazeUrl =(address: string) =>
   `https://waze.com/ul?q=${encodeURIComponent(address)}&navigate=yes`;
 
 export const whatsappUrl = (phone: string, message?: string) =>
