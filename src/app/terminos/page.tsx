@@ -16,24 +16,19 @@ export default function TerminosPage() {
 
           <div className="prose prose-gray max-w-none space-y-6 text-gray-700">
             <p>
-              Al usar el sitio web de Dogtoralia y crear una cuenta, aceptas
-              los siguientes términos.
+              Al usar el sitio web de Dogtoralia aceptas los siguientes términos.
             </p>
 
-            <h2 className="text-xl font-semibold text-tertiary">1. Uso de la cuenta</h2>
+            <h2 className="text-xl font-semibold text-tertiary">1. Productos</h2>
             <p>
-              Eres responsable de mantener la confidencialidad de tu cuenta y
-              de toda actividad que ocurra bajo ella.
+              La tienda es una vitrina informativa de nuestros productos. La
+              disponibilidad y los precios se confirman directamente con
+              nosotros (por WhatsApp o en nuestras sedes) y pueden cambiar sin
+              previo aviso. Los productos que requieren receta veterinaria se
+              entregan solo con la receta correspondiente.
             </p>
 
-            <h2 className="text-xl font-semibold text-tertiary">2. Productos y precios</h2>
-            <p>
-              Los precios publicados en la tienda pueden cambiar sin previo
-              aviso. Los productos que requieren receta veterinaria serán
-              validados antes de la entrega.
-            </p>
-
-            <h2 className="text-xl font-semibold text-tertiary">3. Datos personales</h2>
+            <h2 className="text-xl font-semibold text-tertiary">2. Datos personales</h2>
             <p>
               El tratamiento de tus datos personales se rige por nuestra{" "}
               <a href="/privacidad" className="text-primary hover:underline">
@@ -42,7 +37,7 @@ export default function TerminosPage() {
               .
             </p>
 
-            <h2 className="text-xl font-semibold text-tertiary">4. Contacto</h2>
+            <h2 className="text-xl font-semibold text-tertiary">3. Contacto</h2>
             <p>
               Ante dudas sobre estos términos, escríbenos a través de nuestro{" "}
               <a href="/contact" className="text-primary hover:underline">

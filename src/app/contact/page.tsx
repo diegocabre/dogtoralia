@@ -4,38 +4,18 @@ import { motion } from 'framer-motion';
 import { ContactForm } from '@/components/contact/ContactForm';
 import { FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
 import Link from 'next/link';
+import {
+    locations,
+    googleMapsEmbedUrl,
+    googleMapsSearchUrl,
+    wazeUrl,
+    whatsappUrl,
+} from '@/data/locations';
 
-// mapQuery usa el formato "q=<dirección>&output=embed": no requiere API
-// key y es mucho más confiable que los enlaces "pb=..." (esos se generan
-// desde el botón "Compartir" de Google Maps para un lugar puntual, y si
-// se escriben a mano casi siempre terminan rotos, que era justo lo que
-// pasaba antes aquí). Además, para que el iframe se muestre hace falta
-// permitir el origen en la Content-Security-Policy (frame-src) — ver
-// next.config.js.
-const locations = {
-    puenteAlto: {
-        name: 'Puente Alto',
-        address: 'Av. Concha y Toro 3859',
-        fullAddress: 'Av. Concha y Toro 3859, Puente Alto, Región Metropolitana, Chile',
-        phone: '+56957830195',
-        email: 'dogtoralia.cl@gmail.com',
-        wazeUrl: 'https://www.waze.com/ul?ll=-33.58944497333844,-70.58159492427287&navigate=yes',
-    },
-    santiagoCentro: {
-        name: 'Santiago Centro',
-        address: 'Av. Presidente Balmaceda 2776',
-        fullAddress: 'Av. Presidente Balmaceda 2776, Santiago, Región Metropolitana, Chile',
-        phone: '+56927492520',
-        email: 'dogtoraliavet@gmail.com',
-        wazeUrl: 'https://www.waze.com/ul?ll=-33.43944497333844,-70.67159492427287&navigate=yes',
-    }
-};
-
-const mapEmbedUrl = (address: string) =>
-    `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
-
-const googleMapsSearchUrl = (address: string) =>
-    `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+// Los mapas usan el formato "q=<dirección>&output=embed": no requiere API
+// key y es más confiable que los enlaces "pb=..." de "Compartir". Para que
+// el iframe se muestre, el origen debe estar permitido en la
+// Content-Security-Policy (frame-src) — ver next.config.js.
 
 export default function ContactPage() {
     return (
@@ -84,7 +64,7 @@ export default function ContactPage() {
                                                     Google Maps
                                                 </Link>
                                                 <Link
-                                                    href={loc.wazeUrl}
+                                                    href={wazeUrl(loc.fullAddress)}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
                                                     className="text-primary hover:text-primary-dark text-sm"
@@ -100,7 +80,7 @@ export default function ContactPage() {
                                         <div className="ml-4">
                                             <h3 className="font-medium text-gray-900">Teléfono</h3>
                                             <Link
-                                                href={`https://wa.me/${loc.phone.replace('+', '')}`}
+                                                href={whatsappUrl(loc.phone)}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="text-gray-600 hover:text-primary"
@@ -126,7 +106,7 @@ export default function ContactPage() {
                             </div>
 
                             <iframe
-                                src={mapEmbedUrl(loc.fullAddress)}
+                                src={googleMapsEmbedUrl(loc.fullAddress)}
                                 width="100%"
                                 height="260"
                                 style={{ border: 0 }}

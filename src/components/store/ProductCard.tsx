@@ -4,22 +4,20 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Product } from '@/types/product';
-import { formatPrice, cleanAndCapitalize } from '@/lib/utils';
-import { FaPrescriptionBottleAlt, FaWhatsapp } from 'react-icons/fa';
+import { cleanAndCapitalize } from '@/lib/utils';
+import { FaWhatsapp } from 'react-icons/fa';
+import { MAIN_WHATSAPP_PHONE, whatsappUrl } from '@/data/locations';
 
 interface ProductCardProps {
     product: Product;
 }
 
-// Número de contacto general para consultas de productos mientras la
-// compra en línea no está disponible.
-const WHATSAPP_NUMBER = '56957830195';
-
 export function ProductCard({ product }: ProductCardProps) {
-    const message = encodeURIComponent(
-        `Hola! Me interesa este producto: ${cleanAndCapitalize(product.name)}`
+    const name = cleanAndCapitalize(product.name);
+    const productWhatsappUrl = whatsappUrl(
+        MAIN_WHATSAPP_PHONE,
+        `Hola! Me interesa este producto: ${name}`
     );
-    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
 
     return (
         <motion.div
@@ -35,31 +33,21 @@ export function ProductCard({ product }: ProductCardProps) {
                     <div className="relative h-44 w-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center overflow-hidden">
                         <Image
                             src={product.imageUrl}
-                            alt={cleanAndCapitalize(product.name)}
+                            alt={name}
                             fill
                             className="object-contain p-4 transition-transform duration-500 group-hover:scale-110"
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                            priority={false}
-                            onError={(e) => { (e.target as HTMLImageElement).src = '/images/no-image.png'; }}
                         />
                     </div>
 
-                    <div className="flex flex-col gap-1 px-2 pt-3">
-                        <h3 className="text-base font-semibold text-gray-900 text-center truncate w-full mb-1" title={cleanAndCapitalize(product.name)}>
-                            {cleanAndCapitalize(product.name)}
+                    <div className="px-3 py-4">
+                        <h3 className="text-base font-semibold text-gray-900 text-center truncate w-full" title={name}>
+                            {name}
                         </h3>
-                        {product.requiresPrescription && (
-                            <span className="flex items-center justify-center gap-1 text-xs text-red-600 bg-red-50 rounded px-2 py-0.5 mb-1 mx-auto w-fit">
-                                <FaPrescriptionBottleAlt className="inline-block" /> Requiere receta
-                            </span>
-                        )}
-                    </div>
-                    <div className="flex flex-col items-center mt-2">
-                        <span className="text-lg font-bold text-primary mb-1">${formatPrice(product.price)}</span>
                     </div>
                 </Link>
                 <motion.a
-                    href={whatsappUrl}
+                    href={productWhatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     whileTap={{ scale: 0.95 }}

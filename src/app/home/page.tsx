@@ -1,5 +1,3 @@
-"use client";
-
 import { InstagramCarousel } from "@/components/instagram/InstagramCarousel";
 import { Locations } from "@/components/locations/Locations";
 import { Hero } from "@/components/home/Hero";

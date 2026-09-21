@@ -16,7 +16,7 @@ export default function PrivacidadPage() {
 
           <div className="prose prose-gray max-w-none space-y-6 text-gray-700">
             <p>
-              En Dogtoralia ("nosotros") respetamos tu privacidad y nos
+              En Dogtoralia (&quot;nosotros&quot;) respetamos tu privacidad y nos
               comprometemos a proteger los datos personales que nos entregas
               al usar este sitio web. Esta política explica de forma simple
               qué datos recopilamos, para qué los usamos y qué derechos
@@ -34,16 +34,6 @@ export default function PrivacidadPage() {
                 electrónico, teléfono (opcional) y el mensaje que escribes.
               </li>
               <li>
-                <strong>Cuenta de usuario:</strong> si inicias sesión con
-                Google, recibimos tu nombre, correo y foto de perfil públicos
-                de tu cuenta de Google.
-              </li>
-              <li>
-                <strong>Compras y carrito:</strong> los productos que agregas
-                al carrito y, si completas una compra, los datos necesarios
-                para procesarla y coordinar la entrega.
-              </li>
-              <li>
                 <strong>Datos de navegación:</strong> mediante Microsoft
                 Clarity y Google (Search Console) recopilamos de forma
                 agregada cómo se usa el sitio (páginas visitadas,
@@ -58,7 +48,6 @@ export default function PrivacidadPage() {
             </h2>
             <ul className="list-disc pl-6 space-y-1">
               <li>Responder tus consultas enviadas por el formulario de contacto.</li>
-              <li>Gestionar tu cuenta y tus compras en la tienda online.</li>
               <li>Mejorar el funcionamiento y diseño del sitio.</li>
               <li>Cumplir obligaciones legales cuando corresponda.</li>
             </ul>
@@ -76,8 +65,8 @@ export default function PrivacidadPage() {
             </p>
             <ul className="list-disc pl-6 space-y-1">
               <li>
-                <strong>Google (Firebase, Google Sign-In, Search Console):</strong>{" "}
-                autenticación, base de datos y estadísticas de búsqueda.
+                <strong>Google (Search Console):</strong> estadísticas de
+                búsqueda del sitio.
               </li>
               <li>
                 <strong>Resend:</strong> envío de los correos generados por el
@@ -111,8 +100,7 @@ export default function PrivacidadPage() {
             </h2>
             <p>
               Conservamos tus datos solo durante el tiempo necesario para
-              cumplir con las finalidades descritas en esta política o
-              mientras mantengas una cuenta activa con nosotros.
+              cumplir con las finalidades descritas en esta política.
             </p>
 
             <h2 className="text-xl font-semibold text-tertiary">

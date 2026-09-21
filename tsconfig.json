@@ -33,12 +33,8 @@
     "**/*.tsx",
     "next-env.d.ts",
     ".next/types/**/*.ts"
-, "next.config.js"  ],
+  ],
   "exclude": [
     "node_modules"
-  ],
-  "ts-node": {
-    "esm": true,
-    "experimentalSpecifiers": true
-  }
+  ]
 }

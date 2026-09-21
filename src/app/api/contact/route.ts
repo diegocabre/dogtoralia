@@ -2,11 +2,7 @@ import { NextResponse } from "next/server";
 import { sendEmail } from "@/lib/mail";
 import { contactSchema, escapeHtml } from "@/lib/security/validation";
 import { getClientIp, rateLimit } from "@/lib/security/rateLimit";
-
-const locationEmails = {
-  "Puente Alto": "dogtoralia.cl@gmail.com",
-  "Santiago Centro": "dogtoraliavet@gmail.com",
-};
+import { locationList } from "@/data/locations";
 
 // Máximo 5 mensajes cada 10 minutos por IP
 const RATE_LIMIT_MAX = 5;
@@ -31,7 +27,15 @@ export async function POST(request: Request) {
       );
     }
 
-    const body = await request.json();
+    let body: unknown;
+    try {
+      body = await request.json();
+    } catch {
+      return NextResponse.json(
+        { success: false, error: "Datos inválidos" },
+        { status: 400 }
+      );
+    }
     const parsed = contactSchema.safeParse(body);
 
     if (!parsed.success) {
@@ -46,8 +50,9 @@ export async function POST(request: Request) {
 
     const { name, email, phone, message, location } = parsed.data;
 
-    const destinationEmail =
-      locationEmails[location as keyof typeof locationEmails];
+    const destinationEmail = locationList.find(
+      (l) => l.name === location
+    )?.email;
 
     if (!destinationEmail) {
       return NextResponse.json(
@@ -57,29 +62,29 @@ export async function POST(request: Request) {
     }
 
     const subject = `Nuevo mensaje de contacto - ${location}`;
-    const text = `
-            Nombre: ${name}
-            Email: ${email}
-            Teléfono: ${phone || "No proporcionado"}
-            Ubicación: ${location}
-            Mensaje: ${message}
-        `;
+    const text = [
+      `Nombre: ${name}`,
+      `Email: ${email}`,
+      `Teléfono: ${phone || "No proporcionado"}`,
+      `Ubicación: ${location}`,
+      `Mensaje: ${message}`,
+    ].join("\n");
     const html = `
-            <h2>Nuevo mensaje de contacto</h2>
-            <p><strong>Nombre:</strong> ${escapeHtml(name)}</p>
-            <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-            <p><strong>Teléfono:</strong> ${escapeHtml(phone || "No proporcionado")}</p>
-            <p><strong>Ubicación:</strong> ${escapeHtml(location)}</p>
-            <p><strong>Mensaje:</strong></p>
-            <p>${escapeHtml(message).replace(/\n/g, "<br>")}</p>
-        `;
+      <h2>Nuevo mensaje de contacto</h2>
+      <p><strong>Nombre:</strong> ${escapeHtml(name)}</p>
+      <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+      <p><strong>Teléfono:</strong> ${escapeHtml(phone || "No proporcionado")}</p>
+      <p><strong>Ubicación:</strong> ${escapeHtml(location)}</p>
+      <p><strong>Mensaje:</strong></p>
+      <p>${escapeHtml(message).replace(/\n/g, "<br>")}</p>
+    `;
 
     const result = await sendEmail({
       to: destinationEmail,
       subject,
       text,
       html,
-      location,
+      replyTo: email,
     });
 
     if (!result.success) {

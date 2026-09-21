@@ -1,24 +1,13 @@
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
     remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "scontent.cdninstagram.com",
-      },
-      {
-        protocol: "https",
-        hostname: "scontent-gru1-2.cdninstagram.com",
-      },
-      {
-        protocol: "https",
-        hostname: "scontent-gru1-1.cdninstagram.com",
-      },
-      {
-        protocol: "https",
-        hostname: "images.unsplash.com",
-      },
+      // Fotos del feed de Instagram: el CDN usa hosts distintos según la
+      // región/servidor (scontent-gru1-1, scontent-xxx-2, *.fbcdn.net...),
+      // así que se permite el dominio completo en vez de hosts sueltos.
+      { protocol: "https", hostname: "**.cdninstagram.com" },
+      { protocol: "https", hostname: "**.fbcdn.net" },
+      { protocol: "https", hostname: "images.unsplash.com" },
     ],
   },
   async headers() {
@@ -53,11 +42,13 @@ const nextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.clarity.ms",
+              // Clarity carga su script real desde scripts.clarity.ms (no solo www)
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.clarity.ms https://c.bing.com",
               "style-src 'self' 'unsafe-inline' fonts.googleapis.com",
-              "font-src 'self' fonts.gstatic.com",
+              // data: para la fuente de íconos embebida en el CSS de Swiper
+              "font-src 'self' data: fonts.gstatic.com",
               "img-src 'self' data: https:",
-              "connect-src 'self' https://*.googleapis.com https://*.firebaseio.com https://firestore.googleapis.com https://*.clarity.ms",
+              "connect-src 'self' https://*.clarity.ms https://c.bing.com",
               "frame-src 'self' https://www.google.com",
               "frame-ancestors 'self'",
             ].join("; "),
