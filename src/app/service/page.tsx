@@ -4,36 +4,20 @@ import { useRef } from 'react';
 import Image from 'next/image';
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import type { IconType } from 'react-icons';
-import {
-    FaStethoscope,
-    FaSyringe,
-    FaMicroscope,
-    FaBriefcaseMedical,
-    FaCut,
-    FaPaw,
-    FaWhatsapp,
-    FaCheckCircle,
-} from 'react-icons/fa';
+import { FaPaw, FaWhatsapp, FaCheckCircle } from 'react-icons/fa';
 import { locationList, whatsappUrl, MAIN_WHATSAPP_PHONE } from '@/data/locations';
 import { services as serviceData, type ServiceData } from '@/data/services';
+import { iconForService } from '@/components/services/serviceIcons';
 
 // El texto de cada servicio vive en data/services.ts (también lo lee el SEO);
 // aquí solo se le asigna el ícono.
-const serviceIcons: Record<string, IconType> = {
-    consultas: FaStethoscope,
-    vacunas: FaSyringe,
-    examenes: FaMicroscope,
-    procedimientos: FaBriefcaseMedical,
-    peluqueria: FaCut,
-};
-
 interface Service extends ServiceData {
     icon: IconType;
 }
 
 const services: Service[] = serviceData.map((service) => ({
     ...service,
-    icon: serviceIcons[service.slug] ?? FaPaw,
+    icon: iconForService(service.slug),
 }));
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
@@ -63,7 +47,8 @@ function ServiceSection({ service, index }: { service: Service; index: number })
     return (
         <section
             ref={ref}
-            className={`relative overflow-hidden py-16 sm:py-24 ${sectionBackgrounds[index % sectionBackgrounds.length]}`}
+            id={service.slug}
+            className={`relative scroll-mt-16 overflow-hidden py-16 sm:py-24 ${sectionBackgrounds[index % sectionBackgrounds.length]}`}
         >
             {/* Número gigante de fondo */}
             <motion.span
