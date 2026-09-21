@@ -12,7 +12,7 @@ import Link from 'next/link';
 // pasaba antes aquí). Además, para que el iframe se muestre hace falta
 // permitir el origen en la Content-Security-Policy (frame-src) — ver
 // next.config.js.
-export const locations = {
+const locations = {
     puenteAlto: {
         name: 'Puente Alto',
         address: 'Av. Concha y Toro 3859',
