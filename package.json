@@ -12,6 +12,7 @@
   "dependencies": {
     "@types/nodemailer": "^6.4.17",
     "@types/swiper": "^5.4.3",
+    "@vercel/speed-insights": "^2.0.0",
     "clsx": "^2.1.1",
     "firebase": "^11.6.1",
     "framer-motion": "^11.11.17",
