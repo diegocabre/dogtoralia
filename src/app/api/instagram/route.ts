@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { RATE_LIMITS, enforceRateLimit } from "@/lib/security/rateLimit";
 
 interface InstagramPost {
   id: string;
@@ -28,7 +29,10 @@ interface InstagramResponse {
  * de "larga duración" duran ~60 días y hay que refrescarlos antes de
  * que expiren). Ver SEGURIDAD.md para más detalle.
  */
-export async function GET() {
+export async function GET(request: Request) {
+  const limited = await enforceRateLimit(request, RATE_LIMITS.instagram);
+  if (limited) return limited;
+
   const token = process.env.INSTAGRAM_ACCESS_TOKEN;
 
   if (!token) {

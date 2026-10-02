@@ -11,11 +11,13 @@ Fecha de esta revisión: ver historial de git de este archivo.
    se validaba en el navegador (fácil de saltarse con curl/Postman).
    Ahora se usa `zod` (`src/lib/security/validation.ts`) también en el
    backend.
-3. **Rate limiting en `/api/contact`**: máximo 5 mensajes cada 10
-   minutos por IP (`src/lib/security/rateLimit.ts`), para frenar spam y
-   ataques de fuerza bruta contra el formulario. Nota: es en memoria,
-   así que solo protege bien si el sitio corre en un único servidor
-   (ver comentario en el archivo).
+3. **Rate limiting persistente** (`src/lib/security/rateLimit.ts`):
+   ventana deslizante por IP guardada en Upstash Redis, compartida entre
+   todas las instancias de Vercel. Límites: `/api/contact` 5 cada 10
+   minutos; `/api/instagram` y `/api/products` 60 por minuto. Si Upstash
+   no está configurado o no responde en producción, la ruta responde 503
+   (falla cerrada) y queda registrado en los logs. En desarrollo usa un
+   contador en memoria.
 4. **Escape de HTML en el correo de contacto**: el nombre, teléfono y
    mensaje del visitante se insertaban directo en el HTML del correo,
    lo que permitía inyectar etiquetas HTML. Ahora se escapan.

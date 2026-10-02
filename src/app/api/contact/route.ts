@@ -1,31 +1,14 @@
 import { NextResponse } from "next/server";
 import { sendEmail } from "@/lib/mail";
 import { contactSchema, escapeHtml } from "@/lib/security/validation";
-import { getClientIp, rateLimit } from "@/lib/security/rateLimit";
+import { RATE_LIMITS, enforceRateLimit } from "@/lib/security/rateLimit";
 import { locationList } from "@/data/locations";
-
-// Máximo 5 mensajes cada 10 minutos por IP
-const RATE_LIMIT_MAX = 5;
-const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 
 export async function POST(request: Request) {
   try {
-    const ip = getClientIp(request.headers);
-    const { success: withinLimit } = rateLimit(
-      `contact:${ip}`,
-      RATE_LIMIT_MAX,
-      RATE_LIMIT_WINDOW_MS
-    );
-
-    if (!withinLimit) {
-      return NextResponse.json(
-        {
-          success: false,
-          error: "Demasiadas solicitudes. Inténtalo de nuevo en unos minutos.",
-        },
-        { status: 429 }
-      );
-    }
+    // Máximo 5 mensajes cada 10 minutos por IP
+    const limited = await enforceRateLimit(request, RATE_LIMITS.contact);
+    if (limited) return limited;
 
     let body: unknown;
     try {
