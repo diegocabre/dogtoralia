@@ -39,8 +39,11 @@ export function generateStaticParams() {
   }
 }
 
-export function generateMetadata({ params }: { params: { id: string } }): Metadata {
-  const product = findProduct(params.id);
+type PageProps = { params: Promise<{ id: string }> };
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { id } = await params;
+  const product = findProduct(id);
   if (!product) return { title: 'Producto no encontrado', robots: { index: false } };
 
   const name = cleanAndCapitalize(product.name);
@@ -58,10 +61,11 @@ export function generateMetadata({ params }: { params: { id: string } }): Metada
   });
 }
 
-export default function Page({ params }: { params: { id: string } }) {
+export default async function Page({ params }: PageProps) {
+  const { id } = await params;
   // notFound() lanza una excepción especial de Next.js, así que se llama
   // fuera de cualquier try/catch para que no se registre como error.
-  const product = findProduct(params.id);
+  const product = findProduct(id);
 
   if (!product) return notFound();
 

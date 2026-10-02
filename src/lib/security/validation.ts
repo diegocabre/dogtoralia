@@ -29,7 +29,7 @@ export const contactSchema = z.object({
     .min(10, "El mensaje debe tener al menos 10 caracteres")
     .max(2000, "El mensaje es demasiado largo (máx. 2000 caracteres)"),
   location: z.enum(["Puente Alto", "Santiago Centro"], {
-    errorMap: () => ({ message: "Ubicación no válida" }),
+    error: "Ubicación no válida",
   }),
 });
 
