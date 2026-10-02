@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { Product } from '@/types/product';
 import { cleanAndCapitalize } from '@/lib/utils';
-import { loadProducts } from '@/lib/products';
+import { getCatalog, type Product } from '@/lib/catalog';
 import { pageMetadata, graph, breadcrumbJsonLd } from '@/lib/seo';
 import { JsonLd } from '@/components/seo/JsonLd';
 import ProductClient from './ProductClient';
@@ -11,13 +10,12 @@ import ProductClient from './ProductClient';
 // como imagen para compartir es peor que la imagen de marca.
 const PLACEHOLDER_IMAGE = '/images/products/medicamento/standar.jpg';
 
-function findProduct(rawId: string): Product | undefined {
-  const id = decodeURIComponent(rawId);
+async function findProduct(rawId: string): Promise<Product | null> {
   try {
-    return loadProducts().find((p) => String(p.id) === id);
+    return await getCatalog().getById(decodeURIComponent(rawId));
   } catch (error) {
     console.error('Error loading products:', error);
-    return undefined;
+    return null;
   }
 }
 
@@ -31,9 +29,9 @@ function summarize(text: string, max = 155): string {
 
 // Se generan todas las fichas al compilar (el catálogo es un archivo local);
 // un id inexistente sigue respondiendo 404.
-export function generateStaticParams() {
+export async function generateStaticParams() {
   try {
-    return loadProducts().map((p) => ({ id: String(p.id) }));
+    return (await getCatalog().list()).map((p) => ({ id: p.id }));
   } catch {
     return [];
   }
@@ -43,7 +41,7 @@ type PageProps = { params: Promise<{ id: string }> };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { id } = await params;
-  const product = findProduct(id);
+  const product = await findProduct(id);
   if (!product) return { title: 'Producto no encontrado', robots: { index: false } };
 
   const name = cleanAndCapitalize(product.name);
@@ -65,7 +63,7 @@ export default async function Page({ params }: PageProps) {
   const { id } = await params;
   // notFound() lanza una excepción especial de Next.js, así que se llama
   // fuera de cualquier try/catch para que no se registre como error.
-  const product = findProduct(id);
+  const product = await findProduct(id);
 
   if (!product) return notFound();
 
@@ -82,7 +80,7 @@ export default async function Page({ params }: PageProps) {
       />
       <ProductClient
         product={{
-          id: String(product.id),
+          id: product.id,
           name: product.name,
           imageUrl: product.imageUrl || '',
           description: product.description || '',

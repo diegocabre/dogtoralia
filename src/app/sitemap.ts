@@ -1,11 +1,11 @@
 import type { MetadataRoute } from "next";
 import { absoluteUrl } from "@/data/site";
-import { loadProducts } from "@/lib/products";
+import { getCatalog } from "@/lib/catalog";
 
 // Se genera al compilar. No se declara "lastmod": no hay una fecha real de
 // modificación por página, y una inventada haría que Google deje de confiar
 // en ese campo.
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const pages: MetadataRoute.Sitemap = [
     { url: absoluteUrl("/home"), changeFrequency: "weekly", priority: 1 },
     { url: absoluteUrl("/service"), changeFrequency: "monthly", priority: 0.9 },
@@ -17,7 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   let products: MetadataRoute.Sitemap = [];
   try {
-    products = loadProducts().map((product) => ({
+    products = (await getCatalog().list()).map((product) => ({
       url: absoluteUrl(`/product/${product.id}`),
       changeFrequency: "monthly" as const,
       priority: 0.6,

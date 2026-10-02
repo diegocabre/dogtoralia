@@ -1,8 +1,7 @@
 import { JsonLd } from "@/components/seo/JsonLd";
 import { pageMetadata, graph, breadcrumbJsonLd } from "@/lib/seo";
 
-// La página es un componente de cliente (carga los productos en el
-// navegador), que no puede exportar metadata; por eso va en este layout.
+// La metadata y el breadcrumb de la tienda viven en este layout.
 export const metadata = pageMetadata({
   title: "Tienda veterinaria: medicamentos y shampoos para mascotas",
   description:
