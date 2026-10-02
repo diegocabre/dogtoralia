@@ -41,8 +41,8 @@ Efecto visible: ninguno en diseño ni contenido. Diferencias menores:
 
 ### Inconsistencias encontradas
 
-1. **Imágenes genéricas**: 19 productos usan `/images/products/medicamento/standar.jpg`.
-2. **Imágenes huérfanas**: 140 archivos en `public/images/products` (15,4 MB), de los cuales **50 no los usa ningún producto**.
+1. **Imágenes genéricas**: 19 productos usaban `/images/products/medicamento/standar.jpg`. El 2026-10-02 se asignaron fotos que ya estaban en el proyecto a Canigest Combi 16 ml y 32 ml y a PapainPet 30 comp.; **quedan 16** sin foto propia.
+2. **Imágenes huérfanas** (✅ corregido el 2026-10-02): había 50 archivos sin usar en `public/images/products`. 2 se asignaron (punto 1) y se borraron los otros 48 (~5 MB), incluidas 3 fotos de Revolution de presentaciones distintas a las del catálogo. Se pueden recuperar desde el historial de git si hicieran falta.
 3. **Nombres de archivo frágiles**: 10 rutas con espacios, una con un acento grave (`FELIN\` GOOD`), 58 con mayúsculas. Los 13 shampoos guardan su foto en la carpeta `medicamento/`.
 4. **Subcategorías** (✅ corregido el 2026-10-02):
    - Se quitaron los espacios al final de `"Suplemento "` (24) y `"Analgésico-Antiinflamatorio "` (8).
@@ -58,8 +58,8 @@ Efecto visible: ninguno en diseño ni contenido. Diferencias menores:
 7. **Duplicados**: no hay ids ni nombres repetidos.
 8. **Precios**: todos son enteros positivos; no hay formatos rotos.
 
-Los puntos 4 y 5 ya están corregidos. Los puntos 1 a 3 (fotos y archivos)
-requieren fotos reales o decidir qué hacer con las imágenes sin usar.
+Los puntos 2, 4 y 5 ya están corregidos. El punto 1 requiere fotos reales y el 3
+conviene resolverlo al migrar el catálogo.
 
 ### Validación
 
