@@ -5,9 +5,10 @@ import Image from 'next/image';
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import type { IconType } from 'react-icons';
 import { FaPaw, FaWhatsapp, FaCheckCircle } from 'react-icons/fa';
-import { locationList, whatsappUrl, MAIN_WHATSAPP_PHONE } from '@/data/locations';
+import { whatsappUrl, MAIN_WHATSAPP_PHONE } from '@/data/locations';
 import { services as serviceData, type ServiceData } from '@/data/services';
 import { iconForService } from '@/components/services/serviceIcons';
+import RequestAppointment from '@/components/appointments/RequestAppointment';
 
 // El texto de cada servicio vive en data/services.ts (también lo lee el SEO);
 // aquí solo se le asigna el ícono.
@@ -264,28 +265,9 @@ export default function ServicePage() {
                         transition={{ duration: 0.6, delay: 0.1 }}
                         className="mx-auto mt-3 max-w-xl text-white/80"
                     >
-                        Escríbenos por WhatsApp a la sede más cercana.
+                        Elige la sede y el servicio, y envíanos tu solicitud por WhatsApp.
                     </motion.p>
-                    <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                        {locationList.map((location, i) => (
-                            <motion.a
-                                key={location.name}
-                                href={whatsappUrl(location.phone, 'Hola! Quiero agendar una hora.')}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
-                                whileHover={{ scale: 1.05, y: -2 }}
-                                whileTap={{ scale: 0.97 }}
-                                className="inline-flex items-center gap-2 rounded-full bg-green-600 px-6 py-3 font-semibold text-white shadow-lg transition-colors hover:bg-green-700"
-                            >
-                                <FaWhatsapp className="text-xl" />
-                                Sede {location.name}
-                            </motion.a>
-                        ))}
-                    </div>
+                    <RequestAppointment />
                 </div>
             </section>
         </div>
