@@ -88,7 +88,9 @@ Dan acceso completo para **enviar correo** como la clínica.
 ### 3.6 Vercel: limpiar variables
 <https://vercel.com> → proyecto → Settings → Environment Variables. Deja solo:
 `NEXT_PUBLIC_SITE_URL`, `INSTAGRAM_ACCESS_TOKEN`, `RESEND_API_KEY`,
-`CONTACT_FROM_EMAIL`, `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`.
+`CONTACT_FROM_EMAIL` y las credenciales de Upstash (`KV_REST_API_URL` /
+`KV_REST_API_TOKEN` que crea la integración de Vercel, o
+`UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN`).
 Borra todas las de Google, NextAuth, Firebase, Gmail e Instagram antiguas.
 Haz lo mismo en tu `.env` local (no lo revisé, por instrucción).
 

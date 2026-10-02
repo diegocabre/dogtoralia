@@ -6,7 +6,10 @@
  * cada función y el límite real se multiplicaba por el número de
  * instancias).
  *
- * Variables de entorno: UPSTASH_REDIS_REST_URL y UPSTASH_REDIS_REST_TOKEN.
+ * Variables de entorno: UPSTASH_REDIS_REST_URL y UPSTASH_REDIS_REST_TOKEN, o
+ * KV_REST_API_URL y KV_REST_API_TOKEN (los nombres que crea la integración
+ * de Upstash en Vercel). Las claves llevan el prefijo "dogtoralia:rl", así
+ * que se puede compartir la base con otros proyectos.
  *
  * Sin esas variables:
  * - En desarrollo (`next dev`) se usa un contador en memoria y se avisa por
@@ -46,10 +49,14 @@ export const RATE_LIMITS = {
 
 type Backend = "upstash" | "memory" | "none";
 
+function upstashCredentials(): { url: string; token: string } | null {
+  const url = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL;
+  const token = process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN;
+  return url && token ? { url, token } : null;
+}
+
 function resolveBackend(): Backend {
-  if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
-    return "upstash";
-  }
+  if (upstashCredentials()) return "upstash";
   if (process.env.NODE_ENV !== "production") return "memory";
   if (process.env.RATE_LIMIT_MEMORY_FALLBACK === "1" && !process.env.VERCEL) {
     return "memory";
@@ -70,7 +77,9 @@ function getUpstashLimiter(limit: number, windowMs: number): Ratelimit {
   const id = `${limit}:${windowMs}`;
   let limiter = limiters.get(id);
   if (!limiter) {
-    redis ??= Redis.fromEnv();
+    const credentials = upstashCredentials();
+    if (!credentials) throw new Error("Credenciales de Upstash no configuradas");
+    redis ??= new Redis(credentials);
     limiter = new Ratelimit({
       redis,
       limiter: Ratelimit.slidingWindow(limit, `${windowMs} ms`),
@@ -134,7 +143,7 @@ export async function rateLimit(
     if (!warnedMemory) {
       warnedMemory = true;
       console.warn(
-        "[rateLimit] UPSTASH_REDIS_REST_URL/TOKEN no configuradas: usando contador en memoria (solo válido en desarrollo)."
+        "[rateLimit] Upstash no configurado (UPSTASH_REDIS_REST_* o KV_REST_API_*): usando contador en memoria (solo válido en desarrollo)."
       );
     }
     return memoryLimit(key, limit, windowMs);
@@ -142,7 +151,7 @@ export async function rateLimit(
 
   if (backend === "none") {
     console.error(
-      "[rateLimit] Faltan UPSTASH_REDIS_REST_URL/TOKEN en producción: se rechaza la solicitud."
+      "[rateLimit] Faltan las credenciales de Upstash (UPSTASH_REDIS_REST_* o KV_REST_API_*) en producción: se rechaza la solicitud."
     );
     return { success: false, remaining: 0, resetAt: Date.now(), unavailable: true };
   }

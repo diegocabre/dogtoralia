@@ -13,7 +13,9 @@ Fecha de esta revisión: ver historial de git de este archivo.
    backend.
 3. **Rate limiting persistente** (`src/lib/security/rateLimit.ts`):
    ventana deslizante por IP guardada en Upstash Redis, compartida entre
-   todas las instancias de Vercel. Límites: `/api/contact` 5 cada 10
+   todas las instancias de Vercel (variables `KV_REST_API_*` de la
+   integración de Vercel o `UPSTASH_REDIS_REST_*`; claves con prefijo
+   `dogtoralia:rl`, así que la base se puede compartir con otros proyectos). Límites: `/api/contact` 5 cada 10
    minutos; `/api/instagram` y `/api/products` 60 por minuto. Si Upstash
    no está configurado o no responde en producción, la ruta responde 503
    (falla cerrada) y queda registrado en los logs. En desarrollo usa un
