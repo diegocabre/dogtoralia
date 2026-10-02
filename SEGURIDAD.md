@@ -25,25 +25,24 @@ Fecha de esta revisión: ver historial de git de este archivo.
 
 ## ⚠️ Pendiente — hazlo tú (no lo pude hacer desde aquí)
 
-1. **Rota estas credenciales** como precaución, ya que estuvieron en un
-   archivo `.env` en texto plano en tu disco:
-   - Contraseñas de aplicación de Gmail (Puente Alto y Centro) — ya no se
-     usan (el correo sale por Resend): revócalas en Google Account →
-     Seguridad → Contraseñas de aplicaciones.
-   - `GOOGLE_CLIENT_SECRET` y `NEXTAUTH_SECRET` — el login con Google fue
-     eliminado del sitio; borra esas variables del `.env` y del hosting, y
-     elimina o rota el cliente OAuth en Google Cloud Console.
-   - El token de Instagram (`INSTAGRAM_ACCESS_TOKEN`) está **vencido**;
-     genera uno nuevo. Las variables `INSTAGRAM_USER_ID`,
-     `INSTAGRAM_CLIENT_ID` e `INSTAGRAM_CLIENT_SECRET` no las usa el código.
+> El detalle completo, con rutas de cada consola, está en
+> [`SEGURIDAD-AUDITORIA.md`](SEGURIDAD-AUDITORIA.md).
 
-2. **Revisa el historial de git** para confirmar que `.env` nunca se
-   subió a un commit:
-   ```
-   git log --all --full-history -- .env
-   ```
-   Si aparece algo, esas credenciales quedaron expuestas igual (aunque
-   borres el archivo después) y hay que rotarlas sin excepción.
+1. **Rota estas credenciales SIN EXCEPCIÓN**: la auditoría del 2026-10-02
+   encontró que `.env.local` se commiteó en `ec002a2` (2025-05-05). Hoy ese
+   commit solo existe en las ramas locales `clean-main` y `recovery`, pero el
+   repo es público y no se puede descartar que haya llegado a GitHub.
+   - Contraseñas de aplicación de Gmail (Puente Alto y Centro): revócalas.
+   - Cliente OAuth de Google (`GOOGLE_CLIENT_ID`/`GOOGLE_CLIENT_SECRET`) y
+     `NEXTAUTH_SECRET`: el login con Google ya no existe; elimina el cliente
+     en Google Cloud y borra las variables.
+   - Instagram: restablece la clave secreta de la app y genera un token
+     nuevo (`INSTAGRAM_ACCESS_TOKEN`, solo servidor).
+   - Firebase: elimina el proyecto o restringe su clave `AIza…`.
+
+2. **Historial de git**: `main` y todas las ramas remotas están limpias. La
+   limpieza de las dos ramas locales está documentada en la auditoría y
+   requiere tu aprobación.
 
 3. **Firebase**: el sitio ya no lo usa. Si el proyecto de Firebase sigue
    activo en la consola, revisa que sus reglas de Firestore/Storage no
