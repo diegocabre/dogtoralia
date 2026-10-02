@@ -44,17 +44,22 @@ Efecto visible: ninguno en diseño ni contenido. Diferencias menores:
 1. **Imágenes genéricas**: 19 productos usan `/images/products/medicamento/standar.jpg`.
 2. **Imágenes huérfanas**: 140 archivos en `public/images/products` (15,4 MB), de los cuales **50 no los usa ningún producto**.
 3. **Nombres de archivo frágiles**: 10 rutas con espacios, una con un acento grave (`FELIN\` GOOD`), 58 con mayúsculas. Los 13 shampoos guardan su foto en la carpeta `medicamento/`.
-4. **Subcategorías**:
-   - Espacios al final: `"Suplemento "` (24) y `"Analgésico-Antiinflamatorio "` (8). Ahora el esquema los recorta al cargar.
-   - Error de tipeo: `"Colorio antibiótico"` (debería ser `Colirio antibiótico`; ya existe `Colirio`).
-   - Mayúsculas inconsistentes: `"Solución ótica"` frente a `"Solución Tópica"`.
-5. **Texto con error de codificación**: el producto `7804650310129` dice "æcaros" en vez de "ácaros".
+4. **Subcategorías** (✅ corregido el 2026-10-02):
+   - Se quitaron los espacios al final de `"Suplemento "` (24) y `"Analgésico-Antiinflamatorio "` (8).
+   - `"Colorio antibiótico"` → `"Colirio antibiótico"`.
+   - `"Solución Tópica"` → `"Solución tópica"` (igual que `"Solución ótica"`).
+5. **Textos de las descripciones** (✅ corregido el 2026-10-02):
+   - "æcaros" → "ácaros" (producto `7804650310129`).
+   - 2 acentos guardados como dos caracteres (letra + tilde combinada) se unificaron (normalización NFC); se veían bien, pero fallaban en búsquedas.
+   - Se quitó un selector de emoji suelto después de "Oxyfresh®".
+   - "deficiente.Ayuda" → "deficiente. Ayuda".
+   - 3 descripciones con espacio al final.
 6. **Descripciones repetidas**: 5 pares de productos comparten la misma descripción (en general, presentaciones distintas del mismo producto, así que es aceptable).
 7. **Duplicados**: no hay ids ni nombres repetidos.
 8. **Precios**: todos son enteros positivos; no hay formatos rotos.
 
-No corregí los datos (2 a 5) para que el sitio quede idéntico; son cambios de
-contenido que conviene que valide la dueña.
+Los puntos 4 y 5 ya están corregidos. Los puntos 1 a 3 (fotos y archivos)
+requieren fotos reales o decidir qué hacer con las imágenes sin usar.
 
 ### Validación
 
