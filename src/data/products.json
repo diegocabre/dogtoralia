@@ -8,7 +8,7 @@
     "iva": 19,
     "requiresPrescription": true,
     "stock": 3,
-    "imageUrl": "/images/products/medicamento/standar.jpg",
+    "imageUrl": "/images/products/catalogo/revolution-plus-gato-5-10kg.jpg",
     "description": "Parasiticida de amplio espectro, que permite el control y tratamiento de lombrices intestinales, Dirofilarias, ácaros de la sarna, pulgas adultas, larvas y huevos en perros y gatos y también controlar las infestaciones producidas por garrapatas en perros."
   },
   {
@@ -212,7 +212,7 @@
     "iva": 19,
     "requiresPrescription": true,
     "stock": 3,
-    "imageUrl": "/images/products/medicamento/standar.jpg",
+    "imageUrl": "/images/products/catalogo/frontline-spray-100ml.jpg",
     "description": "Es un antiparasitario formulado para matar de forma rápida pulgas, piojos y garrapatas en perros y gatos. Su composición lo hace apto para usarse en mascotas desde los 2 días de vida."
   },
   {
@@ -236,7 +236,7 @@
     "iva": 19,
     "requiresPrescription": true,
     "stock": 3,
-    "imageUrl": "/images/products/medicamento/standar.jpg",
+    "imageUrl": "/images/products/catalogo/ehliquantel-forte.jpg",
     "description": "Para el control y tratamiento de Tenias y Nematodos en el perro. Administrar 5 mg/kg de peso de Praziquantel, 14,4 mg/kg de peso de Pirantel pamoato y 15 mg/kg de peso de Febantel; por cada 35 kg de peso."
   },
   {
@@ -260,7 +260,7 @@
     "iva": 19,
     "requiresPrescription": true,
     "stock": 3,
-    "imageUrl": "/images/products/medicamento/standar.jpg",
+    "imageUrl": "/images/products/catalogo/drontal-cats.png",
     "description": "Antiparasitario Interno. Diseñado especialmente para gatos, este poderoso antiparasitario interno de amplio espectro es la solución definitiva para mantener a tu peludo amigo libre de parásitos. Una tableta por cada 4 kg de peso de tu gato es suficiente para una dosis única efectiva."
   },
   {
@@ -356,7 +356,7 @@
     "iva": 19,
     "requiresPrescription": false,
     "stock": 3,
-    "imageUrl": "/images/products/medicamento/standar.jpg",
+    "imageUrl": "/images/products/catalogo/megamazon-forest-purity-300ml.jpg",
     "description": "Shampoo para perros y gatos con extractos naturales que nutren y protegen la capa al tiempo que promueven un brillo intenso."
   },
   {
@@ -452,7 +452,7 @@
     "iva": 19,
     "requiresPrescription": true,
     "stock": 3,
-    "imageUrl": "/images/products/medicamento/standar.jpg",
+    "imageUrl": "/images/products/catalogo/oxyfresh-limpiador-orejas-237ml.jpg",
     "description": "Nuestro Limpiador de Ojeras Oxyfresh® es una solución segura, suave y efectiva para perros y gatos. Es la forma más rápida y fácil de calmar las orejas irritadas, con picazón y eliminar la acumulación de cera, la suciedad, ácaros, dejándolos con oídos frescos y limpios."
   },
   {
@@ -644,7 +644,7 @@
     "iva": 19,
     "requiresPrescription": true,
     "stock": 3,
-    "imageUrl": "/images/products/medicamento/standar.jpg",
+    "imageUrl": "/images/products/catalogo/beaphar-laveta-carnitina-50ml.jpg",
     "description": "Ayuda a combatir la caída de pelo debido a deficiencias vitamínicas. Contiene vitamina B y E para mejorar el estado de piel y pelaje. Además, contiene Carnitina, la cual ayuda a reforzar el sistema cardiovascular y aporta una mayor vitalidad."
   },
   {
@@ -740,7 +740,7 @@
     "iva": 19,
     "requiresPrescription": true,
     "stock": 3,
-    "imageUrl": "/images/products/medicamento/standar.jpg",
+    "imageUrl": "/images/products/catalogo/vita-vet-c-30ml.jpg",
     "description": "La Vitamina C o Ácido Ascórbico es un nutriente que desempeña diversas funciones metabólicas, actuando como coenzima y cofactor en innúmeras reacciones biológicas. Es un poderoso antioxidante, el cual se emplea para neutralizar radicales libres."
   },
   {
@@ -860,7 +860,7 @@
     "iva": 19,
     "requiresPrescription": true,
     "stock": 3,
-    "imageUrl": "/images/products/medicamento/standar.jpg",
+    "imageUrl": "/images/products/catalogo/stomorgyl-2.jpg",
     "description": "Para el tratamiento y prevención de las afecciones bucodentales y faríngeas de origen infeccioso (Staphylococcus spp., Streptococcus spp., Clostridium spp., Corynebacterium spp., Rickettsia spp., Mycoplasma spp.)"
   },
   {
@@ -1052,7 +1052,7 @@
     "iva": 19,
     "requiresPrescription": true,
     "stock": 3,
-    "imageUrl": "/images/products/medicamento/standar.jpg",
+    "imageUrl": "/images/products/catalogo/dopiral-oral-32ml.png",
     "description": "Es indicado para el tratamiento del dolor y la inflamación asociada a la osteoartritis."
   },
   {
@@ -1112,7 +1112,7 @@
     "iva": 19,
     "requiresPrescription": true,
     "stock": 3,
-    "imageUrl": "/images/products/medicamento/standar.jpg",
+    "imageUrl": "/images/products/catalogo/ehliprofeno-20mg.jpg",
     "description": "Indicado para aliviar el dolor y la inflamación asociada a la osteoartritis, y para el control del dolor post operatorio, asociado a cirugía de tejidos blandos y ortopédica en perros."
   },
   {

@@ -41,7 +41,7 @@ Efecto visible: ninguno en diseño ni contenido. Diferencias menores:
 
 ### Inconsistencias encontradas
 
-1. **Imágenes genéricas**: 19 productos usaban `/images/products/medicamento/standar.jpg`. El 2026-10-02 se asignaron fotos que ya estaban en el proyecto a Canigest Combi 16 ml y 32 ml y a PapainPet 30 comp.; **quedan 16** sin foto propia.
+1. **Imágenes genéricas**: 19 productos usaban `/images/products/medicamento/standar.jpg`. El 2026-10-02 se asignaron 3 fotos que ya estaban en el proyecto (Canigest Combi 16 y 32 ml, PapainPet) y 11 fotos de empaque descargadas de la web (ver "Origen de las fotos"). **Quedan 5 sin foto propia**: Revolution 6% 2,5-5 kg, Feline Labyes Full +5 kg, Drontal Puppy, Megamazon Forest Balance 300 ml y Stomorgyl 10.
 2. **Imágenes huérfanas** (✅ corregido el 2026-10-02): había 50 archivos sin usar en `public/images/products`. 2 se asignaron (punto 1) y se borraron los otros 48 (~5 MB), incluidas 3 fotos de Revolution de presentaciones distintas a las del catálogo. Se pueden recuperar desde el historial de git si hicieran falta.
 3. **Nombres de archivo frágiles**: 10 rutas con espacios, una con un acento grave (`FELIN\` GOOD`), 58 con mayúsculas. Los 13 shampoos guardan su foto en la carpeta `medicamento/`.
 4. **Subcategorías** (✅ corregido el 2026-10-02):
@@ -60,6 +60,30 @@ Efecto visible: ninguno en diseño ni contenido. Diferencias menores:
 
 Los puntos 2, 4 y 5 ya están corregidos. El punto 1 requiere fotos reales y el 3
 conviene resolverlo al migrar el catálogo.
+
+### Origen de las fotos agregadas (2026-10-02)
+
+Fotos de empaque del fabricante tomadas de tiendas. Se revisó cada una para
+confirmar producto y presentación. Lo ideal es reemplazarlas por el material
+oficial que entregan los distribuidores.
+
+| Producto | Archivo (`public/images/products/catalogo/`) | Fuente |
+| --- | --- | --- |
+| Revolution Plus 5-10 kg | `revolution-plus-gato-5-10kg.jpg` | petvet.cl |
+| Frontline Spray 100 ml | `frontline-spray-100ml.jpg` | petvet.cl |
+| Ehliquantel Forte | `ehliquantel-forte.jpg` | petvet.cl |
+| Drontal Cats | `drontal-cats.png` | petvet.cl |
+| Megamazon Forest Purity 300 ml | `megamazon-forest-purity-300ml.jpg` | abkgrooming.com |
+| Limpiador de orejas Oxyfresh 237 ml | `oxyfresh-limpiador-orejas-237ml.jpg` | wagsupply.com |
+| Beaphar Laveta + Carnitina 50 ml | `beaphar-laveta-carnitina-50ml.jpg` | bestforpets.cl |
+| Vita-Vet C 30 ml | `vita-vet-c-30ml.jpg` | espacioanimal.cl |
+| Stomorgyl 2 | `stomorgyl-2.jpg` | amigales.cl |
+| Dopiral Oral 32 ml | `dopiral-oral-32ml.png` | petvet.cl |
+| Ehliprofeno 20 mg | `ehliprofeno-20mg.jpg` | amigales.cl |
+
+Descartadas: la de Revolution 6% (mostraba toda la línea de productos), la de
+Drontal Puppy (tenía marca de agua con derechos reservados de una tienda) y la
+de Megamazon Forest Balance (era la presentación de 500 ml).
 
 ### Validación
 
