@@ -57,7 +57,7 @@ export function ServicesPreview() {
           {/* Destacado: peluquería */}
           {peluqueria && (
             <article className="grid gap-6 sm:grid-cols-[0.8fr_1fr] sm:items-center lg:grid-cols-1 xl:grid-cols-[0.8fr_1fr]">
-              {/* El vinilo de peluquería en la vitrina real de Santiago Centro */}
+              {/* El vinilo de peluquería en la vitrina real de Santiago Centro (hay peluquería en las dos sedes) */}
               <Link
                 href="/service#peluqueria"
                 className="block w-full max-w-[320px] overflow-hidden rounded-[6px] border-[3px] border-grafito sm:max-w-none lg:max-w-[320px] xl:max-w-none"
@@ -77,7 +77,7 @@ export function ServicesPreview() {
                 Peluquería canina y felina
               </h3>
               <p className="mt-3 max-w-[44ch] text-base leading-relaxed text-grafito-suave sm:text-lg">
-                Para que salga oliendo a limpio y sin estrés.
+                En las dos sedes, para que salga oliendo a limpio y sin estrés.
               </p>
               {peluqueria.items && (
                 <ul className="mt-5 flex flex-wrap gap-2">

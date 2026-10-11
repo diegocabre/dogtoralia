@@ -27,12 +27,12 @@ Dogtoralia Vet es una clínica veterinaria de barrio con dos sedes. El sitio exi
 - **Sedes:** Puente Alto (Av. Concha y Toro 3859, WhatsApp +56 9 5783 0195) y Santiago Centro (Av. Presidente Balmaceda 2776, WhatsApp +56 9 2749 2520). Fuente única: `src/data/locations.ts`.
 - **Horario común:** lunes a viernes de 10:00 a 19:00 y sábados de 10:00 a 17:00 (`src/data/site.ts`). Domingo cerrado.
 - **Reserva:** por WhatsApp, un número por sede. No hay sistema de reservas online; la evaluación está en `RESERVAS-PROPUESTA.md`.
-- **Tienda:** es una vitrina. No hay carrito ni pago online; cada producto se consulta por WhatsApp. El catálogo vive en `src/data/products.json`.
+- **Tienda:** es una vitrina. No hay carrito ni pago online; cada producto se consulta por WhatsApp y se retira en la sede (Puente Alto o Santiago Centro); no hay despacho. El catálogo vive en `src/data/products.json`.
 - **Contacto:** formulario con envío por correo (Resend) y rate limiting, además de Google Maps y Waze por sede.
 
 ## Capabilities and Constraints
 
-- **Servicios** (`src/data/services.ts`): Consultas, Vacunas, Exámenes, Procedimientos y Peluquería canina y felina (corte y baño, baño medicado).
+- **Servicios** (`src/data/services.ts`): Consultas, Vacunas, Exámenes, Procedimientos y Peluquería canina y felina (corte y baño, baño medicado), en las dos sedes.
 - **Atención a domicilio:** cubre Santiago en general (no solo las comunas de las sedes). Hoy no aparece como servicio en el sitio. No hay condiciones ni precios publicados: no inventarlos.
 - **Equipo por sede:** en el día a día, Sara Vásquez (cirujana) atiende en Puente Alto y Gabriel Cabré (anestesiólogo) en Santiago Centro. Ante una operación o una emergencia, atienden los dos juntos.
 - **Técnico:** Next.js (App Router), Tailwind CSS 4 y Framer Motion. `/` redirige a `/home`, que es la URL canónica. Las URLs, los datos estructurados (JSON-LD) y la metadata SEO ya están trabajados y no se deben romper.

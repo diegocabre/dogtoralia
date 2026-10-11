@@ -12,7 +12,7 @@ export default function TerminosPage() {
   return (
     <LegalPage
       title="Términos y Condiciones"
-      updated={new Date().toLocaleDateString("es-CL", { year: "numeric", month: "long", day: "numeric" })}
+      updated="11 de octubre de 2026"
     >
       <p>Al usar el sitio web de Dogtoralia aceptas los siguientes términos.</p>
 

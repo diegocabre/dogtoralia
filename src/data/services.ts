@@ -38,7 +38,7 @@ export const services: ServiceData[] = [
   {
     slug: "peluqueria",
     title: "Peluquería Canina y Felina",
-    description: "Corte, baño y baño medicado para perros y gatos. Para que salga oliendo a limpio y sin estrés.",
+    description: "Corte, baño y baño medicado para perros y gatos, en las dos sedes. Para que salga oliendo a limpio y sin estrés.",
     items: [
       { title: "Corte y baño", text: "Corte y baño completo, para perros y gatos." },
       { title: "Baño medicado", text: "Para problemas de piel, cuando lo indica la Dra. Sara o el Dr. Gabriel." },

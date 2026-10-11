@@ -54,7 +54,7 @@ export default function StoreClient({ products }: { products: Product[] }) {
               Medicamentos y shampoos para perros y gatos.
               <span className="hidden sm:inline"> Por ahora es una vitrina: cada producto se</span>
               <span className="sm:hidden"> Cada producto se</span>{" "}
-              consulta y se compra por WhatsApp.
+              consulta por WhatsApp y se retira en tu sede.
             </p>
           </div>
 

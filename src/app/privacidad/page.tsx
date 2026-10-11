@@ -22,7 +22,7 @@ export default function PrivacidadPage() {
   return (
     <LegalPage
       title="Política de Privacidad"
-      updated={new Date().toLocaleDateString("es-CL", { year: "numeric", month: "long", day: "numeric" })}
+      updated="11 de octubre de 2026"
       toc={toc}
     >
       <p>
