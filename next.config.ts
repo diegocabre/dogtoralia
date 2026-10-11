@@ -1,6 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  experimental: {
+    // Sin la caché persistente de Turbopack en `next build`: Vercel restauró
+    // una caché vieja y publicó el CSS de un globals.css anterior (HTML nuevo
+    // sin colores ni tipografías). Compilar siempre desde cero evita que el
+    // CSS quede desfasado del código.
+    turbopackFileSystemCacheForBuild: false,
+  },
   async redirects() {
     return [
       {
