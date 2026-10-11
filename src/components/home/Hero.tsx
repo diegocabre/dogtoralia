@@ -1,157 +1,95 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { motion, type Variants } from "framer-motion";
-import { FaClock, FaMapMarkerAlt, FaPaw, FaStore, FaWhatsapp } from "react-icons/fa";
-import { locationList, whatsappUrl } from "@/data/locations";
-import { getOpenStatus, type OpenStatus } from "@/lib/hours";
+import { locationList } from "@/data/locations";
+import type { OpenState } from "@/lib/hours";
+import { LetreroPuerta, useOpenStatus } from "./LetreroPuerta";
 
-const container: Variants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
-  },
+const estadoTexto: Record<OpenState, string> = {
+  abierto: "Abierto",
+  "cierra-pronto": "Cierra pronto",
+  cerrado: "Cerrado",
 };
 
-const item: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+const estadoClase: Record<OpenState, string> = {
+  abierto: "bg-whatsapp text-white",
+  "cierra-pronto": "bg-vinilo-mostaza text-grafito",
+  cerrado: "bg-grafito text-white",
 };
 
-const trustItems = [
-  { icon: FaMapMarkerAlt, title: "2 sedes", text: "Puente Alto y Santiago Centro" },
-  { icon: FaClock, title: "Lunes a sábado", text: "L–V 10:00 a 19:00 · Sáb 10:00 a 17:00" },
-  { icon: FaPaw, title: "Todo en uno", text: "Clínica, peluquería y tienda" },
-] as const;
-
+/**
+ * Primera pantalla: el equipo real a sangre y el vinilo azul de la sede con
+ * lo justo para agendar. El estado en vivo, el nombre, una frase y una placa
+ * de WhatsApp por sede. Horario y direcciones viven en "Dónde estamos".
+ */
 export function Hero() {
-  // El estado abierto/cerrado depende de la hora actual, así que se calcula
-  // solo en el navegador: si se renderizara en el servidor, el HTML quedaría
-  // "congelado" con la hora del build.
-  const [status, setStatus] = useState<OpenStatus | null>(null);
-
-  useEffect(() => {
-    const update = () => setStatus(getOpenStatus());
-    update();
-    const timer = setInterval(update, 60_000);
-    return () => clearInterval(timer);
-  }, []);
+  const status = useOpenStatus();
 
   return (
-    <section
-      className="relative overflow-hidden pt-28 pb-16 sm:pt-32 sm:pb-24"
-      style={{
-        backgroundImage:
-          "linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 60%, var(--color-quaternary) 100%)",
-      }}
-    >
-      <div className="container relative mx-auto grid items-center gap-10 px-4 lg:grid-cols-2 lg:gap-14">
-        <motion.div variants={container} initial="hidden" animate="show" className="text-center lg:text-left">
-          {/* Reserva el alto para que la página no salte cuando aparece el estado */}
-          <motion.div variants={item} className="min-h-9">
-            {status && (
-              <span className="inline-flex items-center gap-2 rounded-full bg-white/20 px-4 py-1.5 text-sm font-medium text-white backdrop-blur-sm">
-                <span
-                  aria-hidden
-                  className={`h-2.5 w-2.5 rounded-full ${status.open ? "bg-green-400" : "bg-amber-300"}`}
-                />
-                {status.label}
+    // Relleno superior = alto exacto del menú fijo (64 o 72 px más su borde):
+    // la foto parte justo debajo, sin franja.
+    <section className="bg-vinilo-azul pt-[67px] text-white lg:pt-[75px]">
+      <div className="grid lg:min-h-[min(760px,calc(100svh-75px))] lg:grid-cols-2">
+        {/* La foto llega al borde: en el celular arriba, en escritorio a la derecha */}
+        <figure className="relative aspect-[4/3] overflow-hidden bg-grafito lg:order-2 lg:aspect-auto">
+          <Image
+            src="/images/portada.png"
+            alt="La Dra. Sara Vásquez y el Dr. Gabriel Cabré con un perro blanco en brazos"
+            fill
+            preload
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="object-cover object-[50%_92%] lg:object-top"
+          />
+        </figure>
+
+        <div className="flex lg:justify-end">
+          <div className="flex w-full max-w-[640px] flex-col justify-center px-4 pb-9 pt-6 sm:px-6 sm:pb-12 sm:pt-9 lg:py-14 lg:pr-12 xl:pr-16">
+            {/* Estado en vivo. Reserva su alto antes de calcularse para que
+                nada salte cuando aparece. */}
+            <p
+              aria-live="polite"
+              className={`flex min-h-8 flex-wrap items-center gap-x-3 gap-y-1 text-[0.95rem] font-medium sm:text-base ${
+                status ? "" : "invisible"
+              }`}
+            >
+              <span
+                className={`rounded-[6px] border-2 border-grafito px-2.5 py-0.5 font-[family-name:var(--font-rotulo)] text-[0.78rem] font-bold uppercase tracking-wide ${
+                  status ? estadoClase[status.state] : "bg-white"
+                }`}
+              >
+                {status ? estadoTexto[status.state] : "Horario"}
               </span>
-            )}
-          </motion.div>
-
-          <motion.h1
-            variants={item}
-            className="mt-4 text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl"
-          >
-            Clínica veterinaria en Puente Alto y Santiago Centro
-          </motion.h1>
-
-          <motion.p
-            variants={item}
-            className="mx-auto mt-5 max-w-xl text-base text-white/90 sm:text-lg lg:mx-0"
-          >
-            Cuidamos a tu mascota como parte de la familia: consultas, vacunas,
-            exámenes, peluquería y tienda online, todo con atención cercana.
-          </motion.p>
-
-          {/* Agendar: un botón de WhatsApp por sede */}
-          <motion.div variants={item} className="mt-8">
-            <p className="text-sm font-semibold uppercase tracking-wide text-white/80">
-              Agenda una hora por WhatsApp
+              <span>
+                {status?.detail}
+                <span className="hidden sm:inline">
+                  {status?.detail ? ", " : ""}en las dos sedes
+                </span>
+              </span>
             </p>
-            <div className="mt-3 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">
+
+            <h1 className="rotulo mt-4 text-[clamp(2.05rem,5.2vw,4rem)] sm:mt-5">
+              Veterinaria de barrio en Puente Alto y Santiago Centro
+            </h1>
+
+            <p className="mt-4 max-w-[36ch] text-base leading-relaxed text-white/90 sm:mt-5 sm:text-lg">
+              De lunes a sábado en Av. Concha y Toro y en Av. Presidente Balmaceda. Escríbenos y te damos hora.
+            </p>
+
+            <div
+              id="letreros-vitrina"
+              className="mt-7 grid gap-3 sm:mt-9 sm:grid-cols-2 sm:gap-4 lg:max-w-[460px] lg:grid-cols-1"
+            >
               {locationList.map((location) => (
-                <motion.a
+                <LetreroPuerta
                   key={location.name}
-                  href={whatsappUrl(location.phone, "Hola! Quiero agendar una hora.")}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-green-600 px-6 py-3 font-semibold text-white shadow-lg shadow-black/20 transition-colors hover:bg-green-700 sm:w-auto"
-                >
-                  <FaWhatsapp className="text-xl" />
-                  {location.name}
-                </motion.a>
+                  location={location}
+                  status={status}
+                  conCartel={false}
+                />
               ))}
             </div>
-            <div className="mt-4 flex items-center justify-center gap-5 text-sm font-medium lg:justify-start">
-              <Link
-                href="/service"
-                className="text-white underline underline-offset-4 transition-opacity hover:opacity-80"
-              >
-                Ver servicios
-              </Link>
-              <Link
-                href="/store"
-                className="inline-flex items-center gap-1.5 text-white underline underline-offset-4 transition-opacity hover:opacity-80"
-              >
-                <FaStore /> Ir a la tienda
-              </Link>
-            </div>
-          </motion.div>
-
-          {/* Franja de confianza */}
-          <motion.ul
-            variants={item}
-            className="mt-10 grid gap-4 border-t border-white/25 pt-6 text-left sm:grid-cols-3"
-          >
-            {trustItems.map(({ icon: Icon, title, text }) => (
-              <li key={title} className="flex items-start gap-3">
-                <Icon aria-hidden className="mt-1 flex-shrink-0 text-lg text-white/90" />
-                <div>
-                  <p className="text-sm font-semibold text-white">{title}</p>
-                  <p className="text-xs text-white/80">{text}</p>
-                </div>
-              </li>
-            ))}
-          </motion.ul>
-        </motion.div>
-
-        {/* Foto real del equipo */}
-        <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="relative mx-auto w-full max-w-lg lg:max-w-none"
-        >
-          {/* Bloque de color desfasado detrás de la foto */}
-          <div aria-hidden className="absolute -bottom-4 -right-4 h-full w-full rounded-3xl bg-secondary/60" />
-          <div className="relative aspect-[5/4] overflow-hidden rounded-3xl shadow-2xl shadow-black/30">
-            <Image
-              src="/images/portada.png"
-              alt="Veterinarios de Dogtoralia junto a un perrito"
-              fill
-              priority
-              sizes="(max-width: 1024px) 90vw, 45vw"
-              className="object-cover object-bottom"
-            />
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

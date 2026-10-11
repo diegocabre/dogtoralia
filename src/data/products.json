@@ -1,7 +1,7 @@
 [
   {
     "id": 7804650310129,
-    "name": "REVOLUTION_PLUS__5KG_a_10KG",
+    "name": "Revolution Plus (5 a 10 kg)",
     "category": "Medicamento",
     "subCategory": "Antiparasitario",
     "price": 16798,
@@ -13,7 +13,7 @@
   },
   {
     "id": 7804650310136,
-    "name": "REVOLUTION_6__2.5KG_a_5KG",
+    "name": "Revolution 6 (2,5 a 5 kg)",
     "category": "Medicamento",
     "subCategory": "Antiparasitario",
     "price": 14706,
@@ -25,7 +25,7 @@
   },
   {
     "id": 7798176423909,
-    "name": "FELINE_LABYES_FULL_ANTIPARASITARIO_INTERNO_EXTERNO_1.2ml__MAYOR_A_5_KG_",
+    "name": "Feline Labyes Full antiparasitario interno y externo 1,2 ml (mayor a 5 kg)",
     "category": "Medicamento",
     "subCategory": "Antiparasitario",
     "price": 14706,
@@ -37,7 +37,7 @@
   },
   {
     "id": 7798176423916,
-    "name": "FELINE_LABYES_FULL_ANTIPARASITARIO_INTERNO_EXTERNO_0_8ml__2_1_A_5_KG_",
+    "name": "Feline Labyes Full antiparasitario interno y externo 0,8 ml (2,1 a 5 kg)",
     "category": "Medicamento",
     "subCategory": "Antiparasitario",
     "price": 13437,
@@ -49,7 +49,7 @@
   },
   {
     "id": 7804650311126,
-    "name": "SIMPARICA_1_COMPRIMIDO_1.3KG_2.5KG",
+    "name": "Simparica 1 comprimido (1,3 a 2,5 kg)",
     "category": "Medicamento",
     "subCategory": "Antiparasitario",
     "price": 8395,
@@ -61,7 +61,7 @@
   },
   {
     "id": 7804650311133,
-    "name": "SIMPARICA_1_COMPRIMIDO_2.5_a_5KG",
+    "name": "Simparica 1 comprimido (2,5 a 5 kg)",
     "category": "Medicamento",
     "subCategory": "Antiparasitario",
     "price": 8824,
@@ -73,7 +73,7 @@
   },
   {
     "id": 7804650311140,
-    "name": "SIMPARICA_1_COMPRIMIDO_5KG_10KG",
+    "name": "Simparica 1 comprimido (5 a 10 kg)",
     "category": "Medicamento",
     "subCategory": "Antiparasitario",
     "price": 9235,
@@ -85,7 +85,7 @@
   },
   {
     "id": 7804650311157,
-    "name": "SIMPARICA_1_COMPRIMIDO_10KG_20KG",
+    "name": "Simparica 1 comprimido (10 a 20 kg)",
     "category": "Medicamento",
     "subCategory": "Antiparasitario",
     "price": 10504,
@@ -97,7 +97,7 @@
   },
   {
     "id": 7804650311164,
-    "name": "SIMPARICA_1_COMPRIMIDO_20KG_40KG",
+    "name": "Simparica 1 comprimido (20 a 40 kg)",
     "category": "Medicamento",
     "subCategory": "Antiparasitario",
     "price": 15118,
@@ -109,7 +109,7 @@
   },
   {
     "id": 8713184148988,
-    "name": "BRAVECTO_PERROS_2_KG___4.5_KG",
+    "name": "Bravecto perros (2 a 4,5 kg)",
     "category": "Medicamento",
     "subCategory": "Antiparasitario",
     "price": 28990,
@@ -121,7 +121,7 @@
   },
   {
     "id": 8713184148971,
-    "name": "BRAVECTO_PERROS_4_5_KG___10_KG",
+    "name": "Bravecto perros (4,5 a 10 kg)",
     "category": "Medicamento",
     "subCategory": "Antiparasitario",
     "price": 29990,
@@ -133,7 +133,7 @@
   },
   {
     "id": 8713184148964,
-    "name": "BRAVECTO_PERROS_10_KG___20_KG",
+    "name": "Bravecto perros (10 a 20 kg)",
     "category": "Medicamento",
     "subCategory": "Antiparasitario",
     "price": 31990,
@@ -145,7 +145,7 @@
   },
   {
     "id": 8713184148957,
-    "name": "BRAVECTO_PERROS_20_KG___40_KG",
+    "name": "Bravecto perros (20 a 40 kg)",
     "category": "Medicamento",
     "subCategory": "Antiparasitario",
     "price": 41500,
@@ -157,7 +157,7 @@
   },
   {
     "id": 7809599501539,
-    "name": "NEXGARD_11_3_mg__2_4_kg__3_COMP",
+    "name": "Nexgard 11,3 mg (2 a 4 kg) x 3 comprimidos",
     "category": "Medicamento",
     "subCategory": "Antiparasitario",
     "price": 17990,
@@ -169,7 +169,7 @@
   },
   {
     "id": 7809599501546,
-    "name": "NEXGARD_28_3_mg__4_1_10_kg__3_COMP",
+    "name": "Nexgard 28,3 mg (4,1 a 10 kg) x 3 comprimidos",
     "category": "Medicamento",
     "subCategory": "Antiparasitario",
     "price": 19990,
@@ -181,7 +181,7 @@
   },
   {
     "id": 7809599501553,
-    "name": "NEXGARD_68_mg__10_1_25_kg__3_COMP",
+    "name": "Nexgard 68 mg (10,1 a 25 kg) x 3 comprimidos",
     "category": "Medicamento",
     "subCategory": "Antiparasitario",
     "price": 21990,
@@ -193,7 +193,7 @@
   },
   {
     "id": 7809599501560,
-    "name": "NEXGARD_136_mg__25_1_50_kg__3_COMP",
+    "name": "Nexgard 136 mg (25,1 a 50 kg) x 3 comprimidos",
     "category": "Medicamento",
     "subCategory": "Antiparasitario",
     "price": 27990,
@@ -205,7 +205,7 @@
   },
   {
     "id": 7809599502352,
-    "name": "FRONTLINE_SPRAY_100ml",
+    "name": "Frontline Spray 100 ml",
     "category": "Medicamento",
     "subCategory": "Antiparasitario",
     "price": 13990,
@@ -217,7 +217,7 @@
   },
   {
     "id": 7800006010101,
-    "name": "MEBERMIC",
+    "name": "Mebermic",
     "category": "Medicamento",
     "subCategory": "Antiparasitario",
     "price": 2000,
@@ -229,7 +229,7 @@
   },
   {
     "id": 7804622980541,
-    "name": "EHLIQUANTEL_FORTE",
+    "name": "Ehliquantel Forte",
     "category": "Medicamento",
     "subCategory": "Antiparasitario",
     "price": 6500,
@@ -241,7 +241,7 @@
   },
   {
     "id": 4007221054221,
-    "name": "DRONTAL_PUPPY",
+    "name": "Drontal Puppy",
     "category": "Medicamento",
     "subCategory": "Antiparasitario",
     "price": 13990,
@@ -253,7 +253,7 @@
   },
   {
     "id": 4007221053675,
-    "name": "DRONTAL_CAT_",
+    "name": "Drontal Cat",
     "category": "Medicamento",
     "subCategory": "Antiparasitario",
     "price": 2990,
@@ -265,7 +265,7 @@
   },
   {
     "id": 3597133082944,
-    "name": "MILPRO_GATITOS_0_5_2KG__2_comprimidos",
+    "name": "Milpro gatitos (0,5 a 2 kg) x 2 comprimidos",
     "category": "Medicamento",
     "subCategory": "Antiparasitario",
     "price": 9500,
@@ -277,7 +277,7 @@
   },
   {
     "id": 3597133082937,
-    "name": "MILPRO_GATOS_MAYOR_A_2kg_x_2_comprimidos",
+    "name": "Milpro gatos (mayor a 2 kg) x 2 comprimidos",
     "category": "Medicamento",
     "subCategory": "Antiparasitario",
     "price": 14500,
@@ -289,7 +289,7 @@
   },
   {
     "id": 7800006001321,
-    "name": "SHAMPOO_ALERDRAG_150ml",
+    "name": "Shampoo Alerdrag 150 ml",
     "category": "Shampoos",
     "subCategory": "Shampoo medicado",
     "price": 17990,
@@ -301,7 +301,7 @@
   },
   {
     "id": 7800006005169,
-    "name": "SHAMPOO_REGEPIPEL_PLUS_150ml",
+    "name": "Shampoo Regepipel Plus 150 ml",
     "category": "Shampoos",
     "subCategory": "Shampoo medicado",
     "price": 16500,
@@ -313,7 +313,7 @@
   },
   {
     "id": 7800006001291,
-    "name": "SHAMPOO_PETEVER_FORTE_150ml",
+    "name": "Shampoo Petever Forte 150 ml",
     "category": "Shampoos",
     "subCategory": "Shampoo medicado",
     "price": 15990,
@@ -325,7 +325,7 @@
   },
   {
     "id": 7800006000546,
-    "name": "SHAMPOO_F_L_T_150ml",
+    "name": "Shampoo F.L.T. 150 ml",
     "category": "Shampoos",
     "subCategory": "Shampoo medicado",
     "price": 11990,
@@ -337,7 +337,7 @@
   },
   {
     "id": 7898574021810,
-    "name": "MEGAMAZON_SHAMPOO_FOREST_BALANCE_300_ML",
+    "name": "Megamazon shampoo Forest Balance 300 ml",
     "category": "Shampoos",
     "subCategory": "Shampoo",
     "price": 10990,
@@ -349,7 +349,7 @@
   },
   {
     "id": 7898574021834,
-    "name": "MEGAMAZON_SHAMPOO_FOREST_PURITY_300_ML",
+    "name": "Megamazon shampoo Forest Purity 300 ml",
     "category": "Shampoos",
     "subCategory": "Shampoo",
     "price": 10990,
@@ -361,7 +361,7 @@
   },
   {
     "id": 7800006008832,
-    "name": "SKINDRAG_TE_VERDE_Y_CALENDULA_250ml",
+    "name": "Skindrag té verde y caléndula 250 ml",
     "category": "Shampoos",
     "subCategory": "Shampoo",
     "price": 11500,
@@ -373,7 +373,7 @@
   },
   {
     "id": 7800006008856,
-    "name": "SKINDRAG_CERAMIDAS_250ml",
+    "name": "Skindrag ceramidas 250 ml",
     "category": "Shampoos",
     "subCategory": "Shampoo",
     "price": 11990,
@@ -385,7 +385,7 @@
   },
   {
     "id": 7800006008849,
-    "name": "SKINDRAG_AVENA_250ml",
+    "name": "Skindrag avena 250 ml",
     "category": "Shampoos",
     "subCategory": "Shampoo",
     "price": 13500,
@@ -397,7 +397,7 @@
   },
   {
     "id": 7805505005436,
-    "name": "TRAPER_SHAMPOO_ALOE_VERA_260ml",
+    "name": "Traper shampoo aloe vera 260 ml",
     "category": "Shampoos",
     "subCategory": "Shampoo",
     "price": 6990,
@@ -409,7 +409,7 @@
   },
   {
     "id": 7805505005573,
-    "name": "TRAPER_SHAMPOO_NEUTRO_GATO_260ml",
+    "name": "Traper shampoo neutro gato 260 ml",
     "category": "Shampoos",
     "subCategory": "Shampoo",
     "price": 5990,
@@ -421,7 +421,7 @@
   },
   {
     "id": 7805505005481,
-    "name": "TRAPER_SHAMPOO_NEUTRO_PUPPY_260ml",
+    "name": "Traper shampoo neutro puppy 260 ml",
     "category": "Shampoos",
     "subCategory": "Shampoo",
     "price": 6500,
@@ -433,7 +433,7 @@
   },
   {
     "id": 638822000542,
-    "name": "ENJUAGUE_OXYFRESH_237ml",
+    "name": "Enjuague bucal Oxyfresh 237 ml",
     "category": "Medicamento",
     "subCategory": "Higiene bucal",
     "price": 16990,
@@ -445,7 +445,7 @@
   },
   {
     "id": 638822000092,
-    "name": "LIMPIADOR_OREJAS_OXYFRESH_237ml",
+    "name": "Limpiador de orejas Oxyfresh 237 ml",
     "category": "Medicamento",
     "subCategory": "Solución ótica",
     "price": 15990,
@@ -457,7 +457,7 @@
   },
   {
     "id": 886284907422,
-    "name": "SHAMPOO_EN_SECO_PARA_GATOS_PET_HEAD_FELIN__GOOD_LEMONBERRY",
+    "name": "Shampoo en seco para gatos Pet Head Felin' Good Lemonberry",
     "category": "Shampoos",
     "subCategory": "Shampoo seco",
     "price": 16990,
@@ -469,7 +469,7 @@
   },
   {
     "id": 7800006007545,
-    "name": "MATIPET_CREMA_50G",
+    "name": "Matipet crema 50 g",
     "category": "Medicamento",
     "subCategory": "Crema",
     "price": 13990,
@@ -481,7 +481,7 @@
   },
   {
     "id": 7800006011276,
-    "name": "MATIPET_SPRAY_SOLUCI_N_T_PICA_100ml",
+    "name": "Matipet spray solución tópica 100 ml",
     "category": "Medicamento",
     "subCategory": "Solución tópica",
     "price": 13990,
@@ -493,7 +493,7 @@
   },
   {
     "id": 7800006003455,
-    "name": "MIXANTIP_PLUS_CREMA_15g",
+    "name": "Mixantip Plus crema 15 g",
     "category": "Medicamento",
     "subCategory": "Crema",
     "price": 14990,
@@ -505,7 +505,7 @@
   },
   {
     "id": 5901891240962,
-    "name": "TRICHOCAT_PASTE_50g",
+    "name": "Trichocat Paste 50 g",
     "category": "Medicamento",
     "subCategory": "Pasta",
     "price": 14500,
@@ -517,7 +517,7 @@
   },
   {
     "id": 737787905944,
-    "name": "SUNIFLEX_105g",
+    "name": "Suniflex 105 g",
     "category": "Medicamento",
     "subCategory": "Suplemento",
     "price": 23500,
@@ -529,7 +529,7 @@
   },
   {
     "id": 737787906040,
-    "name": "SUNIULTRAFLEX_CUIDADO_ARTICULAR_INTENSIVO_160g",
+    "name": "Suniultraflex cuidado articular intensivo 160 g",
     "category": "Medicamento",
     "subCategory": "Suplemento",
     "price": 29990,
@@ -541,7 +541,7 @@
   },
   {
     "id": 737787905951,
-    "name": "SUNICALM_105g",
+    "name": "Sunicalm 105 g",
     "category": "Medicamento",
     "subCategory": "Suplemento",
     "price": 22500,
@@ -553,7 +553,7 @@
   },
   {
     "id": 7800006004926,
-    "name": "SUPERPET_OMEGA_GATOS_125ml",
+    "name": "Superpet Omega gatos 125 ml",
     "category": "Medicamento",
     "subCategory": "Suplemento",
     "price": 8990,
@@ -565,7 +565,7 @@
   },
   {
     "id": 7800006006517,
-    "name": "SUPERPET_OMEGA_PUPPY_125ml",
+    "name": "Superpet Omega puppy 125 ml",
     "category": "Medicamento",
     "subCategory": "Suplemento",
     "price": 7500,
@@ -577,7 +577,7 @@
   },
   {
     "id": 7800006004933,
-    "name": "SUPERPET_OMEGA_ADULTO_125ml",
+    "name": "Superpet Omega adulto 125 ml",
     "category": "Medicamento",
     "subCategory": "Suplemento",
     "price": 7990,
@@ -589,7 +589,7 @@
   },
   {
     "id": 7800006006500,
-    "name": "SUPERPET_OMEGA_SENIOR_125ml",
+    "name": "Superpet Omega senior 125 ml",
     "category": "Medicamento",
     "subCategory": "Suplemento",
     "price": 8990,
@@ -601,7 +601,7 @@
   },
   {
     "id": 7800006003752,
-    "name": "DOGUIVIT_CACHORROS_60_comprimidos",
+    "name": "Doguivit cachorros 60 comprimidos",
     "category": "Medicamento",
     "subCategory": "Suplemento",
     "price": 9500,
@@ -613,7 +613,7 @@
   },
   {
     "id": 7800006000119,
-    "name": "DOGUIVIT_ADULTO_30_comprimidos",
+    "name": "Doguivit adulto 30 comprimidos",
     "category": "Medicamento",
     "subCategory": "Suplemento",
     "price": 8500,
@@ -625,7 +625,7 @@
   },
   {
     "id": 7800006003769,
-    "name": "DOGUIVIT_SENIOR_30_comprimidos",
+    "name": "Doguivit senior 30 comprimidos",
     "category": "Medicamento",
     "subCategory": "Suplemento",
     "price": 12990,
@@ -637,7 +637,7 @@
   },
   {
     "id": 8711231114283,
-    "name": "LAVETA_CARNITINA_50ml",
+    "name": "Laveta Carnitina 50 ml",
     "category": "Medicamento",
     "subCategory": "Suplemento",
     "price": 15990,
@@ -649,7 +649,7 @@
   },
   {
     "id": 8711231114306,
-    "name": "LAVETA_TAURINA_50_ml",
+    "name": "Laveta Taurina 50 ml",
     "category": "Medicamento",
     "subCategory": "Suplemento",
     "price": 15990,
@@ -661,7 +661,7 @@
   },
   {
     "id": 7800006002724,
-    "name": "APETIPET_100ml",
+    "name": "Apetipet 100 ml",
     "category": "Medicamento",
     "subCategory": "Suplemento",
     "price": 14500,
@@ -673,7 +673,7 @@
   },
   {
     "id": 7800006002908,
-    "name": "APETICAT_100ml",
+    "name": "Apeticat 100 ml",
     "category": "Medicamento",
     "subCategory": "Suplemento",
     "price": 10500,
@@ -685,7 +685,7 @@
   },
   {
     "id": 7800006000232,
-    "name": "HEPROTEC_180ml",
+    "name": "Heprotec 180 ml",
     "category": "Medicamento",
     "subCategory": "Suplemento",
     "price": 9990,
@@ -697,7 +697,7 @@
   },
   {
     "id": 7898053580883,
-    "name": "GLICOPAN_PET_125ml",
+    "name": "Glicopan Pet 125 ml",
     "category": "Medicamento",
     "subCategory": "Suplemento",
     "price": 22990,
@@ -709,7 +709,7 @@
   },
   {
     "id": 7898053580623,
-    "name": "HEMOLITAN_PET_60ml",
+    "name": "Hemolitan Pet 60 ml",
     "category": "Medicamento",
     "subCategory": "Suplemento",
     "price": 18990,
@@ -721,7 +721,7 @@
   },
   {
     "id": 7800006006821,
-    "name": "HERPLEX_L_30ml",
+    "name": "Herplex L 30 ml",
     "category": "Medicamento",
     "subCategory": "Suplemento",
     "price": 12500,
@@ -733,7 +733,7 @@
   },
   {
     "id": 7898053582795,
-    "name": "VITA_VET_C_SUPLEMENTO_VITAM_NICO_PERRO_Y_GATOS_30ml",
+    "name": "Vita Vet C suplemento vitamínico para perros y gatos 30 ml",
     "category": "Medicamento",
     "subCategory": "Suplemento",
     "price": 9500,
@@ -745,7 +745,7 @@
   },
   {
     "id": 7800006006913,
-    "name": "ROSTRUM_JARABE_20ml",
+    "name": "Rostrum jarabe 20 ml",
     "category": "Medicamento",
     "subCategory": "Antibiótico",
     "price": 10990,
@@ -757,7 +757,7 @@
   },
   {
     "id": 7800006006692,
-    "name": "DOXIMICIN_JARABE_60ml",
+    "name": "Doximicin jarabe 60 ml",
     "category": "Medicamento",
     "subCategory": "Antibiótico",
     "price": 13990,
@@ -769,7 +769,7 @@
   },
   {
     "id": 7800006006975,
-    "name": "GASTROENTERIL_JARABE_120ml",
+    "name": "Gastroenteril jarabe 120 ml",
     "category": "Medicamento",
     "subCategory": "Antibiótico",
     "price": 15500,
@@ -781,7 +781,7 @@
   },
   {
     "id": 7800006000737,
-    "name": "DIARREPAS_JARABE_100ml",
+    "name": "Diarrepas jarabe 100 ml",
     "category": "Medicamento",
     "subCategory": "Antibiótico",
     "price": 15500,
@@ -793,7 +793,7 @@
   },
   {
     "id": 7804650310952,
-    "name": "SYNULOX_250mg",
+    "name": "Synulox 250 mg",
     "category": "Medicamento",
     "subCategory": "Antibiótico",
     "price": 15990,
@@ -805,7 +805,7 @@
   },
   {
     "id": 3597133086225,
-    "name": "RILEXINE_VIRBAC_300mg",
+    "name": "Rilexine Virbac 300 mg",
     "category": "Medicamento",
     "subCategory": "Antibiótico",
     "price": 15990,
@@ -817,7 +817,7 @@
   },
   {
     "id": 7797600000631,
-    "name": "ENROXINA_50mg",
+    "name": "Enroxina 50 mg",
     "category": "Medicamento",
     "subCategory": "Antibiótico",
     "price": 9990,
@@ -829,7 +829,7 @@
   },
   {
     "id": 7797600000648,
-    "name": "ENROXINA_150mg",
+    "name": "Enroxina 150 mg",
     "category": "Medicamento",
     "subCategory": "Antibiótico",
     "price": 18990,
@@ -841,7 +841,7 @@
   },
   {
     "id": 7809599501638,
-    "name": "STOMORGYL_10",
+    "name": "Stomorgyl 10",
     "category": "Medicamento",
     "subCategory": "Antibiótico",
     "price": 26500,
@@ -853,7 +853,7 @@
   },
   {
     "id": 7809599501621,
-    "name": "STOMORGYL_2",
+    "name": "Stomorgyl 2",
     "category": "Medicamento",
     "subCategory": "Antibiótico",
     "price": 16500,
@@ -865,7 +865,7 @@
   },
   {
     "id": 3605874598867,
-    "name": "CLAVASEPTIN_50mg",
+    "name": "Clavaseptin 50 mg",
     "category": "Medicamento",
     "subCategory": "Antibiótico",
     "price": 14500,
@@ -877,7 +877,7 @@
   },
   {
     "id": 7800006003158,
-    "name": "DOXIMICIN_COMP_100mg",
+    "name": "Doximicin comprimidos 100 mg",
     "category": "Medicamento",
     "subCategory": "Antibiótico",
     "price": 11990,
@@ -889,7 +889,7 @@
   },
   {
     "id": 5391504342303,
-    "name": "CANISGEST_COMBI_16ml",
+    "name": "Canigest Combi 16 ml",
     "category": "Medicamento",
     "subCategory": "Probiótico",
     "price": 11990,
@@ -901,7 +901,7 @@
   },
   {
     "id": 5391504342297,
-    "name": "CANIGEST_COMBI_32ml",
+    "name": "Canigest Combi 32 ml",
     "category": "Medicamento",
     "subCategory": "Probiótico",
     "price": 17990,
@@ -913,7 +913,7 @@
   },
   {
     "id": 7800006008238,
-    "name": "OFTAVET_5ml",
+    "name": "Oftavet 5 ml",
     "category": "Medicamento",
     "subCategory": "Colirio antibiótico",
     "price": 25990,
@@ -925,7 +925,7 @@
   },
   {
     "id": 7798176420571,
-    "name": "LABYES_TEARS",
+    "name": "Labyes Tears",
     "category": "Medicamento",
     "subCategory": "Colirio",
     "price": 19990,
@@ -937,7 +937,7 @@
   },
   {
     "id": 7798176420625,
-    "name": "OTIFLEX_LIMPIADOR_100ml",
+    "name": "Otiflex limpiador 100 ml",
     "category": "Medicamento",
     "subCategory": "Solución ótica",
     "price": 11990,
@@ -949,7 +949,7 @@
   },
   {
     "id": 7800006010149,
-    "name": "OTIBACT__GEL__TICO",
+    "name": "Otibact gel ótico",
     "category": "Medicamento",
     "subCategory": "Solución ótica",
     "price": 15500,
@@ -961,7 +961,7 @@
   },
   {
     "id": 7800006000577,
-    "name": "TRANSIMED__SUSPENSI_N__TICA_Y_T_PICA_15ml",
+    "name": "Transimed suspensión ótica y tópica 15 ml",
     "category": "Medicamento",
     "subCategory": "Solución ótica",
     "price": 16500,
@@ -973,7 +973,7 @@
   },
   {
     "id": 7800006003646,
-    "name": "ROSTRUMPLUS__EMULSI_N__TICA__ANTIBACTERIANA_Y_ANTIMIC_TICA_15ml",
+    "name": "Rostrum Plus emulsión ótica antibacteriana y antimicótica 15 ml",
     "category": "Medicamento",
     "subCategory": "Solución ótica",
     "price": 13500,
@@ -985,7 +985,7 @@
   },
   {
     "id": 7800006009488,
-    "name": "ULTRAFIL_PLUS__SUSPENSI_N__TICA_20ml",
+    "name": "Ultrafil Plus suspensión ótica 20 ml",
     "category": "Medicamento",
     "subCategory": "Solución ótica",
     "price": 19500,
@@ -997,7 +997,7 @@
   },
   {
     "id": 7804605270874,
-    "name": "SUCRAVET_JARABE_100ml",
+    "name": "Sucravet jarabe 100 ml",
     "category": "Medicamento",
     "subCategory": "Protector gástrico",
     "price": 23990,
@@ -1009,7 +1009,7 @@
   },
   {
     "id": 7800006007132,
-    "name": "ITRASKIN_JARABE_120ml",
+    "name": "Itraskin jarabe 120 ml",
     "category": "Medicamento",
     "subCategory": "Antimicótico",
     "price": 24500,
@@ -1021,7 +1021,7 @@
   },
   {
     "id": 7800006006814,
-    "name": "NAXPET_JARABE_20ml",
+    "name": "Naxpet jarabe 20 ml",
     "category": "Medicamento",
     "subCategory": "Analgésico-Antiinflamatorio",
     "price": 8990,
@@ -1033,7 +1033,7 @@
   },
   {
     "id": 7800006010330,
-    "name": "MELOXIVET_",
+    "name": "Meloxivet",
     "category": "Medicamento",
     "subCategory": "Analgésico-Antiinflamatorio",
     "price": 21990,
@@ -1045,7 +1045,7 @@
   },
   {
     "id": 8908011696156,
-    "name": "DOPIRAL_ORAL_32ml",
+    "name": "Dopiral oral 32 ml",
     "category": "Medicamento",
     "subCategory": "Analgésico-Antiinflamatorio",
     "price": 16990,
@@ -1057,7 +1057,7 @@
   },
   {
     "id": 7800006009891,
-    "name": "DERMISOLONA_JARABE_30ml",
+    "name": "Dermisolona jarabe 30 ml",
     "category": "Medicamento",
     "subCategory": "Corticoide",
     "price": 15990,
@@ -1069,7 +1069,7 @@
   },
   {
     "id": 7800006002410,
-    "name": "NAXPET_10mg",
+    "name": "Naxpet 10 mg",
     "category": "Medicamento",
     "subCategory": "Analgésico-Antiinflamatorio",
     "price": 10500,
@@ -1081,7 +1081,7 @@
   },
   {
     "id": 7800006003370,
-    "name": "NAXPET_30mg",
+    "name": "Naxpet 30 mg",
     "category": "Medicamento",
     "subCategory": "Analgésico-Antiinflamatorio",
     "price": 12500,
@@ -1093,7 +1093,7 @@
   },
   {
     "id": 7800086210057,
-    "name": "PREDNISOLONA_20mg",
+    "name": "Prednisolona 20 mg",
     "category": "Medicamento",
     "subCategory": "Corticoide",
     "price": 9990,
@@ -1105,7 +1105,7 @@
   },
   {
     "id": 7804622980183,
-    "name": "EHLIPROFENO_20mg",
+    "name": "Ehliprofeno 20 mg",
     "category": "Medicamento",
     "subCategory": "Analgésico-Antiinflamatorio",
     "price": 12500,
@@ -1117,7 +1117,7 @@
   },
   {
     "id": 7804650310891,
-    "name": "RIMADYL_100mg",
+    "name": "Rimadyl 100 mg",
     "category": "Medicamento",
     "subCategory": "Analgésico-Antiinflamatorio",
     "price": 20990,
@@ -1129,7 +1129,7 @@
   },
   {
     "id": 7804650310914,
-    "name": "RIMADYL_25mg",
+    "name": "Rimadyl 25 mg",
     "category": "Medicamento",
     "subCategory": "Analgésico-Antiinflamatorio",
     "price": 17500,
@@ -1141,7 +1141,7 @@
   },
   {
     "id": 7800006010170,
-    "name": "PAPAINPET_30_COMP",
+    "name": "Papainpet 30 comprimidos",
     "category": "Medicamento",
     "subCategory": "Suplemento",
     "price": 11990,
@@ -1153,7 +1153,7 @@
   },
   {
     "id": 761887187401,
-    "name": "FIBRINOPET_30_COMP",
+    "name": "Fibrinopet 30 comprimidos",
     "category": "Medicamento",
     "subCategory": "Suplemento",
     "price": 24990,
@@ -1165,7 +1165,7 @@
   },
   {
     "id": 761887135476,
-    "name": "SILIMARINA_30_COMP",
+    "name": "Silimarina 30 comprimidos",
     "category": "Medicamento",
     "subCategory": "Protector hepático",
     "price": 22500,
@@ -1177,7 +1177,7 @@
   },
   {
     "id": 961882701716,
-    "name": "HEMOLIVET_30_COMP",
+    "name": "Hemolivet 30 comprimidos",
     "category": "Medicamento",
     "subCategory": "Suplemento",
     "price": 25990,
@@ -1189,7 +1189,7 @@
   },
   {
     "id": 8470000397516,
-    "name": "VIUSID_JARABE_150ml",
+    "name": "Viusid jarabe 150 ml",
     "category": "Medicamento",
     "subCategory": "Suplemento",
     "price": 21500,
@@ -1201,7 +1201,7 @@
   },
   {
     "id": 7798176422070,
-    "name": "TRIHEPAT_JARABE_100ml",
+    "name": "Trihepat jarabe 100 ml",
     "category": "Medicamento",
     "subCategory": "Protector hepático",
     "price": 27500,
@@ -1213,7 +1213,7 @@
   },
   {
     "id": 7804650310334,
-    "name": "CERENIA_24mg",
+    "name": "Cerenia 24 mg",
     "category": "Medicamento",
     "subCategory": "Antiemético",
     "price": 25500,
@@ -1225,7 +1225,7 @@
   },
   {
     "id": 7800006005572,
-    "name": "DIPRAMIDA_JARABE_20ml",
+    "name": "Dipramida jarabe 20 ml",
     "category": "Medicamento",
     "subCategory": "Antiemético",
     "price": 11990,
@@ -1237,7 +1237,7 @@
   },
   {
     "id": 7800006007033,
-    "name": "URSOVET_JARABE_60ml",
+    "name": "Ursovet jarabe 60 ml",
     "category": "Medicamento",
     "subCategory": "Protector hepático",
     "price": 13990,
@@ -1249,7 +1249,7 @@
   },
   {
     "id": 7800006008245,
-    "name": "CABATINA_JARABE_25ml",
+    "name": "Cabatina jarabe 25 ml",
     "category": "Medicamento",
     "subCategory": "Vitamina",
     "price": 11500,
@@ -1261,7 +1261,7 @@
   },
   {
     "id": 7800006010705,
-    "name": "CRACUL_20_COMP",
+    "name": "Cracul 20 comprimidos",
     "category": "Medicamento",
     "subCategory": "Suplemento",
     "price": 8990,
@@ -1273,7 +1273,7 @@
   },
   {
     "id": 7800093000832,
-    "name": "TRAUMEEL_100_COMP",
+    "name": "Traumeel 100 comprimidos",
     "category": "Medicamento",
     "subCategory": "Homeopático",
     "price": 33500,
@@ -1285,7 +1285,7 @@
   },
   {
     "id": 7800093000887,
-    "name": "ENGYSTOL_100_COMP",
+    "name": "Engystol 100 comprimidos",
     "category": "Medicamento",
     "subCategory": "Homeopático",
     "price": 29990,

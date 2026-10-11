@@ -36,3 +36,8 @@ next-env.d.ts
 # IDE
 .vscode/
 .idea/
+
+# capturas y registros locales de revisión de diseño
+.playwright-mcp/
+.impeccable/review/
+.impeccable/questions/

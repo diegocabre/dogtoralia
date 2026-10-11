@@ -1,11 +1,9 @@
-"use client";
-
-import Image from 'next/image';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { FaWhatsapp } from 'react-icons/fa';
-import { cleanAndCapitalize } from '@/lib/utils';
-import { MAIN_WHATSAPP_PHONE, whatsappUrl } from '@/data/locations';
+import Link from "next/link";
+import { PiArrowLeftBold, PiWhatsappLogoBold } from "react-icons/pi";
+import { cleanAndCapitalize } from "@/lib/utils";
+import { MAIN_WHATSAPP_PHONE, whatsappUrl } from "@/data/locations";
+import { ProductImage } from "@/components/store/ProductImage";
+import { EtiquetaReceta } from "@/components/store/EtiquetaReceta";
 
 interface ProductClientProps {
     product: {
@@ -13,9 +11,12 @@ interface ProductClientProps {
         name: string;
         imageUrl: string;
         description: string;
+        subCategory: string;
+        requiresPrescription: boolean;
     };
 }
 
+/** Ficha de producto: la foto y los datos en dos paneles del mismo marco. */
 export default function ProductClient({ product }: ProductClientProps) {
     const name = cleanAndCapitalize(product.name);
     const productWhatsappUrl = whatsappUrl(
@@ -24,41 +25,67 @@ export default function ProductClient({ product }: ProductClientProps) {
     );
 
     return (
-        <div className="container mx-auto px-4 py-8 pt-28">
-            <div className="mb-6 px-2">
-                <Link href="/store" className="inline-flex items-center gap-2 text-primary hover:underline font-medium text-base">
-                    ← Volver a la tienda
+        <main className="min-h-screen bg-muro pb-14 pt-[76px] sm:pb-20 lg:pt-[88px]">
+            <div className="mx-auto max-w-6xl px-3 sm:px-6">
+                <Link
+                    href="/store"
+                    className="mb-3 inline-flex min-h-11 items-center gap-2 px-1 font-semibold text-grafito underline decoration-vinilo-mostaza decoration-[3px] underline-offset-[6px] hover:decoration-grafito"
+                >
+                    <PiArrowLeftBold aria-hidden /> Volver a la tienda
                 </Link>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="flex items-center justify-center bg-white">
-                    <Image
-                        src={product.imageUrl}
-                        alt={name}
-                        width={400}
-                        height={400}
-                        className="object-contain rounded-lg shadow-lg bg-white"
-                        style={{ maxHeight: 400, width: '100%', height: 'auto' }}
-                    />
+
+                <div className="grid gap-2 rounded-md bg-grafito p-2 sm:gap-3 sm:p-3 md:grid-cols-2">
+                    <div className="relative aspect-[4/3] max-h-[38vh] w-full min-w-0 overflow-hidden rounded-[3px] bg-white md:aspect-auto md:max-h-none md:min-h-[360px] lg:aspect-square lg:min-h-0">
+                        <ProductImage
+                            imageUrl={product.imageUrl}
+                            alt={name}
+                            label={product.subCategory}
+                            sizes="(max-width: 768px) 100vw, 560px"
+                            priority
+                            large
+                        />
+                    </div>
+
+                    <div className="flex min-w-0 flex-col rounded-[3px] bg-white px-5 py-7 text-grafito sm:px-9 sm:py-10">
+                        <p className="flex flex-wrap items-center gap-2 text-sm font-semibold text-grafito-suave">
+                            <span>{product.subCategory}</span>
+                            {product.requiresPrescription && (
+                                <EtiquetaReceta />
+                            )}
+                        </p>
+                        <h1 className="mt-3 text-[clamp(1.6rem,3vw,2.25rem)] font-bold leading-tight">{name}</h1>
+                        <a
+                            href={productWhatsappUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`Consultar por WhatsApp: ${name}`}
+                            className="presionable mt-6 inline-flex min-h-12 items-center justify-between gap-3 self-start rounded-[10px] border-[3px] border-grafito bg-white py-1.5 pl-4 pr-1.5 text-grafito shadow-letrero"
+                        >
+                            <span className="rotulo text-base lg:whitespace-nowrap lg:text-lg">
+                                <span className="lg:hidden">Consultar</span>
+                                <span className="hidden lg:inline">Consultar por WhatsApp</span>
+                            </span>
+                            <span
+                                aria-hidden
+                                className="flex h-10 w-10 items-center justify-center rounded-full bg-whatsapp text-2xl text-white"
+                            >
+                                <PiWhatsappLogoBold />
+                            </span>
+                        </a>
+                        {product.description && (
+                            <p className="mt-5 max-w-[60ch] text-base leading-relaxed text-grafito-suave">
+                                {product.description}
+                            </p>
+                        )}
+                        {product.requiresPrescription && (
+                            <p className="mt-5 max-w-[60ch] rounded-[3px] bg-muro px-4 py-3 text-sm leading-relaxed">
+                                Este producto requiere receta veterinaria. Si no la tienes, podemos ver a tu
+                                mascota en consulta.
+                            </p>
+                        )}
+                    </div>
                 </div>
-                <div>
-                    <h1 className="text-3xl font-bold mb-4">{name}</h1>
-                    {product.description && (
-                        <p className="text-gray-600 mb-6">{product.description}</p>
-                    )}
-                    <motion.a
-                        href={productWhatsappUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.03 }}
-                        whileTap={{ scale: 0.97 }}
-                        className="inline-flex items-center gap-2 bg-green-600 text-white py-3 px-6 rounded-lg hover:bg-green-700 transition-colors font-medium"
-                    >
-                        <FaWhatsapp className="text-xl" />
-                        Consultar por WhatsApp
-                    </motion.a>
-                </div>
             </div>
-        </div>
+        </main>
     );
 }

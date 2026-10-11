@@ -3,8 +3,7 @@ import { locationList } from "@/data/locations";
 import { absoluteUrl } from "@/data/site";
 import { pageMetadata, graph, veterinaryCareJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 
-// La página es un componente de cliente (animaciones), que no puede exportar
-// metadata; por eso la metadata y los datos estructurados van en este layout.
+// La metadata y los datos estructurados de contacto van en este layout.
 export const metadata = pageMetadata({
   title: "Contacto y sedes: Puente Alto y Santiago Centro",
   description: `Escríbenos o visítanos: ${locationList

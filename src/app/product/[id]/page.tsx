@@ -1,14 +1,10 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { cleanAndCapitalize } from '@/lib/utils';
+import { cleanAndCapitalize, hasOwnProductImage } from '@/lib/utils';
 import { getCatalog, type Product } from '@/lib/catalog';
 import { pageMetadata, graph, breadcrumbJsonLd } from '@/lib/seo';
 import { JsonLd } from '@/components/seo/JsonLd';
 import ProductClient from './ProductClient';
-
-// Imagen genérica que se usa cuando un producto aún no tiene foto propia;
-// como imagen para compartir es peor que la imagen de marca.
-const PLACEHOLDER_IMAGE = '/images/products/medicamento/standar.jpg';
 
 async function findProduct(rawId: string): Promise<Product | null> {
   try {
@@ -48,7 +44,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const description = product.description
     ? summarize(product.description)
     : `${name}: producto veterinario disponible en Dogtoralia Vet. Consulta disponibilidad por WhatsApp.`;
-  const hasOwnImage = product.imageUrl && product.imageUrl !== PLACEHOLDER_IMAGE;
+  // Sin foto propia, la imagen genérica es peor para compartir que la de marca.
+  const hasOwnImage = hasOwnProductImage(product.imageUrl);
 
   return pageMetadata({
     title: name,
@@ -84,6 +81,8 @@ export default async function Page({ params }: PageProps) {
           name: product.name,
           imageUrl: product.imageUrl || '',
           description: product.description || '',
+          subCategory: product.subCategory,
+          requiresPrescription: product.requiresPrescription,
         }}
       />
     </>

@@ -1,42 +1,58 @@
-import Link from 'next/link';
-import Image from 'next/image';
+import Image from "next/image";
+import Link from "next/link";
+import { PiArrowRightBold, PiHouseLineBold } from "react-icons/pi";
 
+/**
+ * Página no encontrada en el mundo de la vitrina: el 404 como placa de
+ * puerta, el equipo en el panel de al lado y la salida a la mano.
+ */
 export default function NotFound() {
-    return (
-        <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 flex items-center justify-center px-6 py-24 sm:py-32 lg:px-8">
-            <div className="text-center">
-                <div className="relative mx-auto w-64 h-64 mb-8">
-                    <Image
-                        src="/images/portada.png"
-                        alt="Dogtoralia"
-                        fill
-                        sizes="(max-width: 768px) 100vw, 256px"
-                        className="object-contain rounded-lg"
-                        priority
-                    />
-                </div>
-                <p className="text-base font-semibold text-emerald-600">404</p>
-                <h1 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-                    ¡Ups! Página no encontrada
-                </h1>
-                <p className="mt-6 text-base leading-7 text-gray-600">
-                    Lo sentimos, parece que esta página se perdió persiguiendo su cola.
-                </p>
-                <div className="mt-10 flex items-center justify-center gap-x-6">
-                    <Link
-                        href="/"
-                        className="rounded-md bg-emerald-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-emerald-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 transition-all duration-300"
-                    >
-                        Volver al inicio
-                    </Link>
-                    <Link
-                        href="/contact"
-                        className="text-sm font-semibold text-gray-900 hover:text-emerald-600 transition-all duration-300"
-                    >
-                        Contactar soporte <span aria-hidden="true">&rarr;</span>
-                    </Link>
-                </div>
+  return (
+    <main className="min-h-screen bg-muro pb-14 pt-[76px] sm:pb-20 lg:pt-[88px]">
+      <div className="mx-auto max-w-6xl px-3 sm:px-6">
+        <div className="grid gap-2 rounded-md bg-grafito p-2 sm:gap-3 sm:p-3 md:grid-cols-[1.1fr_1fr]">
+          <div className="flex flex-col justify-center rounded-[3px] bg-vinilo-azul px-6 py-9 text-white sm:px-10 sm:py-12">
+            <p aria-hidden className="rotulo text-[5.5rem] leading-[0.85] sm:text-[6.5rem]">
+              404
+            </p>
+            <h1 className="rotulo mt-5 text-[clamp(2rem,4.5vw,3.25rem)]">¡Ups! Página no encontrada</h1>
+            <p className="mt-4 max-w-[40ch] text-base leading-relaxed text-white/90 sm:text-lg">
+              Lo sentimos, parece que esta página se perdió persiguiendo su cola.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+              <Link
+                href="/home"
+                className="presionable inline-flex min-h-12 items-center justify-between gap-3 rounded-[10px] border-[3px] border-grafito bg-white py-1.5 pl-4 pr-1.5 text-grafito shadow-letrero"
+              >
+                <span className="rotulo text-lg">Volver al inicio</span>
+                <span
+                  aria-hidden
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-grafito text-xl text-white"
+                >
+                  <PiHouseLineBold />
+                </span>
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-flex min-h-11 items-center gap-2 font-semibold underline decoration-vinilo-mostaza decoration-[3px] underline-offset-[6px] hover:decoration-white"
+              >
+                Ir a contacto <PiArrowRightBold aria-hidden />
+              </Link>
             </div>
+          </div>
+
+          <figure className="relative aspect-[4/3] overflow-hidden rounded-[3px] bg-grafito-suave md:aspect-auto md:min-h-[420px]">
+            <Image
+              src="/images/portada.png"
+              alt="La Dra. Sara Vásquez y el Dr. Gabriel Cabré con un perro blanco en brazos"
+              fill
+              preload
+              sizes="(max-width: 768px) 100vw, 520px"
+              className="object-cover object-[50%_22%]"
+            />
+          </figure>
         </div>
-    );
+      </div>
+    </main>
+  );
 }

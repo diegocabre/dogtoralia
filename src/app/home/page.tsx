@@ -1,10 +1,10 @@
-import { InstagramCarousel } from "@/components/instagram/InstagramCarousel";
 import { Locations } from "@/components/locations/Locations";
 import { Hero } from "@/components/home/Hero";
 import { ServicesPreview } from "@/components/home/ServicesPreview";
 import { Team } from "@/components/home/Team";
 import { Reviews } from "@/components/home/Reviews";
-import { AnimatedSection } from "@/components/ui/AnimatedSection";
+import { CierreAgenda } from "@/components/home/CierreAgenda";
+import { BarraWhatsapp } from "@/components/home/BarraWhatsapp";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { SITE_DESCRIPTION, SITE_KEYWORDS } from "@/data/site";
 import { pageMetadata, graph, veterinaryCareJsonLd } from "@/lib/seo";
@@ -22,18 +22,15 @@ export const metadata = {
 
 export default function HomePage() {
   return (
-    <main>
+    <main className="bg-muro">
       <JsonLd data={graph(veterinaryCareJsonLd())} />
       <Hero />
       <ServicesPreview />
       <Team />
       <Reviews />
-      <AnimatedSection>
-        <Locations />
-      </AnimatedSection>
-      <AnimatedSection delay={0.1}>
-        <InstagramCarousel />
-      </AnimatedSection>
+      <Locations />
+      <CierreAgenda />
+      <BarraWhatsapp />
     </main>
   );
 }

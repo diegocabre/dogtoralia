@@ -1,27 +1,16 @@
-"use client";
-import React from "react";
-import { ProductCard } from '@/components/store/ProductCard';
-import { Product } from '@/types/product';
+import { ProductCard } from "@/components/store/ProductCard";
+import type { Product } from "@/types/product";
 
-interface ProductGridProps {
-    products: Product[];
-    loading: boolean;
+/** Grilla de productos: dos columnas en el celular para recorrer rápido. */
+export default function ProductGrid({ products }: { products: Product[] }) {
+  return (
+    <ul className="grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3 lg:grid-cols-4">
+      {products.map((product, index) => (
+        <li key={product.id}>
+          {/* La primera fila se ve al cargar: sus fotos no esperan. */}
+          <ProductCard product={product} priority={index < 4} />
+        </li>
+      ))}
+    </ul>
+  );
 }
-
-const ProductGrid: React.FC<ProductGridProps> = ({ products, loading }) => {
-    if (loading) {
-        return <div className="col-span-full text-center text-gray-500">Cargando productos...</div>;
-    }
-    if (products.length === 0) {
-        return <div className="col-span-full text-center text-gray-500">No se encontraron productos.</div>;
-    }
-    return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {products.map(product => (
-                <ProductCard key={product.id} product={product} />
-            ))}
-        </div>
-    );
-};
-
-export default ProductGrid;

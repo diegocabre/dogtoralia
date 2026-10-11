@@ -1,20 +1,39 @@
 @import "tailwindcss";
 
 /*
-  Colores de la marca. Van dentro de @theme para que Tailwind v4 genere
-  TODAS las utilidades (bg-primary, hover:bg-primary-dark, bg-secondary/10,
-  shadow-primary/20, ring-primary...). Definidos solo en :root, utilidades
-  como esas no existían y los hover/opacidades no hacían nada.
-  "static" hace que las variables siempre se emitan, porque también se
-  leen con var(--color-...) desde estilos en línea (ej. Hero).
+  Tokens del mundo visual "vitrina vinilada" (ver DESIGN.md). Van dentro de
+  @theme para que Tailwind v4 genere las utilidades (bg-vinilo-azul,
+  text-grafito, shadow-letrero...). "static" hace que las variables siempre
+  se emitan, porque también se leen con var(--color-...) desde el CSS.
+
+  Los colores salen del logo y de los paneles de la fachada de las sedes.
+  Los "vinilo-*" son las versiones profundas que se usan como fondo de panel
+  con texto blanco (contraste AA).
 */
 @theme static {
-  --color-primary: #2893b9;
-  --color-primary-dark: #227d9d;
-  --color-secondary: #d0911a;
-  --color-secondary-dark: #b07914;
-  --color-tertiary: #434142;
-  --color-quaternary: #6c9e3d;
+  --color-vinilo-azul: #1d6f91;
+  --color-vinilo-verde: #4f7a2a;
+  --color-vinilo-mostaza: #d0911a;
+  --color-grafito: #2b2727;
+  --color-grafito-suave: #4a4444;
+  --color-muro: #eceeed;
+  --color-whatsapp: #0f7d43;
+  --color-whatsapp-dark: #0b6435;
+  /* Solo para errores de formulario: rojo de aviso con contraste AA sobre blanco. */
+  --color-error: #b42318;
+  --color-error-suave: #fdeceb;
+
+  --font-rotulo: var(--font-rubik), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+
+  /* Sombras: la placa colgada en reposo, levantada al hover, y la tarjeta
+     de producto al tomarla. Son las únicas del sitio. */
+  --shadow-letrero: 0 6px 14px -6px rgb(43 39 39 / 0.45);
+  --shadow-letrero-alto: 0 12px 22px -10px rgb(43 39 39 / 0.5);
+  --shadow-tarjeta: 0 10px 20px -12px rgb(43 39 39 / 0.55);
+
+  --ease-out-fuerte: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-cajon: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 :root {
@@ -22,16 +41,15 @@
 }
 
 /*
-  Estos estilos por defecto van dentro de @layer base para que las
-  utilidades de Tailwind (como text-white) puedan sobreescribirlos. En
-  Tailwind v4, una regla suelta (fuera de cualquier @layer) siempre gana
-  sobre las utilidades. La fuente (Inter) la aplica next/font en el <body>
-  desde layout.tsx; los títulos la heredan.
+  Estilos por defecto dentro de @layer base para que las utilidades de
+  Tailwind puedan sobreescribirlos. Los títulos y párrafos HEREDAN el color
+  del bloque donde están: así el texto dentro de un panel azul o del footer
+  es blanco sin tener que repetirlo, y nunca queda gris sobre color.
 */
 @layer base {
   body {
     background: var(--background);
-    color: var(--color-tertiary);
+    color: var(--color-grafito);
   }
 
   h1,
@@ -41,10 +59,170 @@
   h5,
   h6 {
     font-weight: 600;
-    color: var(--color-tertiary);
   }
 
-  p {
-    color: var(--color-tertiary);
+  ::selection {
+    background: var(--color-vinilo-mostaza);
+    color: var(--color-grafito);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-vinilo-mostaza);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  html {
+    scrollbar-color: var(--color-grafito-suave) var(--color-muro);
+  }
+}
+
+@layer components {
+  /* Titulares en letra de rotulación: mayúsculas gruesas, como los
+     paneles de la vitrina. */
+  .rotulo {
+    font-family: var(--font-rotulo);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    line-height: 1.02;
+    text-wrap: balance;
+  }
+
+  /* Elemento que se puede presionar: responde al toque. */
+  .presionable {
+    transition:
+      transform 160ms var(--ease-out-fuerte),
+      box-shadow 200ms var(--ease-out-fuerte),
+      background-color 200ms ease;
+  }
+  .presionable:active {
+    transform: scale(0.97);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .presionable:hover {
+      transform: translateY(-2px);
+    }
+    .presionable:active {
+      transform: scale(0.97);
+    }
+  }
+
+  /* Texto de las páginas legales: largo de línea cómodo y jerarquía
+     clara, con los títulos en rotulación. */
+  .legal-texto {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+  }
+  /* El panel llena su columna; lo que tiene largo de línea es el texto. */
+  .legal-texto > *,
+  .legal-texto section > * {
+    max-width: 72ch;
+  }
+  .legal-texto > * + *,
+  .legal-texto section > * + * {
+    margin-top: 1rem;
+  }
+  .legal-texto section + section,
+  .legal-texto p + section {
+    margin-top: 2.5rem;
+  }
+  .legal-texto h2 {
+    font-family: var(--font-rotulo);
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 1.375rem;
+    line-height: 1.15;
+    letter-spacing: 0.01em;
+  }
+  .legal-texto ul {
+    list-style: disc;
+    padding-left: 1.4rem;
+  }
+  .legal-texto li + li {
+    margin-top: 0.4rem;
+  }
+  .legal-texto li::marker {
+    color: var(--color-vinilo-azul);
+  }
+  .legal-texto a {
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: var(--color-vinilo-mostaza);
+    text-decoration-thickness: 3px;
+    text-underline-offset: 4px;
+  }
+  .legal-texto a:hover {
+    text-decoration-color: var(--color-grafito);
+  }
+
+  /* Letrero de estado de la puerta: se balancea una sola vez al aparecer,
+     como un cartel colgado de su clavo. */
+  .letrero-colgante {
+    transform-origin: 50% 0;
+    animation: letrero-balanceo 700ms var(--ease-out-fuerte) both;
+  }
+
+  /* Barra inferior de WhatsApp (móvil): sube desde abajo cuando los
+     letreros de la vitrina salen de la pantalla. */
+  .barra-whatsapp {
+    transition:
+      transform 320ms var(--ease-cajon),
+      opacity 200ms ease;
+  }
+  .barra-whatsapp[data-visible="false"] {
+    transform: translateY(110%);
+    opacity: 0;
+    pointer-events: none;
+    transition-duration: 200ms;
+  }
+}
+
+@keyframes letrero-balanceo {
+  0% {
+    transform: rotate(-7deg);
+    opacity: 0;
+  }
+  45% {
+    transform: rotate(3deg);
+    opacity: 1;
+  }
+  75% {
+    transform: rotate(-1deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .letrero-colgante {
+    animation: letrero-aparece 200ms ease both;
+  }
+  .presionable,
+  .presionable:hover,
+  .presionable:active {
+    transform: none;
+  }
+  .barra-whatsapp,
+  .barra-whatsapp[data-visible="false"] {
+    transform: none;
+  }
+}
+
+@keyframes letrero-aparece {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Con la barra de WhatsApp en pantalla (solo móvil), el final de la
+   página deja espacio para que no tape el footer. */
+@media (max-width: 767px) {
+  body:has([data-barra-whatsapp]) {
+    padding-bottom: 76px;
   }
 }

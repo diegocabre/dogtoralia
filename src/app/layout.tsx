@@ -1,9 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Figtree, Rubik } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/navbar/NavBar";
 import Footer from "@/components/footer/Footer";
+import { MotionProvider } from "@/components/MotionProvider";
 import { JsonLd } from "@/components/seo/JsonLd";
 import {
   SITE_URL,
@@ -14,7 +15,11 @@ import {
   OG_IMAGE,
 } from "@/data/site";
 import { graph, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
-const inter = Inter({ subsets: ["latin"] });
+// Rubik: letra de rotulación para titulares (como los paneles de la
+// vitrina). Figtree: texto corrido. Se exponen como variables CSS que
+// globals.css usa en --font-rotulo y --font-sans.
+const rubik = Rubik({ subsets: ["latin"], weight: ["600", "700", "800"], variable: "--font-rubik" });
+const figtree = Figtree({ subsets: ["latin"], variable: "--font-figtree" });
 
 const DEFAULT_TITLE = `${SITE_NAME} | Veterinaria en Puente Alto y Santiago Centro`;
 
@@ -92,8 +97,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es-CL">
-      <body className={inter.className}>
+    <html lang="es-CL" className={`${rubik.variable} ${figtree.variable}`}>
+      <body className="font-sans antialiased">
         {/* Datos estructurados del negocio, presentes en todas las páginas */}
         <JsonLd data={graph(organizationJsonLd(), websiteJsonLd())} />
         {/* Microsoft Clarity: analítica de comportamiento (mapas de calor,
@@ -108,9 +113,20 @@ export default function RootLayout({
             })(window, document, "clarity", "script", "ylhv39f8zq");
           `}
         </Script>
-        <Navbar />
-        {children}
-        <Footer />
+        {/* Primer foco de la página: salta el menú y va directo al contenido */}
+        <a
+          href="#contenido"
+          className="sr-only focus-visible:not-sr-only focus-visible:fixed focus-visible:left-3 focus-visible:top-3 focus-visible:z-[70] focus-visible:inline-flex focus-visible:min-h-12 focus-visible:items-center focus-visible:rounded-[10px] focus-visible:border-[3px] focus-visible:border-grafito focus-visible:bg-white focus-visible:px-4 focus-visible:font-semibold focus-visible:text-grafito focus-visible:shadow-letrero"
+        >
+          Saltar al contenido
+        </a>
+        <MotionProvider>
+          <Navbar />
+          <div id="contenido" tabIndex={-1} className="outline-none">
+            {children}
+          </div>
+          <Footer />
+        </MotionProvider>
       </body>
     </html>
   );

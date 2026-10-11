@@ -7,7 +7,6 @@ export interface ServiceData {
   /** Identificador estable; la página de servicios lo usa para elegir el ícono */
   slug: string;
   title: string;
-  image: string;
   description: string;
   /** Puntos destacados que se muestran en lista (opcional) */
   items?: ServiceItem[];
@@ -19,35 +18,30 @@ export const services: ServiceData[] = [
   {
     slug: "consultas",
     title: "Consultas",
-    image: "https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=1200&q=80",
-    description: "Atención veterinaria personalizada para el diagnóstico y tratamiento de tu mascota. ¡Tu tranquilidad y la salud de tu compañero son nuestra prioridad!",
+    description: "Revisamos a tu mascota, te explicamos qué tiene y cómo tratarla. En Puente Alto te atiende la Dra. Sara y en Santiago Centro, el Dr. Gabriel.",
   },
   {
     slug: "vacunas",
     title: "Vacunas",
-    image: "https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=1200&q=80",
-    description: "Aplicación de vacunas esenciales para prevenir enfermedades y proteger a tu mascota durante todas las etapas de su vida.",
+    description: "Las vacunas esenciales, en cada etapa de su vida. Pide hora en la sede que te quede más cerca.",
   },
   {
     slug: "examenes",
     title: "Exámenes",
-    image: "/images/services/examenes.jpg",
-    description: "Exámenes clínicos y de laboratorio para un diagnóstico preciso y un seguimiento completo de la salud de tu mascota.",
+    description: "Exámenes clínicos y de laboratorio, para saber bien qué tiene y seguir cómo evoluciona.",
   },
   {
     slug: "procedimientos",
     title: "Procedimientos",
-    image: "/images/services/procedimientos.jpg",
-    description: "Procedimientos veterinarios menores y mayores realizados con profesionalismo y cuidado, asegurando el bienestar de tu mascota.",
+    description: "Procedimientos menores y mayores, cirugías incluidas.",
   },
   {
     slug: "peluqueria",
     title: "Peluquería Canina y Felina",
-    image: "/images/services/peluqueria.jpg",
-    description: "Servicios de estética y cuidado para perros y gatos, realizados por expertos en bienestar animal.",
+    description: "Corte, baño y baño medicado para perros y gatos. Para que salga oliendo a limpio y sin estrés.",
     items: [
-      { title: "Corte y baño", text: "Higiene y estilo para tu mascota, con productos de calidad y atención personalizada." },
-      { title: "Baño medicado", text: "Baños especiales para tratar problemas dermatológicos, recomendados por nuestros veterinarios." },
+      { title: "Corte y baño", text: "Corte y baño completo, para perros y gatos." },
+      { title: "Baño medicado", text: "Para problemas de piel, cuando lo indica la Dra. Sara o el Dr. Gabriel." },
     ],
   },
 ];

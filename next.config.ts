@@ -1,16 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  images: {
-    remotePatterns: [
-      // Fotos del feed de Instagram: el CDN usa hosts distintos según la
-      // región/servidor (scontent-gru1-1, scontent-xxx-2, *.fbcdn.net...),
-      // así que se permite el dominio completo en vez de hosts sueltos.
-      { protocol: "https", hostname: "**.cdninstagram.com" },
-      { protocol: "https", hostname: "**.fbcdn.net" },
-      { protocol: "https", hostname: "images.unsplash.com" },
-    ],
-  },
   async redirects() {
     return [
       {
@@ -58,8 +48,8 @@ const nextConfig: NextConfig = {
               // Clarity carga su script real desde scripts.clarity.ms (no solo www)
               "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.clarity.ms https://c.bing.com",
               "style-src 'self' 'unsafe-inline' fonts.googleapis.com",
-              // data: para la fuente de íconos embebida en el CSS de Swiper
-              "font-src 'self' data: fonts.gstatic.com",
+              // Las fuentes las sirve next/font desde el propio sitio
+              "font-src 'self' fonts.gstatic.com",
               "img-src 'self' data: https:",
               "connect-src 'self' https://*.clarity.ms https://c.bing.com",
               "frame-src 'self' https://www.google.com",

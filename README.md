@@ -17,7 +17,7 @@ npm run build
 
 ## Estructura
 
-- `src/app/` — páginas y rutas API (`/api/contact`, `/api/instagram`, `/api/products`).
+- `src/app/` — páginas y rutas API (`/api/contact`, `/api/products`).
 - `src/components/` — componentes de UI (navbar, footer, home, tienda, contacto...).
 - `src/data/products.json` — catálogo de la tienda. Las fotos están en `public/images/products/`.
 - `src/data/locations.ts` — datos de las sedes (dirección, teléfono, correo). Es la única fuente: la usan contacto, footer, sedes del inicio y el envío del formulario.

@@ -1,8 +1,7 @@
 import { JsonLd } from "@/components/seo/JsonLd";
 import { pageMetadata, graph, servicesJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 
-// La página es un componente de cliente (animaciones), que no puede exportar
-// metadata; por eso la metadata y los datos estructurados van en este layout.
+// La metadata y los datos estructurados de servicios van en este layout.
 export const metadata = pageMetadata({
   title: "Servicios veterinarios y peluquería canina y felina",
   description:

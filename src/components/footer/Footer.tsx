@@ -1,128 +1,110 @@
 import Link from "next/link";
-import { FaPhone, FaMapMarkerAlt, FaClock, FaFacebook, FaInstagram, FaStore, FaHome, FaCalendar, FaEnvelope, FaWhatsapp } from "react-icons/fa";
-import { locationList, whatsappUrl } from "@/data/locations";
-import { businessHours } from "@/data/site";
+import {
+    PiClockBold,
+    PiEnvelopeSimpleBold,
+    PiFacebookLogoBold,
+    PiInstagramLogoBold,
+    PiMapPinBold,
+    PiWhatsappLogoBold,
+} from "react-icons/pi";
+import { formatPhone, locationList, whatsappUrl } from "@/data/locations";
+import { businessHours, SOCIAL_LINKS } from "@/data/site";
 
 const whatsappMessage = "Hola! Me gustaría recibir información sobre los servicios de Dogtoralia.";
 
+const linkClass =
+    "inline-flex min-h-11 items-center gap-2 text-white/85 transition-colors hover:text-vinilo-mostaza";
+
 export default function Footer() {
     return (
-        <footer className="bg-primary text-white">
-            <div className="container mx-auto px-4 py-8 sm:py-12">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                    {/* Información de Contacto */}
-                    <div className="space-y-6">
-                        <h3 className="text-lg sm:text-xl font-semibold text-tertiary">Contacto</h3>
-
-                        {locationList.map((location) => (
-                            <div key={location.name} className="space-y-3">
-                                <h4 className="font-medium text-tertiary">Sede {location.name}</h4>
-                                <p className="flex items-center gap-2 text-sm sm:text-base">
-                                    <FaPhone className="text-secondary" />
-                                    <Link
+        <footer className="border-t-[3px] border-vinilo-mostaza bg-grafito text-white">
+            <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-14">
+                <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_0.8fr_0.8fr]">
+                    {locationList.map((location) => (
+                        <div key={location.name}>
+                            <h3 className="rotulo text-xl">Sede {location.name}</h3>
+                            <ul className="mt-3 grid gap-1 text-sm">
+                                <li>
+                                    <a
                                         href={whatsappUrl(location.phone, whatsappMessage)}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="hover:text-secondary transition-colors flex items-center gap-2"
+                                        className={linkClass}
                                     >
-                                        <FaWhatsapp className="text-green-500" />
-                                        {location.phone}
-                                    </Link>
-                                </p>
-                                <p className="flex items-center gap-2 text-sm sm:text-base">
-                                    <FaEnvelope className="text-secondary" />
-                                    <Link href={`mailto:${location.email}`} className="hover:text-secondary transition-colors">
+                                        <PiWhatsappLogoBold aria-hidden className="text-base" />
+                                        {formatPhone(location.phone)}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href={`mailto:${location.email}`} className={linkClass}>
+                                        <PiEnvelopeSimpleBold aria-hidden className="text-base" />
                                         {location.email}
-                                    </Link>
-                                </p>
-                                <p className="flex items-start gap-2 text-sm sm:text-base">
-                                    <FaMapMarkerAlt className="text-secondary mt-1" />
-                                    <span>{location.address}</span>
-                                </p>
-                            </div>
-                        ))}
-
-                        {/* Horarios */}
-                        <div className="space-y-2">
-                            {businessHours.map((block, index) => (
-                                <p
-                                    key={block.label}
-                                    className={index === 0
-                                        ? "flex items-center gap-2 text-sm sm:text-base"
-                                        : "ml-6 text-sm sm:text-base"}
-                                >
-                                    {index === 0 && <FaClock className="text-secondary" />}
-                                    <span>{block.label}: {block.opens} - {block.closes}</span>
-                                </p>
-                            ))}
+                                    </a>
+                                </li>
+                                <li className="inline-flex min-h-11 items-center gap-2 text-white/85">
+                                    <PiMapPinBold aria-hidden className="text-base" />
+                                    {location.address}
+                                </li>
+                            </ul>
                         </div>
-                    </div>
+                    ))}
 
-                    {/* Enlaces Rápidos */}
-                    <div className="space-y-4">
-                        <h3 className="text-lg sm:text-xl font-semibold text-tertiary">Navegación</h3>
-                        <ul className="grid grid-cols-2 gap-3">
-                            <li>
-                                <Link href="/home" className="flex items-center gap-2 text-sm sm:text-base hover:text-secondary transition-colors">
-                                    <FaHome />
-                                    <span>Inicio</span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/store" className="flex items-center gap-2 text-sm sm:text-base hover:text-secondary transition-colors">
-                                    <FaStore />
-                                    <span>Tienda</span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/service" className="flex items-center gap-2 text-sm sm:text-base hover:text-secondary transition-colors">
-                                    <FaCalendar />
-                                    <span>Servicios</span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/contact" className="flex items-center gap-2 text-sm sm:text-base hover:text-secondary transition-colors">
-                                    <FaPhone />
-                                    <span>Contacto</span>
-                                </Link>
-                            </li>
+                    <div>
+                        <h3 className="rotulo text-xl">Horario</h3>
+                        <ul className="mt-3 grid gap-2 text-sm text-white/85">
+                            {businessHours.map((block) => (
+                                <li key={block.label} className="flex items-start gap-2">
+                                    <PiClockBold aria-hidden className="mt-0.5 text-base" />
+                                    <span>
+                                        {block.label}
+                                        <br />
+                                        {block.opens} a {block.closes}
+                                    </span>
+                                </li>
+                            ))}
                         </ul>
                     </div>
 
-                    {/* Redes Sociales */}
-                    <div className="space-y-4">
-                        <h3 className="text-lg sm:text-xl font-semibold text-tertiary">Síguenos</h3>
-                        <div className="flex space-x-4">
-                            <Link
-                                href="https://www.facebook.com/dogtoraliavet/"
+                    <div>
+                        <h3 className="rotulo text-xl">Síguenos</h3>
+                        <div className="mt-3 flex gap-2">
+                            <a
+                                href={SOCIAL_LINKS.facebook}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-xl sm:text-2xl hover:text-secondary transition-colors"
                                 aria-label="Facebook"
+                                className="flex h-11 w-11 items-center justify-center rounded-[8px] border-2 border-white/30 text-2xl transition-colors hover:border-vinilo-mostaza hover:text-vinilo-mostaza"
                             >
-                                <FaFacebook />
-                            </Link>
-                            <Link
-                                href="https://www.instagram.com/dogtoraliavet/"
+                                <PiFacebookLogoBold />
+                            </a>
+                            <a
+                                href={SOCIAL_LINKS.instagram}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-xl sm:text-2xl hover:text-secondary transition-colors"
                                 aria-label="Instagram"
+                                className="flex h-11 w-11 items-center justify-center rounded-[8px] border-2 border-white/30 text-2xl transition-colors hover:border-vinilo-mostaza hover:text-vinilo-mostaza"
                             >
-                                <FaInstagram />
-                            </Link>
+                                <PiInstagramLogoBold />
+                            </a>
                         </div>
+                        <nav aria-label="Secciones" className="mt-6">
+                            <ul className="grid grid-cols-2 gap-x-4 text-sm">
+                                <li><Link href="/home" className={linkClass}>Inicio</Link></li>
+                                <li><Link href="/service" className={linkClass}>Servicios</Link></li>
+                                <li><Link href="/store" className={linkClass}>Tienda</Link></li>
+                                <li><Link href="/contact" className={linkClass}>Contacto</Link></li>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
 
-                {/* Copyright */}
-                <div className="border-t border-secondary/20 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center space-y-2">
-                    <p className="text-xs sm:text-sm">&copy; {new Date().getFullYear()} Dogtoralia Vet. Todos los derechos reservados.</p>
-                    <p className="text-xs sm:text-sm flex justify-center gap-4">
-                        <Link href="/privacidad" className="hover:text-secondary transition-colors underline underline-offset-2">
+                <div className="mt-10 flex flex-col gap-3 border-t border-white/15 pt-6 text-xs text-white/70 sm:flex-row sm:items-center sm:justify-between">
+                    <p>&copy; {new Date().getFullYear()} Dogtoralia Vet. Todos los derechos reservados.</p>
+                    <p className="flex gap-4">
+                        <Link href="/privacidad" className="underline underline-offset-2 hover:text-vinilo-mostaza">
                             Política de Privacidad
                         </Link>
-                        <Link href="/terminos" className="hover:text-secondary transition-colors underline underline-offset-2">
+                        <Link href="/terminos" className="underline underline-offset-2 hover:text-vinilo-mostaza">
                             Términos y Condiciones
                         </Link>
                     </p>

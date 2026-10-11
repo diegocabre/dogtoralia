@@ -69,5 +69,16 @@ export const whatsappUrl = (phone: string, message?: string) =>
     message ? `?text=${encodeURIComponent(message)}` : ""
   }`;
 
+/** "+56957830195" -> "+56 9 5783 0195", más fácil de leer y dictar. */
+export const formatPhone = (phone: string) => {
+  const digits = phone.replace(/\D/g, "");
+  const match = digits.match(/^56(9)(\d{4})(\d{4})$/);
+  return match ? `+56 ${match[1]} ${match[2]} ${match[3]}` : phone;
+};
+
+// Mensaje con que se abre el WhatsApp de una sede al agendar.
+export const agendarMensaje = (location: Location) =>
+  `Hola! Quiero agendar una hora en la sede ${location.name}.`;
+
 // Número al que llegan las consultas de productos y servicios por WhatsApp.
 export const MAIN_WHATSAPP_PHONE = locations.puenteAlto.phone;

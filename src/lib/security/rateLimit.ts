@@ -43,7 +43,6 @@ export interface RateLimitPolicy {
 
 export const RATE_LIMITS = {
   contact: { name: "contact", limit: 5, windowMs: 10 * 60 * 1000 },
-  instagram: { name: "instagram", limit: 60, windowMs: 60 * 1000 },
   products: { name: "products", limit: 60, windowMs: 60 * 1000 },
 } as const satisfies Record<string, RateLimitPolicy>;
 

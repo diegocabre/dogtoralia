@@ -1,89 +1,99 @@
-"use client";
-
+import { PiHouseLineBold, PiWhatsappLogoBold } from "react-icons/pi";
+import { MAIN_WHATSAPP_PHONE, whatsappUrl } from "@/data/locations";
+import { shortName, team, type TeamMember } from "@/data/team";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { FaMapMarkerAlt, FaPaw } from "react-icons/fa";
-import { team, type TeamMember } from "@/data/team";
 
-function Avatar({ member }: { member: TeamMember }) {
-  if (member.photo) {
-    return (
-      <Image
-        src={member.photo}
-        alt={`${member.name}, ${member.role}`}
-        fill
-        sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 25vw"
-        className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-      />
-    );
-  }
+const domicilioMensaje = "Hola! Quiero pedir una atención a domicilio. Mi comuna es: ";
 
-  // Sin foto todavía: iniciales sobre el color de la marca
-  const initials = member.name
-    .split(" ")
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((word) => word.charAt(0).toUpperCase())
-    .join("");
-
-  return (
-    <div
-      aria-hidden
-      className="flex h-full w-full items-center justify-center bg-gradient-to-br from-primary to-quaternary text-5xl font-bold text-white"
-    >
-      {initials || <FaPaw />}
-    </div>
-  );
-}
-
+/**
+ * Quién atiende: retratos grandes de los dos veterinarios, quién está en
+ * cada sede y que operan juntos. Debajo, la franja verde de domicilio.
+ */
 export function Team() {
-  // Sin equipo cargado no se muestra la sección.
-  if (team.length === 0) return null;
+  const sara = team.find((member) => member.location === "Puente Alto");
+  const gabriel = team.find((member) => member.location === "Santiago Centro");
+  // Mismo orden que en la foto del equipo. Sin foto, no hay retrato.
+  const retratos = [sara, gabriel].filter(
+    (member): member is TeamMember & { photo: string } =>
+      Boolean(member?.photo),
+  );
 
   return (
-    <section className="bg-gradient-to-b from-white to-sky-50 py-12 sm:py-16">
-      <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.5 }}
-          className="mx-auto max-w-2xl text-center"
-        >
-          <h2 className="text-2xl font-semibold text-tertiary sm:text-3xl">Conoce a nuestro equipo</h2>
-          <p className="mt-3 text-gray-600">
-            Profesionales que aman a los animales y cuidan a tu mascota como si fuera suya.
-          </p>
-        </motion.div>
+    <>
+      <section className="bg-muro pb-14 pt-16 text-grafito sm:pb-20 sm:pt-24">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[1fr_1.15fr] lg:items-center lg:gap-16">
+          <div>
+            <h2 className="rotulo text-[clamp(2rem,4vw,3.3rem)]">
+              {sara && (
+                <span className="block">
+                  <span className="text-vinilo-azul">{shortName(sara)}</span> en Puente Alto.
+                </span>
+              )}
+              {gabriel && (
+                <span className="block">
+                  <span className="text-vinilo-verde">{shortName(gabriel)}</span> en el Centro.
+                </span>
+              )}
+              <span className="mt-2 block">En cirugías y urgencias, los dos.</span>
+            </h2>
+            <p className="mt-5 max-w-[50ch] text-base leading-relaxed text-grafito-suave sm:text-lg">
+              Ella es cirujana y él, anestesiólogo. Cuando tu mascota necesita una operación o llega
+              una emergencia, la atienden juntos, sin derivarla a otra clínica.
+            </p>
+          </div>
 
-        <div className="mt-10 flex flex-wrap justify-center gap-6">
-          {team.map((member, index) => (
-            <motion.article
-              key={member.name}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, delay: (index % 4) * 0.1 }}
-              whileHover={{ y: -6 }}
-              className="group w-full max-w-xs overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md transition-shadow duration-300 hover:shadow-xl sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]"
-            >
-              <div className="relative aspect-square overflow-hidden">
-                <Avatar member={member} />
-              </div>
-              <div className="p-5 text-center">
-                <h3 className="text-lg font-semibold text-tertiary">{member.name}</h3>
-                <p className="mt-1 text-sm font-medium text-primary">{member.role}</p>
-                {member.location && (
-                  <p className="mt-2 inline-flex items-center gap-1.5 text-xs text-gray-500">
-                    <FaMapMarkerAlt aria-hidden /> Sede {member.location}
+          {retratos.length > 0 && (
+            <ul className="grid grid-cols-2 gap-3 sm:gap-5">
+              {retratos.map((member, index) => (
+                <li key={member.name} className={index === 1 ? "mt-10 sm:mt-16" : ""}>
+                  <div className="relative aspect-[4/5] overflow-hidden rounded-[6px] bg-grafito">
+                    <Image
+                      src={member.photo}
+                      alt={`Retrato ${member.honorific === "Dra." ? "de la" : "del"} ${member.honorific} ${member.name}`}
+                      fill
+                      sizes="(max-width: 1024px) 45vw, 300px"
+                      className="object-cover"
+                    />
+                  </div>
+                  <p className="rotulo mt-3 text-lg sm:text-2xl">
+                    {member.honorific} {member.name}
                   </p>
-                )}
-                {member.bio && <p className="mt-3 text-sm leading-relaxed text-gray-600">{member.bio}</p>}
-              </div>
-            </motion.article>
-          ))}
+                  <p className="mt-1 text-sm text-grafito-suave sm:text-base">
+                    {member.role.split("·").pop()?.trim()} en {member.location}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
-      </div>
-    </section>
+      </section>
+
+      <section className="bg-vinilo-verde py-10 text-white sm:py-12">
+        <div className="mx-auto grid max-w-7xl gap-6 px-4 sm:px-6 md:grid-cols-[auto_1fr_auto] md:items-center md:gap-8">
+          <PiHouseLineBold aria-hidden className="hidden text-5xl md:block" />
+          <div>
+            <h2 className="rotulo text-[clamp(1.9rem,3.6vw,2.8rem)]">Vamos a tu casa</h2>
+            <p className="mt-2 max-w-[56ch] text-base leading-relaxed sm:text-lg">
+              Atención veterinaria a domicilio en todo Santiago. Para el gato que se esconde apenas
+              ve el transportador.
+            </p>
+          </div>
+          <a
+            href={whatsappUrl(MAIN_WHATSAPP_PHONE, domicilioMensaje)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="presionable inline-flex min-h-12 items-center justify-between gap-3 self-start rounded-[10px] border-[3px] border-grafito bg-white py-2 pl-4 pr-2 text-grafito shadow-letrero md:self-center"
+          >
+            <span className="rotulo whitespace-nowrap text-lg">Pedir a domicilio</span>
+            <span
+              aria-hidden
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-whatsapp text-2xl text-white"
+            >
+              <PiWhatsappLogoBold />
+            </span>
+          </a>
+        </div>
+      </section>
+    </>
   );
 }

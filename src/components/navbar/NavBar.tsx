@@ -2,138 +2,125 @@
 
 import { Logo } from "../logo/Logo";
 import Link from "next/link";
-import { useState, useEffect } from "react";
-import {
-    HiBars3,
-    HiXMark,
-    HiOutlineHome,
-    HiOutlineShoppingBag,
-    HiOutlineCalendarDays,
-    HiOutlineChatBubbleLeftRight,
-} from "react-icons/hi2";
+import { useEffect, useState } from "react";
+import { PiListBold, PiXBold } from "react-icons/pi";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
+const navItems = [
+    { href: "/home", label: "Inicio" },
+    { href: "/service", label: "Servicios" },
+    { href: "/store", label: "Tienda" },
+    { href: "/contact", label: "Contacto" },
+];
+
+/**
+ * Letrero de la sede: franja blanca con el logo y la navegación, cerrada por
+ * el mismo contorno grafito del logo. No cambia al hacer scroll.
+ */
 export default function NavBar() {
     const [isOpen, setIsOpen] = useState(false);
-    const [isScrolled, setIsScrolled] = useState(false);
     const pathname = usePathname();
 
+    // Bloquea el scroll de la página mientras el menú móvil está abierto.
+    // (Cada enlace del menú lo cierra al navegar.)
     useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 0);
+        document.body.style.overflow = isOpen ? "hidden" : "";
+        return () => {
+            document.body.style.overflow = "";
         };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
-    const toggleMenu = () => {
-        setIsOpen(!isOpen);
-    };
-
-    const navItems = [
-        { href: "/home", label: "Inicio", icon: <HiOutlineHome /> },
-        { href: "/store", label: "Tienda", icon: <HiOutlineShoppingBag /> },
-        { href: "/service", label: "Servicios", icon: <HiOutlineCalendarDays /> },
-        { href: "/contact", label: "Contacto", icon: <HiOutlineChatBubbleLeftRight /> },
-    ];
-
+    }, [isOpen]);
 
     return (
         <>
-            <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 shadow-lg backdrop-blur-md text-tertiary' : 'bg-primary text-white'
-                }`}>
-                <div className="container mx-auto px-4">
-                    <div className="flex justify-between items-center h-16">
-                        {/* Logo */}
-                        <div className="flex items-center">
-                            <Logo />
-                        </div>
+            <nav className="fixed inset-x-0 top-0 z-50 border-b-[3px] border-grafito bg-white text-grafito">
+                <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-3 sm:px-6 lg:h-[72px]">
+                    <Logo className="h-14 w-auto lg:h-[66px]" />
 
-                        {/* Desktop Menu */}
-                        <div className="hidden md:flex items-center space-x-4 lg:space-x-8">
-                            {navItems.map((item) => {
-                                const active = pathname.startsWith(item.href);
-                                return (
+                    <ul className="hidden items-center gap-1 md:flex">
+                        {navItems.map((item) => {
+                            const active = pathname.startsWith(item.href);
+                            return (
+                                <li key={item.href}>
                                     <Link
-                                        key={item.href}
                                         href={item.href}
-                                        className={`relative flex items-center gap-1 lg:gap-2 text-sm lg:text-base py-1 transition-colors group
-                                            ${active
-                                                ? "text-tertiary"
-                                                : isScrolled ? "text-tertiary" : "text-white"
-                                            }`}
+                                        aria-current={active ? "page" : undefined}
+                                        className="group relative flex min-h-11 items-center px-3 lg:px-4"
                                     >
-                                        {item.icon}
-                                        <span>{item.label}</span>
+                                        <span className="rotulo text-[0.95rem] lg:text-base">{item.label}</span>
                                         <span
-                                            className={`absolute -bottom-1 left-0 h-0.5 bg-secondary transition-all duration-300 ${active ? "w-full" : "w-0 group-hover:w-full"
-                                                }`}
+                                            aria-hidden
+                                            className={`absolute inset-x-3 bottom-1 h-[4px] rounded-full bg-vinilo-mostaza transition-transform duration-200 ease-[var(--ease-out-fuerte)] lg:inset-x-4 ${
+                                                active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                                            }`}
                                         />
                                     </Link>
-                                );
-                            })}
-                        </div>
+                                </li>
+                            );
+                        })}
+                    </ul>
 
-                        {/* Mobile Menu Button */}
-                        <div className="md:hidden">
-                            <button
-                                onClick={toggleMenu}
-                                className={`hover:text-secondary focus:outline-none p-2 ${isScrolled ? "text-tertiary" : "text-white"}`}
-                                aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
-                            >
-                                {isOpen ? <HiXMark size={26} /> : <HiBars3 size={26} />}
-                            </button>
-                        </div>
-                    </div>
+                    <button
+                        type="button"
+                        onClick={() => setIsOpen(true)}
+                        className="flex h-11 w-11 items-center justify-center rounded-[8px] text-[1.6rem] md:hidden"
+                        aria-label="Abrir menú"
+                        aria-expanded={isOpen}
+                        aria-controls="menu-movil"
+                    >
+                        <PiListBold />
+                    </button>
                 </div>
             </nav>
 
-                {/* Mobile Menu: fuera del <nav> porque backdrop-filter crea un containing block que rompe `fixed` */}
-                <AnimatePresence>
-                    {isOpen && (
-                        <motion.div
-                            initial={{ opacity: 0, x: "100%" }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: "100%" }}
-                            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                            className="fixed inset-0 bg-primary z-[60] md:hidden"
-                        >
+            {/* Menú móvil: un panel de vinilo azul con cada sección como rótulo */}
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        id="menu-movil"
+                        role="dialog"
+                        aria-modal="true"
+                        aria-label="Menú"
+                        // "y" (no "transform") para que MotionConfig la salte con movimiento reducido y deje el fundido.
+                        initial={{ opacity: 0, y: -12 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, transition: { duration: 0.15 } }}
+                        transition={{ duration: 0.24, ease: [0.23, 1, 0.32, 1] }}
+                        className="fixed inset-0 z-[60] flex flex-col bg-vinilo-azul px-4 pb-8 pt-3 text-white md:hidden"
+                    >
+                        <div className="flex h-12 items-center justify-end">
                             <button
-                                onClick={toggleMenu}
-                                className="absolute top-4 right-4 text-white hover:text-secondary focus:outline-none p-2"
+                                type="button"
+                                onClick={() => setIsOpen(false)}
+                                className="flex h-11 w-11 items-center justify-center rounded-[8px] text-[1.6rem]"
                                 aria-label="Cerrar menú"
                             >
-                                <HiXMark size={26} />
+                                <PiXBold />
                             </button>
+                        </div>
 
-                            <div className="flex flex-col h-full justify-center items-center space-y-8 p-4">
-                                {navItems.map((item, i) => (
-                                    <motion.div
-                                        key={item.href}
-                                        initial={{ opacity: 0, y: 16 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: 0.05 * i + 0.1 }}
-                                    >
+                        <ul className="mt-6 grid gap-3">
+                            {navItems.map((item) => {
+                                const active = pathname.startsWith(item.href);
+                                return (
+                                    <li key={item.href}>
                                         <Link
                                             href={item.href}
-                                            className={`flex items-center gap-3 hover:text-secondary transition-colors text-xl
-                                                ${pathname.startsWith(item.href)
-                                                    ? "font-bold underline underline-offset-8 decoration-4 decoration-secondary text-secondary"
-                                                    : "text-white"
-                                                }`}
+                                            aria-current={active ? "page" : undefined}
                                             onClick={() => setIsOpen(false)}
+                                            className={`presionable flex min-h-14 items-center rounded-[8px] px-5 ${
+                                                active ? "bg-vinilo-mostaza text-grafito" : "bg-grafito text-white"
+                                            }`}
                                         >
-                                            {item.icon}
-                                            <span>{item.label}</span>
+                                            <span className="rotulo text-2xl">{item.label}</span>
                                         </Link>
-                                    </motion.div>
-                                ))}
-                            </div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </>
     );
 }

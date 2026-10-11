@@ -1,62 +1,60 @@
-"use client";
+import Link from "next/link";
+import { PiWhatsappLogoBold } from "react-icons/pi";
+import type { Product } from "@/types/product";
+import { cleanAndCapitalize } from "@/lib/utils";
+import { MAIN_WHATSAPP_PHONE, whatsappUrl } from "@/data/locations";
+import { ProductImage } from "./ProductImage";
+import { EtiquetaReceta } from "./EtiquetaReceta";
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { Product } from '@/types/product';
-import { cleanAndCapitalize } from '@/lib/utils';
-import { FaWhatsapp } from 'react-icons/fa';
-import { MAIN_WHATSAPP_PHONE, whatsappUrl } from '@/data/locations';
+// Las consultas de productos llegan a un solo número (MAIN_WHATSAPP_PHONE,
+// ver data/locations.ts): la tienda no depende de la sede.
 
-interface ProductCardProps {
-    product: Product;
-}
+/**
+ * Producto en la vitrina: placa blanca con contorno grafito, foto, nombre
+ * completo, tipo de producto y si requiere receta. En la esquina, el
+ * disco verde para consultar por WhatsApp (la única acción que escribe).
+ */
+export function ProductCard({ product, priority = false }: { product: Product; priority?: boolean }) {
+  const name = cleanAndCapitalize(product.name);
+  const productWhatsappUrl = whatsappUrl(
+    MAIN_WHATSAPP_PHONE,
+    `Hola! Me interesa este producto: ${name}`
+  );
 
-export function ProductCard({ product }: ProductCardProps) {
-    const name = cleanAndCapitalize(product.name);
-    const productWhatsappUrl = whatsappUrl(
-        MAIN_WHATSAPP_PHONE,
-        `Hola! Me interesa este producto: ${name}`
-    );
-
-    return (
-        <motion.div
-            className="block group h-full"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.4 }}
-            whileHover={{ y: -6 }}
+  return (
+    <article className="group flex h-full flex-col overflow-hidden rounded-[6px] border-[3px] border-grafito bg-white text-grafito transition-shadow duration-200 hover:shadow-tarjeta">
+      <Link href={`/product/${product.id}`} className="flex flex-col">
+        <div className="relative aspect-square border-b-[3px] border-grafito bg-white">
+          <ProductImage
+            imageUrl={product.imageUrl}
+            alt={name}
+            label={product.subCategory}
+            priority={priority}
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+          />
+        </div>
+        {/* Nombre completo, sin recortar: reserva dos líneas para que las
+            tarjetas cortas no queden más bajas */}
+        <h3 className="min-h-[2.75em] px-3 pt-3 text-sm font-semibold leading-snug group-hover:underline group-hover:underline-offset-4 sm:px-4 sm:text-base">
+          {name}
+        </h3>
+      </Link>
+      <div className="mt-auto flex items-end justify-between gap-2 px-3 pb-3 pt-2 sm:px-4">
+        <p className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1 text-xs text-grafito-suave sm:text-sm">
+          <span>{product.subCategory}</span>
+          {product.requiresPrescription && <EtiquetaReceta />}
+        </p>
+        <a
+          href={productWhatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Consultar por WhatsApp: ${name}`}
+          title="Consultar por WhatsApp"
+          className="presionable flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-whatsapp text-[1.4rem] text-white transition-colors duration-200 hover:bg-whatsapp-dark"
         >
-            <div className="bg-white rounded-2xl shadow-md hover:shadow-2xl hover:shadow-primary/20 transition-shadow duration-300 h-full flex flex-col overflow-hidden border border-gray-100 group-hover:border-primary/60">
-                <Link href={`/product/${product.id}`} className="flex-grow">
-                    <div className="relative h-44 w-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center overflow-hidden">
-                        <Image
-                            src={product.imageUrl}
-                            alt={name}
-                            fill
-                            className="object-contain p-4 transition-transform duration-500 group-hover:scale-110"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        />
-                    </div>
-
-                    <div className="px-3 py-4">
-                        <h3 className="text-base font-semibold text-gray-900 text-center truncate w-full" title={name}>
-                            {name}
-                        </h3>
-                    </div>
-                </Link>
-                <motion.a
-                    href={productWhatsappUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileTap={{ scale: 0.95 }}
-                    className="w-full flex items-center justify-center gap-2 bg-green-600 text-white py-2 px-4 rounded-b-2xl hover:bg-green-700 transition-colors"
-                >
-                    <FaWhatsapp className="text-base" />
-                    Consultar por WhatsApp
-                </motion.a>
-            </div>
-        </motion.div>
-    );
+          <PiWhatsappLogoBold aria-hidden />
+        </a>
+      </div>
+    </article>
+  );
 }

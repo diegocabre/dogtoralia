@@ -16,7 +16,7 @@ Fecha de esta revisión: ver historial de git de este archivo.
    todas las instancias de Vercel (variables `KV_REST_API_*` de la
    integración de Vercel o `UPSTASH_REDIS_REST_*`; claves con prefijo
    `dogtoralia:rl`, así que la base se puede compartir con otros proyectos). Límites: `/api/contact` 5 cada 10
-   minutos; `/api/instagram` y `/api/products` 60 por minuto. Si Upstash
+   minutos; `/api/products` 60 por minuto. Si Upstash
    no está configurado o no responde en producción, la ruta responde 503
    (falla cerrada) y queda registrado en los logs. En desarrollo usa un
    contador en memoria.
@@ -40,8 +40,8 @@ Fecha de esta revisión: ver historial de git de este archivo.
    - Cliente OAuth de Google (`GOOGLE_CLIENT_ID`/`GOOGLE_CLIENT_SECRET`) y
      `NEXTAUTH_SECRET`: el login con Google ya no existe; elimina el cliente
      en Google Cloud y borra las variables.
-   - Instagram: restablece la clave secreta de la app y genera un token
-     nuevo (`INSTAGRAM_ACCESS_TOKEN`, solo servidor).
+   - Instagram: el feed del inicio se eliminó; revoca el token de la app y
+     borra `INSTAGRAM_ACCESS_TOKEN` de Vercel.
    - Firebase: elimina el proyecto o restringe su clave `AIza…`.
 
 2. **Historial de git**: `main` y todas las ramas remotas están limpias. La

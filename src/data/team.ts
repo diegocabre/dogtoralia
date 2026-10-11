@@ -1,8 +1,14 @@
 export interface TeamMember {
   name: string;
+  /** Trato con que se le nombra en el sitio, ej. "Dra." */
+  honorific?: "Dr." | "Dra.";
   /** Cargo o especialidad, ej. "Médico veterinario" */
   role: string;
-  /** Foto en public/images/team/, ej. "/images/team/nombre.jpg". Sin foto se muestran las iniciales. */
+  /**
+   * Retrato vertical 4:5 en public/images/. Mientras no haya foto individual
+   * se usa un recorte de la foto del equipo. Sin foto, la persona no aparece
+   * en los retratos de la home.
+   */
   photo?: string;
   /** Sede donde atiende (opcional) */
   location?: "Puente Alto" | "Santiago Centro";
@@ -15,10 +21,24 @@ export interface TeamMember {
 export const team: TeamMember[] = [
   {
     name: "Gabriel Cabré",
+    honorific: "Dr.",
     role: "Médico veterinario · Anestesiólogo",
+    location: "Santiago Centro",
+    photo: "/images/recortes/gabriel.jpg",
   },
   {
     name: "Sara Vásquez",
-    role: "Médico veterinario · Cirujano",
+    honorific: "Dra.",
+    role: "Médica veterinaria · Cirujana",
+    location: "Puente Alto",
+    photo: "/images/recortes/sara.jpg",
   },
 ];
+
+/** Veterinario que atiende a diario en una sede (ej. "la Dra. Sara"). */
+export const vetForLocation = (location: string) =>
+  team.find((member) => member.location === location);
+
+/** "Dra. Sara" a partir del integrante del equipo. */
+export const shortName = (member: TeamMember) =>
+  [member.honorific, member.name.split(" ")[0]].filter(Boolean).join(" ");

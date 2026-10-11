@@ -71,9 +71,6 @@ const WEBSITE_ID = `${SITE_URL}/#website`;
 
 const sameAs = Object.values(SOCIAL_LINKS);
 
-// Las imágenes locales van con URL absoluta; las externas se dejan tal cual.
-const toAbsolute = (url: string) => (url.startsWith("http") ? url : absoluteUrl(url));
-
 export function organizationJsonLd() {
   return {
     "@type": "Organization",
@@ -162,7 +159,6 @@ export function servicesJsonLd() {
     "@id": absoluteUrl(`/service#${service.slug}`),
     name: service.title,
     description: service.description,
-    image: toAbsolute(service.image),
     serviceType: service.title,
     provider: { "@id": ORGANIZATION_ID },
     areaServed: Object.values(locations).map((location) => ({

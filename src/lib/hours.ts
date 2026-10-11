@@ -24,10 +24,20 @@ const WEEKDAYS_ES: Record<(typeof WEEKDAYS)[number], string> = {
   Saturday: "sábado",
 };
 
+export type OpenState = "abierto" | "cierra-pronto" | "cerrado";
+
 export interface OpenStatus {
   open: boolean;
+  /** Estado para el letrero de la puerta */
+  state: OpenState;
+  /** Frase completa, ej. "Abierto ahora, hasta las 19:00" */
   label: string;
+  /** Detalle corto bajo el letrero, ej. "hasta las 19:00" */
+  detail: string;
 }
+
+/** Minutos antes del cierre en que el letrero pasa a "cierra pronto". */
+const CLOSING_SOON_MINUTES = 60;
 
 const toMinutes = (time: string) => {
   const [hours, minutes] = time.split(":").map(Number);
@@ -59,11 +69,22 @@ export function getOpenStatus(date: Date = new Date()): OpenStatus {
   const today = hoursFor(weekday);
 
   if (today && minutes >= toMinutes(today.opens) && minutes < toMinutes(today.closes)) {
-    return { open: true, label: `Abierto ahora · hasta las ${today.closes}` };
+    const closingSoon = toMinutes(today.closes) - minutes <= CLOSING_SOON_MINUTES;
+    return {
+      open: true,
+      state: closingSoon ? "cierra-pronto" : "abierto",
+      label: `Abierto ahora, hasta las ${today.closes}`,
+      detail: closingSoon ? `cierra a las ${today.closes}` : `hasta las ${today.closes}`,
+    };
   }
 
   if (today && minutes < toMinutes(today.opens)) {
-    return { open: false, label: `Cerrado · abrimos hoy a las ${today.opens}` };
+    return {
+      open: false,
+      state: "cerrado",
+      label: `Cerrado, abrimos hoy a las ${today.opens}`,
+      detail: `abre hoy a las ${today.opens}`,
+    };
   }
 
   const todayIndex = WEEKDAYS.indexOf(weekday as (typeof WEEKDAYS)[number]);
@@ -72,9 +93,14 @@ export function getOpenStatus(date: Date = new Date()): OpenStatus {
     const next = hoursFor(nextDay);
     if (next) {
       const when = offset === 1 ? "mañana" : `el ${WEEKDAYS_ES[nextDay]}`;
-      return { open: false, label: `Cerrado · abrimos ${when} a las ${next.opens}` };
+      return {
+        open: false,
+        state: "cerrado",
+        label: `Cerrado, abrimos ${when} a las ${next.opens}`,
+        detail: `abre ${when} a las ${next.opens}`,
+      };
     }
   }
 
-  return { open: false, label: "Cerrado" };
+  return { open: false, state: "cerrado", label: "Cerrado", detail: "" };
 }

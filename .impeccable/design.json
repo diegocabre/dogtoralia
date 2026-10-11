@@ -1,0 +1,563 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-11T14:13:11.000Z",
+  "title": "Design System: Dogtoralia Vet",
+  "extensions": {
+    "colorMeta": {
+      "vinilo-azul": {
+        "role": "primary",
+        "displayName": "Azul Vitrina",
+        "canonical": "#1d6f91",
+        "oklch": "oklch(51.0% 0.092 230.9)",
+        "tonalRamp": [
+          "oklch(15% 0.092 230.9)",
+          "oklch(25% 0.092 230.9)",
+          "oklch(35% 0.092 230.9)",
+          "oklch(45% 0.092 230.9)",
+          "oklch(55% 0.085 230.9)",
+          "oklch(70% 0.056 230.9)",
+          "oklch(85% 0.028 230.9)",
+          "oklch(95% 0.009 230.9)"
+        ]
+      },
+      "vinilo-mostaza": {
+        "role": "secondary",
+        "displayName": "Mostaza Rótulo",
+        "canonical": "#d0911a",
+        "oklch": "oklch(70.2% 0.141 76.3)",
+        "tonalRamp": [
+          "oklch(15% 0.141 76.3)",
+          "oklch(25% 0.141 76.3)",
+          "oklch(35% 0.141 76.3)",
+          "oklch(45% 0.141 76.3)",
+          "oklch(55% 0.141 76.3)",
+          "oklch(70% 0.141 76.3)",
+          "oklch(85% 0.071 76.3)",
+          "oklch(95% 0.024 76.3)"
+        ]
+      },
+      "vinilo-verde": {
+        "role": "tertiary",
+        "displayName": "Verde Domicilio",
+        "canonical": "#4f7a2a",
+        "oklch": "oklch(53.0% 0.120 133.1)",
+        "tonalRamp": [
+          "oklch(15% 0.120 133.1)",
+          "oklch(25% 0.120 133.1)",
+          "oklch(35% 0.120 133.1)",
+          "oklch(45% 0.120 133.1)",
+          "oklch(55% 0.115 133.1)",
+          "oklch(70% 0.077 133.1)",
+          "oklch(85% 0.038 133.1)",
+          "oklch(95% 0.013 133.1)"
+        ]
+      },
+      "whatsapp": {
+        "role": "tertiary",
+        "displayName": "Verde WhatsApp",
+        "canonical": "#0f7d43",
+        "oklch": "oklch(51.9% 0.129 153.1)",
+        "tonalRamp": [
+          "oklch(15% 0.129 153.1)",
+          "oklch(25% 0.129 153.1)",
+          "oklch(35% 0.129 153.1)",
+          "oklch(45% 0.129 153.1)",
+          "oklch(55% 0.120 153.1)",
+          "oklch(70% 0.080 153.1)",
+          "oklch(85% 0.040 153.1)",
+          "oklch(95% 0.013 153.1)"
+        ]
+      },
+      "whatsapp-dark": {
+        "role": "tertiary",
+        "displayName": "Verde WhatsApp Hover",
+        "canonical": "#0b6435",
+        "oklch": "oklch(44.3% 0.109 153.2)",
+        "tonalRamp": [
+          "oklch(15% 0.109 153.2)",
+          "oklch(25% 0.109 153.2)",
+          "oklch(35% 0.109 153.2)",
+          "oklch(45% 0.109 153.2)",
+          "oklch(55% 0.098 153.2)",
+          "oklch(70% 0.065 153.2)",
+          "oklch(85% 0.033 153.2)",
+          "oklch(95% 0.011 153.2)"
+        ]
+      },
+      "error": {
+        "role": "functional",
+        "displayName": "Rojo Aviso",
+        "canonical": "#b42318",
+        "oklch": "oklch(50.0% 0.182 29.5)",
+        "tonalRamp": [
+          "oklch(15% 0.182 29.5)",
+          "oklch(25% 0.182 29.5)",
+          "oklch(35% 0.182 29.5)",
+          "oklch(45% 0.182 29.5)",
+          "oklch(55% 0.182 29.5)",
+          "oklch(70% 0.121 29.5)",
+          "oklch(85% 0.061 29.5)",
+          "oklch(95% 0.020 29.5)"
+        ]
+      },
+      "error-suave": {
+        "role": "functional",
+        "displayName": "Rojo Aviso Suave",
+        "canonical": "#fdeceb",
+        "oklch": "oklch(95.6% 0.019 21.6)",
+        "tonalRamp": [
+          "oklch(15% 0.019 21.6)",
+          "oklch(25% 0.019 21.6)",
+          "oklch(35% 0.019 21.6)",
+          "oklch(45% 0.019 21.6)",
+          "oklch(55% 0.019 21.6)",
+          "oklch(70% 0.019 21.6)",
+          "oklch(85% 0.019 21.6)",
+          "oklch(95% 0.019 21.6)"
+        ]
+      },
+      "grafito": {
+        "role": "neutral",
+        "displayName": "Grafito",
+        "canonical": "#2b2727",
+        "oklch": "oklch(27.7% 0.006 17.5)",
+        "tonalRamp": [
+          "oklch(15% 0.006 17.5)",
+          "oklch(25% 0.006 17.5)",
+          "oklch(35% 0.006 17.5)",
+          "oklch(45% 0.006 17.5)",
+          "oklch(55% 0.005 17.5)",
+          "oklch(70% 0.004 17.5)",
+          "oklch(85% 0.002 17.5)",
+          "oklch(95% 0.001 17.5)"
+        ]
+      },
+      "grafito-suave": {
+        "role": "neutral",
+        "displayName": "Grafito Suave",
+        "canonical": "#4a4444",
+        "oklch": "oklch(39.3% 0.008 17.5)",
+        "tonalRamp": [
+          "oklch(15% 0.008 17.5)",
+          "oklch(25% 0.008 17.5)",
+          "oklch(35% 0.008 17.5)",
+          "oklch(45% 0.008 17.5)",
+          "oklch(55% 0.007 17.5)",
+          "oklch(70% 0.005 17.5)",
+          "oklch(85% 0.002 17.5)",
+          "oklch(95% 0.001 17.5)"
+        ]
+      },
+      "muro": {
+        "role": "neutral",
+        "displayName": "Muro",
+        "canonical": "#eceeed",
+        "oklch": "oklch(94.7% 0.003 165.1)",
+        "tonalRamp": [
+          "oklch(15% 0.003 165.1)",
+          "oklch(25% 0.003 165.1)",
+          "oklch(35% 0.003 165.1)",
+          "oklch(45% 0.003 165.1)",
+          "oklch(55% 0.003 165.1)",
+          "oklch(70% 0.003 165.1)",
+          "oklch(85% 0.003 165.1)",
+          "oklch(95% 0.002 165.1)"
+        ]
+      },
+      "background": {
+        "role": "neutral",
+        "displayName": "Blanco",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "oklch(15% 0.000 89.9)",
+          "oklch(25% 0.000 89.9)",
+          "oklch(35% 0.000 89.9)",
+          "oklch(45% 0.000 89.9)",
+          "oklch(55% 0.000 89.9)",
+          "oklch(70% 0.000 89.9)",
+          "oklch(85% 0.000 89.9)",
+          "oklch(95% 0.000 89.9)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Solo el h1 del hero, en un bloque. Rótulo: mayúsculas, text-wrap balance."
+      },
+      "titulo-pagina": {
+        "displayName": "Título de página",
+        "purpose": "h1 del panel de encabezado de servicios, tienda y contacto. Legal usa clamp(2.2rem, 5vw, 3.5rem)."
+      },
+      "cierre": {
+        "displayName": "Cierre",
+        "purpose": "Titular del bloque grafito final en inicio y servicios."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Títulos de sección de la home. Rótulo en mayúsculas."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Nombre de cada fila de la lista de servicios (1.6rem / 2rem). Nombres de sede bajo la fachada a 1.9rem / 2.3rem."
+      },
+      "legal-rotulo": {
+        "displayName": "Rótulo legal",
+        "purpose": "h2 de privacidad y términos (.legal-texto h2)."
+      },
+      "rotulo-barra": {
+        "displayName": "Rótulo de barra",
+        "purpose": "Barras, botones placa, nombres de sede y navegación. 1.05rem en móvil. Mayúsculas."
+      },
+      "rotulo-nav": {
+        "displayName": "Rótulo de navegación",
+        "purpose": "Enlaces del letrero superior (1rem desde lg) y franja de nombres del hero."
+      },
+      "numeral": {
+        "displayName": "Numeral",
+        "purpose": "El 4,9 de Google desde sm. El 404 usa 6.5rem."
+      },
+      "numeral-movil": {
+        "displayName": "Numeral móvil",
+        "purpose": "El 4,9 de Google bajo sm. El 404 usa 5.5rem."
+      },
+      "cita": {
+        "displayName": "Cita",
+        "purpose": "Texto de las notas de reseña."
+      },
+      "cartel": {
+        "displayName": "Cartel",
+        "purpose": "Estado ABIERTO / CIERRA PRONTO / CERRADO; también tamaño mínimo de los filtros de tienda bajo 400px. Mayúsculas."
+      },
+      "nombre-producto": {
+        "displayName": "Nombre de producto",
+        "purpose": "h1 de la ficha de producto; única excepción a La Regla del Rótulo."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Párrafos de panel, 1rem en móvil, entre 34ch y 60ch."
+      },
+      "legal-cuerpo": {
+        "displayName": "Cuerpo legal",
+        "purpose": "Texto de páginas legales a 72ch (.legal-texto)."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Etiquetas de campo, direcciones, quién atiende, autoría, enlaces de texto."
+      },
+      "etiqueta": {
+        "displayName": "Etiqueta",
+        "purpose": "\"Con receta\" en mayúsculas; igual en tarjeta y ficha (EtiquetaReceta)."
+      },
+      "cita-destacada": {
+        "displayName": "Cita destacada",
+        "purpose": "La reseña grande sobre el mostaza, máximo 38ch, recortada a 3 líneas."
+      }
+    },
+    "shadows": [
+      {
+        "name": "letrero",
+        "value": "0 6px 14px -6px rgb(43 39 39 / 0.45)",
+        "purpose": "Token --shadow-letrero (shadow-letrero): reposo del letrero de puerta y de todo botón placa."
+      },
+      {
+        "name": "letrero-alto",
+        "value": "0 12px 22px -10px rgb(43 39 39 / 0.5)",
+        "purpose": "Token --shadow-letrero-alto (hover:shadow-letrero-alto): hover del letrero, junto al ascenso de 2px."
+      },
+      {
+        "name": "tarjeta",
+        "value": "0 10px 20px -12px rgb(43 39 39 / 0.55)",
+        "purpose": "Token --shadow-tarjeta (hover:shadow-tarjeta): hover de la tarjeta de producto, 200ms."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out-fuerte",
+        "value": "cubic-bezier(0.23, 1, 0.32, 1)",
+        "purpose": "Easing por defecto: presionable, balanceo del cartel, subrayado de navegación, menú móvil."
+      },
+      {
+        "name": "ease-cajon",
+        "value": "cubic-bezier(0.32, 0.72, 0, 1)",
+        "purpose": "Entrada de la barra de WhatsApp móvil."
+      },
+      {
+        "name": "presionable",
+        "value": "transform 160ms ease-out-fuerte; box-shadow 200ms ease-out-fuerte; background-color 200ms ease; hover translateY(-2px) solo con (hover: hover) and (pointer: fine); active scale(0.97)",
+        "purpose": "Respuesta al toque de todo lo tocable. Sin transform con movimiento reducido."
+      },
+      {
+        "name": "letrero-balanceo",
+        "value": "700ms ease-out-fuerte; rotate -7deg (opacidad 0), 3deg (45%), -1deg (75%), 0deg; transform-origin 50% 0",
+        "purpose": "El cartel de estado se balancea una vez al aparecer. Movimiento reducido: fundido de 200ms."
+      },
+      {
+        "name": "barra-whatsapp",
+        "value": "entra 320ms ease-cajon; sale con translateY(110%) y opacidad 0 en 200ms",
+        "purpose": "Barra fija móvil que aparece cuando ningún bloque de letreros está al 60% en pantalla."
+      },
+      {
+        "name": "nav-subrayado",
+        "value": "scaleX 0 a 1, 200ms ease-out-fuerte",
+        "purpose": "Barra mostaza de 4px bajo el enlace activo o en hover."
+      },
+      {
+        "name": "menu-movil",
+        "value": "entra con opacidad 0 y translateY(-12px) en 240ms ease-out-fuerte; sale con fundido de 150ms",
+        "purpose": "Panel azul del menú móvil (Framer Motion). Movimiento reducido: solo fundido."
+      },
+      {
+        "name": "tarjeta-hover",
+        "value": "box-shadow 200ms; fila Consultar background-color 200ms a muro; disco a whatsapp-dark",
+        "purpose": "Respuesta de la tarjeta de producto al cursor."
+      },
+      {
+        "name": "enviando",
+        "value": "animate-spin (1s linear infinite) en el ícono del disco; motion-reduce: sin giro",
+        "purpose": "Estado de envío del formulario de contacto."
+      },
+      {
+        "name": "foco",
+        "value": "outline 3px solid var(--color-vinilo-mostaza); outline-offset 3px; border-radius 4px",
+        "purpose": "Anillo de foco global (:focus-visible)."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "min-400",
+        "value": "400px"
+      },
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "contenedor",
+        "value": "1280px"
+      },
+      {
+        "name": "barra-whatsapp-max",
+        "value": "767px"
+      },
+      {
+        "name": "contenedor-estrecho",
+        "value": "1152px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Letrero de puerta",
+      "kind": "custom",
+      "refersTo": "letrero-puerta",
+      "description": "Placa de sede que es el botón de agendar por WhatsApp; lleva el estado en vivo colgado, salvo en el hero.",
+      "html": "<a class=\"ds-letrero\" href=\"#\"><span class=\"ds-cartel ds-cartel-abierto\">Abierto</span><span class=\"ds-letrero-txt\"><span class=\"ds-letrero-sede\">Santiago Centro</span><span class=\"ds-letrero-sub\">con el Dr. Gabriel, cierra a las 19:00</span></span><span class=\"ds-disco\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M128 24a104 104 0 0 0-91.2 154l-11.4 34a16 16 0 0 0 20.2 20.2l34-11.4A104 104 0 1 0 128 24Zm0 192a87.9 87.9 0 0 1-44.1-11.8 8 8 0 0 0-6.6-.7L40 216l12.5-37.4a8 8 0 0 0-.7-6.6A88 88 0 1 1 128 216Zm42-62.5-24-12a8 8 0 0 0-8 .5l-11 7.3a40.5 40.5 0 0 1-19.7-19.7l7.3-11a8 8 0 0 0 .5-8l-12-24A8 8 0 0 0 96 80a32 32 0 0 0-32 32 80.1 80.1 0 0 0 80 80 32 32 0 0 0 32-32 8 8 0 0 0-4.4-7.2Z\"/></svg></span></a>",
+      "css": ".ds-letrero{position:relative;display:flex;align-items:center;gap:16px;max-width:380px;margin-top:16px;padding:24px 16px 16px;background:#fff;color:var(--color-grafito,#2b2727);border:3px solid var(--color-grafito,#2b2727);border-radius:10px;text-decoration:none;box-shadow:var(--shadow-letrero,0 6px 14px -6px rgb(43 39 39 / .45));transition:transform 160ms cubic-bezier(.23,1,.32,1),box-shadow 200ms cubic-bezier(.23,1,.32,1),background-color 200ms ease;}.ds-letrero:hover{transform:translateY(-2px);box-shadow:var(--shadow-letrero-alto,0 12px 22px -10px rgb(43 39 39 / .5))}.ds-letrero:active{transform:scale(.97)}.ds-letrero:focus-visible{outline:3px solid var(--color-vinilo-mostaza,#d0911a);outline-offset:3px;border-radius:4px;}.ds-letrero:hover .ds-disco{background:var(--color-whatsapp-dark,#0b6435)}.ds-letrero-txt{flex:1;min-width:0}.ds-letrero-sede{display:block;font-size:1.5rem;font-family:var(--font-rotulo,Rubik,ui-sans-serif,system-ui,sans-serif);font-weight:800;text-transform:uppercase;letter-spacing:.01em;line-height:1.02;}.ds-letrero-sub{display:block;margin-top:4px;font-size:.875rem;line-height:1.375;color:var(--color-grafito-suave,#4a4444)}.ds-disco{display:flex;flex-shrink:0;align-items:center;justify-content:center;width:48px;height:48px;border-radius:9999px;background:var(--color-whatsapp,#0f7d43);color:#fff;transition:background-color 200ms}.ds-cartel{position:absolute;top:-14px;left:12px;padding:2px 10px;border:2px solid var(--color-grafito,#2b2727);border-radius:6px;font-family:var(--font-rotulo,Rubik,sans-serif);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.025em;transform-origin:50% 0;animation:ds-balanceo 700ms cubic-bezier(.23,1,.32,1) both}.ds-cartel-abierto{background:var(--color-whatsapp,#0f7d43);color:#fff}@keyframes ds-balanceo{0%{transform:rotate(-7deg);opacity:0}45%{transform:rotate(3deg);opacity:1}75%{transform:rotate(-1deg)}100%{transform:rotate(0)}}@media (prefers-reduced-motion:reduce){.ds-cartel{animation:none}.ds-letrero,.ds-letrero:hover,.ds-letrero:active{transform:none}}"
+    },
+    {
+      "name": "Cartel de estado",
+      "kind": "chip",
+      "refersTo": "cartel-abierto",
+      "description": "Los tres estados del cartel colgado: abierto, cierra pronto, cerrado.",
+      "html": "<div class=\"ds-carteles\"><span class=\"ds-cartel2 ds-c-abierto\">Abierto</span><span class=\"ds-cartel2 ds-c-pronto\">Cierra pronto</span><span class=\"ds-cartel2 ds-c-cerrado\">Cerrado</span></div>",
+      "css": ".ds-carteles{display:flex;gap:10px;flex-wrap:wrap}.ds-cartel2{padding:2px 10px;border:2px solid var(--color-grafito,#2b2727);border-radius:6px;font-family:var(--font-rotulo,Rubik,sans-serif);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.025em}.ds-c-abierto{background:var(--color-whatsapp,#0f7d43);color:#fff}.ds-c-pronto{background:var(--color-vinilo-mostaza,#d0911a);color:var(--color-grafito,#2b2727)}.ds-c-cerrado{background:var(--color-grafito,#2b2727);color:#fff}"
+    },
+    {
+      "name": "Botón placa",
+      "kind": "button",
+      "refersTo": "boton-placa",
+      "description": "Acción principal de un panel: rótulo y disco en placa blanca que cuelga con sombra.",
+      "html": "<a class=\"ds-btn-placa\" href=\"#\"><span>Pedir a domicilio</span><span class=\"ds-disco-sm\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M128 24a104 104 0 0 0-91.2 154l-11.4 34a16 16 0 0 0 20.2 20.2l34-11.4A104 104 0 1 0 128 24Zm0 192a87.9 87.9 0 0 1-44.1-11.8 8 8 0 0 0-6.6-.7L40 216l12.5-37.4a8 8 0 0 0-.7-6.6A88 88 0 1 1 128 216Zm42-62.5-24-12a8 8 0 0 0-8 .5l-11 7.3a40.5 40.5 0 0 1-19.7-19.7l7.3-11a8 8 0 0 0 .5-8l-12-24A8 8 0 0 0 96 80a32 32 0 0 0-32 32 80.1 80.1 0 0 0 80 80 32 32 0 0 0 32-32 8 8 0 0 0-4.4-7.2Z\"/></svg></span></a>",
+      "css": ".ds-btn-placa{display:inline-flex;align-items:center;gap:12px;min-height:48px;padding:6px 6px 6px 16px;background:#fff;color:var(--color-grafito,#2b2727);border:3px solid var(--color-grafito,#2b2727);border-radius:10px;text-decoration:none;box-shadow:var(--shadow-letrero,0 6px 14px -6px rgb(43 39 39 / .45));font-size:1.125rem;font-family:var(--font-rotulo,Rubik,ui-sans-serif,system-ui,sans-serif);font-weight:800;text-transform:uppercase;letter-spacing:.01em;line-height:1.02;transition:transform 160ms cubic-bezier(.23,1,.32,1),box-shadow 200ms cubic-bezier(.23,1,.32,1),background-color 200ms ease;}.ds-btn-placa:hover{transform:translateY(-2px)}.ds-btn-placa:active{transform:scale(.97)}.ds-btn-placa:focus-visible{outline:3px solid var(--color-vinilo-mostaza,#d0911a);outline-offset:3px;border-radius:4px;}.ds-disco-sm{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:9999px;background:var(--color-whatsapp,#0f7d43);color:#fff}@media (prefers-reduced-motion:reduce){.ds-btn-placa{transform:none!important}}"
+    },
+    {
+      "name": "Botón WhatsApp de barra",
+      "kind": "button",
+      "refersTo": "barra-whatsapp-boton",
+      "description": "Botón verde de la barra fija móvil, uno por sede.",
+      "html": "<a class=\"ds-btn-wa\" href=\"#\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M128 24a104 104 0 0 0-91.2 154l-11.4 34a16 16 0 0 0 20.2 20.2l34-11.4A104 104 0 1 0 128 24Zm0 192a87.9 87.9 0 0 1-44.1-11.8 8 8 0 0 0-6.6-.7L40 216l12.5-37.4a8 8 0 0 0-.7-6.6A88 88 0 1 1 128 216Zm42-62.5-24-12a8 8 0 0 0-8 .5l-11 7.3a40.5 40.5 0 0 1-19.7-19.7l7.3-11a8 8 0 0 0 .5-8l-12-24A8 8 0 0 0 96 80a32 32 0 0 0-32 32 80.1 80.1 0 0 0 80 80 32 32 0 0 0 32-32 8 8 0 0 0-4.4-7.2Z\"/></svg><span>Puente Alto</span></a>",
+      "css": ".ds-btn-wa{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:0 12px;background:var(--color-whatsapp,#0f7d43);color:#fff;border:2px solid var(--color-grafito,#2b2727);border-radius:8px;text-decoration:none;font-size:.85rem;white-space:nowrap;font-family:var(--font-rotulo,Rubik,ui-sans-serif,system-ui,sans-serif);font-weight:800;text-transform:uppercase;letter-spacing:.01em;line-height:1.02;transition:transform 160ms cubic-bezier(.23,1,.32,1),box-shadow 200ms cubic-bezier(.23,1,.32,1),background-color 200ms ease;}.ds-btn-wa svg{width:18px;height:18px}.ds-btn-wa:hover{transform:translateY(-2px)}.ds-btn-wa:active{transform:scale(.97)}.ds-btn-wa:focus-visible{outline:3px solid var(--color-vinilo-mostaza,#d0911a);outline-offset:3px;border-radius:4px;}@media (prefers-reduced-motion:reduce){.ds-btn-wa{transform:none!important}}"
+    },
+    {
+      "name": "Barras de rótulo",
+      "kind": "custom",
+      "refersTo": "barra-rotulo-mostaza",
+      "description": "Rótulos de vinilo apilados que alternan color: índice y puntos destacados de /service, menú móvil.",
+      "html": "<div class=\"ds-panel-gris\"><ul class=\"ds-barras\"><li><a href=\"#\" class=\"ds-barra ds-b-mostaza\">Consultas</a></li><li><a href=\"#\" class=\"ds-barra ds-b-azul\">Vacunas</a></li><li><a href=\"#\" class=\"ds-barra ds-b-verde\">Exámenes</a></li></ul></div>",
+      "css": ".ds-panel-gris{max-width:360px;padding:24px;background:var(--color-grafito-suave,#4a4444);border-radius:3px}.ds-barras{list-style:none;margin:0;padding:0;display:grid;gap:10px}.ds-barra{display:flex;align-items:center;min-height:48px;padding:10px 16px;border-radius:8px;text-decoration:none;font-size:1.125rem;font-family:var(--font-rotulo,Rubik,ui-sans-serif,system-ui,sans-serif);font-weight:800;text-transform:uppercase;letter-spacing:.01em;line-height:1.02;transition:transform 160ms cubic-bezier(.23,1,.32,1),box-shadow 200ms cubic-bezier(.23,1,.32,1),background-color 200ms ease;}.ds-barra:hover{transform:translateY(-2px)}.ds-barra:active{transform:scale(.97)}.ds-barra:focus-visible{outline:3px solid var(--color-vinilo-mostaza,#d0911a);outline-offset:3px;border-radius:4px;}.ds-b-mostaza{background:var(--color-vinilo-mostaza,#d0911a);color:var(--color-grafito,#2b2727)}.ds-b-azul{background:var(--color-vinilo-azul,#1d6f91);color:#fff}.ds-b-verde{background:var(--color-vinilo-verde,#4f7a2a);color:#fff}@media (prefers-reduced-motion:reduce){.ds-barra{transform:none!important}}"
+    },
+    {
+      "name": "Marco de vitrina con paneles",
+      "kind": "card",
+      "refersTo": "marco-vitrina",
+      "description": "Unidad de sección de las páginas interiores: marco grafito con paneles planos de vinilo separados por el perfil.",
+      "html": "<div class=\"ds-marco\"><div class=\"ds-panel ds-p-azul\"><h3 class=\"ds-rotulo\">Peluquería</h3><p>Para que salga oliendo a limpio y sin estrés.</p></div><div class=\"ds-panel ds-p-mostaza\"><h3 class=\"ds-rotulo\">Tienda</h3><p>Lo que te recetamos, a la mano.</p></div></div>",
+      "css": ".ds-marco{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px;background:var(--color-grafito,#2b2727);border-radius:6px}.ds-panel{padding:28px;border-radius:3px}.ds-panel p{margin:8px 0 0;font-size:1rem;line-height:1.625}.ds-rotulo{margin:0;font-size:1.875rem;font-family:var(--font-rotulo,Rubik,ui-sans-serif,system-ui,sans-serif);font-weight:800;text-transform:uppercase;letter-spacing:.01em;line-height:1.02;}.ds-p-azul{background:var(--color-vinilo-azul,#1d6f91);color:#fff}.ds-p-azul p{color:rgba(255,255,255,.85)}.ds-p-mostaza{background:var(--color-vinilo-mostaza,#d0911a);color:var(--color-grafito,#2b2727)}"
+    },
+    {
+      "name": "Nota de reseña",
+      "kind": "card",
+      "refersTo": "nota-resena",
+      "description": "Reseña de Google en la fila bajo la cita destacada, recortada a 3 líneas con \"Leer completa\".",
+      "html": "<figure class=\"ds-nota\"><span class=\"ds-estrellas\">★★★★★</span><blockquote>“Texto de la reseña copiado tal cual desde Google.”</blockquote><figcaption><b>Autor de la reseña</b><span>Sede Puente Alto</span></figcaption></figure>",
+      "css": ".ds-nota{max-width:320px;margin:0;padding:20px;background:#fff;border:3px solid var(--color-grafito,#2b2727);border-radius:6px;color:var(--color-grafito,#2b2727)}.ds-estrellas{color:var(--color-vinilo-mostaza,#d0911a)}.ds-nota blockquote{margin:12px 0 0;font-size:.95rem;line-height:1.625}.ds-nota figcaption{margin-top:12px;padding-top:12px;border-top:2px solid var(--color-muro,#eceeed);font-size:.875rem}.ds-nota figcaption b,.ds-nota figcaption span{display:block}.ds-nota figcaption span{color:var(--color-grafito-suave,#4a4444)}"
+    },
+    {
+      "name": "Placa de enlace",
+      "kind": "button",
+      "refersTo": "placa-enlace",
+      "description": "Acción secundaria de sede (Maps, Waze).",
+      "html": "<a class=\"ds-placa\" href=\"#\">Waze</a>",
+      "css": ".ds-placa{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 14px;background:#fff;color:var(--color-grafito,#2b2727);border:2px solid var(--color-grafito,#2b2727);border-radius:8px;text-decoration:none;font-size:.875rem;font-weight:600;transition:transform 160ms cubic-bezier(.23,1,.32,1),box-shadow 200ms cubic-bezier(.23,1,.32,1),background-color 200ms ease;}.ds-placa:hover{background:var(--color-muro,#eceeed);transform:translateY(-2px)}.ds-placa:active{transform:scale(.97)}.ds-placa:focus-visible{outline:3px solid var(--color-vinilo-mostaza,#d0911a);outline-offset:3px;border-radius:4px;}@media (prefers-reduced-motion:reduce){.ds-placa{transform:none!important}}"
+    },
+    {
+      "name": "Letrero superior",
+      "kind": "nav",
+      "refersTo": "nav-letrero",
+      "description": "Franja blanca fija con logo y navegación en rótulo, cerrada por 3px de grafito.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-logo\">Dogtoralia</span><ul><li><a href=\"#\" aria-current=\"page\">Inicio</a></li><li><a href=\"#\">Servicios</a></li><li><a href=\"#\">Tienda</a></li><li><a href=\"#\">Contacto</a></li></ul></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;justify-content:space-between;height:72px;padding:0 24px;background:#fff;color:var(--color-grafito,#2b2727);border-bottom:3px solid var(--color-grafito,#2b2727)}.ds-logo{font-size:1.25rem;font-family:var(--font-rotulo,Rubik,ui-sans-serif,system-ui,sans-serif);font-weight:800;text-transform:uppercase;letter-spacing:.01em;line-height:1.02;}.ds-nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0}.ds-nav a{position:relative;display:flex;align-items:center;min-height:44px;padding:0 16px;color:inherit;text-decoration:none;font-size:1rem;font-family:var(--font-rotulo,Rubik,ui-sans-serif,system-ui,sans-serif);font-weight:800;text-transform:uppercase;letter-spacing:.01em;line-height:1.02;}.ds-nav a::after{content:\"\";position:absolute;left:16px;right:16px;bottom:4px;height:4px;border-radius:9999px;background:var(--color-vinilo-mostaza,#d0911a);transform:scaleX(0);transition:transform 200ms cubic-bezier(.23,1,.32,1)}.ds-nav a:hover::after,.ds-nav a[aria-current=\"page\"]::after{transform:scaleX(1)}.ds-nav a:focus-visible{outline:3px solid var(--color-vinilo-mostaza,#d0911a);outline-offset:3px;border-radius:4px;}"
+    },
+    {
+      "name": "Campo de formulario",
+      "kind": "input",
+      "refersTo": "campo",
+      "description": "Campo blanco con contorno grafito 3px, etiqueta encima y error debajo; casilla de consentimiento de 5px.",
+      "html": "<div class=\"ds-field\"><label class=\"ds-label\" for=\"ds-n\">Nombre</label><input id=\"ds-n\" class=\"ds-input\" placeholder=\"Tu nombre\"></div><div class=\"ds-field\"><label class=\"ds-label\" for=\"ds-e\">Correo</label><input id=\"ds-e\" class=\"ds-input ds-input-err\" aria-invalid=\"true\" aria-describedby=\"ds-e-err\" value=\"correo@\"><p id=\"ds-e-err\" class=\"ds-err\">Revisa el correo.</p></div><label class=\"ds-check\"><input type=\"checkbox\" class=\"ds-box\" checked><span>Acepto la Política de Privacidad.</span></label>",
+      "css": ".ds-field{max-width:360px;margin-bottom:16px}.ds-label{display:block;margin-bottom:6px;font-size:.875rem;font-weight:600;color:var(--color-grafito,#2b2727)}.ds-input{width:100%;box-sizing:border-box;min-height:48px;padding:10px 14px;background:#fff;color:var(--color-grafito,#2b2727);border:3px solid var(--color-grafito,#2b2727);border-radius:8px;font-size:1rem}.ds-input::placeholder{color:rgba(74,68,68,.7)}.ds-input:focus-visible{outline:3px solid var(--color-vinilo-mostaza,#d0911a);outline-offset:3px;border-radius:4px;}.ds-input-err{border-color:var(--color-error,#b42318)}.ds-err{margin:6px 0 0;font-size:.875rem;font-weight:600;color:var(--color-error,#b42318)}.ds-check{display:flex;gap:12px;align-items:flex-start;font-size:.875rem;color:var(--color-grafito,#2b2727)}.ds-box{appearance:none;flex-shrink:0;width:24px;height:24px;margin:0;background:#fff;border:3px solid var(--color-grafito,#2b2727);border-radius:5px;cursor:pointer}.ds-box:checked{background:var(--color-grafito,#2b2727) url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath fill='white' d='M232.5 80.5l-128 128a12 12 0 0 1-17 0l-56-56a12 12 0 0 1 17-17L96 183l119.5-119.5a12 12 0 0 1 17 17Z'/%3E%3C/svg%3E\") center/14px no-repeat}.ds-box:focus-visible{outline:3px solid var(--color-vinilo-mostaza,#d0911a);outline-offset:3px;border-radius:4px;}"
+    },
+    {
+      "name": "Avisos de formulario",
+      "kind": "custom",
+      "refersTo": "aviso-exito",
+      "description": "Resultado del envío: vinilo-verde si salió bien, error-suave con texto error si falló.",
+      "html": "<div class=\"ds-avisos\"><div class=\"ds-aviso ds-aviso-ok\" role=\"status\">Mensaje enviado. Te respondemos pronto.</div><div class=\"ds-aviso ds-aviso-err\" role=\"alert\">No se pudo enviar. Intenta de nuevo.</div></div>",
+      "css": ".ds-avisos{display:grid;gap:10px;max-width:420px}.ds-aviso{padding:12px 16px;border-radius:3px;font-size:1rem;font-weight:600}.ds-aviso-ok{background:var(--color-vinilo-verde,#4f7a2a);color:#fff}.ds-aviso-err{background:var(--color-error-suave,#fdeceb);color:var(--color-error,#b42318)}"
+    },
+    {
+      "name": "Tarjeta de producto",
+      "kind": "card",
+      "refersTo": "tarjeta-producto",
+      "description": "Placa blanca de catálogo con foto (o panel sin foto), nombre completo, tipo, etiqueta Con receta y disco WhatsApp de 44px en la esquina.",
+      "html": "<article class=\"ds-card\"><a class=\"ds-card-main\" href=\"#\"><div class=\"ds-card-img\"><svg width=\"40\" height=\"40\" viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M208 52h-30.6l-13.4-20A12 12 0 0 0 154 26h-52a12 12 0 0 0-10 6l-13.4 20H48a28 28 0 0 0-28 28v112a28 28 0 0 0 28 28h160a28 28 0 0 0 28-28V80a28 28 0 0 0-28-28Zm4 140a4 4 0 0 1-4 4H48a4 4 0 0 1-4-4V80a4 4 0 0 1 4-4h37a12 12 0 0 0 10-5.3L108.4 50h39.2l13.4 20.7A12 12 0 0 0 171 76h37a4 4 0 0 1 4 4ZM128 88a48 48 0 1 0 48 48 48 48 0 0 0-48-48Zm0 72a24 24 0 1 1 24-24 24 24 0 0 1-24 24Z\"/></svg><span class=\"ds-card-sinfoto\">Antiparasitario</span><span class=\"ds-card-camino\">Foto en camino</span></div><div class=\"ds-card-body\"><h3>Antiparasitario interno 10 kg, caja de 2 comprimidos</h3></div></a><div class=\"ds-card-pie\"><p><span>Antiparasitario</span><span class=\"ds-receta\">Con receta</span></p><a class=\"ds-card-disco\" href=\"#\" aria-label=\"Consultar por WhatsApp\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M128 24a104 104 0 0 0-91.2 154l-11.4 34a16 16 0 0 0 20.2 20.2l34-11.4A104 104 0 1 0 128 24Zm0 192a87.9 87.9 0 0 1-44.1-11.8 8 8 0 0 0-6.6-.7L40 216l12.5-37.4a8 8 0 0 0-.7-6.6A88 88 0 1 1 128 216Z\"/></svg></a></div></article>",
+      "css": ".ds-card{display:flex;flex-direction:column;max-width:240px;overflow:hidden;background:#fff;color:var(--color-grafito,#2b2727);border:3px solid var(--color-grafito,#2b2727);border-radius:6px;transition:box-shadow 200ms}.ds-card:hover{box-shadow:var(--shadow-tarjeta,0 10px 20px -12px rgb(43 39 39 / .55))}.ds-card a{color:inherit;text-decoration:none}.ds-card-img{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;aspect-ratio:1;padding:0 16px;background:var(--color-vinilo-azul,#1d6f91);color:#fff;border-bottom:3px solid var(--color-grafito,#2b2727);text-align:center}.ds-card-sinfoto{font-size:1rem;font-family:var(--font-rotulo,Rubik,ui-sans-serif,system-ui,sans-serif);font-weight:800;text-transform:uppercase;letter-spacing:.01em;line-height:1.02;}.ds-card-camino{font-size:.75rem;color:rgba(255,255,255,.85)}.ds-card-body{padding:12px 12px 0}.ds-card-body h3{margin:0;min-height:2.75em;font-size:.875rem;font-weight:600;line-height:1.375}.ds-card:hover h3{text-decoration:underline;text-underline-offset:4px}.ds-card-pie{display:flex;align-items:flex-end;justify-content:space-between;gap:8px;margin-top:auto;padding:8px 12px 12px}.ds-card-pie p{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center;margin:0;font-size:.75rem;color:var(--color-grafito-suave,#4a4444)}.ds-receta{padding:2px 6px;border-radius:4px;background:var(--color-vinilo-mostaza,#d0911a);color:var(--color-grafito,#2b2727);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.025em}.ds-card-disco{display:flex;align-items:center;justify-content:center;flex-shrink:0;width:44px;height:44px;border-radius:9999px;background:var(--color-whatsapp,#0f7d43);color:#fff;transition:background-color 200ms}.ds-card-disco:hover{background:var(--color-whatsapp-dark,#0b6435)}.ds-card-disco:focus-visible,.ds-card-main:focus-visible{outline:3px solid var(--color-vinilo-mostaza,#d0911a);outline-offset:3px;border-radius:4px;}"
+    },
+    {
+      "name": "Filtros de tienda",
+      "kind": "chip",
+      "refersTo": "filtro-rotulo",
+      "description": "Filtros de rótulo en panel grafito-suave; el activo en mostaza con aria-pressed.",
+      "html": "<div class=\"ds-filtros-panel\"><div class=\"ds-filtros\" role=\"group\" aria-label=\"Filtrar por tipo\"><button type=\"button\" class=\"ds-filtro\" aria-pressed=\"true\">Todos</button><button type=\"button\" class=\"ds-filtro\" aria-pressed=\"false\">Medicamentos</button><button type=\"button\" class=\"ds-filtro\" aria-pressed=\"false\">Alimentos</button></div></div>",
+      "css": ".ds-filtros-panel{max-width:440px;padding:20px 16px;background:var(--color-grafito-suave,#4a4444);border-radius:3px}.ds-filtros{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.ds-filtro{min-height:48px;padding:0 8px;border:2px solid rgba(255,255,255,.35);border-radius:8px;background:var(--color-grafito,#2b2727);color:#fff;cursor:pointer;font-size:.875rem;white-space:nowrap;font-family:var(--font-rotulo,Rubik,ui-sans-serif,system-ui,sans-serif);font-weight:800;text-transform:uppercase;letter-spacing:.01em;line-height:1.02;transition:transform 160ms cubic-bezier(.23,1,.32,1),box-shadow 200ms cubic-bezier(.23,1,.32,1),background-color 200ms ease;}.ds-filtro:hover{border-color:rgba(255,255,255,.7);transform:translateY(-2px)}.ds-filtro:active{transform:scale(.97)}.ds-filtro[aria-pressed=\"true\"]{background:var(--color-vinilo-mostaza,#d0911a);border-color:var(--color-vinilo-mostaza,#d0911a);color:var(--color-grafito,#2b2727)}.ds-filtro:focus-visible{outline:3px solid var(--color-vinilo-mostaza,#d0911a);outline-offset:3px;border-radius:4px;}@media (prefers-reduced-motion:reduce){.ds-filtro{transform:none!important}}"
+    },
+    {
+      "name": "Texto legal",
+      "kind": "custom",
+      "refersTo": "texto-legal",
+      "description": "Lectura larga de privacidad y términos: panel blanco a 72ch con h2 en rótulo.",
+      "html": "<article class=\"ds-legal\"><section><h2>Qué datos recogemos</h2><p>Solo los que nos das al escribirnos: nombre, correo y, si quieres, tu teléfono.</p><ul><li>Para responder tu consulta.</li><li>Para coordinar tu hora en la sede.</li></ul><p>Escríbenos a <a href=\"#\">contacto</a> si quieres revisarlos.</p></section></article>",
+      "css": ".ds-legal{max-width:72ch;padding:40px;background:#fff;color:var(--color-grafito,#2b2727);border-radius:3px;font-size:1.0625rem;line-height:1.7}.ds-legal section>*+*{margin-top:1rem}.ds-legal h2{margin:0;font-family:var(--font-rotulo,Rubik,ui-sans-serif,system-ui,sans-serif);font-weight:800;text-transform:uppercase;font-size:1.375rem;line-height:1.15;letter-spacing:.01em}.ds-legal ul{list-style:disc;padding-left:1.4rem}.ds-legal li+li{margin-top:.4rem}.ds-legal li::marker{color:var(--color-vinilo-azul,#1d6f91)}.ds-legal a{color:inherit;font-weight:600;text-decoration:underline;text-decoration-color:var(--color-vinilo-mostaza,#d0911a);text-decoration-thickness:3px;text-underline-offset:4px}.ds-legal a:hover{text-decoration-color:var(--color-grafito,#2b2727)}.ds-legal a:focus-visible{outline:3px solid var(--color-vinilo-mostaza,#d0911a);outline-offset:3px;border-radius:4px;}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Vitrina vinilada de la sede",
+    "overview": "El sitio es la vitrina de la propia clínica, modelada sobre los paneles de vinilo reales de la fachada de Av. Presidente Balmaceda 2776: planchas de color sólido (azul, verde, mostaza, grafito) con rótulos blancos en mayúsculas gruesas, enmarcadas por el perfil grafito de la vitrina y separadas por un muro claro. No es una plantilla de hero con degradado y tarjetas flotantes: es letrero, panel, placa y cartel, los objetos que una familia del barrio ve cuando pasa por la puerta.\n\nLa densidad es de vitrina: bloques grandes, pocos por pantalla, con el texto corrido corto y dicho de tú. El color llega por superficie entera, nunca como acento tímido. Las piezas con volumen son las que cuelgan delante de los paneles: el letrero de puerta, que es el botón de WhatsApp de cada sede y lleva el estado ABIERTO/CERRADO en vivo, el botón placa que ofrece la acción principal de un panel y la placa con el número de la puerta montada sobre cada fachada.\n\nLa home no repite un molde: cada sección tiene su forma y su fondo a sangre, y el ritmo alterna superficies y espaciados (azul, blanco, muro, verde, mostaza, muro, grafito). El hero es vinilo azul plano con la foto real del equipo llegando al borde; los servicios son una lista editorial en filas; el equipo, retratos grandes; las reseñas, una cifra y una cita grandes; las sedes, sus fachadas. Las páginas interiores (servicios, tienda, ficha de producto, contacto, páginas legales y 404) abren con un marco grafito sobre el muro y su panel de encabezado de color.\n\nEl movimiento es físico y breve: lo que se toca se hunde un poco, el cartel de estado se balancea una vez como si colgara de su clavo y la barra de WhatsApp móvil sube como un cajón. Todo tiene versión sin movimiento.",
+    "keyCharacteristics": [
+      "Superficies planas de vinilo con texto blanco (o grafito sobre mostaza): a sangre en la home, dentro de un marco grafito en las páginas interiores.",
+      "Titulares en rótulo: Rubik 800 en mayúsculas, interlineado 1,02.",
+      "Muro gris claro como fondo entre marcos y en las secciones de equipo y sedes; blanco en la sección de servicios y dentro de paneles, placas, campos y notas.",
+      "Verde WhatsApp reservado a la acción de escribir; rojo error reservado a errores de formulario.",
+      "Radios pequeños y escalonados por objeto (panel, etiqueta, casilla, marco, rótulo, placa), nunca píldoras salvo el disco.",
+      "Contorno grafito sólido de 3px en placas, campos, fachadas y líneas de lista, 2px en piezas chicas.",
+      "Solo fotos reales de la clínica: el equipo, las fachadas y la vitrina. Nada de fotos de stock."
+    ],
+    "rules": [
+      {
+        "name": "La Regla del Vinilo Profundo",
+        "body": "Un panel con texto blanco usa vinilo-azul, vinilo-verde, grafito o grafito-suave. Nunca el azul ni el verde del logo tal cual: no sostienen texto blanco con contraste AA.",
+        "section": "colors"
+      },
+      {
+        "name": "La Regla del Mostaza con Grafito",
+        "body": "Sobre vinilo-mostaza el texto, los íconos y los enlaces van en grafito. El mostaza nunca lleva texto blanco.",
+        "section": "colors"
+      },
+      {
+        "name": "La Regla del Verde que Escribe",
+        "body": "whatsapp y whatsapp-dark solo aparecen donde tocar abre un WhatsApp o donde el cartel dice \"Abierto\". Para un panel verde se usa vinilo-verde.",
+        "section": "colors"
+      },
+      {
+        "name": "La Regla del Rojo que Avisa",
+        "body": "error y error-suave aparecen solo en errores de formulario. Un éxito se dice en vinilo-verde, nunca en whatsapp.",
+        "section": "colors"
+      },
+      {
+        "name": "La Regla del Texto que Hereda",
+        "body": "Títulos y párrafos heredan el color del bloque. El texto secundario sobre un panel de color es blanco con opacidad (90% o 85% sobre azul y grafito), nunca gris; sobre vinilo-verde el texto corrido va en blanco al 100% (al 90% baja a 4,46:1) y sobre mostaza al 100% de grafito.",
+        "section": "colors"
+      },
+      {
+        "name": "La Regla del Rótulo",
+        "body": "Todo titular, nombre de sede, etiqueta de barra y botón principal va en rótulo (Rubik 800, mayúsculas, interlineado 1,02, text-wrap balance). El texto corrido nunca va en mayúsculas. La única excepción es el nombre de producto, que es un nombre de catálogo largo y va en Figtree 700.",
+        "section": "typography"
+      },
+      {
+        "name": "La Regla de una Sola Voz Gruesa",
+        "body": "Rubik se usa solo en rótulo y cartel; párrafos, etiquetas de campo, captions y enlaces de texto son Figtree.",
+        "section": "typography"
+      },
+      {
+        "name": "La Regla de la Lectura Larga",
+        "body": "Un texto que se lee de corrido más allá de un párrafo (las páginas legales) va en panel blanco a 72ch, 1.0625rem e interlineado 1,7, con sus h2 en rótulo de 1.375rem.",
+        "section": "typography"
+      },
+      {
+        "name": "La Regla del Vinilo Plano",
+        "body": "Paneles, marcos, barras de rótulo, campos, notas y placas de enlace no tienen sombra. Solo lo que cuelga delante de un panel (letrero, botón placa) proyecta sombra, y la tarjeta de producto solo al hover; siempre con uno de los tres tokens de sombra, nunca un valor suelto ni una sombra dura.",
+        "section": "elevation"
+      },
+      {
+        "name": "La Regla del Perfil Grafito",
+        "body": "Sobre claro, un contorno es grafito y sólido, de 3px en piezas grandes y 2px en piezas chicas. Nunca gris claro, nunca punteado. Solo cambia de color por estado: a error en un campo inválido y a mostaza en el filtro activo. Sobre un panel oscuro, el contorno es blanco con opacidad.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "**Do** dar a cada sección de la home su propia forma y su fondo a sangre, alternando superficies y espaciados.",
+      "**Do** construir las páginas interiores con marcos grafito (radio 6px, padding 8px / 12px) con paneles planos de radio 3px adentro, sobre fondo muro.",
+      "**Do** abrir cada página interior con un marco que contenga un panel de encabezado de color y su título en rótulo.",
+      "**Do** escribir todo titular, nombre de sede y etiqueta de barra en rótulo (Rubik 800, mayúsculas, interlineado 1,02).",
+      "**Do** usar vinilo-azul, vinilo-verde, grafito o grafito-suave para paneles con texto blanco, y grafito sobre vinilo-mostaza.",
+      "**Do** llevar la acción de agendar al letrero de puerta de cada sede, con el disco whatsapp y el estado en vivo (en el letrero o, en el hero, una sola vez arriba).",
+      "**Do** usar solo fotos reales de la clínica; si falta una, guardar un recorte de una foto real en public/images/recortes/ o dejar el espacio fuera.",
+      "**Do** usar contorno grafito sólido de 3px en placas, campos y notas, y de 2px en piezas chicas.",
+      "**Do** poner la etiqueta encima de cada campo y el error debajo, en error, enlazado con aria-describedby.",
+      "**Do** aplicar el comportamiento presionable (ascenso de 2px al hover real, escala 0.97 al presionar) a todo lo tocable, con su versión sin movimiento.",
+      "**Do** mantener 44px de alto mínimo en todo objeto tocable y 48px en barras, campos, filtros y botones placa."
+    ],
+    "donts": [
+      "**Don't** usar el azul ni el verde del logo tal cual como fondo de panel con texto blanco; no pasan AA.",
+      "**Don't** poner texto blanco sobre vinilo-mostaza.",
+      "**Don't** usar whatsapp como color decorativo; es solo para escribir por WhatsApp y para el cartel \"Abierto\".",
+      "**Don't** usar error fuera de un error de formulario, ni whatsapp para decir que algo salió bien.",
+      "**Don't** agregar sombras a paneles, marcos, barras, campos o notas; solo lo que cuelga (letrero, botón placa) proyecta sombra.",
+      "**Don't** usar degradados, fondos grises tipo gray-50, tarjetas con sombra flotante ni radios grandes (rounded-lg, rounded-2xl); son el lenguaje de las páginas viejas.",
+      "**Don't** repetir el molde H2 centrado + subtítulo gris + grilla de tarjetas iguales, ni números de sección (01, 02).",
+      "**Don't** usar fotos de stock, ni iniciales sobre degradado cuando falta un retrato.",
+      "**Don't** separar datos con puntos medios (·) ni abreviar días con guiones (L–V).",
+      "**Don't** usar gris para texto secundario sobre un panel de color; se usa blanco al 90% o 85%.",
+      "**Don't** usar contornos gris claro o punteados sobre claro; el perfil es grafito."
+    ]
+  }
+}
