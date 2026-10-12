@@ -11,7 +11,16 @@
 
 🌐 **Sitio en producción:** [dogtoraliavet.cl](https://dogtoraliavet.cl)
 
-![Inicio de Dogtoralia Vet: portada con el equipo y botones de WhatsApp por sede](docs/captura-inicio.png)
+<table>
+  <tr>
+    <th>Escritorio</th>
+    <th>Móvil</th>
+  </tr>
+  <tr>
+    <td><img src="docs/captura-inicio.png" alt="Inicio de Dogtoralia Vet en escritorio: portada con el equipo y botones de WhatsApp por sede" width="620"></td>
+    <td><img src="docs/captura-inicio-movil.png" alt="Inicio de Dogtoralia Vet en móvil: foto del equipo arriba y botones de WhatsApp por sede" width="200"></td>
+  </tr>
+</table>
 
 ---
 
