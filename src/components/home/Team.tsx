@@ -34,11 +34,11 @@ export function Team() {
                   <span className="text-vinilo-verde">{shortName(gabriel)}</span> en el Centro.
                 </span>
               )}
-              <span className="mt-2 block">En cirugías y urgencias, los dos.</span>
+              <span className="mt-2 block">En cirugías programadas, los dos.</span>
             </h2>
             <p className="mt-5 max-w-[50ch] text-base leading-relaxed text-grafito-suave sm:text-lg">
-              Ella es cirujana y él, anestesiólogo. Cuando tu mascota necesita una operación o llega
-              una emergencia, la atienden juntos, sin derivarla a otra clínica.
+              Ella es cirujana y él, anestesiólogo. Cuando tu mascota necesita una operación, la
+              atienden juntos.
             </p>
           </div>
 

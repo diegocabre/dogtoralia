@@ -25,7 +25,7 @@ export const locations = {
     fullAddress: "Av. Concha y Toro 3859, Puente Alto, Región Metropolitana, Chile",
     phone: "+56957830195",
     email: "dogtoralia.cl@gmail.com",
-    image: "/images/puente.jpeg",
+    image: "/images/puentealto1.jpeg",
   },
   santiagoCentro: {
     name: "Santiago Centro",

@@ -3,11 +3,15 @@ import Link from "next/link";
 import type { IconType } from "react-icons";
 import {
   PiBathtubBold,
+  PiEyeBold,
   PiFirstAidKitBold,
   PiFlaskBold,
+  PiHeartbeatBold,
   PiScissorsBold,
+  PiSquaresFourBold,
   PiStethoscopeBold,
   PiSyringeBold,
+  PiWaveformBold,
 } from "react-icons/pi";
 import { services, type ServiceData } from "@/data/services";
 import RequestAppointment from "@/components/appointments/RequestAppointment";
@@ -18,7 +22,7 @@ import { PedirHoraServicio } from "@/components/appointments/PedirHoraServicio";
 // (también lo lee el SEO).
 const panelStyle: Record<
   string,
-  { panel: string; span: string; icon: IconType; note?: string }
+  { panel: string; span: string; icon: IconType; note?: string; itemIcons?: IconType[] }
 > = {
   consultas: {
     panel: "bg-vinilo-azul text-white",
@@ -41,10 +45,17 @@ const panelStyle: Record<
     icon: PiFirstAidKitBold,
     note: "En cirugías operan juntos la Dra. Sara (cirujana) y el Dr. Gabriel (anestesiólogo).",
   },
+  otros: {
+    panel: "bg-vinilo-mostaza text-grafito",
+    span: "lg:col-span-6",
+    icon: PiSquaresFourBold,
+    itemIcons: [PiHeartbeatBold, PiEyeBold, PiWaveformBold],
+  },
   peluqueria: {
     panel: "bg-vinilo-azul text-white",
     span: "lg:col-span-6",
     icon: PiScissorsBold,
+    itemIcons: [PiScissorsBold, PiBathtubBold],
   },
 };
 
@@ -89,15 +100,18 @@ function ServicePanel({ service }: { service: ServiceData }) {
       <div className={`flex flex-col ${wide ? "mt-6 lg:mt-0 lg:justify-center" : "mt-auto"}`}>
         {service.items && (
           <ul className="mt-6 grid gap-2.5 lg:mt-0">
-            {service.items.map((item, index) => (
-              <li key={item.title} className={`rounded-[8px] px-4 py-3 ${itemBarsFor(style.panel)[index % 2]}`}>
-                <span className="flex items-center gap-2">
-                  {index === 0 ? <PiScissorsBold aria-hidden /> : <PiBathtubBold aria-hidden />}
-                  <span className="rotulo text-lg">{item.title}</span>
-                </span>
-                <span className="mt-1 block text-sm leading-snug">{item.text}</span>
-              </li>
-            ))}
+            {service.items.map((item, index) => {
+              const ItemIcon = style.itemIcons?.[index] ?? PiBathtubBold;
+              return (
+                <li key={item.title} className={`rounded-[8px] px-4 py-3 ${itemBarsFor(style.panel)[index % 2]}`}>
+                  <span className="flex items-center gap-2">
+                    <ItemIcon aria-hidden />
+                    <span className="rotulo text-lg">{item.title}</span>
+                  </span>
+                  <span className="mt-1 block text-sm leading-snug">{item.text}</span>
+                </li>
+              );
+            })}
           </ul>
         )}
         <PedirHoraServicio serviceTitle={service.title} />

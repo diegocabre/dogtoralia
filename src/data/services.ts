@@ -36,6 +36,16 @@ export const services: ServiceData[] = [
     description: "Procedimientos menores y mayores, cirugías incluidas.",
   },
   {
+    slug: "otros",
+    title: "Otros servicios",
+    description: "Cuando hace falta mirar más a fondo, también hacemos evaluaciones de especialidad.",
+    items: [
+      { title: "Cardiología", text: "Evaluación del corazón de tu mascota." },
+      { title: "Oftalmología", text: "Evaluación y tratamiento de los ojos." },
+      { title: "Ecografía abdominal", text: "Para ver sus órganos por dentro, sin intervenir." },
+    ],
+  },
+  {
     slug: "peluqueria",
     title: "Peluquería Canina y Felina",
     description: "Corte, baño y baño medicado para perros y gatos, en las dos sedes. Para que salga oliendo a limpio y sin estrés.",
