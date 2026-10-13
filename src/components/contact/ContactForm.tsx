@@ -157,176 +157,174 @@ export function ContactForm() {
                 Llega al correo de la sede que elijas y te respondemos ahí.
             </p>
 
-            <div className="mt-6 rounded-md bg-grafito p-1.5 sm:p-2">
-                <form
-                    onSubmit={handleSubmit}
-                    noValidate
-                    className="grid gap-5 rounded-[3px] bg-white px-5 py-7 sm:grid-cols-2 sm:px-9 sm:py-9"
-                >
-                    <Field id="name" label="Nombre" error={fieldErrors.name}>
-                        <input
-                            id="name"
-                            type="text"
-                            name="name"
-                            autoComplete="name"
-                            value={formData.name}
+            <form
+                onSubmit={handleSubmit}
+                noValidate
+                className="mt-6 grid gap-5 rounded-md bg-white px-5 py-7 sm:grid-cols-2 sm:px-9 sm:py-9"
+            >
+                <Field id="name" label="Nombre" error={fieldErrors.name}>
+                    <input
+                        id="name"
+                        type="text"
+                        name="name"
+                        autoComplete="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        maxLength={100}
+                        aria-invalid={Boolean(fieldErrors.name)}
+                        aria-describedby={describedBy('name')}
+                        className={inputClass(Boolean(fieldErrors.name))}
+                    />
+                </Field>
+
+                <Field id="email" label="Correo" error={fieldErrors.email}>
+                    <input
+                        id="email"
+                        type="email"
+                        name="email"
+                        autoComplete="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        maxLength={200}
+                        aria-invalid={Boolean(fieldErrors.email)}
+                        aria-describedby={describedBy('email')}
+                        className={inputClass(Boolean(fieldErrors.email))}
+                    />
+                </Field>
+
+                <Field id="phone" label="Teléfono" hint="(opcional)" error={fieldErrors.phone} className="sm:col-span-2">
+                    <input
+                        id="phone"
+                        type="tel"
+                        name="phone"
+                        autoComplete="tel"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        maxLength={30}
+                        aria-invalid={Boolean(fieldErrors.phone)}
+                        aria-describedby={describedBy('phone')}
+                        className={inputClass(Boolean(fieldErrors.phone))}
+                    />
+                </Field>
+
+                <div className="sm:col-span-2">
+                    <Field id="message" label="Mensaje" hint="(mínimo 10 caracteres)" error={fieldErrors.message}>
+                        <textarea
+                            id="message"
+                            name="message"
+                            value={formData.message}
                             onChange={handleChange}
-                            maxLength={100}
-                            aria-invalid={Boolean(fieldErrors.name)}
-                            aria-describedby={describedBy('name')}
-                            className={inputClass(Boolean(fieldErrors.name))}
+                            rows={5}
+                            maxLength={MESSAGE_MAX_LENGTH}
+                            suppressHydrationWarning
+                            aria-invalid={Boolean(fieldErrors.message)}
+                            aria-describedby={describedBy('message')}
+                            className={`${inputClass(Boolean(fieldErrors.message))} resize-y`}
                         />
                     </Field>
+                    <p className="mt-1 text-right text-xs tabular-nums text-grafito-suave">
+                        {formData.message.length}/{MESSAGE_MAX_LENGTH}
+                    </p>
+                </div>
 
-                    <Field id="email" label="Correo" error={fieldErrors.email}>
+                <Field id="location" label="Sede" error={fieldErrors.location} className="sm:col-span-2">
+                    <select
+                        id="location"
+                        name="location"
+                        value={formData.location}
+                        onChange={handleChange}
+                        aria-invalid={Boolean(fieldErrors.location)}
+                        aria-describedby={describedBy('location')}
+                        className={inputClass(Boolean(fieldErrors.location))}
+                    >
+                        <option value="">Elige una sede</option>
+                        {LOCATION_OPTIONS.map((option) => (
+                            <option key={option} value={option}>
+                                {option}
+                            </option>
+                        ))}
+                    </select>
+                </Field>
+
+                {/* Consentimiento de datos personales */}
+                <div className="sm:col-span-2">
+                    <div className="flex items-start gap-3">
+                        <span className="relative mt-0.5 flex h-6 w-6 flex-shrink-0">
                         <input
-                            id="email"
-                            type="email"
-                            name="email"
-                            autoComplete="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            maxLength={200}
-                            aria-invalid={Boolean(fieldErrors.email)}
-                            aria-describedby={describedBy('email')}
-                            className={inputClass(Boolean(fieldErrors.email))}
-                        />
-                    </Field>
-
-                    <Field id="phone" label="Teléfono" hint="(opcional)" error={fieldErrors.phone} className="sm:col-span-2">
-                        <input
-                            id="phone"
-                            type="tel"
-                            name="phone"
-                            autoComplete="tel"
-                            value={formData.phone}
-                            onChange={handleChange}
-                            maxLength={30}
-                            aria-invalid={Boolean(fieldErrors.phone)}
-                            aria-describedby={describedBy('phone')}
-                            className={inputClass(Boolean(fieldErrors.phone))}
-                        />
-                    </Field>
-
-                    <div className="sm:col-span-2">
-                        <Field id="message" label="Mensaje" hint="(mínimo 10 caracteres)" error={fieldErrors.message}>
-                            <textarea
-                                id="message"
-                                name="message"
-                                value={formData.message}
-                                onChange={handleChange}
-                                rows={5}
-                                maxLength={MESSAGE_MAX_LENGTH}
-                                suppressHydrationWarning
-                                aria-invalid={Boolean(fieldErrors.message)}
-                                aria-describedby={describedBy('message')}
-                                className={`${inputClass(Boolean(fieldErrors.message))} resize-y`}
-                            />
-                        </Field>
-                        <p className="mt-1 text-right text-xs tabular-nums text-grafito-suave">
-                            {formData.message.length}/{MESSAGE_MAX_LENGTH}
-                        </p>
-                    </div>
-
-                    <Field id="location" label="Sede" error={fieldErrors.location} className="sm:col-span-2">
-                        <select
-                            id="location"
-                            name="location"
-                            value={formData.location}
-                            onChange={handleChange}
-                            aria-invalid={Boolean(fieldErrors.location)}
-                            aria-describedby={describedBy('location')}
-                            className={inputClass(Boolean(fieldErrors.location))}
-                        >
-                            <option value="">Elige una sede</option>
-                            {LOCATION_OPTIONS.map((option) => (
-                                <option key={option} value={option}>
-                                    {option}
-                                </option>
-                            ))}
-                        </select>
-                    </Field>
-
-                    {/* Consentimiento de datos personales */}
-                    <div className="sm:col-span-2">
-                        <div className="flex items-start gap-3">
-                            <span className="relative mt-0.5 flex h-6 w-6 flex-shrink-0">
-                            <input
-                                type="checkbox"
-                                id="consent"
-                                checked={consentAccepted}
-                                onChange={(e) => {
-                                    setConsentAccepted(e.target.checked);
-                                    if (e.target.checked) setConsentError(false);
-                                }}
-                                aria-invalid={consentError}
-                                aria-describedby={consentError ? 'consent-error' : undefined}
-                                className={`peer h-6 w-6 cursor-pointer appearance-none rounded-[5px] border-[3px] bg-white checked:bg-grafito ${
-                                    consentError ? 'border-error' : 'border-grafito'
-                                }`}
-                            />
-                            <PiCheckBold
-                                aria-hidden
-                                className="pointer-events-none absolute inset-0 m-auto hidden text-sm text-white peer-checked:block"
-                            />
-                            {/* Amplía el área táctil de la casilla a 44px sin agrandarla */}
-                            <label htmlFor="consent" aria-hidden className="absolute -inset-2.5 cursor-pointer" />
-                            </span>
-                            <label htmlFor="consent" className="text-sm leading-relaxed text-grafito">
-                                He leído y acepto la{' '}
-                                <a
-                                    href="/privacidad"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="font-semibold underline underline-offset-4 hover:text-vinilo-azul"
-                                >
-                                    Política de Privacidad
-                                </a>{' '}
-                                y autorizo el uso de mis datos para responder esta consulta.
-                            </label>
-                        </div>
-                        {consentError && (
-                            <p id="consent-error" className="mt-1.5 text-sm font-semibold text-error">
-                                Debes aceptar la Política de Privacidad para enviar el mensaje.
-                            </p>
-                        )}
-                    </div>
-
-                    {/* Estado del envío */}
-                    {submitStatus.type && (
-                        <div
-                            role={submitStatus.type === 'error' ? 'alert' : 'status'}
-                            className={`rounded-[3px] px-4 py-3 text-base font-semibold sm:col-span-2 ${
-                                submitStatus.type === 'success'
-                                    ? 'bg-vinilo-verde text-white'
-                                    : 'bg-error-suave text-error'
+                            type="checkbox"
+                            id="consent"
+                            checked={consentAccepted}
+                            onChange={(e) => {
+                                setConsentAccepted(e.target.checked);
+                                if (e.target.checked) setConsentError(false);
+                            }}
+                            aria-invalid={consentError}
+                            aria-describedby={consentError ? 'consent-error' : undefined}
+                            className={`peer h-6 w-6 cursor-pointer appearance-none rounded-[5px] border-[3px] bg-white checked:bg-grafito ${
+                                consentError ? 'border-error' : 'border-grafito'
                             }`}
-                        >
-                            {submitStatus.message}
-                        </div>
-                    )}
-
-                    <div className="sm:col-span-2">
-                        <button
-                            type="submit"
-                            disabled={isSubmitting}
-                            className="presionable inline-flex min-h-12 w-full items-center justify-between gap-3 rounded-[10px] border-[3px] border-grafito bg-grafito py-1.5 pl-5 pr-1.5 text-white shadow-letrero disabled:cursor-wait disabled:opacity-80 sm:w-auto"
-                        >
-                            <span className="rotulo text-lg">{isSubmitting ? 'Enviando…' : 'Enviar mensaje'}</span>
-                            <span
-                                aria-hidden
-                                className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-xl text-grafito"
+                        />
+                        <PiCheckBold
+                            aria-hidden
+                            className="pointer-events-none absolute inset-0 m-auto hidden text-sm text-white peer-checked:block"
+                        />
+                        {/* Amplía el área táctil de la casilla a 44px sin agrandarla */}
+                        <label htmlFor="consent" aria-hidden className="absolute -inset-2.5 cursor-pointer" />
+                        </span>
+                        <label htmlFor="consent" className="text-sm leading-relaxed text-grafito">
+                            He leído y acepto la{' '}
+                            <a
+                                href="/privacidad"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="font-semibold underline underline-offset-4 hover:text-vinilo-azul"
                             >
-                                {isSubmitting ? (
-                                    <PiCircleNotchBold className="animate-spin motion-reduce:animate-none" />
-                                ) : (
-                                    <PiPaperPlaneTiltBold />
-                                )}
-                            </span>
-                        </button>
+                                Política de Privacidad
+                            </a>{' '}
+                            y autorizo el uso de mis datos para responder esta consulta.
+                        </label>
                     </div>
-                </form>
-            </div>
+                    {consentError && (
+                        <p id="consent-error" className="mt-1.5 text-sm font-semibold text-error">
+                            Debes aceptar la Política de Privacidad para enviar el mensaje.
+                        </p>
+                    )}
+                </div>
+
+                {/* Estado del envío */}
+                {submitStatus.type && (
+                    <div
+                        role={submitStatus.type === 'error' ? 'alert' : 'status'}
+                        className={`rounded-[3px] px-4 py-3 text-base font-semibold sm:col-span-2 ${
+                            submitStatus.type === 'success'
+                                ? 'bg-vinilo-verde text-white'
+                                : 'bg-error-suave text-error'
+                        }`}
+                    >
+                        {submitStatus.message}
+                    </div>
+                )}
+
+                <div className="sm:col-span-2">
+                    <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="presionable inline-flex min-h-12 w-full items-center justify-between gap-3 rounded-[10px] border-[3px] border-grafito bg-grafito py-1.5 pl-5 pr-1.5 text-white shadow-letrero disabled:cursor-wait disabled:opacity-80 sm:w-auto"
+                    >
+                        <span className="rotulo text-lg">{isSubmitting ? 'Enviando…' : 'Enviar mensaje'}</span>
+                        <span
+                            aria-hidden
+                            className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-xl text-grafito"
+                        >
+                            {isSubmitting ? (
+                                <PiCircleNotchBold className="animate-spin motion-reduce:animate-none" />
+                            ) : (
+                                <PiPaperPlaneTiltBold />
+                            )}
+                        </span>
+                    </button>
+                </div>
+            </form>
         </section>
     );
 }

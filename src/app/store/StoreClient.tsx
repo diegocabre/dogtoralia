@@ -134,28 +134,26 @@ export default function StoreClient({ products }: { products: Product[] }) {
               )}
             </>
           ) : (
-            <div className="rounded-md bg-grafito p-1.5 sm:p-2">
-              <div className="rounded-[3px] bg-white px-6 py-10 text-center text-grafito">
-                <p className="rotulo text-2xl sm:text-3xl">No está en la vitrina</p>
-                <p className="mx-auto mt-3 max-w-[42ch] text-base leading-relaxed text-grafito-suave">
-                  Prueba con otra palabra, o pregúntanos por WhatsApp si lo tenemos.
-                </p>
-                <a
-                  href={whatsappUrl(MAIN_WHATSAPP_PHONE, askMessage)}
-                  aria-label="Preguntar por WhatsApp si tienen el producto"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="presionable mt-6 inline-flex min-h-12 items-center gap-3 rounded-[10px] border-[3px] border-grafito bg-white py-1.5 pl-4 pr-1.5 text-grafito shadow-letrero"
+            <div className="rounded-md bg-white px-6 py-10 text-center text-grafito">
+              <p className="rotulo text-2xl sm:text-3xl">No está en la vitrina</p>
+              <p className="mx-auto mt-3 max-w-[42ch] text-base leading-relaxed text-grafito-suave">
+                Prueba con otra palabra, o pregúntanos por WhatsApp si lo tenemos.
+              </p>
+              <a
+                href={whatsappUrl(MAIN_WHATSAPP_PHONE, askMessage)}
+                aria-label="Preguntar por WhatsApp si tienen el producto"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="presionable mt-6 inline-flex min-h-12 items-center gap-3 rounded-[10px] border-[3px] border-grafito bg-white py-1.5 pl-4 pr-1.5 text-grafito shadow-letrero"
+              >
+                <span className="rotulo whitespace-nowrap text-lg">Preguntar</span>
+                <span
+                  aria-hidden
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-whatsapp text-2xl text-white"
                 >
-                  <span className="rotulo whitespace-nowrap text-lg">Preguntar</span>
-                  <span
-                    aria-hidden
-                    className="flex h-10 w-10 items-center justify-center rounded-full bg-whatsapp text-2xl text-white"
-                  >
-                    <PiWhatsappLogoBold />
-                  </span>
-                </a>
-              </div>
+                  <PiWhatsappLogoBold />
+                </span>
+              </a>
             </div>
           )}
         </div>

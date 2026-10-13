@@ -30,37 +30,37 @@ export function LegalPage({
             <h1 className="rotulo text-[clamp(2.2rem,5vw,3.5rem)]">{title}</h1>
             <p className="mt-3 text-sm text-white/85">Última actualización: {updated}</p>
           </header>
+        </div>
 
-          <div
-            className={`mt-1.5 grid gap-1.5 sm:mt-2 sm:gap-2 ${
-              toc && toc.length > 0 ? "lg:grid-cols-[16rem_1fr]" : ""
-            }`}
-          >
-            {toc && toc.length > 0 && (
-              <nav
-                aria-label="Contenido"
-                className="rounded-[3px] bg-grafito-suave text-white lg:sticky lg:top-24 lg:self-start"
-              >
-                {/* En el celular el índice va plegado para que el texto empiece
-                    en la primera pantalla; desde lg queda siempre abierto. */}
-                <details className="group lg:hidden">
-                  <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between px-5 py-3 [&::-webkit-details-marker]:hidden">
-                    <span className="rotulo text-lg">Contenido</span>
-                    <PiCaretDownBold aria-hidden className="text-lg transition-transform duration-200 group-open:rotate-180" />
-                  </summary>
-                  <TocList toc={toc} className="px-5 pb-5" />
-                </details>
-                <div className="hidden px-5 py-5 lg:block">
-                  <p className="rotulo text-lg">Contenido</p>
-                  <TocList toc={toc} className="mt-3" />
-                </div>
-              </nav>
-            )}
+        <div
+          className={`mt-4 grid gap-3 sm:mt-6 sm:gap-4 ${
+            toc && toc.length > 0 ? "lg:grid-cols-[16rem_1fr]" : ""
+          }`}
+        >
+          {toc && toc.length > 0 && (
+            <nav
+              aria-label="Contenido"
+              className="rounded-md bg-grafito-suave text-white lg:sticky lg:top-24 lg:self-start"
+            >
+              {/* En el celular el índice va plegado para que el texto empiece
+                  en la primera pantalla; desde lg queda siempre abierto. */}
+              <details className="group lg:hidden">
+                <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between px-5 py-3 [&::-webkit-details-marker]:hidden">
+                  <span className="rotulo text-lg">Contenido</span>
+                  <PiCaretDownBold aria-hidden className="text-lg transition-transform duration-200 group-open:rotate-180" />
+                </summary>
+                <TocList toc={toc} className="px-5 pb-5" />
+              </details>
+              <div className="hidden px-5 py-5 lg:block">
+                <p className="rotulo text-lg">Contenido</p>
+                <TocList toc={toc} className="mt-3" />
+              </div>
+            </nav>
+          )}
 
-            <article className="legal-texto rounded-[3px] bg-white px-5 py-8 text-grafito sm:px-10 sm:py-10">
-              {children}
-            </article>
-          </div>
+          <article className="legal-texto rounded-md bg-white px-5 py-8 text-grafito sm:px-10 sm:py-10">
+            {children}
+          </article>
         </div>
       </div>
     </main>

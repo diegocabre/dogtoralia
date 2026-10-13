@@ -45,55 +45,53 @@ export default function RequestAppointment() {
   const href = whatsappUrl(location.phone, appointmentMessage(location, serviceTitle));
 
   return (
-    <div className="rounded-md bg-grafito-suave p-1.5 sm:p-2">
-      <div className="grid gap-4 rounded-[3px] bg-vinilo-azul px-5 py-6 text-left text-white sm:grid-cols-2 sm:px-7 sm:py-8">
-        <label className="block">
-          <span className="mb-1.5 block text-sm font-semibold">Sede</span>
-          <select
-            className={selectClass}
-            value={locationName}
-            onChange={(e) => setLocationName(e.target.value)}
+    <div className="grid gap-4 rounded-md bg-vinilo-azul px-5 py-6 text-left text-white sm:grid-cols-2 sm:px-7 sm:py-8">
+      <label className="block">
+        <span className="mb-1.5 block text-sm font-semibold">Sede</span>
+        <select
+          className={selectClass}
+          value={locationName}
+          onChange={(e) => setLocationName(e.target.value)}
+        >
+          {locationList.map((l) => (
+            <option key={l.name} value={l.name}>
+              {l.name} ({l.address})
+            </option>
+          ))}
+        </select>
+      </label>
+      <label className="block">
+        <span className="mb-1.5 block text-sm font-semibold">Servicio</span>
+        <select
+          className={selectClass}
+          value={serviceTitle}
+          onChange={(e) => setServiceTitle(e.target.value)}
+        >
+          {services.map((s) => (
+            <option key={s.slug} value={s.title}>
+              {s.title}
+            </option>
+          ))}
+        </select>
+      </label>
+      <div className="sm:col-span-2">
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="presionable mt-2 flex min-h-14 w-full items-center justify-between gap-3 rounded-[10px] border-[3px] border-grafito bg-white py-1.5 pl-5 pr-1.5 text-grafito shadow-letrero"
+        >
+          <span className="rotulo text-xl">Solicitar hora en {location.name}</span>
+          <span
+            aria-hidden
+            className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-whatsapp text-2xl text-white"
           >
-            {locationList.map((l) => (
-              <option key={l.name} value={l.name}>
-                {l.name} ({l.address})
-              </option>
-            ))}
-          </select>
-        </label>
-        <label className="block">
-          <span className="mb-1.5 block text-sm font-semibold">Servicio</span>
-          <select
-            className={selectClass}
-            value={serviceTitle}
-            onChange={(e) => setServiceTitle(e.target.value)}
-          >
-            {services.map((s) => (
-              <option key={s.slug} value={s.title}>
-                {s.title}
-              </option>
-            ))}
-          </select>
-        </label>
-        <div className="sm:col-span-2">
-          <a
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="presionable mt-2 flex min-h-14 w-full items-center justify-between gap-3 rounded-[10px] border-[3px] border-grafito bg-white py-1.5 pl-5 pr-1.5 text-grafito shadow-letrero"
-          >
-            <span className="rotulo text-xl">Solicitar hora en {location.name}</span>
-            <span
-              aria-hidden
-              className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-whatsapp text-2xl text-white"
-            >
-              <PiWhatsappLogoBold />
-            </span>
-          </a>
-          <p className="mt-3 text-sm text-white/85">
-            Te respondemos por WhatsApp para confirmar el día y la hora.
-          </p>
-        </div>
+            <PiWhatsappLogoBold />
+          </span>
+        </a>
+        <p className="mt-3 text-sm text-white/85">
+          Te respondemos por WhatsApp para confirmar el día y la hora.
+        </p>
       </div>
     </div>
   );

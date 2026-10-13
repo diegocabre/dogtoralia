@@ -367,7 +367,7 @@ La home no repite un molde: cada sección tiene su forma y su fondo a sangre, y 
 El movimiento es físico y breve: lo que se toca se hunde un poco, el cartel de estado se balancea una vez como si colgara de su clavo y la barra de WhatsApp móvil sube como un cajón. Todo tiene versión sin movimiento.
 
 **Key Characteristics:**
-- Superficies planas de vinilo con texto blanco (o grafito sobre mostaza): a sangre en la home, dentro de un marco grafito en las páginas interiores.
+- Superficies planas de vinilo con texto blanco (o grafito sobre mostaza): a sangre en la home; en las páginas interiores, el encabezado va dentro de un marco grafito y el resto de los paneles van sueltos sobre el muro.
 - Titulares en rótulo: Rubik 800 en mayúsculas, interlineado 1,02.
 - Muro gris claro como fondo entre marcos y en las secciones de equipo y sedes; blanco en la sección de servicios y dentro de paneles, placas, campos y notas.
 - Verde WhatsApp reservado a la acción de escribir; rojo error reservado a errores de formulario.
@@ -452,7 +452,7 @@ Contenedor de 1280px centrado para inicio, servicios, tienda y contacto, y de 11
 
 **Home.** Cada sección es una franja a sangre con su propio fondo y su propio aire, para que el ritmo no sea uniforme: hero azul sin aire inferior (la foto llega al borde), servicios en blanco con 64px / 96px arriba y abajo, equipo en muro con 64px / 96px arriba y 56px / 80px abajo, franja verde de domicilio de 40px / 48px, reseñas en mostaza con 64px / 96px, sedes en muro con 56px / 80px arriba y 64px / 96px abajo, y cierre grafito con 48px / 64px. Las grillas son asimétricas y en CSS Grid: hero 1fr / 1fr con la foto a sangre a la derecha y el texto alineado al contenedor, servicios 1fr / 1.1fr (destacado y lista), equipo 1fr / 1.15fr (titular y retratos), reseñas auto / 1fr (cifra y cita) más una fila de 3, sedes 2 columnas con la segunda bajada 80px, cierre 1fr / 1.1fr.
 
-**Páginas interiores.** La unidad de composición es el marco de vitrina: un contenedor grafito con 6px de padding en móvil y 8px desde sm, y el mismo valor como separación entre los paneles que contiene. Esa franja grafito entre paneles es el perfil de la vitrina, no un borde. Cada bloque deja 56px de aire inferior en móvil y 80px desde sm. Encabezado de servicios 1fr / 1.1fr, de tienda 1fr / 1.2fr, de contacto 0.8fr / 1.4fr, 404 1.1fr / 1fr, legal 16rem / 1fr. En /service los paneles comparten una grilla de 6 columnas (3+3, 2+4 y 6). La tienda muestra 2 columnas en móvil, 3 desde sm y 4 desde lg, con 8px / 12px de separación.
+**Páginas interiores.** El marco de vitrina (contenedor grafito con 6px de padding en móvil y 8px desde sm, y el mismo valor entre los paneles que contiene) se usa una sola vez por página: en el encabezado. Esa franja grafito es el perfil de la vitrina, no un borde. Debajo del encabezado los paneles van sueltos sobre el muro, con radio 6px y 12px / 16px de separación (móvil / desde sm). Cada bloque deja 56px de aire inferior en móvil y 80px desde sm. Encabezado de servicios 1fr / 1.1fr, de tienda 1fr / 1.2fr, de contacto 0.8fr / 1.4fr, 404 1.1fr / 1fr, legal 16rem / 1fr. En /service los paneles comparten una grilla de 6 columnas (3+3, 2+4 y 6). La tienda muestra 2 columnas en móvil, 3 desde sm y 4 desde lg, con 8px / 12px de separación.
 
 Responsive: en móvil todo apila en una columna. En el hero la foto del equipo va arriba a sangre (proporción 4/3, encuadrada abajo para dejar fuera el logo de la foto) y antes de la primera placa hay solo tres bloques de texto: estado, h1 y una frase; a 390px la primera placa entra completa en la primera pantalla. Por debajo de 768px una barra fija inferior lleva los dos WhatsApp mientras ningún bloque de letreros está a la vista (el body reserva 76px abajo). En escritorio el índice legal queda fijo al hacer scroll. La navegación es una franja fija de 64px (72px desde lg) más 3px de borde: el hero arranca justo debajo (67px / 75px) y las páginas interiores con 76px / 88px de padding superior. En la ficha de producto móvil la imagen baja a 4:3 con un alto máximo de 38vh.
 
@@ -521,7 +521,7 @@ Dos retratos grandes en proporción 4/5, sin tarjeta ni contorno, radio 6px sobr
 Franja vinilo-verde a sangre: ícono de casa (desde md), titular "Vamos a tu casa", una frase y el botón placa "Pedir a domicilio" con disco whatsapp.
 
 ### Paneles y marcos
-- **Marco:** grafito, radio 6px, padding y separación interna de 6px / 8px. El marco del formulario de agenda es grafito-suave.
+- **Marco:** grafito, radio 6px, padding y separación interna de 6px / 8px. Solo en el encabezado de cada página interior (y en el bloque principal de la ficha de producto y de la 404); nunca alrededor de paneles de contenido, tarjetas ni formularios.
 - **Panel:** radio 3px, color plano de vinilo, blanco o grafito-suave, padding de 20px a 44px según tamaño.
 - **Enlace de panel:** texto semibold con subrayado de 3px separado 5px a 6px y flecha, empujado al pie del panel. Sobre claro el subrayado es mostaza y pasa a grafito al hover.
 - **Sombra:** ninguna (ver La Regla del Vinilo Plano).
@@ -556,10 +556,10 @@ Sección mostaza a sangre: el 4,9 en numeral con una estrella, "Más de 240 rese
 - **Horario en contacto:** panel mostaza con el título en rótulo y cada bloque de horario en rótulo de 1.25rem bajo su etiqueta.
 
 ### Panel de servicio (/service)
-Cada servicio es un panel de vinilo dentro de un solo marco, con ancho distinto según su peso: ícono Phosphor de 36px, titular en rótulo, descripción en Figtree al 100% del color del panel (nunca con opacidad sobre mostaza), una nota opcional separada por una línea del color del texto al 25%, y los puntos destacados como barras de rótulo. Su botón placa "Pedir hora" lleva un disco grafito con flecha y baja al formulario de agenda con ese servicio ya elegido, donde la familia escoge la sede. El encabezado usa la foto real de la vitrina de Santiago Centro y un índice de barras de rótulo. Ningún panel lleva foto de stock.
+Cada servicio es un panel de vinilo suelto sobre el muro, con ancho distinto según su peso: ícono Phosphor de 36px, titular en rótulo, descripción en Figtree al 100% del color del panel (nunca con opacidad sobre mostaza), una nota opcional separada por una línea del color del texto al 25%, y los puntos destacados como barras de rótulo. Su botón placa "Pedir hora" lleva un disco grafito con flecha y baja al formulario de agenda con ese servicio ya elegido, donde la familia escoge la sede. El encabezado usa la foto real de la vitrina de Santiago Centro y un índice de barras de rótulo. Ningún panel lleva foto de stock.
 
 ### Formulario de agenda
-Panel vinilo-azul dentro de un marco grafito-suave, sobre el bloque grafito de cierre de /service: etiquetas Figtree semibold encima de selects (ver Inputs / Fields); el envío es un botón placa a todo el ancho ("Solicitar hora en {sede}") que abre el WhatsApp de la sede elegida.
+Panel vinilo-azul de radio 6px, sin marco, sobre el bloque grafito de cierre de /service: etiquetas Figtree semibold encima de selects (ver Inputs / Fields); el envío es un botón placa a todo el ancho ("Solicitar hora en {sede}") que abre el WhatsApp de la sede elegida.
 
 ### Tienda: buscador y filtros
 Dentro del marco, junto al panel mostaza "Tienda": un panel grafito-suave con el buscador y tres filtros de rótulo en una fila (grafito con borde blanco de 2px al 35% que sube al 70% al hover; el activo en mostaza con texto y borde a juego, aria-pressed). Debajo, el conteo de resultados (aria-live) y tandas de 24 productos con un botón secundario "Ver más productos". Sin resultados, un panel blanco "No está en la vitrina" con un botón placa "Preguntar".
@@ -586,7 +586,8 @@ Grafito con borde superior mostaza de 3px. Encabezados en rótulo, enlaces Figtr
 
 ### Do:
 - **Do** dar a cada sección de la home su propia forma y su fondo a sangre, alternando superficies y espaciados.
-- **Do** construir las páginas interiores con marcos grafito (radio 6px, padding 8px / 12px) con paneles planos de radio 3px adentro, sobre fondo muro.
+- **Do** construir las páginas interiores sobre fondo muro: un marco grafito (radio 6px, padding 6px / 8px) con paneles planos de radio 3px solo en el encabezado, y el resto de los paneles sueltos con radio 6px.
+- **Don't** envolver en marco grafito los paneles de contenido, tarjetas o formularios; un marco por página.
 - **Do** abrir cada página interior con un marco que contenga un panel de encabezado de color y su título en rótulo.
 - **Do** escribir todo titular, nombre de sede y etiqueta de barra en rótulo (Rubik 800, mayúsculas, interlineado 1,02).
 - **Do** usar vinilo-azul, vinilo-verde, grafito o grafito-suave para paneles con texto blanco, y grafito sobre vinilo-mostaza.

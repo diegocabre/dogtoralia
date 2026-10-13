@@ -78,7 +78,7 @@ function ServicePanel({ service }: { service: ServiceData }) {
     <section
       id={service.slug}
       aria-labelledby={`${service.slug}-titulo`}
-      className={`scroll-mt-24 rounded-[3px] px-6 py-8 sm:px-9 sm:py-10 ${style.panel} ${style.span} ${
+      className={`scroll-mt-24 rounded-md px-6 py-8 sm:px-9 sm:py-10 ${style.panel} ${style.span} ${
         wide ? "lg:grid lg:grid-cols-[1.1fr_1fr] lg:gap-10" : "flex flex-col"
       }`}
     >
@@ -168,7 +168,7 @@ export default function ServicePage() {
 
       {/* Los servicios como paneles de distinto tamaño en un mismo marco */}
       <div className="mx-auto max-w-7xl px-3 pb-14 sm:px-6 sm:pb-20">
-        <div className="grid gap-1.5 rounded-md bg-grafito p-1.5 sm:gap-2 sm:p-2 lg:grid-cols-6">
+        <div className="grid gap-3 sm:gap-4 lg:grid-cols-6">
           {services.map((service) => (
             <ServicePanel key={service.slug} service={service} />
           ))}
