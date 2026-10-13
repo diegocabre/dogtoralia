@@ -49,12 +49,7 @@ export default function ProductClient({ product }: ProductClientProps) {
                     <div className="flex min-w-0 flex-col rounded-[3px] bg-white px-5 py-7 text-grafito sm:px-9 sm:py-10">
                         <p className="flex flex-wrap items-center gap-2 text-sm font-semibold text-grafito-suave">
                             <span>{product.subCategory}</span>
-                            <p className="mt-5 max-w-[60ch] text-sm leading-relaxed text-grafito-suave">
-                            Se retira en la sede de Puente Alto o de Santiago Centro.
-                        </p>
-                        {product.requiresPrescription && (
-                                <EtiquetaReceta />
-                            )}
+                            {product.requiresPrescription && <EtiquetaReceta />}
                         </p>
                         <h1 className="mt-3 text-[clamp(1.6rem,3vw,2.25rem)] font-bold leading-tight">{name}</h1>
                         <a
