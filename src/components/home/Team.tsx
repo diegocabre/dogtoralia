@@ -23,7 +23,7 @@ export function Team() {
       <section className="bg-muro pb-14 pt-16 text-grafito sm:pb-20 sm:pt-24">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[1fr_1.15fr] lg:items-center lg:gap-16">
           <div>
-            <h2 className="rotulo text-[clamp(2rem,4vw,3.3rem)]">
+            <h2 className="rotulo text-[clamp(1.8rem,4vw,3.3rem)] leading-[1.1]">
               {sara && (
                 <span className="block">
                   <span className="text-vinilo-azul">{shortName(sara)}</span> en Puente Alto.
@@ -34,7 +34,9 @@ export function Team() {
                   <span className="text-vinilo-verde">{shortName(gabriel)}</span> en el Centro.
                 </span>
               )}
-              <span className="mt-2 block">En cirugías programadas, los dos.</span>
+              <span className="mt-4 block text-[0.7em] font-bold leading-[1.15]">
+                En cirugías programadas, los dos.
+              </span>
             </h2>
             <p className="mt-5 max-w-[50ch] text-base leading-relaxed text-grafito-suave sm:text-lg">
               Ella es cirujana y él, anestesiólogo. Cuando tu mascota necesita una operación, la
