@@ -1,5 +1,15 @@
+export interface HoursBlock {
+  label: string;
+  /** Días en inglés, como los pide schema.org y como los entrega Intl */
+  days: string[];
+  opens: string;
+  closes: string;
+}
+
 export interface Location {
   name: string;
+  /** Nombre para frases ("Puente Alto", "el Centro") */
+  shortName: string;
   /** Comuna, para los datos estructurados de SEO */
   locality: string;
   address: string;
@@ -7,6 +17,8 @@ export interface Location {
   phone: string;
   email: string;
   image: string;
+  /** Horario de la sede en hora de Chile. Domingo cerrado en ambas. */
+  hours: HoursBlock[];
   /**
    * ID de la ficha de Google (empieza con "ChIJ..."). Con él los botones de
    * reseñas abren directo la ficha o el formulario de reseña; sin él se usa
@@ -15,26 +27,38 @@ export interface Location {
   googlePlaceId?: string;
 }
 
+const WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+
 // Única fuente de datos de las sedes: la usan la página de contacto, el
 // footer, la sección "Nuestras Sedes" y el envío del formulario de contacto.
 export const locations = {
   puenteAlto: {
     name: "Puente Alto",
+    shortName: "Puente Alto",
     locality: "Puente Alto",
     address: "Av. Concha y Toro 3859",
     fullAddress: "Av. Concha y Toro 3859, Puente Alto, Región Metropolitana, Chile",
     phone: "+56957830195",
     email: "dogtoralia.cl@gmail.com",
     image: "/images/puentealto1.jpeg",
+    hours: [
+      { label: "Lunes a Viernes", days: WEEKDAYS, opens: "10:00", closes: "18:00" },
+      { label: "Sábados", days: ["Saturday"], opens: "10:00", closes: "16:00" },
+    ],
   },
   santiagoCentro: {
     name: "Santiago Centro",
+    shortName: "el Centro",
     locality: "Santiago",
     address: "Av. Presidente Balmaceda 2776",
     fullAddress: "Av. Presidente Balmaceda 2776, Santiago, Región Metropolitana, Chile",
     phone: "+56927492520",
     email: "dogtoraliavet@gmail.com",
     image: "/images/centro.jpeg",
+    hours: [
+      { label: "Lunes a Viernes", days: WEEKDAYS, opens: "10:00", closes: "18:30" },
+      { label: "Sábados", days: ["Saturday"], opens: "10:00", closes: "16:30" },
+    ],
   },
 } satisfies Record<string, Location>;
 

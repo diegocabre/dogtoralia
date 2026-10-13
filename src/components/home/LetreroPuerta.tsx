@@ -2,20 +2,25 @@
 
 import { useEffect, useState } from "react";
 import { PiWhatsappLogoBold } from "react-icons/pi";
-import { agendarMensaje, whatsappUrl, type Location } from "@/data/locations";
+import { agendarMensaje, locationList, whatsappUrl, type Location } from "@/data/locations";
 import { shortName, vetForLocation } from "@/data/team";
 import { getOpenStatus, type OpenState, type OpenStatus } from "@/lib/hours";
 
+export type OpenStatuses = Record<string, OpenStatus>;
+
 /**
- * Estado abierto/cerrado en hora de Chile. Se calcula solo en el navegador
- * (en el servidor quedaría congelado con la hora del build) y se refresca
- * cada minuto. Mientras no hay estado, devuelve null.
+ * Estado abierto/cerrado de cada sede (por nombre), en hora de Chile. Se
+ * calcula solo en el navegador (en el servidor quedaría congelado con la hora
+ * del build) y se refresca cada minuto. Mientras no hay estado, devuelve null.
  */
 export function useOpenStatus() {
-  const [status, setStatus] = useState<OpenStatus | null>(null);
+  const [status, setStatus] = useState<OpenStatuses | null>(null);
 
   useEffect(() => {
-    const update = () => setStatus(getOpenStatus());
+    const update = () =>
+      setStatus(
+        Object.fromEntries(locationList.map((location) => [location.name, getOpenStatus(location)])),
+      );
     update();
     const timer = setInterval(update, 60_000);
     return () => clearInterval(timer);

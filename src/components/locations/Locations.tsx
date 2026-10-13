@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { PiMapPinBold, PiNavigationArrowBold, PiWhatsappLogoBold } from "react-icons/pi";
 import { agendarMensaje, googleMapsSearchUrl, locationList, wazeUrl, whatsappUrl } from "@/data/locations";
-import { businessHours } from "@/data/site";
 import { shortName, vetForLocation } from "@/data/team";
 
 // "Av. Concha y Toro 3859" -> calle "Av. Concha y Toro" y número "3859",
@@ -61,7 +60,7 @@ export function Locations() {
                   )}
 
                   <dl className="mt-5 grid grid-cols-[auto_1fr] gap-x-6 gap-y-1.5 border-y-2 border-grafito/15 py-4">
-                    {businessHours.map((block) => (
+                    {location.hours.map((block) => (
                       <div key={block.label} className="contents">
                         <dt className="text-grafito-suave">{block.label}</dt>
                         <dd className="font-semibold tabular-nums">

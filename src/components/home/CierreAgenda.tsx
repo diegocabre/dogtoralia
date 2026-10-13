@@ -18,7 +18,7 @@ export function CierreAgenda() {
         </div>
         <div id="letreros-cierre" className="grid gap-6 sm:grid-cols-2 sm:gap-4 lg:grid-cols-1 lg:gap-6">
           {locationList.map((location) => (
-            <LetreroPuerta key={location.name} location={location} status={status} />
+            <LetreroPuerta key={location.name} location={location} status={status?.[location.name] ?? null} />
           ))}
         </div>
       </div>

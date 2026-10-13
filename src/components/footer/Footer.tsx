@@ -8,7 +8,7 @@ import {
     PiWhatsappLogoBold,
 } from "react-icons/pi";
 import { formatPhone, locationList, whatsappUrl } from "@/data/locations";
-import { businessHours, SOCIAL_LINKS } from "@/data/site";
+import { SOCIAL_LINKS } from "@/data/site";
 
 const whatsappMessage = "Hola! Me gustaría recibir información sobre los servicios de Dogtoralia.";
 
@@ -51,14 +51,17 @@ export default function Footer() {
 
                     <div>
                         <h3 className="rotulo text-xl">Horario</h3>
-                        <ul className="mt-3 grid gap-2 text-sm text-white/85">
-                            {businessHours.map((block) => (
-                                <li key={block.label} className="flex items-start gap-2">
+                        <ul className="mt-3 grid gap-3 text-sm text-white/85">
+                            {locationList.map((location) => (
+                                <li key={location.name} className="flex items-start gap-2">
                                     <PiClockBold aria-hidden className="mt-0.5 text-base" />
                                     <span>
-                                        {block.label}
-                                        <br />
-                                        {block.opens} a {block.closes}
+                                        <span className="font-semibold text-white">{location.name}</span>
+                                        {location.hours.map((block) => (
+                                            <span key={block.label} className="block">
+                                                {block.label}: {block.opens} a {block.closes}
+                                            </span>
+                                        ))}
                                     </span>
                                 </li>
                             ))}

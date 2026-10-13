@@ -51,22 +51,5 @@ export const OG_IMAGE = {
 
 export const THEME_COLOR = "#2893b9";
 
-// Horario de atención. Lo usan el footer y los datos estructurados
-// (Google lo muestra en el resultado de búsqueda y en Maps).
-export const businessHours = [
-  {
-    label: "Lunes a Viernes",
-    days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-    opens: "10:00",
-    closes: "19:00",
-  },
-  {
-    label: "Sábados",
-    days: ["Saturday"],
-    opens: "10:00",
-    closes: "17:00",
-  },
-];
-
 export const absoluteUrl = (path = "/") =>
   `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;

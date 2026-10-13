@@ -9,8 +9,9 @@ opción (c) (ver al final).
 - **2 sedes** (`src/data/locations.ts`): Puente Alto (Av. Concha y Toro 3859,
   WhatsApp +56 9 5783 0195) y Santiago Centro (Av. Presidente Balmaceda 2776,
   WhatsApp +56 9 2749 2520).
-- **Horario común** (`src/data/site.ts`): lunes a viernes de 10:00 a 19:00 y
-  sábados de 10:00 a 17:00.
+- **Horario por sede** (`src/data/locations.ts`): Puente Alto, lunes a viernes
+  de 10:00 a 18:00 y sábados de 10:00 a 16:00; Santiago Centro, lunes a viernes
+  de 10:00 a 18:30 y sábados de 10:00 a 16:30.
 - **5 servicios** (`src/data/services.ts`): Consultas, Vacunas, Exámenes,
   Procedimientos y Peluquería canina y felina (corte y baño, baño medicado).
 - **Equipo** (`src/data/team.ts`): al menos 2 médicos veterinarios

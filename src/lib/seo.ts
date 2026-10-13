@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import {
   locations,
   googleMapsSearchUrl,
+  type Location,
 } from "@/data/locations";
 import { services } from "@/data/services";
 import {
@@ -11,7 +12,6 @@ import {
   SOCIAL_LINKS,
   LOGO_PATH,
   OG_IMAGE,
-  businessHours,
   absoluteUrl,
 } from "@/data/site";
 
@@ -110,12 +110,13 @@ export function websiteJsonLd() {
   };
 }
 
-const openingHoursSpecification = businessHours.map((block) => ({
-  "@type": "OpeningHoursSpecification",
-  dayOfWeek: block.days,
-  opens: block.opens,
-  closes: block.closes,
-}));
+const openingHoursSpecification = (location: Location) =>
+  location.hours.map((block) => ({
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: block.days,
+    opens: block.opens,
+    closes: block.closes,
+  }));
 
 // Una entidad VeterinaryCare por sede: Google las trata como negocios
 // locales distintos (cada una con su dirección, teléfono y mapa).
@@ -139,7 +140,7 @@ export function veterinaryCareJsonLd() {
     },
     hasMap: googleMapsSearchUrl(location.fullAddress),
     areaServed: { "@type": "City", name: location.locality },
-    openingHoursSpecification,
+    openingHoursSpecification: openingHoursSpecification(location),
     parentOrganization: { "@id": ORGANIZATION_ID },
     sameAs,
     hasOfferCatalog: {

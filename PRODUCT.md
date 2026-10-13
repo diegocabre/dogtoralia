@@ -25,7 +25,7 @@ Dogtoralia Vet es una clínica veterinaria de barrio con dos sedes. El sitio exi
 ## Operating Context
 
 - **Sedes:** Puente Alto (Av. Concha y Toro 3859, WhatsApp +56 9 5783 0195) y Santiago Centro (Av. Presidente Balmaceda 2776, WhatsApp +56 9 2749 2520). Fuente única: `src/data/locations.ts`.
-- **Horario común:** lunes a viernes de 10:00 a 19:00 y sábados de 10:00 a 17:00 (`src/data/site.ts`). Domingo cerrado.
+- **Horario por sede** (`hours` en `src/data/locations.ts`): Puente Alto, lunes a viernes de 10:00 a 18:00 y sábados de 10:00 a 16:00; Santiago Centro, lunes a viernes de 10:00 a 18:30 y sábados de 10:00 a 16:30. Domingo cerrado en ambas.
 - **Reserva:** por WhatsApp, un número por sede. No hay sistema de reservas online; la evaluación está en `RESERVAS-PROPUESTA.md`.
 - **Tienda:** es una vitrina. No hay carrito ni pago online; cada producto se consulta por WhatsApp y se retira en la sede (Puente Alto o Santiago Centro); no hay despacho. El catálogo vive en `src/data/products.json`.
 - **Contacto:** formulario con envío por correo (Resend) y rate limiting, además de Google Maps y Waze por sede.

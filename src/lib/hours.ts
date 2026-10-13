@@ -1,6 +1,6 @@
-import { businessHours } from "@/data/site";
+import type { HoursBlock, Location } from "@/data/locations";
 
-// Los horarios de businessHours son hora de Chile: se calcula "ahora" en esa
+// Los horarios de cada sede son hora de Chile: se calcula "ahora" en esa
 // zona horaria, no en la del navegador del visitante.
 const TIMEZONE = "America/Santiago";
 
@@ -30,9 +30,9 @@ export interface OpenStatus {
   open: boolean;
   /** Estado para el letrero de la puerta */
   state: OpenState;
-  /** Frase completa, ej. "Abierto ahora, hasta las 19:00" */
+  /** Frase completa, ej. "Abierto ahora, hasta las 18:00" */
   label: string;
-  /** Detalle corto bajo el letrero, ej. "hasta las 19:00" */
+  /** Detalle corto bajo el letrero, ej. "hasta las 18:00" */
   detail: string;
 }
 
@@ -44,8 +44,8 @@ const toMinutes = (time: string) => {
   return hours * 60 + minutes;
 };
 
-const hoursFor = (weekday: string) =>
-  businessHours.find((entry) => entry.days.includes(weekday));
+const blockFor = (hours: HoursBlock[], weekday: string) =>
+  hours.find((entry) => entry.days.includes(weekday));
 
 function chileNow(date: Date) {
   const parts = new Intl.DateTimeFormat("en-US", {
@@ -63,10 +63,10 @@ function chileNow(date: Date) {
   };
 }
 
-/** Indica si la clínica está abierta ahora y cuándo vuelve a abrir. */
-export function getOpenStatus(date: Date = new Date()): OpenStatus {
+/** Indica si una sede está abierta ahora y cuándo vuelve a abrir. */
+export function getOpenStatus(location: Location, date: Date = new Date()): OpenStatus {
   const { weekday, minutes } = chileNow(date);
-  const today = hoursFor(weekday);
+  const today = blockFor(location.hours, weekday);
 
   if (today && minutes >= toMinutes(today.opens) && minutes < toMinutes(today.closes)) {
     const closingSoon = toMinutes(today.closes) - minutes <= CLOSING_SOON_MINUTES;
@@ -90,7 +90,7 @@ export function getOpenStatus(date: Date = new Date()): OpenStatus {
   const todayIndex = WEEKDAYS.indexOf(weekday as (typeof WEEKDAYS)[number]);
   for (let offset = 1; offset <= 7; offset++) {
     const nextDay = WEEKDAYS[(todayIndex + offset) % 7];
-    const next = hoursFor(nextDay);
+    const next = blockFor(location.hours, nextDay);
     if (next) {
       const when = offset === 1 ? "mañana" : `el ${WEEKDAYS_ES[nextDay]}`;
       return {

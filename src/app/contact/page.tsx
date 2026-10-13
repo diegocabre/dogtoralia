@@ -15,7 +15,6 @@ import {
   wazeUrl,
   whatsappUrl,
 } from "@/data/locations";
-import { businessHours } from "@/data/site";
 import { shortName, vetForLocation } from "@/data/team";
 
 // Los mapas usan el formato "q=<dirección>&output=embed": no requiere API
@@ -78,6 +77,19 @@ export default function ContactPage() {
                   </div>
                 </div>
 
+                <dl className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-1 border-t-2 border-grafito/15 px-4 py-3 text-sm sm:px-5">
+                  {location.hours.map((block) => (
+                    <div key={block.label} className="contents">
+                      <dt className="text-grafito-suave">{block.label}</dt>
+                      <dd className="font-semibold tabular-nums">
+                        {block.opens} a {block.closes}
+                      </dd>
+                    </div>
+                  ))}
+                  <dt className="text-grafito-suave">Domingos</dt>
+                  <dd className="font-semibold">Cerrado</dd>
+                </dl>
+
                 <div>
                   <iframe
                     src={googleMapsEmbedUrl(location.fullAddress)}
@@ -135,25 +147,6 @@ export default function ContactPage() {
               </article>
             );
           })}
-        </div>
-
-        {/* Horario común */}
-        <div className="mt-4">
-          <div className="grid gap-x-8 gap-y-3 rounded-md bg-vinilo-mostaza px-5 py-5 text-grafito sm:grid-cols-[auto_1fr_1fr_1fr] sm:items-center sm:px-7">
-            <h2 className="rotulo text-2xl">Horario</h2>
-            {businessHours.map((block) => (
-              <p key={block.label}>
-                <span className="block text-sm font-semibold">{block.label}</span>
-                <span className="rotulo block text-xl">
-                  {block.opens} a {block.closes}
-                </span>
-              </p>
-            ))}
-            <p>
-              <span className="block text-sm font-semibold">Domingos</span>
-              <span className="rotulo block text-xl">Cerrado</span>
-            </p>
-          </div>
         </div>
 
         <ContactForm />
