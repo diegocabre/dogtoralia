@@ -18,7 +18,7 @@ Dogtoralia Vet es una clínica veterinaria de barrio con dos sedes. El sitio exi
 
 - Anestesiólogo (Gabriel Cabré) y cirujana (Sara Vásquez) en el equipo propio: los procedimientos y cirugías no se derivan.
 - Atención a domicilio en todo Santiago, además de las dos sedes.
-- En operaciones y emergencias atienden los dos veterinarios juntos.
+- En las cirugías programadas atienden los dos veterinarios juntos.
 - Clínica, peluquería canina y felina y tienda en un mismo lugar.
 - Precios accesibles para el barrio. No hay precios publicados: no inventar cifras.
 
@@ -32,9 +32,9 @@ Dogtoralia Vet es una clínica veterinaria de barrio con dos sedes. El sitio exi
 
 ## Capabilities and Constraints
 
-- **Servicios** (`src/data/services.ts`): Consultas, Vacunas, Exámenes, Procedimientos y Peluquería canina y felina (corte y baño, baño medicado), en las dos sedes.
+- **Servicios** (`src/data/services.ts`): Consultas, Vacunas, Exámenes, Procedimientos, Otros servicios (cardiología, oftalmología y ecografía abdominal) y Peluquería canina y felina (corte y baño, baño medicado), en las dos sedes.
 - **Atención a domicilio:** cubre Santiago en general (no solo las comunas de las sedes). Hoy no aparece como servicio en el sitio. No hay condiciones ni precios publicados: no inventarlos.
-- **Equipo por sede:** en el día a día, Sara Vásquez (cirujana) atiende en Puente Alto y Gabriel Cabré (anestesiólogo) en Santiago Centro. Ante una operación o una emergencia, atienden los dos juntos.
+- **Equipo por sede:** en el día a día, Sara Vásquez (cirujana) atiende en Puente Alto y Gabriel Cabré (anestesiólogo) en Santiago Centro. En las cirugías programadas, atienden los dos juntos. El sitio no promete atención de urgencias.
 - **Técnico:** Next.js (App Router), Tailwind CSS 4 y Framer Motion. `/` redirige a `/home`, que es la URL canónica. Las URLs, los datos estructurados (JSON-LD) y la metadata SEO ya están trabajados y no se deben romper.
 
 ## Brand Commitments
@@ -45,7 +45,7 @@ Dogtoralia Vet es una clínica veterinaria de barrio con dos sedes. El sitio exi
 - **Activos que se protegen (no reemplazar ni alterar):**
   - Logo multicolor redondo: `public/img/LOGO.png`.
   - Foto del equipo con Gabriel Cabré y Sara Vásquez junto a un perro: `public/images/portada.png`.
-  - Fachadas reales de las sedes: `public/images/puente.jpeg` y `public/images/centro.jpeg`.
+  - Fachadas reales de las sedes: `public/images/puentealto1.jpeg` y `public/images/centro.jpeg`.
   - Reseñas de Google: 4,9 en ambas fichas, más de 240 en total (151 en Puente Alto y 94 en Santiago Centro, en `src/data/reviews.ts`).
 - **Acción principal:** agendar por WhatsApp, eligiendo la sede.
 
