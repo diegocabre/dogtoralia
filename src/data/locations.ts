@@ -106,3 +106,6 @@ export const agendarMensaje = (location: Location) =>
 
 // Número al que llegan las consultas de productos y servicios por WhatsApp.
 export const MAIN_WHATSAPP_PHONE = locations.puenteAlto.phone;
+
+// WhatsApp de la atención a domicilio (distinto al de las sedes).
+export const DOMICILIO_WHATSAPP_PHONE = "+56983421929";

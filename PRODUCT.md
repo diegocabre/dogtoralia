@@ -17,7 +17,7 @@ Dogtoralia Vet es una clínica veterinaria de barrio con dos sedes. El sitio exi
 ## Positioning
 
 - Anestesiólogo (Gabriel Cabré) y cirujana (Sara Vásquez) en el equipo propio: los procedimientos y cirugías no se derivan.
-- Atención a domicilio en todo Santiago, además de las dos sedes.
+- Atención a domicilio en todo Santiago, además de las dos sedes. WhatsApp propio: +56 9 8342 1929 (`DOMICILIO_WHATSAPP_PHONE` en `src/data/locations.ts`).
 - En las cirugías programadas atienden los dos veterinarios juntos.
 - Clínica, peluquería canina y felina y tienda en un mismo lugar.
 - Precios accesibles para el barrio. No hay precios publicados: no inventar cifras.

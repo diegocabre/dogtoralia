@@ -1,5 +1,5 @@
 import { PiHouseLineBold, PiWhatsappLogoBold } from "react-icons/pi";
-import { MAIN_WHATSAPP_PHONE, whatsappUrl } from "@/data/locations";
+import { DOMICILIO_WHATSAPP_PHONE, whatsappUrl } from "@/data/locations";
 import { shortName, team, type TeamMember } from "@/data/team";
 import Image from "next/image";
 
@@ -81,7 +81,7 @@ export function Team() {
             </p>
           </div>
           <a
-            href={whatsappUrl(MAIN_WHATSAPP_PHONE, domicilioMensaje)}
+            href={whatsappUrl(DOMICILIO_WHATSAPP_PHONE, domicilioMensaje)}
             target="_blank"
             rel="noopener noreferrer"
             className="presionable inline-flex min-h-12 items-center justify-between gap-3 self-start rounded-[10px] border-[3px] border-grafito bg-white py-2 pl-4 pr-2 text-grafito shadow-letrero md:self-center"
