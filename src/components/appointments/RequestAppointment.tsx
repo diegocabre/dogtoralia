@@ -45,7 +45,7 @@ export default function RequestAppointment() {
   const href = whatsappUrl(location.phone, appointmentMessage(location, serviceTitle));
 
   return (
-    <div className="rounded-md bg-grafito-suave p-2 sm:p-3">
+    <div className="rounded-md bg-grafito-suave p-1.5 sm:p-2">
       <div className="grid gap-4 rounded-[3px] bg-vinilo-azul px-5 py-6 text-left text-white sm:grid-cols-2 sm:px-7 sm:py-8">
         <label className="block">
           <span className="mb-1.5 block text-sm font-semibold">Sede</span>

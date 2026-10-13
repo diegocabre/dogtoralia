@@ -126,7 +126,7 @@ export default function ServicePage() {
       {/* Encabezado: la vitrina real de la sede junto al índice de servicios */}
       <section className="pb-10 pt-[76px] sm:pb-14 lg:pt-[88px]">
         <div className="mx-auto max-w-7xl px-3 sm:px-6">
-          <div className="grid gap-2 rounded-md bg-grafito p-2 sm:gap-3 sm:p-3 lg:grid-cols-[1fr_1.1fr]">
+          <div className="grid gap-1.5 rounded-md bg-grafito p-1.5 sm:gap-2 sm:p-2 lg:grid-cols-[1fr_1.1fr]">
             <figure className="relative aspect-[4/3] overflow-hidden rounded-[3px] lg:aspect-auto lg:min-h-[420px]">
               <Image
                 src="/images/centro.jpeg"
@@ -168,7 +168,7 @@ export default function ServicePage() {
 
       {/* Los servicios como paneles de distinto tamaño en un mismo marco */}
       <div className="mx-auto max-w-7xl px-3 pb-14 sm:px-6 sm:pb-20">
-        <div className="grid gap-2 rounded-md bg-grafito p-2 sm:gap-3 sm:p-3 lg:grid-cols-6">
+        <div className="grid gap-1.5 rounded-md bg-grafito p-1.5 sm:gap-2 sm:p-2 lg:grid-cols-6">
           {services.map((service) => (
             <ServicePanel key={service.slug} service={service} />
           ))}

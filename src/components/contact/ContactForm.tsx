@@ -157,7 +157,7 @@ export function ContactForm() {
                 Llega al correo de la sede que elijas y te respondemos ahí.
             </p>
 
-            <div className="mt-6 rounded-md bg-grafito p-2 sm:p-3">
+            <div className="mt-6 rounded-md bg-grafito p-1.5 sm:p-2">
                 <form
                     onSubmit={handleSubmit}
                     noValidate

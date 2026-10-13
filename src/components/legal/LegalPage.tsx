@@ -25,14 +25,14 @@ export function LegalPage({
   return (
     <main className="min-h-screen bg-muro pb-14 pt-[76px] sm:pb-20 lg:pt-[88px]">
       <div className="mx-auto max-w-6xl px-3 sm:px-6">
-        <div className="rounded-md bg-grafito p-2 sm:p-3">
+        <div className="rounded-md bg-grafito p-1.5 sm:p-2">
           <header className="rounded-[3px] bg-vinilo-azul px-5 py-8 text-white sm:px-9 sm:py-10">
             <h1 className="rotulo text-[clamp(2.2rem,5vw,3.5rem)]">{title}</h1>
             <p className="mt-3 text-sm text-white/85">Última actualización: {updated}</p>
           </header>
 
           <div
-            className={`mt-2 grid gap-2 sm:mt-3 sm:gap-3 ${
+            className={`mt-1.5 grid gap-1.5 sm:mt-2 sm:gap-2 ${
               toc && toc.length > 0 ? "lg:grid-cols-[16rem_1fr]" : ""
             }`}
           >

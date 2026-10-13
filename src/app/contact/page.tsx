@@ -37,7 +37,7 @@ export default function ContactPage() {
     <main className="bg-muro pb-14 pt-[76px] sm:pb-20 lg:pt-[88px]">
       <div className="mx-auto max-w-7xl px-3 sm:px-6">
         {/* Encabezado: la forma más rápida de contacto, en vivo */}
-        <div className="rounded-md bg-grafito p-2 sm:p-3">
+        <div className="rounded-md bg-grafito p-1.5 sm:p-2">
           <div className="grid gap-8 rounded-[3px] bg-vinilo-azul px-5 py-8 text-white sm:px-9 sm:py-10 lg:grid-cols-[0.8fr_1.4fr] lg:items-center lg:gap-10">
             <div>
               <h1 className="rotulo text-[clamp(2.6rem,6vw,4.4rem)]">Contacto</h1>
@@ -59,8 +59,8 @@ export default function ContactPage() {
             const { street, number } = splitAddress(location.address);
             const vet = vetForLocation(location.name);
             return (
-              <article key={location.name} className="flex flex-col rounded-md bg-grafito p-2 sm:p-3">
-                <div className="grid grid-cols-[auto_1fr] items-stretch gap-2 sm:gap-3">
+              <article key={location.name} className="flex flex-col rounded-md bg-grafito p-1.5 sm:p-2">
+                <div className="grid grid-cols-[auto_1fr] items-stretch gap-1.5 sm:gap-2">
                   <div className="flex items-center rounded-[3px] bg-vinilo-azul px-3 text-white sm:px-5">
                     <span className="rotulo text-[2rem] sm:text-5xl">{number}</span>
                   </div>
@@ -78,7 +78,7 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                <div className="mt-2 overflow-hidden rounded-[3px] bg-white sm:mt-3">
+                <div className="mt-1.5 overflow-hidden rounded-[3px] bg-white sm:mt-2">
                   <iframe
                     src={googleMapsEmbedUrl(location.fullAddress)}
                     width="100%"
@@ -91,7 +91,7 @@ export default function ContactPage() {
                   />
                 </div>
 
-                <ul className="mt-2 grid gap-1 rounded-[3px] bg-white px-4 py-3 text-sm text-grafito sm:mt-3 sm:px-5">
+                <ul className="mt-1.5 grid gap-1 rounded-[3px] bg-white px-4 py-3 text-sm text-grafito sm:mt-2 sm:px-5">
                   <li>
                     <a
                       href={whatsappUrl(location.phone, agendarMensaje(location))}
@@ -114,7 +114,7 @@ export default function ContactPage() {
                   </li>
                 </ul>
 
-                <div className="mt-2 grid grid-cols-2 gap-2 rounded-[3px] bg-grafito-suave p-2.5 sm:mt-3 sm:flex sm:p-3">
+                <div className="mt-1.5 grid grid-cols-2 gap-2 rounded-[3px] bg-grafito-suave p-2.5 sm:mt-2 sm:flex sm:p-3">
                   <a
                     href={googleMapsSearchUrl(location.fullAddress)}
                     target="_blank"
@@ -138,7 +138,7 @@ export default function ContactPage() {
         </div>
 
         {/* Horario común */}
-        <div className="mt-4 rounded-md bg-grafito p-2 sm:p-3">
+        <div className="mt-4 rounded-md bg-grafito p-1.5 sm:p-2">
           <div className="grid gap-x-8 gap-y-3 rounded-[3px] bg-vinilo-mostaza px-5 py-5 text-grafito sm:grid-cols-[auto_1fr_1fr_1fr] sm:items-center sm:px-7">
             <h2 className="rotulo text-2xl">Horario</h2>
             {businessHours.map((block) => (

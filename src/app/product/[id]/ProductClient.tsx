@@ -34,7 +34,7 @@ export default function ProductClient({ product }: ProductClientProps) {
                     <PiArrowLeftBold aria-hidden /> Volver a la tienda
                 </Link>
 
-                <div className="grid gap-2 rounded-md bg-grafito p-2 sm:gap-3 sm:p-3 md:grid-cols-2">
+                <div className="grid gap-1.5 rounded-md bg-grafito p-1.5 sm:gap-2 sm:p-2 md:grid-cols-2">
                     <div className="relative aspect-[4/3] max-h-[38vh] w-full min-w-0 overflow-hidden rounded-[3px] bg-white md:aspect-auto md:max-h-none md:min-h-[360px] lg:aspect-square lg:min-h-0">
                         <ProductImage
                             imageUrl={product.imageUrl}

@@ -121,8 +121,8 @@ rounded:
   placa: "10px"
   disco: "9999px"
 spacing:
-  marco-movil: "8px"
-  marco: "12px"
+  marco-movil: "6px"
+  marco: "8px"
   gutter-movil: "12px"
   gutter: "24px"
   seccion-movil: "56px"
@@ -133,7 +133,7 @@ components:
   marco-vitrina:
     backgroundColor: "{colors.grafito}"
     rounded: "{rounded.marco}"
-    padding: "12px"
+    padding: "8px"
   panel-azul:
     backgroundColor: "{colors.vinilo-azul}"
     textColor: "{colors.background}"
@@ -452,7 +452,7 @@ Contenedor de 1280px centrado para inicio, servicios, tienda y contacto, y de 11
 
 **Home.** Cada sección es una franja a sangre con su propio fondo y su propio aire, para que el ritmo no sea uniforme: hero azul sin aire inferior (la foto llega al borde), servicios en blanco con 64px / 96px arriba y abajo, equipo en muro con 64px / 96px arriba y 56px / 80px abajo, franja verde de domicilio de 40px / 48px, reseñas en mostaza con 64px / 96px, sedes en muro con 56px / 80px arriba y 64px / 96px abajo, y cierre grafito con 48px / 64px. Las grillas son asimétricas y en CSS Grid: hero 1fr / 1fr con la foto a sangre a la derecha y el texto alineado al contenedor, servicios 1fr / 1.1fr (destacado y lista), equipo 1fr / 1.15fr (titular y retratos), reseñas auto / 1fr (cifra y cita) más una fila de 3, sedes 2 columnas con la segunda bajada 80px, cierre 1fr / 1.1fr.
 
-**Páginas interiores.** La unidad de composición es el marco de vitrina: un contenedor grafito con 8px de padding en móvil y 12px desde sm, y el mismo valor como separación entre los paneles que contiene. Esa franja grafito entre paneles es el perfil de la vitrina, no un borde. Cada bloque deja 56px de aire inferior en móvil y 80px desde sm. Encabezado de servicios 1fr / 1.1fr, de tienda 1fr / 1.2fr, de contacto 0.8fr / 1.4fr, 404 1.1fr / 1fr, legal 16rem / 1fr. En /service los paneles comparten una grilla de 6 columnas (3+3, 2+4 y 6). La tienda muestra 2 columnas en móvil, 3 desde sm y 4 desde lg, con 8px / 12px de separación.
+**Páginas interiores.** La unidad de composición es el marco de vitrina: un contenedor grafito con 6px de padding en móvil y 8px desde sm, y el mismo valor como separación entre los paneles que contiene. Esa franja grafito entre paneles es el perfil de la vitrina, no un borde. Cada bloque deja 56px de aire inferior en móvil y 80px desde sm. Encabezado de servicios 1fr / 1.1fr, de tienda 1fr / 1.2fr, de contacto 0.8fr / 1.4fr, 404 1.1fr / 1fr, legal 16rem / 1fr. En /service los paneles comparten una grilla de 6 columnas (3+3, 2+4 y 6). La tienda muestra 2 columnas en móvil, 3 desde sm y 4 desde lg, con 8px / 12px de separación.
 
 Responsive: en móvil todo apila en una columna. En el hero la foto del equipo va arriba a sangre (proporción 4/3, encuadrada abajo para dejar fuera el logo de la foto) y antes de la primera placa hay solo tres bloques de texto: estado, h1 y una frase; a 390px la primera placa entra completa en la primera pantalla. Por debajo de 768px una barra fija inferior lleva los dos WhatsApp mientras ningún bloque de letreros está a la vista (el body reserva 76px abajo). En escritorio el índice legal queda fijo al hacer scroll. La navegación es una franja fija de 64px (72px desde lg) más 3px de borde: el hero arranca justo debajo (67px / 75px) y las páginas interiores con 76px / 88px de padding superior. En la ficha de producto móvil la imagen baja a 4:3 con un alto máximo de 38vh.
 
@@ -521,7 +521,7 @@ Dos retratos grandes en proporción 4/5, sin tarjeta ni contorno, radio 6px sobr
 Franja vinilo-verde a sangre: ícono de casa (desde md), titular "Vamos a tu casa", una frase y el botón placa "Pedir a domicilio" con disco whatsapp.
 
 ### Paneles y marcos
-- **Marco:** grafito, radio 6px, padding y separación interna de 8px / 12px. El marco del formulario de agenda es grafito-suave.
+- **Marco:** grafito, radio 6px, padding y separación interna de 6px / 8px. El marco del formulario de agenda es grafito-suave.
 - **Panel:** radio 3px, color plano de vinilo, blanco o grafito-suave, padding de 20px a 44px según tamaño.
 - **Enlace de panel:** texto semibold con subrayado de 3px separado 5px a 6px y flecha, empujado al pie del panel. Sobre claro el subrayado es mostaza y pasa a grafito al hover.
 - **Sombra:** ninguna (ver La Regla del Vinilo Plano).

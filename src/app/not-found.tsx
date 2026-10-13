@@ -10,7 +10,7 @@ export default function NotFound() {
   return (
     <main className="min-h-screen bg-muro pb-14 pt-[76px] sm:pb-20 lg:pt-[88px]">
       <div className="mx-auto max-w-6xl px-3 sm:px-6">
-        <div className="grid gap-2 rounded-md bg-grafito p-2 sm:gap-3 sm:p-3 md:grid-cols-[1.1fr_1fr]">
+        <div className="grid gap-1.5 rounded-md bg-grafito p-1.5 sm:gap-2 sm:p-2 md:grid-cols-[1.1fr_1fr]">
           <div className="flex flex-col justify-center rounded-[3px] bg-vinilo-azul px-6 py-9 text-white sm:px-10 sm:py-12">
             <p aria-hidden className="rotulo text-[5.5rem] leading-[0.85] sm:text-[6.5rem]">
               404

@@ -47,7 +47,7 @@ export default function StoreClient({ products }: { products: Product[] }) {
     <main className="min-h-screen bg-muro pb-14 pt-[76px] sm:pb-20 lg:pt-[88px]">
       <div className="mx-auto max-w-7xl px-3 sm:px-6">
         {/* Letrero de la tienda con buscador y filtros, dentro del marco */}
-        <div className="grid gap-2 rounded-md bg-grafito p-2 sm:gap-3 sm:p-3 lg:grid-cols-[1fr_1.2fr]">
+        <div className="grid gap-1.5 rounded-md bg-grafito p-1.5 sm:gap-2 sm:p-2 lg:grid-cols-[1fr_1.2fr]">
           <div className="rounded-[3px] bg-vinilo-mostaza px-5 py-6 text-grafito sm:px-8 sm:py-9">
             <h1 className="rotulo text-[clamp(2.6rem,6vw,4.4rem)]">Tienda</h1>
             <p className="mt-3 max-w-[44ch] text-base leading-relaxed sm:text-lg">
@@ -134,7 +134,7 @@ export default function StoreClient({ products }: { products: Product[] }) {
               )}
             </>
           ) : (
-            <div className="rounded-md bg-grafito p-2 sm:p-3">
+            <div className="rounded-md bg-grafito p-1.5 sm:p-2">
               <div className="rounded-[3px] bg-white px-6 py-10 text-center text-grafito">
                 <p className="rotulo text-2xl sm:text-3xl">No está en la vitrina</p>
                 <p className="mx-auto mt-3 max-w-[42ch] text-base leading-relaxed text-grafito-suave">
