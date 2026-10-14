@@ -108,7 +108,7 @@ function ServicePanel({ service }: { service: ServiceData }) {
                     <ItemIcon aria-hidden />
                     <span className="rotulo text-lg">{item.title}</span>
                   </span>
-                  <span className="mt-1 block text-sm leading-snug">{item.text}</span>
+                  {item.text && <span className="mt-1 block text-sm leading-snug">{item.text}</span>}
                 </li>
               );
             })}

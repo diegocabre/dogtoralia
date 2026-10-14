@@ -421,7 +421,7 @@ Una paleta de fachada: tres vinilos profundos sacados del logo, un grafito de pe
 **Character:** Rubik en 800 y mayúsculas es la letra de rotulación de la vitrina: redonda, gruesa y legible desde la vereda. Figtree acompaña con un texto corrido amable y claro, sin competir.
 
 ### Hierarchy
-- **Display** (Rubik 800, mayúsculas, clamp(2.05rem, 5.2vw, 4rem), 1,02): solo el h1 del hero, "Veterinaria de barrio en Puente Alto y Santiago Centro", en un solo bloque (4 líneas en móvil).
+- **Display** (Rubik 800, mayúsculas, clamp(2.05rem, 5.2vw, 4rem), 1,02): solo el h1 del hero, "Veterinaria en Puente Alto y Santiago Centro", en un solo bloque.
 - **Título de página** (Rubik 800, mayúsculas, clamp(2.6rem, 6vw, 4.4rem), 1,02): el h1 del panel de encabezado de servicios, tienda y contacto. Las páginas legales usan un paso menor, clamp(2.2rem, 5vw, 3.5rem), porque sus títulos son largos.
 - **Cierre** (Rubik 800, mayúsculas, clamp(2.4rem, 5.5vw, 4rem), 1,02): el titular del bloque grafito final ("¿Te damos hora?") en inicio y en servicios.
 - **Headline** (Rubik 800, mayúsculas, clamp(2.1rem, 4.8vw, 3.6rem), 1,02): títulos de sección de la home ("Lo que hacemos adentro", "Dónde estamos"). El titular del equipo usa clamp(2rem, 4vw, 3.3rem), la franja de domicilio clamp(1.9rem, 3.6vw, 2.8rem), el destacado de peluquería clamp(1.9rem, 3.4vw, 2.6rem), el formulario de contacto clamp(2rem, 4.5vw, 3.25rem), cada panel de /service clamp(1.9rem, 3.4vw, 2.75rem) y el panel sin foto en la ficha clamp(1.75rem, 3.4vw, 3rem).

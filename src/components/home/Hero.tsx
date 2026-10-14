@@ -81,7 +81,7 @@ export function Hero() {
             </p>
 
             <h1 className="rotulo mt-4 text-[clamp(2.05rem,5.2vw,4rem)] sm:mt-5">
-              Veterinaria de barrio en Puente Alto y Santiago Centro
+              Veterinaria en Puente Alto y Santiago Centro
             </h1>
 
             <p className="mt-4 max-w-[36ch] text-base leading-relaxed text-white/90 sm:mt-5 sm:text-lg">

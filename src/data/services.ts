@@ -1,6 +1,7 @@
 export interface ServiceItem {
   title: string;
-  text: string;
+  /** Detalle bajo el título (opcional: sin él, la barra lleva solo el título) */
+  text?: string;
 }
 
 export interface ServiceData {
@@ -40,9 +41,9 @@ export const services: ServiceData[] = [
     title: "Otros servicios",
     description: "Cuando hace falta mirar más a fondo, también hacemos evaluaciones de especialidad.",
     items: [
-      { title: "Cardiología", text: "Evaluación del corazón de tu mascota." },
-      { title: "Oftalmología", text: "Evaluación y tratamiento de los ojos." },
-      { title: "Ecografía abdominal", text: "Para ver sus órganos por dentro, sin intervenir." },
+      { title: "Cardiología" },
+      { title: "Oftalmología" },
+      { title: "Ecografía abdominal" },
     ],
   },
   {
