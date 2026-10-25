@@ -111,6 +111,26 @@ export default function Footer() {
                             Términos y Condiciones
                         </Link>
                     </p>
+                    <p>
+                        Desarrollado por{" "}
+                        <a
+                            href="https://diegocabre.vercel.app"
+                            target="_blank"
+                            rel="nofollow noopener"
+                            className="underline underline-offset-2 hover:text-vinilo-mostaza"
+                        >
+                            Diego Cabré<span className="sr-only"> (abre en otra pestaña)</span>
+                        </a>
+                        {" · "}
+                        <a
+                            href="https://www.solucionesdys.cl"
+                            target="_blank"
+                            rel="nofollow noopener"
+                            className="underline underline-offset-2 hover:text-vinilo-mostaza"
+                        >
+                            Soluciones DyS<span className="sr-only"> (abre en otra pestaña)</span>
+                        </a>
+                    </p>
                 </div>
             </div>
         </footer>
