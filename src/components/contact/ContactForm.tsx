@@ -1,12 +1,27 @@
 "use client";
 
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import Script from 'next/script';
 import { PiCheckBold, PiCircleNotchBold, PiPaperPlaneTiltBold } from 'react-icons/pi';
 import { contactSchema } from '@/lib/security/validation';
 
 const LOCATION_OPTIONS = ['Puente Alto', 'Santiago Centro'] as const;
 
 const MESSAGE_MAX_LENGTH = 2000;
+
+// Site Key pública del widget "dogtoralia"; en desarrollo, la clave de prueba de Cloudflare que siempre pasa
+const TURNSTILE_SITE_KEY =
+    process.env.NODE_ENV === 'production' ? '0x4AAAAAAFl_tCUmiDEFsz0b' : '1x00000000000000000000AA';
+
+declare global {
+    interface Window {
+        turnstile?: {
+            render: (el: HTMLElement, options: Record<string, unknown>) => string;
+            reset: (widgetId: string) => void;
+            remove: (widgetId: string) => void;
+        };
+    }
+}
 
 const inputBase =
     'w-full min-h-12 rounded-[8px] border-[3px] bg-white px-3.5 py-2.5 text-base text-grafito placeholder:text-grafito-suave/70';
@@ -61,6 +76,36 @@ export function ContactForm() {
         loadedAt.current = Date.now();
     }, []);
 
+    // Turnstile (Cloudflare): se renderiza a mano para que funcione también al navegar sin recargar
+    const turnstileRef = useRef<HTMLDivElement>(null);
+    const turnstileId = useRef<string | null>(null);
+    const [turnstileToken, setTurnstileToken] = useState('');
+
+    const renderTurnstile = useCallback(() => {
+        if (!window.turnstile || !turnstileRef.current || turnstileId.current) return;
+        turnstileId.current = window.turnstile.render(turnstileRef.current, {
+            sitekey: TURNSTILE_SITE_KEY,
+            language: 'es',
+            callback: (token: string) => setTurnstileToken(token),
+            'expired-callback': () => setTurnstileToken(''),
+            'error-callback': () => setTurnstileToken(''),
+        });
+    }, []);
+
+    useEffect(() => {
+        renderTurnstile();
+        return () => {
+            if (turnstileId.current) window.turnstile?.remove(turnstileId.current);
+            turnstileId.current = null;
+        };
+    }, [renderTurnstile]);
+
+    // El token es de un solo uso: tras cada intento se pide uno nuevo
+    const resetTurnstile = () => {
+        setTurnstileToken('');
+        if (turnstileId.current) window.turnstile?.reset(turnstileId.current);
+    };
+
     const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
     const [consentAccepted, setConsentAccepted] = useState(false);
     const [consentError, setConsentError] = useState(false);
@@ -113,6 +158,14 @@ export function ContactForm() {
 
         if (!consentAccepted) return;
 
+        if (!turnstileToken) {
+            setSubmitStatus({
+                type: 'error',
+                message: 'Espera un momento a que termine la verificación anti-bots e inténtalo de nuevo.',
+            });
+            return;
+        }
+
         setIsSubmitting(true);
 
         try {
@@ -125,6 +178,7 @@ export function ContactForm() {
                     ...parsed.data,
                     website,
                     elapsedMs: Date.now() - loadedAt.current,
+                    turnstileToken,
                 }),
             });
 
@@ -154,6 +208,7 @@ export function ContactForm() {
             });
         } finally {
             setIsSubmitting(false);
+            resetTurnstile();
         }
     };
 
@@ -315,6 +370,12 @@ export function ContactForm() {
                         </p>
                     )}
                 </div>
+
+                <Script
+                    src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
+                    onReady={renderTurnstile}
+                />
+                <div ref={turnstileRef} className="min-h-[65px] sm:col-span-2" />
 
                 {/* Estado del envío */}
                 {submitStatus.type && (

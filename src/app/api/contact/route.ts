@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import { sendEmail } from "@/lib/mail";
 import { contactSchema, escapeHtml, isLikelySpam } from "@/lib/security/validation";
-import { RATE_LIMITS, enforceRateLimit } from "@/lib/security/rateLimit";
+import { RATE_LIMITS, enforceRateLimit, getClientIp } from "@/lib/security/rateLimit";
+import { verifyTurnstile } from "@/lib/security/turnstile";
 import { locationList } from "@/data/locations";
 
 export async function POST(request: Request) {
@@ -33,7 +34,18 @@ export async function POST(request: Request) {
 
     const { name, email, phone, message, location } = parsed.data;
 
-    const { website, elapsedMs } = body as Record<string, unknown>;
+    const { website, elapsedMs, turnstileToken } = body as Record<string, unknown>;
+
+    if (!(await verifyTurnstile(turnstileToken, getClientIp(request.headers)))) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: "No pudimos verificar que eres una persona. Recarga la página e inténtalo de nuevo.",
+        },
+        { status: 400 }
+      );
+    }
+
     if (isLikelySpam(parsed.data, { website, elapsedMs })) {
       console.warn("Contacto descartado como spam:", { email, location });
       return NextResponse.json({ success: true });
