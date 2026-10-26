@@ -21,19 +21,52 @@ export const contactSchema = z.object({
     .string()
     .trim()
     .max(30, "El teléfono es demasiado largo")
+    // Móvil o fijo chileno, con o sin +56; se ignoran espacios, guiones y paréntesis
+    .refine((v) => /^(\+?56)?[29]\d{8}$/.test(v.replace(/[\s\-()]/g, "")), {
+      message: "Ingresa un teléfono chileno válido (ej: +56 9 1234 5678)",
+    })
     .optional()
     .or(z.literal("")),
   message: z
     .string()
     .trim()
     .min(10, "El mensaje debe tener al menos 10 caracteres")
-    .max(2000, "El mensaje es demasiado largo (máx. 2000 caracteres)"),
+    .max(2000, "El mensaje es demasiado largo (máx. 2000 caracteres)")
+    .refine((v) => /\S+\s+\S+/.test(v), {
+      message: "Escribe tu mensaje con algunas palabras",
+    }),
   location: z.enum(["Puente Alto", "Santiago Centro"], {
     error: "Elige la sede a la que quieres escribir",
   }),
 });
 
 export type ContactInput = z.infer<typeof contactSchema>;
+
+/** Tiempo mínimo que una persona tarda en llenar el formulario. */
+export const MIN_FILL_MS = 3000;
+
+/**
+ * Señales de bot que se descartan en silencio (el bot recibe "éxito" y
+ * no aprende qué lo delató): honeypot lleno, envío demasiado rápido o
+ * sin marca de tiempo, nombres tipo "izmGqCmtNYjOEevMvNw" y Gmail con
+ * puntos sembrados ("ov.u.n.uto.lo.62.0@gmail.com").
+ */
+export function isLikelySpam(
+  data: Pick<ContactInput, "name" | "email">,
+  meta: { website?: unknown; elapsedMs?: unknown }
+): boolean {
+  if (typeof meta.website === "string" && meta.website.trim() !== "") return true;
+  if (typeof meta.elapsedMs !== "number" || meta.elapsedMs < MIN_FILL_MS) return true;
+  // 3+ mayúsculas en medio de una palabra ("McDonald" tiene 1)
+  if (data.name.split(/\s+/).some((w) => (w.slice(1).match(/[A-Z]/g)?.length ?? 0) >= 3)) {
+    return true;
+  }
+  const [local, domain] = data.email.toLowerCase().split("@");
+  if ((domain === "gmail.com" || domain === "googlemail.com") && (local.match(/\./g)?.length ?? 0) >= 4) {
+    return true;
+  }
+  return false;
+}
 
 /**
  * Escapa caracteres HTML especiales para evitar inyección de markup

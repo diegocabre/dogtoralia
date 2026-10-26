@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { PiCheckBold, PiCircleNotchBold, PiPaperPlaneTiltBold } from 'react-icons/pi';
 import { contactSchema } from '@/lib/security/validation';
 
@@ -53,6 +53,13 @@ export function ContactForm() {
         message: '',
         location: ''
     });
+
+    // Anti-bot: campo trampa invisible y momento en que se cargó el formulario
+    const [website, setWebsite] = useState('');
+    const loadedAt = useRef(0);
+    useEffect(() => {
+        loadedAt.current = Date.now();
+    }, []);
 
     const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
     const [consentAccepted, setConsentAccepted] = useState(false);
@@ -114,7 +121,11 @@ export function ContactForm() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(parsed.data),
+                body: JSON.stringify({
+                    ...parsed.data,
+                    website,
+                    elapsedMs: Date.now() - loadedAt.current,
+                }),
             });
 
             const data = await response.json();
@@ -162,6 +173,20 @@ export function ContactForm() {
                 noValidate
                 className="mt-6 grid gap-5 rounded-md bg-white px-5 py-7 sm:grid-cols-2 sm:px-9 sm:py-9"
             >
+                {/* Honeypot: invisible para personas y lectores de pantalla; los bots lo llenan */}
+                <div aria-hidden className="absolute -left-[9999px] h-px w-px overflow-hidden">
+                    <label htmlFor="website">Sitio web</label>
+                    <input
+                        id="website"
+                        type="text"
+                        name="website"
+                        tabIndex={-1}
+                        autoComplete="off"
+                        value={website}
+                        onChange={(e) => setWebsite(e.target.value)}
+                    />
+                </div>
+
                 <Field id="name" label="Nombre" error={fieldErrors.name}>
                     <input
                         id="name"

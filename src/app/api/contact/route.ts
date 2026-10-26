@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { sendEmail } from "@/lib/mail";
-import { contactSchema, escapeHtml } from "@/lib/security/validation";
+import { contactSchema, escapeHtml, isLikelySpam } from "@/lib/security/validation";
 import { RATE_LIMITS, enforceRateLimit } from "@/lib/security/rateLimit";
 import { locationList } from "@/data/locations";
 
@@ -32,6 +32,12 @@ export async function POST(request: Request) {
     }
 
     const { name, email, phone, message, location } = parsed.data;
+
+    const { website, elapsedMs } = body as Record<string, unknown>;
+    if (isLikelySpam(parsed.data, { website, elapsedMs })) {
+      console.warn("Contacto descartado como spam:", { email, location });
+      return NextResponse.json({ success: true });
+    }
 
     const destinationEmail = locationList.find(
       (l) => l.name === location
