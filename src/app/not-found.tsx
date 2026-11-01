@@ -43,8 +43,8 @@ export default function NotFound() {
 
           <figure className="relative aspect-[4/3] overflow-hidden rounded-[3px] bg-grafito-suave md:aspect-auto md:min-h-[420px]">
             <Image
-              src="/images/portada.png"
-              alt="La Dra. Sara Vásquez y el Dr. Gabriel Cabré con un perro blanco en brazos"
+              src="/images/portada.jpeg"
+              alt="El Dr. Gabriel Cabré y la Dra. Sara Vásquez en la clínica"
               fill
               preload
               sizes="(max-width: 768px) 100vw, 520px"

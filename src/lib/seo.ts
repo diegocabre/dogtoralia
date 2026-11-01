@@ -84,7 +84,7 @@ export function organizationJsonLd() {
       width: 1773,
       height: 705,
     },
-    image: absoluteUrl("/images/portada.png"),
+    image: absoluteUrl("/images/portada.jpeg"),
     description: SITE_DESCRIPTION,
     sameAs,
     contactPoint: Object.values(locations).map((location) => ({
@@ -127,7 +127,7 @@ export function veterinaryCareJsonLd() {
     name: `${SITE_NAME} - Sede ${location.name}`,
     description: `Clínica veterinaria Dogtoralia en ${location.locality}: consultas, vacunas, exámenes, procedimientos y peluquería canina y felina.`,
     url: absoluteUrl("/contact"),
-    image: [absoluteUrl(location.image), absoluteUrl("/images/portada.png")],
+    image: [absoluteUrl(location.image), absoluteUrl("/images/portada.jpeg")],
     logo: absoluteUrl(LOGO_PATH),
     telephone: location.phone,
     email: location.email,

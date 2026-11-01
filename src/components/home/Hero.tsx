@@ -40,12 +40,12 @@ export function Hero() {
         {/* La foto llega al borde: en el celular arriba, en escritorio a la derecha */}
         <figure className="relative aspect-[4/3] overflow-hidden bg-grafito lg:order-2 lg:aspect-auto">
           <Image
-            src="/images/portada.png"
-            alt="La Dra. Sara Vásquez y el Dr. Gabriel Cabré con un perro blanco en brazos"
+            src="/images/portada.jpeg"
+            alt="El Dr. Gabriel Cabré y la Dra. Sara Vásquez en la clínica"
             fill
             preload
             sizes="(max-width: 1024px) 100vw, 50vw"
-            className="object-cover object-[50%_92%] lg:object-top"
+            className="object-cover object-top"
           />
         </figure>
 

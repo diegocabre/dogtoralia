@@ -22,7 +22,15 @@ import { PedirHoraServicio } from "@/components/appointments/PedirHoraServicio";
 // (también lo lee el SEO).
 const panelStyle: Record<
   string,
-  { panel: string; span: string; icon: IconType; note?: string; itemIcons?: IconType[] }
+  {
+    panel: string;
+    span: string;
+    icon: IconType;
+    note?: string;
+    itemIcons?: IconType[];
+    /** Foto real 4:5 en public/images/recortes/ */
+    photo?: { src: string; alt: string };
+  }
 > = {
   consultas: {
     panel: "bg-vinilo-azul text-white",
@@ -33,6 +41,7 @@ const panelStyle: Record<
     panel: "bg-vinilo-mostaza text-grafito",
     span: "lg:col-span-3",
     icon: PiSyringeBold,
+    photo: { src: "/images/recortes/vacuna.jpg", alt: "La Dra. Sara Vásquez preparando una vacuna" },
   },
   examenes: {
     panel: "bg-vinilo-verde text-white",
@@ -44,12 +53,14 @@ const panelStyle: Record<
     span: "lg:col-span-4",
     icon: PiFirstAidKitBold,
     note: "En cirugías operan juntos la Dra. Sara (cirujana) y el Dr. Gabriel (anestesiólogo).",
+    photo: { src: "/images/recortes/anestesia.jpg", alt: "El Dr. Gabriel Cabré junto a la máquina de anestesia inhalatoria" },
   },
   otros: {
     panel: "bg-vinilo-mostaza text-grafito",
     span: "lg:col-span-6",
     icon: PiSquaresFourBold,
     itemIcons: [PiHeartbeatBold, PiEyeBold, PiWaveformBold],
+    photo: { src: "/images/recortes/ecografia.jpg", alt: "La Dra. Sara Vásquez con el ecógrafo" },
   },
   peluqueria: {
     panel: "bg-vinilo-azul text-white",
@@ -83,10 +94,19 @@ function ServicePanel({ service }: { service: ServiceData }) {
       }`}
     >
       <div className="flex flex-col">
-        <Icon aria-hidden className="text-4xl" />
-        <h2 id={`${service.slug}-titulo`} className="rotulo mt-4 text-[clamp(1.9rem,3.4vw,2.75rem)]">
-          {service.title}
-        </h2>
+        <div className="flex flex-wrap items-start justify-between gap-4">
+          <div>
+            <Icon aria-hidden className="text-4xl" />
+            <h2 id={`${service.slug}-titulo`} className="rotulo mt-4 text-[clamp(1.9rem,3.4vw,2.75rem)]">
+              {service.title}
+            </h2>
+          </div>
+          {style.photo && (
+            <div className="relative aspect-[4/5] w-24 shrink-0 overflow-hidden rounded-[6px] bg-white sm:w-36">
+              <Image src={style.photo.src} alt={style.photo.alt} fill sizes="144px" className="object-cover" />
+            </div>
+          )}
+        </div>
         <p className="mt-3 max-w-[52ch] text-base leading-relaxed sm:text-lg">
           {service.description}
         </p>

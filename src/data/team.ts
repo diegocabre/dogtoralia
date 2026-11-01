@@ -6,7 +6,7 @@ export interface TeamMember {
   role: string;
   /**
    * Retrato vertical 4:5 en public/images/. Mientras no haya foto individual
-   * se usa un recorte de la foto del equipo. Sin foto, la persona no aparece
+   * se usa un recorte en public/images/recortes/. Sin foto, la persona no aparece
    * en los retratos de la home.
    */
   photo?: string;

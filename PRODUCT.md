@@ -44,7 +44,7 @@ Dogtoralia Vet es una clínica veterinaria de barrio con dos sedes. El sitio exi
 - **Límite del humor:** nunca en salud seria (enfermedad, cirugía, eutanasia, urgencias) ni en precios. Cabe en peluquería, tienda, microtextos y estados vacíos.
 - **Activos que se protegen (no reemplazar ni alterar):**
   - Logo multicolor redondo: `public/img/LOGO.png`.
-  - Foto del equipo con Gabriel Cabré y Sara Vásquez junto a un perro: `public/images/portada.png`.
+  - Foto del equipo con Gabriel Cabré y Sara Vásquez: `public/images/portada.jpeg`.
   - Fachadas reales de las sedes: `public/images/puentealto1.jpeg` y `public/images/centro.jpeg`.
   - Reseñas de Google: 4,9 en ambas fichas, más de 240 en total (151 en Puente Alto y 94 en Santiago Centro, en `src/data/reviews.ts`).
 - **Acción principal:** agendar por WhatsApp, eligiendo la sede.
