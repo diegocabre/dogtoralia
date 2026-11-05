@@ -93,25 +93,22 @@ function ServicePanel({ service }: { service: ServiceData }) {
         wide ? "lg:grid lg:grid-cols-[1.1fr_1fr] lg:gap-10" : "flex flex-col"
       }`}
     >
-      <div className="flex flex-col">
-        <div className="flex flex-wrap items-start justify-between gap-4">
-          <div>
-            <Icon aria-hidden className="text-4xl" />
-            <h2 id={`${service.slug}-titulo`} className="rotulo mt-4 text-[clamp(1.9rem,3.4vw,2.75rem)]">
-              {service.title}
-            </h2>
+      {/* flow-root + float: la descripción sigue pegada al titular junto a la foto */}
+      <div className="flow-root">
+        {style.photo && (
+          <div className="relative float-right mb-3 ml-4 aspect-[4/5] w-24 overflow-hidden rounded-[6px] bg-white sm:ml-6 sm:w-36">
+            <Image src={style.photo.src} alt={style.photo.alt} fill sizes="144px" className="object-cover" />
           </div>
-          {style.photo && (
-            <div className="relative aspect-[4/5] w-24 shrink-0 overflow-hidden rounded-[6px] bg-white sm:w-36">
-              <Image src={style.photo.src} alt={style.photo.alt} fill sizes="144px" className="object-cover" />
-            </div>
-          )}
-        </div>
+        )}
+        <Icon aria-hidden className="text-4xl" />
+        <h2 id={`${service.slug}-titulo`} className="rotulo mt-4 text-[clamp(1.9rem,3.4vw,2.75rem)]">
+          {service.title}
+        </h2>
         <p className="mt-3 max-w-[52ch] text-base leading-relaxed sm:text-lg">
           {service.description}
         </p>
         {style.note && (
-          <p className="mt-4 max-w-[52ch] border-t-2 border-current/25 pt-4 text-sm font-semibold sm:text-base">
+          <p className="clear-both mt-4 max-w-[52ch] border-t-2 border-current/25 pt-4 text-sm font-semibold sm:text-base">
             {style.note}
           </p>
         )}
