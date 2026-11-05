@@ -9,7 +9,7 @@ related_targets: []
 
 Modo: Persuade. Superficie que define el mundo visual de todo el sitio (home primero; luego servicios, tienda, contacto).
 
-Público y acción: familia en el celular que necesita hora; acción = WhatsApp a la sede correcta (Puente Alto con la Dra. Sara, Santiago Centro con el Dr. Gabriel). Pruebas: foto del equipo, fachadas, 4,9 con más de 240 reseñas de Google, operan juntos en cirugías y emergencias, domicilio en todo Santiago. Anti-metas: cadena/hospital, infantil, perder el logo, esconder el WhatsApp.
+Público y acción: familia en el celular que necesita hora; acción = WhatsApp a la sede correcta (Puente Alto con la Dra. Sara, Santiago Centro con el Dr. Gabriel). Pruebas: foto del equipo, fachadas, 4,9 con más de 240 reseñas de Google, operan juntos en cirugías programadas (no se atienden urgencias), domicilio en todo Santiago. Anti-metas: cadena/hospital, infantil, perder el logo, esconder el WhatsApp.
 
 Build path: code-led (sin generación de imágenes en este entorno).
 

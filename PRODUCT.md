@@ -28,13 +28,13 @@ Dogtoralia Vet es una clínica veterinaria de barrio con dos sedes. El sitio exi
 - **Horario por sede** (`hours` en `src/data/locations.ts`): Puente Alto, lunes a viernes de 10:00 a 18:00 y sábados de 10:00 a 16:00; Santiago Centro, lunes a viernes de 10:00 a 18:30 y sábados de 10:00 a 16:30. Domingo cerrado en ambas.
 - **Reserva:** por WhatsApp, un número por sede. No hay sistema de reservas online; la evaluación está en `RESERVAS-PROPUESTA.md`.
 - **Tienda:** es una vitrina. No hay carrito ni pago online; cada producto se consulta por WhatsApp y se retira en la sede (Puente Alto o Santiago Centro); no hay despacho. El catálogo vive en `src/data/products.json`.
-- **Contacto:** formulario con envío por correo (Resend) y rate limiting, además de Google Maps y Waze por sede.
+- **Contacto:** formulario con envío por correo (Resend), rate limiting y Cloudflare Turnstile, además de Google Maps y Waze por sede.
 
 ## Capabilities and Constraints
 
 - **Servicios** (`src/data/services.ts`): Consultas, Vacunas, Exámenes, Procedimientos, Otros servicios (cardiología, oftalmología y ecografía abdominal) y Peluquería canina y felina (corte y baño, baño medicado), en las dos sedes.
-- **Atención a domicilio:** cubre Santiago en general (no solo las comunas de las sedes). Hoy no aparece como servicio en el sitio. No hay condiciones ni precios publicados: no inventarlos.
-- **Equipo por sede:** en el día a día, Sara Vásquez (cirujana) atiende en Puente Alto y Gabriel Cabré (anestesiólogo) en Santiago Centro. En las cirugías programadas, atienden los dos juntos. El sitio no promete atención de urgencias.
+- **Atención a domicilio:** cubre Santiago en general (no solo las comunas de las sedes). En el sitio aparece como franja en la home (`src/components/home/Team.tsx`), no como servicio en `/service`. No hay condiciones ni precios publicados: no inventarlos.
+- **Equipo por sede:** en el día a día, Sara Vásquez (cirujana) atiende en Puente Alto y Gabriel Cabré (anestesiólogo) en Santiago Centro. En las cirugías programadas, atienden los dos juntos. No se atienden urgencias ni emergencias: el sitio no las promete, tampoco como "operan juntos en emergencias".
 - **Técnico:** Next.js (App Router), Tailwind CSS 4 y Framer Motion. `/` redirige a `/home`, que es la URL canónica. Las URLs, los datos estructurados (JSON-LD) y la metadata SEO ya están trabajados y no se deben romper.
 
 ## Brand Commitments
@@ -45,7 +45,7 @@ Dogtoralia Vet es una clínica veterinaria de barrio con dos sedes. El sitio exi
 - **Activos que se protegen (no reemplazar ni alterar):**
   - Logo multicolor redondo: `public/img/LOGO.png`.
   - Foto del equipo con Gabriel Cabré y Sara Vásquez: `public/images/portada.jpeg`.
-  - Fachadas reales de las sedes: `public/images/puentealto1.jpeg` y `public/images/centro.jpeg`.
+  - Fachadas reales de las sedes: `public/images/puentealto1.jpeg`, `public/images/puentealto2.jpeg` y `public/images/centro.jpeg`.
   - Reseñas de Google: 4,9 en ambas fichas, más de 240 en total (151 en Puente Alto y 94 en Santiago Centro, en `src/data/reviews.ts`).
 - **Acción principal:** agendar por WhatsApp, eligiendo la sede.
 
@@ -53,10 +53,12 @@ Dogtoralia Vet es una clínica veterinaria de barrio con dos sedes. El sitio exi
 
 - Reseñas reales de Google copiadas sin modificar (`src/data/reviews.ts`). Varias nombran al Dr. Gabriel y a la Dra. Sara.
 - Foto real del equipo y fotos reales de ambas fachadas (rutas arriba).
+- Retratos individuales reales: Gabriel (`public/images/gabo.jpeg`) y Sara (`public/images/sara1.jpeg`, `public/images/sara2.jpeg`); recortes 4:5 en `public/images/recortes/gabriel.jpg` y `sara.jpg`.
+- Fotos reales de servicios, dentro de la clínica: vacuna (`vacuna.jpeg`), anestesia inhalatoria (`anestesia.jpeg`) y ecografía (`eco.jpeg`) en `public/images/`, con recortes 4:5 en `public/images/recortes/`. Se usan en `/service`.
 - Fotos de producto en `public/images/products/`. Algunos productos no tienen foto propia.
-- Fotos de servicios en `public/images/services/`. Son de stock, no de la clínica.
 - Imagen para compartir: `public/images/og-dogtoralia.jpg`.
-- **No existen y no se deben inventar:** precios, años de trayectoria, cantidad de pacientes atendidos, certificaciones, testimonios fuera de Google, fotos individuales del equipo ni fotos del interior de las clínicas.
+- **Faltan fotos reales de:** peluquería canina y felina, consultas, exámenes y algunos productos de la tienda. No reemplazarlas con stock presentado como propio.
+- **No existen y no se deben inventar:** precios, años de trayectoria, cantidad de pacientes atendidos, certificaciones, testimonios fuera de Google ni atención de urgencias.
 
 ## Product Principles
 
