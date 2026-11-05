@@ -587,7 +587,6 @@ Grafito con borde superior mostaza de 3px. Encabezados en rótulo, enlaces Figtr
 ### Do:
 - **Do** dar a cada sección de la home su propia forma y su fondo a sangre, alternando superficies y espaciados.
 - **Do** construir las páginas interiores sobre fondo muro: un marco grafito (radio 6px, padding 6px / 8px) con paneles planos de radio 3px solo en el encabezado, y el resto de los paneles sueltos con radio 6px.
-- **Don't** envolver en marco grafito los paneles de contenido, tarjetas o formularios; un marco por página.
 - **Do** abrir cada página interior con un marco que contenga un panel de encabezado de color y su título en rótulo.
 - **Do** escribir todo titular, nombre de sede y etiqueta de barra en rótulo (Rubik 800, mayúsculas, interlineado 1,02).
 - **Do** usar vinilo-azul, vinilo-verde, grafito o grafito-suave para paneles con texto blanco, y grafito sobre vinilo-mostaza.
@@ -599,6 +598,7 @@ Grafito con borde superior mostaza de 3px. Encabezados en rótulo, enlaces Figtr
 - **Do** mantener 44px de alto mínimo en todo objeto tocable y 48px en barras, campos, filtros y botones placa.
 
 ### Don't:
+- **Don't** envolver en marco grafito los paneles de contenido, tarjetas o formularios; un marco por página.
 - **Don't** usar el azul ni el verde del logo tal cual como fondo de panel con texto blanco; no pasan AA.
 - **Don't** poner texto blanco sobre vinilo-mostaza.
 - **Don't** usar whatsapp como color decorativo; es solo para escribir por WhatsApp y para el cartel "Abierto".
