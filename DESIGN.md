@@ -373,7 +373,7 @@ El movimiento es físico y breve: lo que se toca se hunde un poco, el cartel de 
 - Verde WhatsApp reservado a la acción de escribir; rojo error reservado a errores de formulario.
 - Radios pequeños y escalonados por objeto (panel, etiqueta, casilla, marco, rótulo, placa), nunca píldoras salvo el disco.
 - Contorno grafito sólido de 3px en placas, campos, fachadas y líneas de lista, 2px en piezas chicas.
-- Solo fotos reales de la clínica: el equipo, las fachadas y la vitrina. Nada de fotos de stock.
+- Solo fotos reales de la clínica: el equipo, las fachadas, la vitrina y el trabajo adentro (vacuna, anestesia, ecografía). Nada de fotos de stock.
 
 ## Colors
 
@@ -495,7 +495,7 @@ La placa blanca de cada sede que es el botón de agendar. Aparece en el hero, en
 Una línea sobre el h1: el cartel (abierto en whatsapp, cierra pronto en mostaza con texto grafito, cerrado en grafito; contorno grafito 2px, radio 6px) y a su lado el detalle en Figtree 500 ("abre mañana a las 10:00", y desde sm ", en las dos sedes"). Se calcula en el navegador con la hora de Chile, se anuncia con aria-live y reserva sus 32px antes de conocerse.
 
 ### Recortes de foto
-Mientras no haya fotos propias de cada cosa, los retratos individuales y el vinilo de peluquería son recortes de fotos reales guardados como archivos aparte en public/images/recortes/ (sara.jpg y gabriel.jpg de la foto del equipo, peluqueria-vitrina.jpg de la fachada de Santiago Centro), en proporción 4:5 y a su resolución real. Nunca se agranda la foto completa en el navegador para recortarla: pesaría la foto entera.
+Mientras no haya fotos propias de cada cosa, los retratos individuales y el vinilo de peluquería son recortes de fotos reales guardados como archivos aparte en public/images/recortes/ (sara.jpg y gabriel.jpg de sus retratos, vacuna.jpg, anestesia.jpg y ecografia.jpg de las fotos de servicios, peluqueria-vitrina.jpg de la fachada de Santiago Centro), en proporción 4:5 y a su resolución real. Nunca se agranda la foto completa en el navegador para recortarla: pesaría la foto entera.
 
 ### Botones
 - **Botón placa** ("Pedir a domicilio", "Pedir hora", "Preguntar", "Consultar por WhatsApp", "Solicitar hora en {sede}", "Agendar aquí", "Volver al inicio"): blanco, sombra "Letrero colgado", contorno grafito 3px, radio 10px, alto mínimo 48px (56px en el formulario de agenda), rótulo a la izquierda y disco de 40px a la derecha. El disco es whatsapp cuando abre un chat y grafito con un ícono blanco (flecha, casa) cuando lleva a otra parte del sitio.
@@ -556,7 +556,7 @@ Sección mostaza a sangre: el 4,9 en numeral con una estrella, "Más de 240 rese
 - **Horario en contacto:** cada sede tiene su horario, dentro de su tarjeta: lista de dos columnas (etiqueta en grafito-suave, hora en semibold tabular) bajo el nombre de la sede, separada por líneas grafito al 15%. Si las sedes están en estados distintos, la línea de estado del hero muestra el cartel más abierto y nombra cada sede ("Puente Alto hasta las 18:00 y el Centro hasta las 18:30").
 
 ### Panel de servicio (/service)
-Cada servicio es un panel de vinilo suelto sobre el muro, con ancho distinto según su peso: ícono Phosphor de 36px, titular en rótulo, descripción en Figtree al 100% del color del panel (nunca con opacidad sobre mostaza), una nota opcional separada por una línea del color del texto al 25%, y los puntos destacados como barras de rótulo. Su botón placa "Pedir hora" lleva un disco grafito con flecha y baja al formulario de agenda con ese servicio ya elegido, donde la familia escoge la sede. El encabezado usa la foto real de la vitrina de Santiago Centro y un índice de barras de rótulo. Ningún panel lleva foto de stock.
+Cada servicio es un panel de vinilo suelto sobre el muro, con ancho distinto según su peso: ícono Phosphor de 36px, titular en rótulo, descripción en Figtree al 100% del color del panel (nunca con opacidad sobre mostaza), una nota opcional separada por una línea del color del texto al 25%, y los puntos destacados como barras de rótulo. Si hay foto real del servicio, va como recorte 4:5 (96px en móvil, 144px desde sm, radio 6px) flotando arriba a la derecha: el titular y la descripción la rodean y quedan juntos, y la nota empieza bajo la foto. Su botón placa "Pedir hora" lleva un disco grafito con flecha y baja al formulario de agenda con ese servicio ya elegido, donde la familia escoge la sede. El encabezado usa la foto real de la vitrina de Santiago Centro y un índice de barras de rótulo. Ningún panel lleva foto de stock.
 
 ### Formulario de agenda
 Panel vinilo-azul de radio 6px, sin marco, sobre el bloque grafito de cierre de /service: etiquetas Figtree semibold encima de selects (ver Inputs / Fields); el envío es un botón placa a todo el ancho ("Solicitar hora en {sede}") que abre el WhatsApp de la sede elegida.

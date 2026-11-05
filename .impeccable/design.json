@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-11T14:13:11.000Z",
+  "generatedAt": "2026-11-05T02:03:49.162Z",
   "title": "Design System: Dogtoralia Vet",
   "extensions": {
     "colorMeta": {
@@ -400,9 +400,9 @@
       "name": "Marco de vitrina con paneles",
       "kind": "card",
       "refersTo": "marco-vitrina",
-      "description": "Unidad de sección de las páginas interiores: marco grafito con paneles planos de vinilo separados por el perfil.",
+      "description": "Marco del encabezado de cada página interior: marco grafito con paneles planos de vinilo separados por el perfil; uno por página.",
       "html": "<div class=\"ds-marco\"><div class=\"ds-panel ds-p-azul\"><h3 class=\"ds-rotulo\">Peluquería</h3><p>Para que salga oliendo a limpio y sin estrés.</p></div><div class=\"ds-panel ds-p-mostaza\"><h3 class=\"ds-rotulo\">Tienda</h3><p>Lo que te recetamos, a la mano.</p></div></div>",
-      "css": ".ds-marco{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px;background:var(--color-grafito,#2b2727);border-radius:6px}.ds-panel{padding:28px;border-radius:3px}.ds-panel p{margin:8px 0 0;font-size:1rem;line-height:1.625}.ds-rotulo{margin:0;font-size:1.875rem;font-family:var(--font-rotulo,Rubik,ui-sans-serif,system-ui,sans-serif);font-weight:800;text-transform:uppercase;letter-spacing:.01em;line-height:1.02;}.ds-p-azul{background:var(--color-vinilo-azul,#1d6f91);color:#fff}.ds-p-azul p{color:rgba(255,255,255,.85)}.ds-p-mostaza{background:var(--color-vinilo-mostaza,#d0911a);color:var(--color-grafito,#2b2727)}"
+      "css": ".ds-marco{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px;background:var(--color-grafito,#2b2727);border-radius:6px}.ds-panel{padding:28px;border-radius:3px}.ds-panel p{margin:8px 0 0;font-size:1rem;line-height:1.625}.ds-rotulo{margin:0;font-size:1.875rem;font-family:var(--font-rotulo,Rubik,ui-sans-serif,system-ui,sans-serif);font-weight:800;text-transform:uppercase;letter-spacing:.01em;line-height:1.02;}.ds-p-azul{background:var(--color-vinilo-azul,#1d6f91);color:#fff}.ds-p-azul p{color:rgba(255,255,255,.85)}.ds-p-mostaza{background:var(--color-vinilo-mostaza,#d0911a);color:var(--color-grafito,#2b2727)}"
     },
     {
       "name": "Nota de reseña",
@@ -473,13 +473,13 @@
     "northStar": "Vitrina vinilada de la sede",
     "overview": "El sitio es la vitrina de la propia clínica, modelada sobre los paneles de vinilo reales de la fachada de Av. Presidente Balmaceda 2776: planchas de color sólido (azul, verde, mostaza, grafito) con rótulos blancos en mayúsculas gruesas, enmarcadas por el perfil grafito de la vitrina y separadas por un muro claro. No es una plantilla de hero con degradado y tarjetas flotantes: es letrero, panel, placa y cartel, los objetos que una familia del barrio ve cuando pasa por la puerta.\n\nLa densidad es de vitrina: bloques grandes, pocos por pantalla, con el texto corrido corto y dicho de tú. El color llega por superficie entera, nunca como acento tímido. Las piezas con volumen son las que cuelgan delante de los paneles: el letrero de puerta, que es el botón de WhatsApp de cada sede y lleva el estado ABIERTO/CERRADO en vivo, el botón placa que ofrece la acción principal de un panel y la placa con el número de la puerta montada sobre cada fachada.\n\nLa home no repite un molde: cada sección tiene su forma y su fondo a sangre, y el ritmo alterna superficies y espaciados (azul, blanco, muro, verde, mostaza, muro, grafito). El hero es vinilo azul plano con la foto real del equipo llegando al borde; los servicios son una lista editorial en filas; el equipo, retratos grandes; las reseñas, una cifra y una cita grandes; las sedes, sus fachadas. Las páginas interiores (servicios, tienda, ficha de producto, contacto, páginas legales y 404) abren con un marco grafito sobre el muro y su panel de encabezado de color.\n\nEl movimiento es físico y breve: lo que se toca se hunde un poco, el cartel de estado se balancea una vez como si colgara de su clavo y la barra de WhatsApp móvil sube como un cajón. Todo tiene versión sin movimiento.",
     "keyCharacteristics": [
-      "Superficies planas de vinilo con texto blanco (o grafito sobre mostaza): a sangre en la home, dentro de un marco grafito en las páginas interiores.",
+      "Superficies planas de vinilo con texto blanco (o grafito sobre mostaza): a sangre en la home; en las páginas interiores, el encabezado va dentro de un marco grafito y el resto de los paneles van sueltos sobre el muro.",
       "Titulares en rótulo: Rubik 800 en mayúsculas, interlineado 1,02.",
       "Muro gris claro como fondo entre marcos y en las secciones de equipo y sedes; blanco en la sección de servicios y dentro de paneles, placas, campos y notas.",
       "Verde WhatsApp reservado a la acción de escribir; rojo error reservado a errores de formulario.",
       "Radios pequeños y escalonados por objeto (panel, etiqueta, casilla, marco, rótulo, placa), nunca píldoras salvo el disco.",
       "Contorno grafito sólido de 3px en placas, campos, fachadas y líneas de lista, 2px en piezas chicas.",
-      "Solo fotos reales de la clínica: el equipo, las fachadas y la vitrina. Nada de fotos de stock."
+      "Solo fotos reales de la clínica: el equipo, las fachadas, la vitrina y el trabajo adentro (vacuna, anestesia, ecografía). Nada de fotos de stock."
     ],
     "rules": [
       {
@@ -524,7 +524,7 @@
       },
       {
         "name": "La Regla del Vinilo Plano",
-        "body": "Paneles, marcos, barras de rótulo, campos, notas y placas de enlace no tienen sombra. Solo lo que cuelga delante de un panel (letrero, botón placa) proyecta sombra, y la tarjeta de producto solo al hover; siempre con uno de los tres tokens de sombra, nunca un valor suelto ni una sombra dura.",
+        "body": "Paneles, marcos, barras de rótulo, campos, notas y placas de enlace no tienen sombra. Solo lo que cuelga delante de un panel (letrero, botón placa, placa de número) proyecta sombra, y la tarjeta de producto solo al hover; siempre con uno de los tres tokens de sombra, nunca un valor suelto ni una sombra dura.",
         "section": "elevation"
       },
       {
@@ -535,7 +535,8 @@
     ],
     "dos": [
       "**Do** dar a cada sección de la home su propia forma y su fondo a sangre, alternando superficies y espaciados.",
-      "**Do** construir las páginas interiores con marcos grafito (radio 6px, padding 8px / 12px) con paneles planos de radio 3px adentro, sobre fondo muro.",
+      "**Do** construir las páginas interiores sobre fondo muro: un marco grafito (radio 6px, padding 6px / 8px) con paneles planos de radio 3px solo en el encabezado, y el resto de los paneles sueltos con radio 6px.",
+      "**Don't** envolver en marco grafito los paneles de contenido, tarjetas o formularios; un marco por página.",
       "**Do** abrir cada página interior con un marco que contenga un panel de encabezado de color y su título en rótulo.",
       "**Do** escribir todo titular, nombre de sede y etiqueta de barra en rótulo (Rubik 800, mayúsculas, interlineado 1,02).",
       "**Do** usar vinilo-azul, vinilo-verde, grafito o grafito-suave para paneles con texto blanco, y grafito sobre vinilo-mostaza.",
