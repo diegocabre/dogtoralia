@@ -306,7 +306,7 @@
       {
         "name": "menu-movil",
         "value": "entra con opacidad 0 y translateY(-12px) en 240ms ease-out-fuerte; sale con fundido de 150ms",
-        "purpose": "Panel azul del menú móvil (Framer Motion). Movimiento reducido: solo fundido."
+        "purpose": "Panel azul del menú móvil (transición CSS). Movimiento reducido: solo fundido."
       },
       {
         "name": "tarjeta-hover",

@@ -35,7 +35,7 @@ Dogtoralia Vet es una clínica veterinaria de barrio con dos sedes. El sitio exi
 - **Servicios** (`src/data/services.ts`): Consultas, Vacunas, Exámenes, Procedimientos, Otros servicios (cardiología, oftalmología y ecografía abdominal) y Peluquería canina y felina (corte y baño, baño medicado), en las dos sedes.
 - **Atención a domicilio:** cubre Santiago en general (no solo las comunas de las sedes). En el sitio aparece como franja en la home (`src/components/home/Team.tsx`), no como servicio en `/service`. No hay condiciones ni precios publicados: no inventarlos.
 - **Equipo por sede:** en el día a día, Sara Vásquez (cirujana) atiende en Puente Alto y Gabriel Cabré (anestesiólogo) en Santiago Centro. En las cirugías programadas, atienden los dos juntos. No se atienden urgencias ni emergencias: el sitio no las promete, tampoco como "operan juntos en emergencias".
-- **Técnico:** Next.js (App Router), Tailwind CSS 4 y Framer Motion. `/` redirige a `/home`, que es la URL canónica. Las URLs, los datos estructurados (JSON-LD) y la metadata SEO ya están trabajados y no se deben romper.
+- **Técnico:** Next.js (App Router) y Tailwind CSS 4. `/` redirige a `/home`, que es la URL canónica. Las URLs, los datos estructurados (JSON-LD) y la metadata SEO ya están trabajados y no se deben romper.
 
 ## Brand Commitments
 

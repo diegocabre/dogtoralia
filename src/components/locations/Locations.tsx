@@ -30,7 +30,13 @@ export function Locations() {
             return (
               <article key={location.name} className={index === 1 ? "md:mt-20" : ""}>
                 <div className="relative">
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-[6px] border-[3px] border-grafito bg-grafito-suave">
+                  <a
+                    href={googleMapsSearchUrl(location.fullAddress)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Ver en Google Maps la sede ${location.name}`}
+                    className="relative block aspect-[4/3] overflow-hidden rounded-[6px] border-[3px] border-grafito bg-grafito-suave"
+                  >
                     <Image
                       src={location.image}
                       alt={`Fachada de la sede ${location.name}, ${location.address}`}
@@ -38,7 +44,7 @@ export function Locations() {
                       sizes="(max-width: 768px) 100vw, 620px"
                       className="object-cover object-[50%_35%]"
                     />
-                  </div>
+                  </a>
                   {/* Placa con el número de la puerta, montada sobre la fachada */}
                   {number && (
                     <span className="rotulo absolute -bottom-5 left-4 rounded-[6px] border-[3px] border-grafito bg-vinilo-azul px-4 py-1.5 text-[2rem] text-white shadow-letrero sm:left-6 sm:text-[2.6rem]">

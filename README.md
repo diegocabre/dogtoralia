@@ -74,7 +74,7 @@ Este sitio lleva a la persona de "necesito llevar a mi mascota" a **un WhatsApp 
 | Área | Herramienta |
 | --- | --- |
 | Framework | [Next.js 16](https://nextjs.org/) (App Router, Turbopack) |
-| UI | [React 19](https://react.dev/), [Tailwind CSS 4](https://tailwindcss.com/), [Framer Motion](https://motion.dev/), [React Icons](https://react-icons.github.io/react-icons/) |
+| UI | [React 19](https://react.dev/), [Tailwind CSS 4](https://tailwindcss.com/), [React Icons](https://react-icons.github.io/react-icons/) |
 | Lenguaje | TypeScript 5 |
 | Validación | [zod 4](https://zod.dev/) |
 | Correo | [Resend](https://resend.com/) |

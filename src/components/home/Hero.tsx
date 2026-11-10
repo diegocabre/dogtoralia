@@ -85,7 +85,7 @@ export function Hero() {
             </h1>
 
             <p className="mt-4 max-w-[36ch] text-base leading-relaxed text-white/90 sm:mt-5 sm:text-lg">
-              De lunes a sábado en Av. Concha y Toro y en Av. Presidente Balmaceda. Escríbenos y te damos hora.
+              Consultas, vacunas, exámenes y peluquería, de lunes a sábado en las dos sedes. Escríbenos y te damos hora.
             </p>
 
             <div

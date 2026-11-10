@@ -82,11 +82,13 @@ export function ServicesPreview() {
               {peluqueria.items && (
                 <ul className="mt-5 flex flex-wrap gap-2">
                   {peluqueria.items.map((item) => (
-                    <li
-                      key={item.title}
-                      className="rounded-[6px] bg-vinilo-azul px-3 py-1.5 font-[family-name:var(--font-rotulo)] text-sm font-bold uppercase tracking-wide text-white"
-                    >
-                      {item.title}
+                    <li key={item.title}>
+                      <Link
+                        href="/service#peluqueria"
+                        className="presionable inline-flex min-h-11 items-center rounded-[6px] bg-vinilo-azul px-3 py-1.5 font-[family-name:var(--font-rotulo)] text-sm font-bold uppercase tracking-wide text-white"
+                      >
+                        {item.title}
+                      </Link>
                     </li>
                   ))}
                 </ul>

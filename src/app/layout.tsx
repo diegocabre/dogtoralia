@@ -4,7 +4,6 @@ import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/navbar/NavBar";
 import Footer from "@/components/footer/Footer";
-import { MotionProvider } from "@/components/MotionProvider";
 import { JsonLd } from "@/components/seo/JsonLd";
 import {
   SITE_URL,
@@ -120,13 +119,11 @@ export default function RootLayout({
         >
           Saltar al contenido
         </a>
-        <MotionProvider>
-          <Navbar />
-          <div id="contenido" tabIndex={-1} className="outline-none">
-            {children}
-          </div>
-          <Footer />
-        </MotionProvider>
+        <Navbar />
+        <div id="contenido" tabIndex={-1} className="outline-none">
+          {children}
+        </div>
+        <Footer />
       </body>
     </html>
   );

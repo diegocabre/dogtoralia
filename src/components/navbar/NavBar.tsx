@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { PiListBold, PiXBold } from "react-icons/pi";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
 
 const navItems = [
     { href: "/home", label: "Inicio" },
@@ -74,53 +73,46 @@ export default function NavBar() {
             </nav>
 
             {/* Menú móvil: un panel de vinilo azul con cada sección como rótulo */}
-            <AnimatePresence>
-                {isOpen && (
-                    <motion.div
-                        id="menu-movil"
-                        role="dialog"
-                        aria-modal="true"
-                        aria-label="Menú"
-                        // "y" (no "transform") para que MotionConfig la salte con movimiento reducido y deje el fundido.
-                        initial={{ opacity: 0, y: -12 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, transition: { duration: 0.15 } }}
-                        transition={{ duration: 0.24, ease: [0.23, 1, 0.32, 1] }}
-                        className="fixed inset-0 z-[60] flex flex-col bg-vinilo-azul px-4 pb-8 pt-3 text-white md:hidden"
+            <div
+                id="menu-movil"
+                role="dialog"
+                aria-modal="true"
+                aria-label="Menú"
+                className={`fixed inset-0 z-[60] flex flex-col bg-vinilo-azul px-4 pb-8 pt-3 text-white transition-[opacity,translate,visibility] duration-[240ms] ease-[var(--ease-out-fuerte)] motion-reduce:translate-y-0 md:hidden ${
+                    isOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-3 opacity-0"
+                }`}
+            >
+                <div className="flex h-12 items-center justify-end">
+                    <button
+                        type="button"
+                        onClick={() => setIsOpen(false)}
+                        className="flex h-11 w-11 items-center justify-center rounded-[8px] text-[1.6rem]"
+                        aria-label="Cerrar menú"
                     >
-                        <div className="flex h-12 items-center justify-end">
-                            <button
-                                type="button"
-                                onClick={() => setIsOpen(false)}
-                                className="flex h-11 w-11 items-center justify-center rounded-[8px] text-[1.6rem]"
-                                aria-label="Cerrar menú"
-                            >
-                                <PiXBold />
-                            </button>
-                        </div>
+                        <PiXBold />
+                    </button>
+                </div>
 
-                        <ul className="mt-6 grid gap-3">
-                            {navItems.map((item) => {
-                                const active = pathname.startsWith(item.href);
-                                return (
-                                    <li key={item.href}>
-                                        <Link
-                                            href={item.href}
-                                            aria-current={active ? "page" : undefined}
-                                            onClick={() => setIsOpen(false)}
-                                            className={`presionable flex min-h-14 items-center rounded-[8px] px-5 ${
-                                                active ? "bg-vinilo-mostaza text-grafito" : "bg-grafito text-white"
-                                            }`}
-                                        >
-                                            <span className="rotulo text-2xl">{item.label}</span>
-                                        </Link>
-                                    </li>
-                                );
-                            })}
-                        </ul>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+                <ul className="mt-6 grid gap-3">
+                    {navItems.map((item) => {
+                        const active = pathname.startsWith(item.href);
+                        return (
+                            <li key={item.href}>
+                                <Link
+                                    href={item.href}
+                                    aria-current={active ? "page" : undefined}
+                                    onClick={() => setIsOpen(false)}
+                                    className={`presionable flex min-h-14 items-center rounded-[8px] px-5 ${
+                                        active ? "bg-vinilo-mostaza text-grafito" : "bg-grafito text-white"
+                                    }`}
+                                >
+                                    <span className="rotulo text-2xl">{item.label}</span>
+                                </Link>
+                            </li>
+                        );
+                    })}
+                </ul>
+            </div>
         </>
     );
 }

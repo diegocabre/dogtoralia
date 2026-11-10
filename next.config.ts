@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
+const WWW_HOST = [{ type: "host" as const, value: "www.dogtoraliavet.cl" }];
+
 const nextConfig: NextConfig = {
+  images: { formats: ["image/avif", "image/webp"] },
   experimental: {
     // Sin la caché persistente de Turbopack en `next build`: Vercel restauró
     // una caché vieja y publicó el CSS de un globals.css anterior (HTML nuevo
@@ -10,6 +13,10 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // www responde con 200 y canónica al dominio sin www: Search Console lo
+      // marca como "alternativa". La raíz va directo a /home, en un solo salto.
+      { source: "/", has: WWW_HOST, destination: "https://dogtoraliavet.cl/home", permanent: true },
+      { source: "/:path*", has: WWW_HOST, destination: "https://dogtoraliavet.cl/:path*", permanent: true },
       {
         // La página de inicio es /home. Es un redirect real (HTTP 308 con
         // cabecera Location) para que Google lo siga y consolide todo en

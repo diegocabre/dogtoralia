@@ -120,12 +120,18 @@ function ServicePanel({ service }: { service: ServiceData }) {
             {service.items.map((item, index) => {
               const ItemIcon = style.itemIcons?.[index] ?? PiBathtubBold;
               return (
-                <li key={item.title} className={`rounded-[8px] px-4 py-3 ${itemBarsFor(style.panel)[index % 2]}`}>
-                  <span className="flex items-center gap-2">
-                    <ItemIcon aria-hidden />
-                    <span className="rotulo text-lg">{item.title}</span>
-                  </span>
-                  {item.text && <span className="mt-1 block text-sm leading-snug">{item.text}</span>}
+                <li key={item.title}>
+                  <a
+                    href="#agendar"
+                    aria-label={`Pedir hora: ${item.title}`}
+                    className={`presionable block min-h-12 rounded-[8px] px-4 py-3 ${itemBarsFor(style.panel)[index % 2]}`}
+                  >
+                    <span className="flex items-center gap-2">
+                      <ItemIcon aria-hidden />
+                      <span className="rotulo text-lg">{item.title}</span>
+                    </span>
+                    {item.text && <span className="mt-1 block text-sm leading-snug">{item.text}</span>}
+                  </a>
                 </li>
               );
             })}
