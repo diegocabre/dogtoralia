@@ -22,7 +22,7 @@ export default function PrivacidadPage() {
   return (
     <LegalPage
       title="Política de Privacidad"
-      updated="11 de octubre de 2026"
+      updated="9 de noviembre de 2026"
       toc={toc}
     >
       <p>
@@ -81,6 +81,10 @@ export default function PrivacidadPage() {
           <li>
             <strong>Microsoft Clarity:</strong> analítica de comportamiento
             de navegación.
+          </li>
+          <li>
+            <strong>Vercel Speed Insights:</strong> mide cuánto tardan en
+            cargar las páginas, sin cookies ni datos personales.
           </li>
         </ul>
       </LegalSection>
